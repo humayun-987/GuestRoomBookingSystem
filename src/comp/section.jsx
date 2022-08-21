@@ -8,6 +8,7 @@ import hod from './HD.png';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Contact from './contact';
+import './section.css';
 
 import 'bootstrap';
 import 'react-bootstrap';
@@ -19,22 +20,16 @@ export default function Section() {
 
 <div style={{marginTop: '2%'}} className='container'>
         <div className='row'>
-        <div className='col-lg-6 col-md-6 col-sm-12'>
-          <img  style={{width: '100%', alignItems: 'center', margin: 'auto'}} src='./PurpleTutor.png' />
-          <img  style={{width: '100%', alignItems: 'center', margin: 'auto'}} src='./UNOSQ-01.png' />
+        <div className='col-lg-6 col-md-6 col-sm-12 center'>
+          <div className='row'>
+          <img className='col-lg-12 col-md-12 col-sm-12' style={{ width: '100%' ,margin: 'auto', alignItems: 'center', display: 'block'}} src='./PurpleTutor.png' />
+          <h2>Presents</h2>
+          <img className='col-lg-12 col-md-12 col-sm-12' style={{ width: '100%' , margin: 'auto', display: 'block'}} src='./UNOSQ-01.png' />
         </div>
+        </div>
+        
         <div className='col-lg-6 col-md-6 col-sm-12'>
-          <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}} ><span style={{color: 'blue'}} >U</span>DGHOSH</h1>
-          <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}}  ><span style={{color: 'blue'}}>N</span>ATIONAL</h1>
-          <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}}  ><span style={{color: 'blue'}}>O</span>PEN</h1>
-          <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}}  ><span style={{color: 'blue'}}>S</span>CHOOL</h1>
-          <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}}  ><span style={{color: 'blue'}}>Q</span>uiz</h1>
-          <a href="https://forms.gle/kxrY5TS9Ke85Utvf6"><button style={{margin: '2%', backgroundColor: '#0d6efd' , padding: '0.75rem 0.375rem', borderRadius: '0.375rem',color: 'white', border: 'none', fontWeight: '400'}} > Register Now</button> </a>
-
-          {/* onClick={()=>{ alert('Registration Will Open Soon');}} */}
-         </div>
-        <div className='col-lg-6 col-md-6 col-sm-12'>
-          <img  style={{width: '100%', alignItems: 'center', margin: 'auto'}} src={uns} />
+          <img  style={{width: '100%', alignItems: 'center', marginLeft: 'auto', marginRight: 'auto', marginTop: '30px'}} src={uns} />
 
         </div>
         </div>

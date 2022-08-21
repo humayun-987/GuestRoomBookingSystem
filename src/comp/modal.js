@@ -14,7 +14,7 @@ export default function Modal(){
 
             <div className="modal-header">
             <a href="https://study.purpletutor.com/enroll.html?source=IITK" target="_blank" >
-            <img src='./topbanner.jpeg' style={{width:'100%'}}></img>
+            {/* <img src='./topbanner.jpeg' style={{width:'100%'}}></img> */}
 
             </a>
                 <button type="button" className="close" data-dismiss="modal" onClick={closeModal}>&times;</button>
