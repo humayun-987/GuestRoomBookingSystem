@@ -20,6 +20,10 @@ export default function Section() {
 <div style={{marginTop: '2%'}} className='container'>
         <div className='row'>
         <div className='col-lg-6 col-md-6 col-sm-12'>
+          <img  style={{width: '100%', alignItems: 'center', margin: 'auto'}} src='./PurpleTutor.png' />
+          <img  style={{width: '100%', alignItems: 'center', margin: 'auto'}} src='./UNOSQ-01.png' />
+        </div>
+        <div className='col-lg-6 col-md-6 col-sm-12'>
           <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}} ><span style={{color: 'blue'}} >U</span>DGHOSH</h1>
           <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}}  ><span style={{color: 'blue'}}>N</span>ATIONAL</h1>
           <h1 style={{fontFamily: '{ss}', fontWeight: 'bold', fontSize: '4rem'}}  ><span style={{color: 'blue'}}>O</span>PEN</h1>
