@@ -18,7 +18,7 @@ export default function Section() {
     <>
 
 
-<div style={{margin: 'auto'}} className='container'>
+<div id='sponsor_front' style={{margin: 'auto'}} className='container'>
         <div className='row'>
         <div className='col-lg-6 col-md-6 col-sm-12 center'>
           <div className='row'>

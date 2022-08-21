@@ -22,7 +22,7 @@ export default function Navbar() {
  
     
 
-    <MDBNavbar expand='lg' light style={{ backgroundColor: '#e3f2fd', padding: '0' }}>
+    <MDBNavbar id='navbar' expand='lg' light style={{ backgroundColor: '#e3f2fd', padding: '0' }}>
       <MDBContainer fluid>
         <MDBNavbarBrand href='#'><img style={{width: '3rem'}} src='./logo.png' /></MDBNavbarBrand>
         <MDBNavbarToggler
