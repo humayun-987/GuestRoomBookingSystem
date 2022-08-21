@@ -22,7 +22,7 @@ export default function Navbar() {
  
     
 
-    <MDBNavbar expand='lg' light style={{ backgroundColor: '#e3f2fd' }}>
+    <MDBNavbar expand='lg' light style={{ backgroundColor: '#e3f2fd', padding: '0' }}>
       <MDBContainer fluid>
         <MDBNavbarBrand href='#'><img style={{width: '3rem'}} src='./logo.png' /></MDBNavbarBrand>
         <MDBNavbarToggler
@@ -33,7 +33,7 @@ export default function Navbar() {
           aria-label='Toggle navigation'
           onClick={() => setShowNavColorThird(!showNavColorThird)}
         >
-          <MDBIcon icon='bars' fas />
+          <MDBIcon icon='bars' style={{ariaHidden: 'true'}} />
         </MDBNavbarToggler>
         <MDBCollapse show={showNavColorThird} navbar>
           <MDBNavbarNav className='me-auto mb-2 mb-lg-0' style={{marginLeft:'15px' , marginRight:'15px'}}>

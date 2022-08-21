@@ -18,12 +18,12 @@ export default function Section() {
     <>
 
 
-<div style={{marginTop: '2%'}} className='container'>
+<div style={{margin: 'auto'}} className='container'>
         <div className='row'>
         <div className='col-lg-6 col-md-6 col-sm-12 center'>
           <div className='row'>
           <img className='col-lg-12 col-md-12 col-sm-12' style={{ width: '100%' ,margin: 'auto', alignItems: 'center', display: 'block'}} src='./PurpleTutor.png' />
-          <h2>Presents</h2>
+          <h2 style={{marginBottom: '5%', textAlign: 'center'}}>Presents</h2>
           <img className='col-lg-12 col-md-12 col-sm-12' style={{ width: '100%' , margin: 'auto', display: 'block'}} src='./UNOSQ-01.png' />
         </div>
         </div>
@@ -33,6 +33,7 @@ export default function Section() {
 
         </div>
         </div>
+        <button style={{margin: 'auto', backgroundColor: 'rgb(13, 110, 253)', padding: '0.75rem 0.375rem',display: 'flex', borderRadius: '0.375rem', color: 'white', border: 'none', fontWeight: '400'}}> Register Now</button>
       </div>
 <div id='about' style={{padding: '6%'}} >
     <h1 className="d-flex justify-content-center header">ABOUT US</h1>
@@ -80,14 +81,14 @@ export default function Section() {
 </div>
 </div>
 
-<section id='conduction' style={{marginTop:'2%'}}>
+<section id='conduction' style={{marginTop:'2%', padding: '6%'}} >
 <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
-<div className="d-flex justify-content-center row"   >
+<div className="d-flex justify-content-center row"  style={{margin: '0'}} >
 <div class="card w-75 col-lg-12" style={{marginBottom: '5px'}}>
   <div class="card-body">
     <h5 class="card-title">Phase 1</h5>
     <p class="card-text">It will consist of an exam which will be held ONLINE this year, consisting of objective-type questions on reasoning, logical puzzles, and mental ability, the duration will be
-90 mins. The top 100 participants will qualify for round 2 separately for all three pools.</p>
+90 mins. The top 100 participants will qualify for round 2 separately for all three pools. <span>Phase 1 will be conducted on August 28.</span></p>
      </div>
 </div>
 
@@ -95,7 +96,7 @@ export default function Section() {
   <div class="card-body">
     <h5 class="card-title">Phase 2</h5>
     <p class="card-text">This will consist of questions related to general awareness and riddles. Duration will be 60mins. There will be talks and exhibitions to increase the enthusiasm and excitement of the
-winners of phase 1. This round will decide the top 10 winners of UNOSQ'22 who will be awarded exciting prizes and free passes for Pronite.</p>
+winners of phase 1. This round will decide the top 10 winners of UNOSQ'22 who will be awarded exciting prizes and free passes for Pronite. <span>Phase 2 will be conducted on September 4.</span></p>
     </div>
 </div>
 
