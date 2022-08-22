@@ -33,7 +33,7 @@ export default function Section() {
 
         </div>
         </div>
-        <button style={{margin: 'auto', backgroundColor: 'rgb(13, 110, 253)', padding: '0.75rem 0.375rem',display: 'flex', borderRadius: '0.375rem', color: 'white', border: 'none', fontWeight: '400'}}> Register Now</button>
+        <a href="https://forms.gle/kxrY5TS9Ke85Utvf6" ><button  style={{margin: 'auto', backgroundColor: 'rgb(13, 110, 253)', padding: '0.75rem 0.375rem',display: 'flex', borderRadius: '0.375rem', color: 'white', border: 'none', fontWeight: '400'}}> Register Now</button> </a>
       </div>
 <div id='about' style={{padding: '6%'}} >
     <h1 className="d-flex justify-content-center header">ABOUT US</h1>
