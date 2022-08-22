@@ -49,7 +49,7 @@ export default function Section() {
     </h2>
     <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div className="accordion-body">
-      Udghosh is the annual sports Fest of IIT Kanpur. As a real sports showpiece, the meet has been validated by the success of many of its victors at the top of the sport's ladder. It serves as a venue for students from various colleges and universities around the country to showcase and improve their athletic abilities.
+      Udghosh is the annual sports Festival of IIT Kanpur. As a real sports showpiece, the Festival has been validated by the success of many of its victors at the top of the sport's ladder. It serves as a place for students from various colleges and universities around the country to showcase and improve their sports knowledge and mental aptitude.
       </div>
     </div>
   </div>
@@ -61,7 +61,8 @@ export default function Section() {
     </h2>
     <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
       <div className="accordion-body">
-      Udghosh National Open School Quiz is an annual competition for classes 6th to 12th, conducted and organized by Udghosh, IIT Kanpur. The competition is divided into two halves, in which students fight for individual glory and the overall title. Phase 1 is a 90-minute online exam that students may take from the comfort of their own homes, and the questions cover a wide range of topics, including Mental Ability, Aptitude, and Puzzles. UNOSQ will contain three separate pools of students: Pool A (6th, 7th, and 8th graders), Pool B (9th and 10th graders), and Pool C (11th and 12th graders) (11th and 12th).To determine the overall victors, only the top 100 competitors in each of Pool A , B and C will advance to the final round, when they will be assessed on a variety of new tasks. For students in phase 2, there will also be online seminars. The sole criterion for participation is excitement and self-confidence.
+      Udghosh National Open School Quiz is an annual sports quiz competition for classes 6th to 12th, conducted and organized by Udghosh, IIT Kanpur. The competition is divided into two halves, in which students fight for individual glory and the overall title. Phase 1 is a 90-minute online exam that students may take from the comfort of their own homes, and the questions cover a wide range of topics, like Sports Trivia,Sports facts and Mental Ability. UNOSQ will contain three separate pools of students: Pool A (6th, 7th, and 8th graders), Pool B (9th and 10th graders), and Pool C (11th and 12th graders) (11th and 12th).To determine the overall victors, only the top 100 competitors in each of Pool A , B and C will advance to the final round, when they will be assessed on a variety of new tasks. For students in phase 2, there will also be online seminars. The sole criterion for participation is to learn some new things and increase your sports
+knowledge.
       </div>
     </div>
   </div>
@@ -73,7 +74,7 @@ export default function Section() {
     </h2>
     <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
       <div className="accordion-body">
-      At its most fundamental level, our primary mission is to fortify and cultivate the potential of our nation. Through a series of exercises that include mental capacity, reasoning, and examination, students will have the chance to gain fundamental knowledge and experience, improve their coordination, and think creatively and outside the box while offering solutions that have never been considered before.
+      At its most fundamental level, our primary mission is to help the students to inculcate sports knowledge and culture and thus increase the reach of different sports to various parts of the country.Through a series of questions that include sports facts,mental aptitude, and reasoning.Students will have the chance to gain self confidence and improve their thinking ability so that they can be ready for the future endeavours.
       </div>
     </div>
   </div>
