@@ -91,7 +91,7 @@ export default function Section() {
      </div>
 </div>
 
-<div  class="card w-50 col-lg-12">
+<div  class="card w-75 col-lg-12">
   <div class="card-body">
     <h5 class="card-title">Phase 2</h5>
     <p class="card-text">Phase 2 will be conducted on September 4. All the qualifying students of Phase 1 will be eligible to register for Phase 2. The duration of Phase 2 exam will be of 60 minutes. There will be talks and exhibitions to increase the enthusiasm and excitement of the winners of Phase 1. This round will decide the top 3 winners of all 3 pools of UNOSQ'22 who will be awarded exciting prizes and will be invited for Udghosh'22.</p>
