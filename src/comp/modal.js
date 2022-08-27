@@ -23,7 +23,7 @@ export default function Modal(){
 <div id="myModal" style={{opacity:1,position:'absolute',top:100,zIndex:100,paddingLeft:'5%'}}>
 
             <div className="modal-header">
-            <a href="https://study.purpletutor.com/enroll.html?source=IITK" target="_blank" >
+            <a href="https://udghosh.org.in" target="_blank" >
             <img src='./topbanner.jpeg' style={{width:'100%'}}></img>
 
             </a>

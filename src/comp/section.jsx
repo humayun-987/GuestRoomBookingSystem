@@ -33,7 +33,7 @@ export default function Section() {
 
         </div>
         </div>
-        <a href="https://forms.gle/kxrY5TS9Ke85Utvf6" ><button  style={{margin: 'auto', backgroundColor: 'rgb(13, 110, 253)', padding: '0.75rem 0.375rem',display: 'flex', borderRadius: '0.375rem', color: 'white', border: 'none', fontWeight: '400'}}> Register Now</button> </a>
+        <a href="https://forms.gle/kxrY5TS9Ke85Utvf6"><button  style={{margin: 'auto', backgroundColor: 'rgb(13, 110, 253)', padding: '0.75rem 0.375rem',display: 'flex', borderRadius: '0.375rem', color: 'white', border: 'none', fontWeight: '400'}}> Register Now</button> </a>
       </div>
 <div id='about' style={{padding: '6%'}} >
     <h1 className="d-flex justify-content-center header">ABOUT US</h1>
@@ -49,7 +49,7 @@ export default function Section() {
     </h2>
     <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div className="accordion-body">
-      Udghosh, the annual sports festival of IIT Kanpur, in its true sense, is an exhibition of sporting fervor, and success in the festival has been ratified by the success of many of its winners higher up in the sporting hierarchy. It offers a common platform for the students of the top educational institutions from all over the country to exhibit and hone their skills in the sports arena.Udghosh, the annual sports festival of IIT Kanpur, in its true sense, is an exhibition of sporting fervor, and success in the festival has been ratified by the success of many of its winners higher up in the sporting hierarchy. It offers a common platform for the students of the top educational institutions from all over the country to exhibit and hone their skills in the sports arena.
+      Udghosh, the annual sports festival of IIT Kanpur, in its true sense, is an exhibition of sporting fervor, and success in the festival has been ratified by the success of many of its winners higher up in the sporting hierarchy. It offers a common platform for the students of the top educational institutions from all over the country to exhibit and hone their skills in the sports arena.
       </div>
     </div>
   </div>
@@ -61,9 +61,8 @@ export default function Section() {
     </h2>
     <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
       <div className="accordion-body">
-      Udghosh National Open School Quiz (UNOSQ) is a national level open school quiz competition for school students of classes 6th to 12th, conducted by Udghosh, IIT Kanpur.  It aims to provide school students' a platform to showcase their talent at a national level and foster the all round development of school students.
-The quiz competition is divided into two phases, in which the Phase 1 will be the qualifying round for Phase 2. The students qualifying the Phase 1 will advance for Phase 2. Both the phases will be completely online. Phase 1 is a 60-minute online exam and the questions cover a wide range of topics ranging from Sports Facts, Mental Ability, Puzzles etc. 
-All the students are divided into three pools with students from 6th-8th class in Pool A, 9th-10th class in Pool B, and 11th-12th class in Pool C. Based on the result of Phase 1, students from each pool will advance to Phase 2. Phase 2 will also be a online exam which will further challenge the students who will compete for the overall winners of UNOSQ. For all the registered participants of UNOSQ, there will also be online talks from various renowned personalities in the field of education and sports.
+      Udghosh National Open School Quiz (UNOSQ) is a national level open school quiz competition for school students of classes 6th to 12th, conducted by Udghosh, IIT Kanpur.  It aims to provide school students' a platform to showcase their talent at a national level and foster the all round development of school students.The quiz competition is divided into two phases, in which the Phase 1 will be the qualifying round for Phase 2. The students qualifying the Phase 1 will advance for Phase 2. Both the phases will be completely online. Phase 1 is a 60-minute online exam and the questions cover a wide range of topics ranging from Sports Facts, Mental Ability, Puzzles etc. 
+      <br />All the students are divided into three pools with students from 6th-8th class in Pool A, 9th-10th class in Pool B, and 11th-12th class in Pool C. Based on the result of Phase 1, students from each pool will advance to Phase 2. Phase 2 will also be a online exam which will further challenge the students who will compete for the overall winners of UNOSQ. For all the registered participants of UNOSQ, there will also be online talks from various renowned personalities in the field of education and sports.
       </div>
     </div>
   </div>
@@ -75,8 +74,7 @@ All the students are divided into three pools with students from 6th-8th class i
     </h2>
     <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
       <div className="accordion-body">
-      At its most fundamental level, UNOSQ aims to provide school students a platform to showcase their talent at a national level. It provides them a opportunity to compete with students all over the country giving them a exposure of competition outside their comfort zone, challenges their mind, help them gain self confidence so that they can be ready for the future endeavours. UNOSQ also provides the students' an opportunity to interact with the renowned personalities in the field of education and sports.
-      </div>
+      At its most fundamental level, UNOSQ aims to provide school students a platform to showcase their talent at a national level. It provides them a opportunity to compete with students all over the country giving them a exposure of competition outside their comfort zone, challenges their mind, help them gain self confidence so that they can be ready for the future endeavours. UNOSQ also provides the students' an opportunity to interact with the renowned personalities in the field of education and sports.      </div>
     </div>
   </div>
 </div>
@@ -88,15 +86,15 @@ All the students are divided into three pools with students from 6th-8th class i
 <div className="d-flex justify-content-center row"  style={{margin: '0'}} >
 <div class="card w-75 col-lg-12" style={{marginBottom: '5px'}}>
   <div class="card-body">
-    <h5 class="card-title">Conduction Phase 1</h5>
+    <h5 class="card-title">Phase 1</h5>
     <p class="card-text">It will be an online exam, consisting of objective-type questions on mental ability, puzzles, and sports facts. The duration will be 60 minutes. The top 100 participants from each pool will qualify for Phase 2. Phase 1 will be conducted on August 28. The results of Phase 1 will be declared by 30th August.</p>
      </div>
 </div>
 
-<div  class="card w-50 col-lg-12">
+<div  class="card w-75 col-lg-12">
   <div class="card-body">
-    <h5 class="card-title">Conduction Phase 2</h5>
-    <p class="card-text">Phase 2 will be conducted on September 4. All the qualifying students of Phase 1 will be eligible to register for Phase 2. The duration of Phase 2 exam will be of 60 minutes. There will be talks and exhibitions to increase the enthusiasm and excitement of the winners of Phase 1. This round will decide the top 3 winners of all 3 pools of UNOSQ'22 who will be awarded exciting prizes and will be invited for Udghosh'22.D</p>
+    <h5 class="card-title">Phase 2</h5>
+    <p class="card-text">Phase 2 will be conducted on September 4. All the qualifying students of Phase 1 will be eligible to register for Phase 2. The duration of Phase 2 exam will be of 60 minutes. There will be talks and exhibitions to increase the enthusiasm and excitement of the winners of Phase 1. This round will decide the top 3 winners of all 3 pools of UNOSQ'22 who will be awarded exciting prizes and will be invited for Udghosh'22.</p>
     </div>
 </div>
 
