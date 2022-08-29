@@ -4,9 +4,7 @@ import './contactstyle.css'
 
 const Contact = () => {
     return (
-    <>
-    <div>
-    <div className="container">
+        <div className="container">
         
         <div className="row">
             <div className="col-lg-4">
@@ -82,8 +80,7 @@ const Contact = () => {
             <div className="col-lg-4">
                 <div className="card p-0">
                     <div className="card-image">
-                        <img src="https://scontent.fdel29-1.fna.fbcdn.net/v/t1.6435-9/139446225_1297869503919191_5588848205840625750_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=nzuy0lMQrJUAX87QIQu&tn=6Xr0T_MVFT561VlI&_nc_ht=scontent.fdel29-1.fna&oh=00_AT_zQvS-rQTATqYtYTXNRvwFwJUFE9QYlzsEZCqq8ac9VA&oe=6304ADB1"
-                            alt="" />
+                        <img src="./ch.jpeg" alt="" />
                     </div>
                     <div className="card-content d-flex flex-column align-items-center">
                         <h4 className="pt-2">Rakesh Gurjar</h4>
@@ -117,9 +114,6 @@ const Contact = () => {
 
         </div>
     </div>
-    
-    </div>
-    </>
     );
 };
 

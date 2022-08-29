@@ -23,8 +23,8 @@ export default function Modal(){
 <div id="myModal" style={{opacity:1,position:'absolute',top:100,zIndex:100,paddingLeft:'5%'}}>
 
             <div className="modal-header">
-            <a href="https://udghosh.org.in" target="_blank" >
-            <img src='./topbanner.jpeg' style={{width:'100%'}}></img>
+            <a href="https://udghosh.org.in" target="_blank">
+            <img src='./topbanner.jpeg' style={{width:'100%'}} alt="Banner"></img>
 
             </a>
                 <button type="button" className="close" data-dismiss="modal" onClick={closeModal}>&times;</button>
