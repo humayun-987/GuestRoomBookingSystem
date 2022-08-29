@@ -12,7 +12,7 @@ export default function Modal(){
         document.getElementById('navbar').style.opacity = .2;
         document.getElementById('sponsor_front').style.opacity = .2;
 
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "scroll";
       }, []);
     return(
         <>
