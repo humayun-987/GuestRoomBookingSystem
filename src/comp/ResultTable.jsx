@@ -162,7 +162,8 @@ function ResultTable() {
                 title="Pool A"
                 columns={columns}
                 data={filteredItemsA}
-                defaultSortFieldId={1}
+                defaultSortFieldId={4}
+                defaultSortAsc={false}
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeaderComponent={subHeaderComponentMemo}
                 subHeader
@@ -178,12 +179,13 @@ function ResultTable() {
                 title="Pool B"
                 columns={columns}
                 data={filteredItemsB}
-                defaultSortFieldId={1}
+                defaultSortFieldId={4}
+                defaultSortAsc={false}
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeaderComponent={subHeaderComponentMemo}
                 subHeader
                 highlightOnHover
-                defaultSortField="Name"
+                defaultSortField="Overall Rank"
                 sortIcon={<ArrowDownward />}
                 selectableRowsComponent={Checkbox}
                 pagination
@@ -194,12 +196,13 @@ function ResultTable() {
                 title="Pool C"
                 columns={columns}
                 data={filteredItemsC}
-                defaultSortFieldId={1}
+                defaultSortFieldId={4}
+                defaultSortAsc={false}
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeaderComponent={subHeaderComponentMemo}
                 subHeader
                 highlightOnHover
-                defaultSortField="Name"
+                defaultSortField="Overall Rank"
                 sortIcon={<ArrowDownward />}
                 selectableRowsComponent={Checkbox}
                 pagination
