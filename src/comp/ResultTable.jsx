@@ -7,6 +7,7 @@ import ArrowDownward from "@mui/icons-material/ArrowDownward";
 import { Box, Card, Tabs, Tab } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import PropTypes from 'prop-types';
+import result from '../Phase1_Result.json'
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
     <MDBInput
@@ -22,31 +23,53 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 		</MDBBtn> */}
   </>
 );
+const PoolA = result["POOL A"];
+const PoolB = result["POOL B"];
+const PoolC = result["POOL C"];
+
 const columns = [
   {
-    name: "Title",
-    selector: (row) => row.title,
+    name: "Name",
+    selector: (row) => row.Name,
     sortable: true,
     reorder: true,
   },
   {
-    name: "Year",
-    selector: (row) => row.year,
+    name: "Registration ID",
+    selector: (row) => row["Registration ID"],
+    sortable: true,
+    reorder: true,
+  },
+  {
+    name: "School Name",
+    selector: (row) => row["School Name"],
+    sortable: true,
+    reorder: true,
+  },
+  {
+    name: "Total Marks",
+    selector: (row) => row["Total Marks"],
+    sortable: true,
+    reorder: true,
+  },
+  {
+    name: "Overall Rank",
+    selector: (row) => row["Overall Rank"],
     sortable: true,
     reorder: true,
   },
 ];
 
-const data = [
+const PoolD = [
   {
     id: 1,
-    title: "Beetlejuice",
-    year: "1988",
+    Name: "Beetlejuice",
+    "Overall Rank": "1988",
   },
   {
     id: 2,
-    title: "Ghostbusters",
-    year: "1984",
+    Name: "Ghostbusters",
+    "Overall Rank": "1984",
   },
 ];
 function TabPanel(props) {
@@ -89,10 +112,19 @@ function ResultTable() {
 
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-  const filteredItems = data.filter(
-    (item) =>
-      item.title && item.title.toLowerCase().includes(filterText.toLowerCase())
-  );
+
+  function applyFilter(item) {
+    return item.Name && item.Name.toLowerCase().includes(filterText.toLowerCase())
+  }
+
+  const filteredItemsA = PoolA.filter(applyFilter);
+
+  const filteredItemsB = PoolB.filter(applyFilter);
+
+  const filteredItemsC = PoolC.filter(applyFilter);
+  // console.log(data)
+  // console.log(PoolA);
+  // console.log(filteredItems);
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
       if (filterText) {
@@ -120,22 +152,22 @@ function ResultTable() {
                 aria-label="basic tabs example"
                 centered
               >
-                <Tab label="Phase 1" sx={{ padding: 4 }} {...a11yProps(0)} />
-                <Tab label="Phase 2" sx={{ padding: 4 }} {...a11yProps(1)} />
-                <Tab label="Phase 3" sx={{ padding: 4 }} {...a11yProps(2)} />
+                <Tab label="Pool A" sx={{ padding: 4 }} {...a11yProps(0)} />
+                <Tab label="Pool B" sx={{ padding: 4 }} {...a11yProps(1)} />
+                <Tab label="Pool C" sx={{ padding: 4 }} {...a11yProps(2)} />
               </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
               <DataTable
-                title="Phase 1"
+                title="Pool A"
                 columns={columns}
-                data={filteredItems}
+                data={filteredItemsA}
                 defaultSortFieldId={1}
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeaderComponent={subHeaderComponentMemo}
                 subHeader
                 highlightOnHover
-                defaultSortField="title"
+                defaultSortField="Overall Rank"
                 sortIcon={<ArrowDownward />}
                 selectableRowsComponent={Checkbox}
                 pagination
@@ -143,15 +175,15 @@ function ResultTable() {
             </TabPanel>
             <TabPanel value={value} index={1}>
               <DataTable
-                title="Phase 2"
+                title="Pool B"
                 columns={columns}
-                data={filteredItems}
+                data={filteredItemsB}
                 defaultSortFieldId={1}
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeaderComponent={subHeaderComponentMemo}
                 subHeader
                 highlightOnHover
-                defaultSortField="title"
+                defaultSortField="Name"
                 sortIcon={<ArrowDownward />}
                 selectableRowsComponent={Checkbox}
                 pagination
@@ -159,15 +191,15 @@ function ResultTable() {
             </TabPanel>
             <TabPanel value={value} index={2}>
               <DataTable
-                title="Phase 3"
+                title="Pool C"
                 columns={columns}
-                data={filteredItems}
+                data={filteredItemsC}
                 defaultSortFieldId={1}
                 paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
                 subHeaderComponent={subHeaderComponentMemo}
                 subHeader
                 highlightOnHover
-                defaultSortField="title"
+                defaultSortField="Name"
                 sortIcon={<ArrowDownward />}
                 selectableRowsComponent={Checkbox}
                 pagination
