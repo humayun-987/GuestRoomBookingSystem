@@ -24,7 +24,7 @@ export default function Modal(){
 
             <div className="modal-header">
             <a href="https://www.youtube.com/channel/UCWA2to9SqSEWHOU7MmiTPCw" target="_blank">
-            <img src='./topbanner.jpeg' style={{width:'100%'}} alt="Banner"></img>
+            <img src='./topbanner.jpg' style={{width:'100%'}} alt="Banner"></img>
 
             </a>
                 <button type="button" className="close" data-dismiss="modal" onClick={closeModal}>&times;</button>
