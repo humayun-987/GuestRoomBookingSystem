@@ -23,9 +23,19 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 		</MDBBtn> */}
   </>
 );
-const PoolA = result["POOL A"];
-const PoolB = result["POOL B"];
-const PoolC = result["POOL C"];
+function remove1(item) {
+  return item.map((i) => {
+    return {
+      "Name": i.Name.toString().substr(0,i.Name.length-1),
+    "Total Marks": i["Total Marks"],
+    "Overall Rank": i["Overall Rank"]
+    }
+  });
+}
+
+const PoolA = remove1(result["POOL A"]);
+const PoolB = remove1(result["POOL B"]);
+const PoolC = remove1(result["POOL C"]);
 
 const columns = [
   {
@@ -34,18 +44,18 @@ const columns = [
     sortable: true,
     reorder: true,
   },
-  {
-    name: "Registration ID",
-    selector: (row) => row["Registration ID"],
-    sortable: true,
-    reorder: true,
-  },
-  {
-    name: "School Name",
-    selector: (row) => row["School Name"],
-    sortable: true,
-    reorder: true,
-  },
+  // {
+  //   name: "Registration ID",
+  //   selector: (row) => row["Registration ID"],
+  //   sortable: true,
+  //   reorder: true,
+  // },
+  // {
+  //   name: "School Name",
+  //   selector: (row) => row["School Name"],
+  //   sortable: true,
+  //   reorder: true,
+  // },
   {
     name: "Total Marks",
     selector: (row) => row["Total Marks"],
@@ -60,18 +70,6 @@ const columns = [
   },
 ];
 
-const PoolD = [
-  {
-    id: 1,
-    Name: "Beetlejuice",
-    "Overall Rank": "1988",
-  },
-  {
-    id: 2,
-    Name: "Ghostbusters",
-    "Overall Rank": "1984",
-  },
-];
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
