@@ -38,6 +38,17 @@ export default function Section() {
                 src="./UNOSQ-01.png"
               />
             </div>
+            <div className="row">
+              <div className="col-lg-6 col-md-6 col-sm-6">
+                <h3>In Association With</h3>
+                <img style={{width: '100%'}} src="http://cdn.shopify.com/s/files/1/0260/9384/6583/files/Scooboo.png?v=1650348175" />
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-6">
+                <h3>Powered By</h3>
+                <img style={{width: '100%'}} src="https://s3.ap-south-1.amazonaws.com/assets.ynos.in/startup-logos/YNOS315064.png" />
+              </div>
+
+            </div>
           </div>
 
           <div className="col-lg-6 col-md-6 col-sm-12">
@@ -51,9 +62,7 @@ export default function Section() {
               }}
               src={uns}
             />
-          </div>
-        </div>
-        <a href="https://forms.gle/kxrY5TS9Ke85Utvf6">
+            
           <button
             style={{
               margin: "auto",
@@ -69,7 +78,10 @@ export default function Section() {
             {" "}
             Register Now
           </button>{" "}
-        </a>
+        
+          </div>
+        </div>
+        
       </div>
       <div id="about" className="mt-4" style={{ padding: "0% 6%" }}>
         <h1 className="d-flex justify-content-center header">ABOUT US</h1>
@@ -198,6 +210,7 @@ export default function Section() {
         </div>
       </div>
       <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
+        <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
      <ResultTable />
       </section>
       <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>

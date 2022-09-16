@@ -15,11 +15,12 @@ export default function Navbar() {
   const [showNavColor, setShowNavColor] = useState(false);
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
   const [showNavColorThird, setShowNavColorThird] = useState(false);
+  
 
   return (
     <>
     
- 
+    
     
 
     <MDBNavbar id='navbar' expand='lg' light style={{ backgroundColor: '#e3f2fd', padding: '0' }}>
@@ -51,7 +52,7 @@ export default function Navbar() {
             <MDBNavbarItem>
               <MDBNavbarLink style={{fontWeight: 'bold'}} href='#contact'>CONTACT US</MDBNavbarLink>
             </MDBNavbarItem>
-            <button type="button"  style={{marginLeft:'50%', backgroundColor: '#0d6efd' , padding: '0.75rem 0.375rem', borderRadius: '0.375rem',color: 'white', border: 'none', fontWeight: '400'}}> <a  href="https://forms.gle/kxrY5TS9Ke85Utvf6" style={{color:'white', }} >Register </a></button>
+            <button type="button" style={{marginLeft:'50%', backgroundColor: '#0d6efd' , padding: '0.75rem 0.375rem', borderRadius: '0.375rem',color: 'white', border: 'none', fontWeight: '400'}}> Register</button>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
@@ -59,3 +60,4 @@ export default function Navbar() {
     </>
   );
 }
+
