@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from "react-router-dom";
 import {
   MDBNavbar,
   MDBContainer,
@@ -25,7 +26,7 @@ export default function Navbar() {
 
     <MDBNavbar id='navbar' expand='lg' light style={{ backgroundColor: '#e3f2fd', padding: '0' }}>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='#'><img style={{width: '3rem'}} src='./logo.png' /></MDBNavbarBrand>
+        <MDBNavbarBrand href='/'><img style={{width: '3rem'}} src='./logo.png' /></MDBNavbarBrand>
         <MDBNavbarToggler
           type='button'
           data-target='#navbarColor02'
@@ -52,7 +53,9 @@ export default function Navbar() {
             <MDBNavbarItem>
               <MDBNavbarLink style={{fontWeight: 'bold'}} href='#contact'>CONTACT US</MDBNavbarLink>
             </MDBNavbarItem>
-            <button type="button" style={{marginLeft:'50%', backgroundColor: '#0d6efd' , padding: '0.75rem 0.375rem', borderRadius: '0.375rem',color: 'white', border: 'none', fontWeight: '400'}}> Register</button>
+            <NavLink to="/register" style={{marginLeft:'50%', backgroundColor: '#0d6efd' , padding: '0.75rem 0.375rem', borderRadius: '0.375rem',color: 'white', border: 'none', fontWeight: '400'}}>
+              <button type="button" style={{ backgroundColor: '#0d6efd', border: 'none'}}> Register</button>
+            </NavLink>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

@@ -8,6 +8,7 @@ import hod from "./HD.png";
 import ResultTable from "./ResultTable";
 import Contact from "./contact";
 import "./section.css";
+import { NavLink } from "react-router-dom";
 
 import "bootstrap";
 import "react-bootstrap";
@@ -62,7 +63,7 @@ export default function Section() {
               }}
               src={uns}
             />
-            
+          <NavLink to="/register">
           <button
             style={{
               margin: "auto",
@@ -74,10 +75,11 @@ export default function Section() {
               border: "none",
               fontWeight: "400",
             }}
-          >
+            >
             {" "}
             Register Now
           </button>{" "}
+            </NavLink>
         
           </div>
         </div>
