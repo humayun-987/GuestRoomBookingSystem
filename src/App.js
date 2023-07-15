@@ -12,7 +12,6 @@ import RegistrationPage from './comp/RegistrationPortal'
 
 function App() {
   return (
-
     <div>
     {/* <Modal /> */}
     <Routes>
