@@ -1,0 +1,126 @@
+.Background {
+    background-color: white;
+  }
+  
+  .udghosh {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-bottom: 20px;
+  }
+  .udghosh:hover{
+    color: #0056b3;
+  }
+  
+  .Heading {
+    font-size: 34px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .udghosh span {
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .udghosh span::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .udghosh span:hover::after {
+    opacity: 1;
+    margin-top: 15px;
+    background-color: #0056b3;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  select {
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333333'><polygon points='6 0 12 10 0 10' /></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 8px;
+    padding-right: 24px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
+  /* Additional styles for color customization */
+  
+  label {
+    color: #333;
+  }
+  
+  input,
+  textarea,
+  select {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+    color: #333;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

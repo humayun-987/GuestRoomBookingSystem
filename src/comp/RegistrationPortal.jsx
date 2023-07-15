@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "./firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import './RegistriationPortal.css'
 
 const RegistrationPage = () => {
   const [isSelectedIndividual, setIsSelectedIndividual] = useState(false);
@@ -17,21 +18,23 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div>
-      <h2>Registration Page</h2>
+    <div className="Background">
+      <h2 className="Heading">Registration Page</h2>
+      <div className="udghosh">
       <span
-        onClick={handleIndividualClick}
-        style={{ textDecoration: isSelectedIndividual ? "underline" : "none" }}
+        onClick={handleIndividualClick} className="hero"
+        
       >
         Register as Individual
       </span>
-      <span> &nbsp; </span>
+ 
       <span
         onClick={handleContingentClick}
-        style={{ textDecoration: isSelectedContingent ? "underline" : "none" }}
+
       >
         Register as Contingent
       </span>
+      </div>
 
       {isSelectedIndividual && <IndividualRegistrationForm />}
       {isSelectedContingent && <ContingentRegistrationForm />}
