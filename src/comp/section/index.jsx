@@ -8,8 +8,8 @@ import Contact from "../contact/contact";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 
-import "bootstrap";
-import "react-bootstrap";
+// import "bootstrap";
+// import "react-bootstrap";
 
 export default function Section() {
   return (

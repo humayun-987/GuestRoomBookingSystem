@@ -1,9 +1,10 @@
 import React from 'react';
 import 'bootstrap';
 import 'react-bootstrap';
-import Navbar from './comp/Navbar';
+import Navbar from './comp/Navbar/index';
 import Section from './comp/section/index';
 import Footer from './comp/footer';
+import FAQs from './comp/FrequentlyAsked';
 import {Route, Routes } from "react-router-dom";
 import RegistrationPage from './comp/RegistrationPortal'
 
@@ -13,14 +14,34 @@ function App() {
     <div>
     {/* <Modal /> */}
     <Routes>
+
+
+
       <Route exact path="/" element={
       <> 
         <Navbar />
         <Section />
       </>
     } />
+
+
+
+      <Route exact path="/FAQs" element={
+      <> 
+        <Navbar />
+        <FAQs />
+      </>
+    } />
+
+
       <Route exact path="/register" element={<RegistrationPage />} />
+
+
     </Routes>
+
+
+
+
     <Footer />
     </div>
   );
