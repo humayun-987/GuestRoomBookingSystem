@@ -1,7 +1,5 @@
 import React from "react";
-import pic from "../../media/5251.jpg";
 import uns from "../../media/VECT1.png";
-import ss from "../../font/Poppins-Bold.otf";
 import head from "../../media/head.png";
 import tab from "../../media/RJ.png";
 import hod from "../../media/HD.png";
@@ -192,7 +190,7 @@ export default function Section() {
      {/* <ResultTable /> */}
       </section>
       <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>
-        {/* <h1 className="d-flex justify-content-center header">CONDUCTION</h1> */}
+        <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
         <div
           className="d-flex justify-content-center row mt-4 mb-4"
           style={{ margin: "0" }}

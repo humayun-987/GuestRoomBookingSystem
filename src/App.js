@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap';
 import 'react-bootstrap';
 import Navbar from './comp/Navbar';
-import Section from './comp/section';
+import Section from './comp/section/index';
 import Footer from './comp/footer';
 import {Route, Routes } from "react-router-dom";
 import RegistrationPage from './comp/RegistrationPortal'
