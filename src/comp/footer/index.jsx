@@ -11,14 +11,15 @@ const Footer = () => {
 return (
 	<div >
 
-<footer className="text-center text-white" style={{backgroundColor: '#f1f1f1'}}>
-
+<footer className="text-center text-white" >
+ 
+ 
   <div className="container pt-4">
 
     <section className="mb-4">
     
       <a
-        className="btn btn-link btn-floating btn-lg text-dark m-1"
+        className="btn btn-link btn-floating btn-lg text-dark m-1"style={{backgroundColor: '#f1f1f1'}}
         href="https://www.facebook.com/udghosh.iitk/"
         role="button"
         data-mdb-ripple-color="dark"
@@ -60,8 +61,13 @@ return (
     © 2022 Copyright:  
     <a className="text-dark" target='blank' href= "https://udghosh.org.in/">  UDGHOSH22</a>
   </div>
+  <div class="last">
+      rahul;
+   </div>
 </footer>
     </div>
+    
 );
+
 };
 export default Footer;

@@ -7,7 +7,7 @@ import ArrowDownward from "@mui/icons-material/ArrowDownward";
 import { Box, Card, Tabs, Tab } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import PropTypes from 'prop-types';
-import result from '../Phase1_Result.json'
+import result from '../../Phase1_Result.json'
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
     <MDBInput

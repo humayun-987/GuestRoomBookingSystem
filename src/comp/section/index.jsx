@@ -1,12 +1,12 @@
 import React from "react";
-import pic from "../5251.jpg";
-import uns from "../images/VECT1.png";
-import ss from "../font/Poppins-Bold.otf";
-import head from "./head.png";
-import tab from "./RJ.png";
-import hod from "./HD.png";
-import ResultTable from "./ResultTable";
-import Contact from "./contact";
+import pic from "../../media/5251.jpg";
+import uns from "../../media/VECT1.png";
+import ss from "../../font/Poppins-Bold.otf";
+import head from "../../media/head.png";
+import tab from "../../media/RJ.png";
+import hod from "../../media/HD.png";
+import ResultTable from "../ResultTable";
+import Contact from "../contact/contact";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 
@@ -23,7 +23,7 @@ export default function Section() {
               <img
                 className="col-lg-12 col-md-12 col-sm-12"
                 style={{
-                  width: "100%",
+                  width: "50%",
                   margin: "auto",
                   alignItems: "center",
                   display: "block",
@@ -67,7 +67,7 @@ export default function Section() {
           <button
             style={{
               margin: "auto",
-              backgroundColor: "rgb(13, 110, 253)",
+              backgroundColor: "rgb(13, 10, 253)",
               padding: "0.75rem 0.375rem",
               display: "flex",
               borderRadius: "0.375rem",
@@ -96,14 +96,14 @@ export default function Section() {
         >
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
-              <h2 className="accordion-header" id="panelsStayOpen-headingOne">
+              <h2 className="accordion-header d-flex justify-content-center" id="panelsStayOpen-headingOne">
                 <button
-                  style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                  className="accordion-button"
+                  style={{ backgroundColor: "lightblue", fontWeight: "bold"}}
+                  className="accordion-button collapsed rounded-0"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseOne"
-                  aria-expanded="true"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseOne"
                 >
                   WHAT IS UDGHOSH?
@@ -111,83 +111,59 @@ export default function Section() {
               </h2>
               <div
                 id="panelsStayOpen-collapseOne"
-                className="accordion-collapse collapse show"
-                aria-labelledby="panelsStayOpen-headingOne"
+                className="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionPanelsStayOpenExample"
               >
                 <div className="accordion-body">
-                  Udghosh, the annual sports festival of IIT Kanpur, in its true
-                  sense, is an exhibition of sporting fervor, and success in the
-                  festival has been ratified by the success of many of its
-                  winners higher up in the sporting hierarchy. It offers a
-                  common platform for the students of the top educational
-                  institutions from all over the country to exhibit and hone
-                  their skills in the sports arena.
+                  Udghosh, the annual sports festival of IIT Kanpur is a real display of sportsmanship,many of its champions have gone on to greatness.<b>It allows outstanding pupils
+                  nationwide to showcase and improve their sports talents.</b>Competing with our rivals and raising awareness for all major sports was the task.They left alegacy for us to carry on,and we can boast of the strongest
+                  growth curve a sports festival in the nation has ever seen.Our vision is unimpaired by the respect we have gained as a festival.
                 </div>
               </div>
             </div>
             <div className="accordion-item">
-              <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
+              <p className="accordion-header d-flex justify-content-center">
                 <button
-                  style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                  className="accordion-button collapsed"
+                  style={{ backgroundColor: "lightblue", fontWeight: "bold"}}
+                  className="accordion-button collapsed rounded-0"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#panelsStayOpen-collapseTwo"
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseTwo"
                 >
                   WHAT IS UNOSQ?
                 </button>
-              </h2>
+              </p>
               <div
                 id="panelsStayOpen-collapseTwo"
                 className="accordion-collapse collapse"
                 aria-labelledby="panelsStayOpen-headingTwo"
               >
                 <div className="accordion-body">
-                  Udghosh National Open School Quiz ( <b>UNOSQ</b>) is a open
-                  school quiz competition for students of classes{" "}
-                  <b>6th to 12th</b>, conducted by{" "}
-                  <b>
-                    Udghosh, which is the annual sports festival of IIT Kanpur
-                  </b>
-                  . This quiz aims to promote and educate school students about{" "}
-                  <b>SPORTS</b> throughout its entire conduction period. The
-                  theme of the quiz would be to promote <b>SPORTS</b> among
-                  school students and provide them a national level platform
-                  where they will get an opportunity to engage and learn from
-                  top level sports athletes of the country . The quiz
-                  competition is divided into <b>two phases</b>, in which the
-                  Phase 1 will be the qualifying round for Phase 2. The students
-                  qualifying the Phase 1 will advance for Phase 2. Both the
-                  phases will be completely online. The quiz will challenge the
-                  mental ability and logical reasoning of students through its
-                  questions in addition to educating and promoting sports which
-                  is the overall theme of the quiz. <br />
-                  All the students are divided into <b>three pools</b> with
-                  students from 6th-8th class in Pool A, 9th-10th class in Pool
-                  B, and 11th-12th class in Pool C. Based on the result of Phase
-                  1, students from each pool will advance to Phase 2. For all
-                  the registered participants of UNOSQ, there will also be
-                  online talks from various renowned personalities in the field
-                  of education and sports.
+                Udghosh proudly hosts UNOSQ,<b>an open school quiz tournament designed for students in grades 5-12.</b>This quiz serves as a platform
+                  to promote sports among schoolchildren.Through this examinationstudents not only gain knowledge about sports but also have their mental,logical and verbal abilities tested
+                  and receive national recognition.As an added benefit ,UNOSQ  organises online seminars conducted by notable academic and sports figures,further enriching the learning experience for the participants.
+                  <b>The primary objective of UNOSQ is to give school children a platform to showcase their talents and abilities.</b>It allows them to compete with students nationwide,challenging their intellect and fostering 
+                  self-confidence for their future endeavours.Additionally,UNOSQ provides an invaluable opportunity for children to meet and interact with celebrated figures from the fields of education and sports.
                 </div>
               </div>
             </div>
             <div className="accordion-item">
-              <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+              <p className="accordion-header d-flex justify-content-center">
                 <button
-                  style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                  className="accordion-button collapsed"
+                  style={{ backgroundColor: "lightblue", fontWeight: "bold"}}
+                  className="accordion-button collapsed rounded-0"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#panelsStayOpen-collapseThree"
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseThree"
                 >
                   WHY UNOSQ?
                 </button>
-              </h2>
+              </p>
               <div
                 id="panelsStayOpen-collapseThree"
                 className="accordion-collapse collapse"
@@ -212,11 +188,11 @@ export default function Section() {
         </div>
       </div>
       <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
-        <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
-     <ResultTable />
+        {/* <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1> */}
+     {/* <ResultTable /> */}
       </section>
       <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>
-        <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
+        {/* <h1 className="d-flex justify-content-center header">CONDUCTION</h1> */}
         <div
           className="d-flex justify-content-center row mt-4 mb-4"
           style={{ margin: "0" }}
@@ -225,10 +201,9 @@ export default function Section() {
             <div class="card-body">
               <h5 class="card-title">Phase 1</h5>
               <p class="card-text">
-                It will be an online exam of 60 minutes duration. The top 100
-                participants from each pool will qualify for Phase 2. Phase 1
-                will be conducted on August 28. The results of Phase 1 will be
-                declared by 30th August.
+              The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering 
+               various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
+               From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
               </p>
             </div>
           </div>
@@ -237,13 +212,10 @@ export default function Section() {
             <div class="card-body">
               <h5 class="card-title">Phase 2</h5>
               <p class="card-text">
-                Phase 2 will be conducted on September 4. All the qualifying
-                students of Phase 1 will be eligible to register for Phase 2.
-                The duration of Phase 2 exam will be of 60 minutes. There will
-                be talks and exhibitions to increase the enthusiasm and
-                excitement of the winners of Phase 1. This round will decide the
-                top 3 winners of all 3 pools of UNOSQ'22 who will be awarded
-                exciting prizes and will be invited for Udghosh'22.
+              The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
+               The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
+               will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
+               the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
               </p>
             </div>
           </div>
