@@ -85,7 +85,7 @@
   height: fit-content;
   border: none;
 }
-.card-body {
+.register-card-body {
     height: fit-content;
     margin: 0;
   background-color: #012e39;
@@ -117,7 +117,7 @@
   margin-right: auto;
 }
 
-.card {
+.registercard{
   display: -webkit-box;
   height: fit-content;
   width: 60vw;
@@ -129,7 +129,7 @@ svg {
   display: block;
   align-items: center;
 }
-.img {
+.regimg {
   width: 30vw;
   display: flex;
   justify-content:center ;
@@ -154,15 +154,15 @@ svg {
 }
 
 @media (max-width: 1000px) and (min-width: 500px) {
-  .img {
+  .regimg {
     display: none;
   }
 
-  .card {
+  .registercard{
     width: 70vw;
     height: fit-content;
   }
-  .card-body {
+  .register-card-body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 100%;
@@ -191,10 +191,10 @@ svg {
     display: none;
   }
 
-  .card {
+  .registercard{
     width: 90vw;
   }
-  .card-body {
+  .register-card-body {
     border-radius: 20px;
     width: 100%;
     min-height: 400px;
@@ -211,7 +211,7 @@ svg {
   }
 }
 
-.card-body {
+.register-card-body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     margin: 0;
