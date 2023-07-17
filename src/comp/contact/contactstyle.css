@@ -137,7 +137,7 @@
     }
     
     .container {
-        margin-top: 100px;
+        margin-top: 50px;
     }
     
     .container .row .col-lg-4 {
@@ -155,6 +155,7 @@
         cursor: pointer;
         border: none;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        margin: 30px 0px;
     
     }
     
@@ -174,26 +175,20 @@
     
     .card .card-content {
         position: absolute;
-        bottom: -180px;
         color: #fff;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(15px);
-        min-height: 140px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(6px);
+        height: 100px;
         width: 100%;
         transition: bottom .4s ease-in;
         box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1);
         border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     
-    .card:hover .card-content {
+    .card-content {
         bottom: 0px;
     }
-    
-    .card:hover .card-content h4,
-    .card:hover .card-content h5 {
-        transform: translateY(10px);
-        opacity: 1;
-    }
+
     
     .card .card-content h4,
     .card .card-content h5 {
@@ -203,8 +198,8 @@
         text-align: center;
         transition: 0.8s;
         font-weight: 500;
-        opacity: 0;
-        transform: translateY(-40px);
+        opacity: 1;
+        transform: translateY(0px);
         transition-delay: 0.2s;
     }
     
@@ -225,12 +220,7 @@
         margin: 10px;
         transition: 0.5s;
         transition-delay: calc(0.15s * var(--i));
-        transform: translateY(50px);
-    }
-    
-    
-    .card:hover .card-content .social-icons li {
-        transform: translateY(20px);
+        transform: translateY(0px);
     }
     
     .card .card-content .social-icons li a {
