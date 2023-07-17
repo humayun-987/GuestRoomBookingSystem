@@ -16,6 +16,7 @@ const FAQItem = ({ question, answer }) => {
   const handleToggle = () => {
     setOpen(!open);
   };
+  const arrowClassName = open ? 'arrow up' : 'arrow down';
   const renderAnswer = () => {
     const boldTextRegex = /\*\*(.*?)\*\*/g;
     const lines = answer.split('%BR%');
@@ -28,7 +29,7 @@ const FAQItem = ({ question, answer }) => {
   };
 
   return (
-    <div>
+    <div className='question-box'>
       
       <h5 className="question" onClick={handleToggle}>{question}</h5>
       <Collapse in={open}>
