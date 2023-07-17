@@ -157,7 +157,7 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
                 <div className="img">
                   <img src={logo} alt="logo" />
                 </div>
-                <form className="card-body" onSubmit={submitFormData}>
+                <form className="card-body" >
                   <p className="signin">Personal Details</p>
                   <div className="form">
                     <div className="form-floating mb-3">
@@ -274,7 +274,7 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
                     </div>
                     <button
                       className="text-uppercase button"
-                      type="submit"
+                      onClick={submitFormData}
                       id="next"
                     >
                       Next
@@ -286,26 +286,14 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
           </div>
         </div>
       </div>
-      <ProgressBar percent={stepPercentage} className="progressbar">
-        <Step>
-          {({ accomplished, index }) => (
-            <div
-              className={`indexedStep ${accomplished ? "accomplished" : null}`}
-            >
-              {index + 1}
-            </div>
-          )}
-        </Step>
-        <Step>
-          {({ accomplished, index }) => (
-            <div
-              className={`indexedStep ${accomplished ? "accomplished" : null}`}
-            >
-              {index + 1}
-            </div>
-          )}
-        </Step>
-      </ProgressBar>
+      <div className="Steps">
+        <div className={`indexedStep ${page == 1 ? "accomplished" : null}`}>
+          1
+        </div>
+        <div onClick={submitFormData} className={`indexedStep ${page == 2 ? "accomplished" : null}`}>
+          2
+        </div>
+      </div>
     </>
   );
 };
@@ -366,20 +354,16 @@ const ContactDetails = ({
       if (!emailRegex.test(values.parentEmail)) {
         toast.error("Please enter a valid email address");
         return false;
-      }
-      else if (!phoneRegex.test(values.studentMobile)) {
+      } else if (!phoneRegex.test(values.studentMobile)) {
         toast.error("Please enter a 10-digit phone number");
         return false;
-      }
-      else if (!phoneRegex.test(values.parentMobile)) {
+      } else if (!phoneRegex.test(values.parentMobile)) {
         toast.error("Please enter a 10-digit phone number");
         return false;
-      }
-      else if (!phoneRegex.test(values.whatsappNumber)) {
+      } else if (!phoneRegex.test(values.whatsappNumber)) {
         toast.error("Please enter a 10-digit phone number");
         return false;
-      }
-      else{
+      } else {
         return true;
       }
     }
@@ -388,7 +372,10 @@ const ContactDetails = ({
   //creating error state for validation
   const submitFormData = (e) => {
     e.preventDefault();
-    if (validate()) handleSubmit();
+    if (validate()) {
+      handleSubmit();
+      nextStep();
+    }
   };
 
   var stepPercentage = 0;
@@ -411,7 +398,7 @@ const ContactDetails = ({
                 <div className="img">
                   <img src={logo} alt="logo" />
                 </div>
-                <form className="card-body" onSubmit={submitFormData}>
+                <form className="card-body" >
                   <p className="signin">Contact Details</p>
                   <div className="form">
                     <div className="form-floating mb-3">
@@ -521,11 +508,10 @@ const ContactDetails = ({
                     </button>
                     <button
                       className="text-uppercase button"
-                      onClick={nextStep}
-                      type="submit"
+                      onClick={submitFormData}
                       id="next"
                     >
-                      Submit
+                      Submit  
                     </button>
                   </div>
                 </form>
@@ -535,26 +521,14 @@ const ContactDetails = ({
         </div>
       </div>
 
-      <ProgressBar percent={stepPercentage} className="progressbar">
-        <Step>
-          {({ accomplished, index }) => (
-            <div
-              className={`indexedStep ${accomplished ? "accomplished" : null}`}
-            >
-              {index + 1}
-            </div>
-          )}
-        </Step>
-        <Step>
-          {({ accomplished, index }) => (
-            <div
-              className={`indexedStep ${accomplished ? "accomplished" : null}`}
-            >
-              {index + 1}
-            </div>
-          )}
-        </Step>
-      </ProgressBar>
+      <div className="Steps">
+        <div onClick={prevStep} className={`indexedStep ${page == 1 ? "accomplished" : null}`}>
+          1
+        </div>
+        <div className={`indexedStep ${page == 2 ? "accomplished" : null}`}>
+          2
+        </div>
+      </div>
     </>
   );
 };
