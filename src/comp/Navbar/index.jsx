@@ -1,62 +1,58 @@
 import React, { useState } from 'react';
-import {
-  MDBNavbar,
-  MDBContainer,
-  MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBNavbarToggler,
-  MDBNavbarBrand,
-  MDBCollapse
-} from 'mdb-react-ui-kit';
-
+import "./navbar.css"
+import { HashLink as Navlink } from "react-router-hash-link"
 export default function Navbar() {
-  const [showNavColor, setShowNavColor] = useState(false);
-  const [showNavColorSecond, setShowNavColorSecond] = useState(false);
-  const [showNavColorThird, setShowNavColorThird] = useState(false);
-  
-
+  const [isOpen, setIsopen] = useState(false);
+  const toggle = () => setIsopen(!isOpen);
   return (
     <>
-    
-    
-    
+    <nav className="navbar">
+      <div className="navbar-basic navbar-bg">
 
-    <MDBNavbar id='navbar' expand='lg' light style={{ backgroundColor: '#e3f2fd', padding: '0' }}>
-      <MDBContainer fluid>
-        <MDBNavbarBrand href='/#'><img style={{width: '3rem'}} src='./logo.png' /></MDBNavbarBrand>
-        <MDBNavbarToggler
-          type='button'
-          data-target='#navbarColor02'
-          aria-controls='navbarColor02'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-          onClick={() => setShowNavColorThird(!showNavColorThird)}
-        >
-          <MDBIcon icon='bars' style={{ariaHidden: 'true'}} />
-        </MDBNavbarToggler>
-        <MDBCollapse show={showNavColorThird} navbar>
-          <MDBNavbarNav className='me-auto mb-2 mb-lg-0' style={{marginLeft:'15px' , marginRight:'15px'}}>
-            <MDBNavbarItem className='active'>
-              <MDBNavbarLink style={{fontWeight: 'bold'}} aria-current='page' href='/#about'>
-                ABOUT US
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink style={{fontWeight: 'bold'}} href='/#conduction'>CONDUCTION</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink style={{fontWeight: 'bold'}} href='/#perks'>PERKS</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink style={{fontWeight: 'bold'}} href='/#contact'>CONTACT US</MDBNavbarLink>
-            </MDBNavbarItem>
-            <button type="button" style={{marginLeft:'50%', backgroundColor: '#0d6efd' , padding: '0.75rem 0.375rem', borderRadius: '0.375rem',color: 'white', border: 'none', fontWeight: '400'}}> Register</button>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBContainer>
-    </MDBNavbar>
+        <Navlink className='nav-item' to="/#" smooth duration={500}>
+          <p className="nav-item-text">
+            Home
+          </p>
+        </Navlink>
+        <Navlink className='nav-item' to="/#about" smooth duration={500}>
+          <p className="nav-item-text">
+            About
+          </p>
+        </Navlink>
+        <Navlink className='nav-item' target='_blank' to="https://unosq.udghosh.org.in/" smooth duration={500}>
+          <img src="/UNOSQ-01-removebg-preview.png" alt="" id="nav-logo" />
+        </Navlink>
+        <Navlink className='nav-item'  to="/#contact" smooth duration={500}>
+          <p className="nav-item-text">
+            Contact
+          </p>
+        </Navlink>
+        <Navlink className='nav-item' to="/#FAQs" smooth duration={500}>
+          <p className="nav-item-text">
+            FAQs
+          </p>
+        </Navlink>
+        <div className="reg-btn">
+          <Navlink className='bs-a-n register-button' to="/register" smooth duration={500}>
+            <p className="nav-item-text">
+              Register
+            </p>
+          </Navlink>
+        </div>
+      </div>
+
+
+      {/* Navbar for small screens */}
+      {/* <div className="navbar-basic navbar-bg-sm">
+        <Navlink to="https://udghosh.org.in" smooth duration={500} className="logo">
+          <img src="/logo.png" alt="" id="udg-logo" />
+        </Navlink>
+        <div className="nav-item-sm" onClick={toggle}>
+          {isOpen ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
+        </div>
+
+      </div> */}
+    </nav>
     </>
   );
 }

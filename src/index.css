@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+:root {
+  --bg-navbar: #c2c2c2;
+  --bg-navbar-text: rgb(106, 106, 106);
+  --bg-normal-p-text: #4e4343;
+  --bg-normal-heading: rgb(129, 92, 39);
+  --bg-website-bg: rgb(255, 255, 255);
+  --bg-navbar-text-hover: rgb(60, 83, 184);
+}
