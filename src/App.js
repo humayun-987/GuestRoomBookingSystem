@@ -23,6 +23,7 @@ function App() {
       <> 
         <Navbar />
         <Section />
+        <Footer />
       </>
     } />
 
@@ -32,6 +33,7 @@ function App() {
       <> 
         <Navbar />
         <FAQs />
+        <Footer />
       </>
     } />
 
@@ -46,7 +48,7 @@ function App() {
 
 
 
-    <Footer />
+    
     </div>
   );
 }

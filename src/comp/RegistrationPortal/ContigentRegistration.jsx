@@ -81,6 +81,12 @@ const ContingentRegistrationForm = () => {
       return (
         <>
           <Toaster toastOptions={{ duration: 4000 }} />
+          <div id="indHead">
+            <div id="individualHead">
+              <p>Contigent Registration</p>
+              <hr className="indHr" />
+            </div>
+          </div>
           <SchoolDetails
             page={1}
             nextStep={nextStep}
@@ -93,6 +99,12 @@ const ContingentRegistrationForm = () => {
       return (
         <>
           <Toaster toastOptions={{ duration: 4000 }} />
+          <div id="indHead">
+            <div id="individualHead">
+              <p>Contigent Registration</p>
+              <hr className="indHr" />
+            </div>
+          </div>
           <ContactDetails
             page={2}
             nextStep={nextStep}
@@ -106,6 +118,12 @@ const ContingentRegistrationForm = () => {
       return (
         <>
           <Toaster toastOptions={{ duration: 4000 }} />
+          <div id="indHead">
+            <div id="individualHead">
+              <p>Contigent Registration</p>
+              <hr className="indHr" />
+            </div>
+          </div>
           <SchoolAddress
             Details
             page={3}
@@ -161,7 +179,7 @@ const SchoolDetails = ({ nextStep, handleFormData, values, page }) => {
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="card border-0 shadow rounded-3 my-5 con2">
+              <div className="card border-0 shadow my-5 con2">
                 <div className="img">
                   <img src={logo} alt="logo" />
                 </div>
