@@ -6,7 +6,9 @@ import Section from './comp/section/index';
 import Footer from './comp/footer';
 import FAQs from './comp/FrequentlyAsked';
 import {Route, Routes } from "react-router-dom";
-import RegistrationPage from './comp/RegistrationPortal'
+import RegistrationPage from './comp/RegistrationPortal/index';
+import IndividualRegistrationForm from './comp/RegistrationPortal/IndividualRegistration';
+import ContingentRegistrationForm from './comp/RegistrationPortal/ContigentRegistration';
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
 
 
       <Route exact path="/register" element={<RegistrationPage />} />
+      <Route exact path="/individualregister" element={<IndividualRegistrationForm />} />
+      <Route exact path="/contingentregister" element={<ContingentRegistrationForm />} />
 
 
     </Routes>

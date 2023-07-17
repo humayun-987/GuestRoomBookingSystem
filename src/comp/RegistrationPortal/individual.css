@@ -1,0 +1,293 @@
+.indexedStep {
+  color: rgb(190, 190, 190);
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(206, 206, 206);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.indexedStep.accomplished {
+  background-color: #664de5;
+  color: white;
+  border-style: none;
+}
+
+.RSPBprogressBar {
+  height: 2px;
+  width: 30%;
+  line-height: 1;
+  border-radius: 10px;
+  position: relative;
+  background-color: rgb(207, 207, 207);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 0;
+  margin: 20px auto;
+}
+
+.RSPBprogressBar .RSPBstep {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  position: absolute;
+  transform: translateX(-50%);
+  transition-property: all;
+  transition-timing-function: ease;
+}
+
+.RSPBprogressBar .RSPBprogressBarText {
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.RSPBprogressBar .RSPBprogression {
+  position: absolute;
+  transition: width 0.3s ease;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: #664de5;
+  z-index: -1;
+}
+
+@media screen and (max-width: 480px) {
+  .indexedStep {
+    width: 15px;
+    height: 15px;
+    font-size: 6px;
+  }
+}
+/* .progressbar{
+    size:100vh
+} */
+
+.indexedStep {
+  height: 50px;
+  width: 50px;
+}
+
+.RSPBprogressBar {
+  width: 50vw;
+  height: 5px;
+}
+
+.box1 {
+  position: relative;
+  margin: auto;
+}
+
+.box {
+  background-color: red;
+  /* height: 50px; */
+  position: relative;
+  margin: auto;
+  /* display: block; */
+}
+
+.loginbox {
+  /* width: 400px; */
+  width: fit-content;
+}
+
+.signin {
+  font-size: 2.15rem;
+  /* padding-left: 3rem; */
+  text-align: center;
+  font-family: cursive;
+  color: white;
+  font-weight: 400;
+  border-radius: 10px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin: 0px;
+  background-color: rgb(3, 22, 27);
+  border: none;
+}
+.loginbody {
+  /* background-image: radial-gradient(#024e5f,#051625,black); */
+  height: fit-content;
+  background-repeat: no-repeat;
+  /* vertical-align: middle; */
+}
+.con2 {
+  height: fit-content;
+  border: none;
+}
+.card-body {
+    height: fit-content;
+  background-color: #012e39;
+  border: transparent;
+  width: 30vw;
+  /* height: 80vh; */
+  min-height: fit-content;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.form-control {
+  background-color: #2b4b54;
+  border: transparent;
+  color: white;
+  width: 100%;
+}
+.input {
+  color: white;
+}
+.form-floating > .form-control,
+.form-floating > .form-control-plaintext,
+.form-floating > .form-select {
+  line-height: 1.25;
+  background: #2b4b54;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  display: -webkit-box;
+  height: fit-content;
+  width: 60vw;
+}
+
+img,
+svg {
+  size: 50%;
+  display: block;
+  /* background: #100000; */
+  align-items: center;
+}
+.img {
+  width: 30vw;
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: black;
+}
+
+.button {
+  background-color: #8a9da2;
+  height: 60px;
+  text-align: center;
+  width: 100px;
+  border-radius: 10%;
+  margin: 10px;
+  float: left;
+}
+
+.file-upload {
+  height: fit-content;
+  width: 100%;
+  outline: none;
+  background: #2b4b54;
+  font-size: 16px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s;
+  margin-top: 5px;
+  line-height: 2.7;
+  border: none;
+}
+.file-upload::-webkit-file-upload-button {
+  background: rgb(86, 122, 124);
+  border: #2b4b54;
+  color: black;
+}
+.form {
+    height: fit-content;
+  display: block;
+  margin: 0;
+  height: 100%;
+}
+
+@media (max-width: 1000px) and (min-width: 500px) {
+  .img {
+    display: none;
+  }
+
+  .card {
+    width: 70vw;
+    height: 50vh;
+  }
+  .card-body {
+    border-radius: 20px;
+    width: 100%;
+    /* min-height: fit-content;
+      height: 50vh; */
+    /* height: 50vh; */
+  }
+  .container {
+    /* width: 95%; */
+    /* height: 50%; */
+    min-height: fit-content;
+  }
+  .signin {
+    font-size: 2.7rem;
+  }
+
+  .form-floating > .form-control,
+  .form-floating > .form-control-plaintext,
+  .form-floating > .form-select {
+    line-height: 2.5;
+  }
+}
+@media (max-width: 500px) {
+  .img {
+    display: none;
+  }
+
+  .card {
+    width: 90vw;
+  }
+  .card-body {
+    border-radius: 20px;
+    width: 100%;
+  }
+
+  .signin {
+    font-size: 1.6rem;
+  }
+
+  .form-floating > .form-control,
+  .form-floating > .form-control-plaintext,
+  .form-floating > .form-select {
+    line-height: 1.5;
+  }
+}
+.finalpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  text-align: center;
+  /* backgroud */
+}
+#finalimage {
+  height: 40vh;
+}
+.finalmessage {
+  color: rgb(93, 164, 93);
+}
+.waitmessage {
+  font-style: italic;
+}
