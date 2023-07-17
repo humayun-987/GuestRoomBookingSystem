@@ -25,7 +25,6 @@ function App() {
         <Navbar />
         <Section />
         <Review />
-        <Contact />
       </>
     } />
 
