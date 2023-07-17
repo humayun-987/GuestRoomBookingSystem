@@ -4,7 +4,6 @@ import head from "../../media/head.png";
 import tab from "../../media/RJ.png";
 import hod from "../../media/HD.png";
 import ResultTable from "../ResultTable";
-import Contact from "../contact/contact";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 
@@ -244,10 +243,7 @@ export default function Section() {
           </div>
         </div>
       </section>
-      <section id="contact" style={{ padding: "0% 2%" }}>
-        <h1 className="d-flex justify-content-center header">CONTACT US</h1>
-        <Contact />
-      </section>
+
     </>
   );
 }

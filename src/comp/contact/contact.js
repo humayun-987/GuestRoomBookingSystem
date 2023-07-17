@@ -4,6 +4,10 @@ import './contactstyle.css'
 
 const Contact = () => {
     return (
+        <section id="contact" style={{ padding: "0% 2%" }}>
+            <h1 className="d-flex justify-content-center header">CONTACT US</h1>
+
+
         <div className="container">
         
         <div className="row">
@@ -114,6 +118,8 @@ const Contact = () => {
 
         </div>
     </div>
+    </section>
+
     );
 };
 
