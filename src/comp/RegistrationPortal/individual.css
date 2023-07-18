@@ -33,15 +33,14 @@
   font-family: 'Ubuntu', sans-serif;
   width: 80vw;
 }
-
-.indHR{
-
+.register-sec
+{
+  background-color: var(--misty-rose);
 }
-
 .Steps{
     display: flex;
     justify-content: center;
-    margin-bottom: 5%;
+    padding-bottom: 5%;
 }
 
 .indexedStep.accomplished {
@@ -109,6 +108,7 @@
   display: -webkit-box;
   width: 60vw;
   height: 70vh;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .regimg {
@@ -145,7 +145,6 @@ form {
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form {
@@ -166,6 +165,7 @@ form {
   .registercard{
     width: 70vw;
     height: fit-content;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .register-card-body {
     border-top-right-radius: 20px;
@@ -200,6 +200,7 @@ form {
 
   .registercard{
     width: 90vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .register-card-body {
     border-radius: 20px;

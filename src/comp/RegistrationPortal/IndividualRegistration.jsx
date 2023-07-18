@@ -79,34 +79,37 @@ const IndividualRegistrationForm = () => {
 
   return (
     <>
-      <Toaster toastOptions={{ duration: 4000 }} />
-      <Navbar />
-      <div id="indHead" style={{
-        paddingTop: "60px",
-      }}>
-        {step == 3 ? null :
-          <div id="individualHead">
-            <p>Individual Registration</p>
-            <hr className="indHr" />
-          </div>
-        }
-      </div>
-      {step === 1 ? <PersonalDetails
-        page={1}
-        nextStep={nextStep}
-        handleFormData={handleInputData}
-        values={formData}
-      />
-        : step === 2 ? <ContactDetails
-          page={2}
+      <section className="register-sec">
+        <Toaster toastOptions={{ duration: 4000 }} />
+        <Navbar />
+        <div id="indHead" style={{
+          paddingTop: "60px",
+        }}>
+          {step == 3 ? null :
+            <div id="individualHead">
+              <p>Individual Registration</p>
+              <hr className="indHr" />
+            </div>
+          }
+        </div>
+        {step === 1 ? <PersonalDetails
+          page={1}
           nextStep={nextStep}
-          prevStep={prevStep}
           handleFormData={handleInputData}
-          handleSubmit={handleSubmit}
           values={formData}
         />
-          : <RegisterSuccess />
-      }
+          : step === 2 ? <ContactDetails
+            page={2}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleFormData={handleInputData}
+            handleSubmit={handleSubmit}
+            values={formData}
+          />
+            : <RegisterSuccess />
+        }
+
+      </section>
     </>
   );
 };
@@ -153,7 +156,7 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
             <div className="mx-auto">
               <div className="registercard border-0 my-5 con2">
                 <div className="regimg">
-                  <img src="/logo.png" alt="logo" className="reg-logo"/>
+                  <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>
                 <form className="register-card-body">
                   <p className="signin">Personal Details</p>

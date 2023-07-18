@@ -78,42 +78,45 @@ const ContingentRegistrationForm = () => {
 
   return (
     <>
-      <Toaster toastOptions={{ duration: 4000 }} />
-      <Navbar />
-      <div id="indHead" style={{
-        paddingTop: "60px",
-      }}>
-        {step == 4 ? null :
-          <div id="individualHead">
-            <p>Contingent Registration</p>
-            <hr className="indHr" />
-          </div>
-        }
-      </div>
-      {step === 1 ? <SchoolDetails
-        page={1}
-        nextStep={nextStep}
-        handleFormData={handleInputData}
-        values={formData}
-      />
-        : step === 2 ? <ContactDetails
-          page={2}
+      <section className="register-sec">
+        <Toaster toastOptions={{ duration: 4000 }} />
+        <Navbar />
+        <div id="indHead" style={{
+          paddingTop: "60px",
+        }}>
+          {step == 4 ? null :
+            <div id="individualHead">
+              <p>Contingent Registration</p>
+              <hr className="indHr" />
+            </div>
+          }
+        </div>
+        {step === 1 ? <SchoolDetails
+          page={1}
           nextStep={nextStep}
-          prevStep={prevStep}
           handleFormData={handleInputData}
           values={formData}
         />
-          : step === 3 ? <SchoolAddress
-            Details
-            page={3}
+          : step === 2 ? <ContactDetails
+            page={2}
             nextStep={nextStep}
             prevStep={prevStep}
             handleFormData={handleInputData}
-            handleSubmit={handleSubmit}
             values={formData}
           />
-            : <RegisterSuccess />
-      }
+            : step === 3 ? <SchoolAddress
+              Details
+              page={3}
+              nextStep={nextStep}
+              prevStep={prevStep}
+              handleFormData={handleInputData}
+              handleSubmit={handleSubmit}
+              values={formData}
+            />
+              : <RegisterSuccess />
+        }
+      </section>
+
     </>
   );
 };
