@@ -1,12 +1,15 @@
 import React from "react";
-import uns from "../../media/VECT1.png";
+
 import head from "../../media/head.png";
 import tab from "../../media/RJ.png";
 import hod from "../../media/HD.png";
-import ResultTable from "../ResultTable";
+// import ResultTable from "../ResultTable";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 import Contact from "../contact/contact";
+import Footer from "../footer";
+import Navbar from "../Navbar";
+import Header from "../header";
 
 // import "bootstrap";
 // import "react-bootstrap";
@@ -15,75 +18,8 @@ export default function Section() {
   return (
     <>
       <section className="complete-section">
-        <div id="sponsor_front" style={{ margin: "auto" }} className="container">
-          <div className="row">
-            <div className="col-lg-6 col-md-6 col-sm-12 center">
-              <div className="row">
-                <img
-                  className="col-lg-12 col-md-12 col-sm-12"
-                  style={{
-                    width: "50%",
-                    margin: "auto",
-                    alignItems: "center",
-                    display: "block",
-                  }}
-                  src="./PurpleTutor.png"
-                />
-                <h2 style={{ marginBottom: "5%", textAlign: "center" }}>
-                  Presents
-                </h2>
-                <img
-                  className="col-lg-12 col-md-12 col-sm-12"
-                  style={{ width: "100%", margin: "auto", display: "block" }}
-                  src="./UNOSQ-01.png"
-                />
-              </div>
-              <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-6">
-                  <h3>In Association With</h3>
-                  <img style={{ width: '100%' }} src="http://cdn.shopify.com/s/files/1/0260/9384/6583/files/Scooboo.png?v=1650348175" />
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-6">
-                  <h3>Powered By</h3>
-                  <img style={{ width: '100%' }} src="https://s3.ap-south-1.amazonaws.com/assets.ynos.in/startup-logos/YNOS315064.png" />
-                </div>
-
-              </div>
-            </div>
-
-            <div className="col-lg-6 col-md-6 col-sm-12">
-              <img
-                style={{
-                  width: "100%",
-                  alignItems: "center",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  marginTop: "30px",
-                }}
-                src={uns}
-              />
-              <NavLink to="/register">
-                <button
-                  style={{
-                    margin: "auto",
-                    backgroundColor: "rgb(13, 10, 253)",
-                    padding: "0.75rem 0.375rem",
-                    display: "flex",
-                    borderRadius: "0.375rem",
-                    color: "white",
-                    border: "none",
-                    fontWeight: "400",
-                  }}
-                >
-                  {" "}
-                  Register Now
-                </button>{" "}
-              </NavLink>
-
-            </div>
-          </div>
-
-        </div>
+        <Navbar />
+        <Header />
         <div id="about" className="mt-40" style={{ padding: "10% 6%" }}>
           <h1 className="d-flex justify-content-center header">ABOUT US</h1>
           <div
@@ -197,17 +133,17 @@ export default function Section() {
             </div>
           </div>
         </div>
-        <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
-          {/* <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1> */}
-          {/* <ResultTable /> */}
-        </section>
+        {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
+          <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
+           <ResultTable /> 
+        </section> */}
         <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>
           <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
           <div
             className="d-flex justify-content-center row mt-4 mb-4"
             style={{ margin: "0" }}
           >
-            <div class="card w-75 col-lg-12" style={{ marginBottom: "5px" }}>
+            <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
               <div class="card-body">
                 <h5 class="card-title">Phase 1</h5>
                 <p class="card-text">
@@ -218,7 +154,7 @@ export default function Section() {
               </div>
             </div>
 
-            <div class="card w-75 col-lg-12">
+            <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
               <div class="card-body">
                 <h5 class="card-title">Phase 2</h5>
                 <p class="card-text">
@@ -256,7 +192,8 @@ export default function Section() {
             </div>
           </div>
         </section>
-          <Contact />
+        <Contact />
+        <Footer />
       </section>
 
     </>

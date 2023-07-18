@@ -9,6 +9,11 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-basic">
           <div className="navbar-bg">
+            <div className="left-attach">
+              <Navlink className='link-Udg' to="https://udghosh.org.in">
+                <img src="/logo.png" alt="" id="nav-logo" />
+              </Navlink>
+            </div>
             <Navlink className='nav-item' to="/#" smooth duration={500}>
               <p className="nav-item-text">
                 Home
@@ -32,7 +37,7 @@ export default function Navbar() {
                 FAQs
               </p>
             </Navlink>
-            <div className="reg-btn">
+            <div className="right-attach">
               <Navlink className='bs-a-n register-button' to="/register" smooth duration={500}>
                 <p className="nav-item-text">
                   Register
@@ -44,7 +49,12 @@ export default function Navbar() {
 
           {/* Navbar for small screens */}
           <div className="navbar-bg-sm">
-            <div className="menu-bars" onClick={toggle}>
+            <div className="left-attach">
+              <Navlink className='link-Udg' to="https://udghosh.org.in">
+                <img src="/logo.png" alt="" id="nav-logo" />
+              </Navlink>
+            </div>
+            <div className="right-attach" onClick={toggle}>
               {isOpen ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
             </div>
             <Navlink to="/" target='_self' smooth duration={500} className="nav-item">

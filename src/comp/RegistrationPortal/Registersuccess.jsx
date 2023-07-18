@@ -7,7 +7,7 @@ const RegisterSuccess = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       Navigate("/");
-    }, 10000); // 10 seconds delay
+    }, 20000); // 20 seconds delay
 
     return () => clearTimeout(timer); // Cleanup the timer on component unmount
   }, [Navigate]);
@@ -20,7 +20,7 @@ const RegisterSuccess = () => {
           You will be informed regarding login process later
         </p>
         <p className="waitmessage">
-          You will be redirected to the main website in 10s
+          You will be redirected to the main website in 20s
         </p>
       </div>
     </div>

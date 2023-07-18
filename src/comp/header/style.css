@@ -1,0 +1,93 @@
+.header-div {
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.unosq-icons {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.picAndReg-btn {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.unosq-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.unosq-img img {
+    width: 70%;
+    min-width: 280px;
+}
+
+.spon {
+    overflow: hidden;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 0 0 15%;
+}
+
+.spon .spon-item {
+    width: 30%;
+}
+
+.spon .spon-title {
+    font-size: 15px;
+}
+
+.spon .spon-img img {
+    width: 70%;
+    min-width: 80px;
+
+}
+
+.reg-in-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .unosq-img {
+        height: 50vh;
+    }
+
+    .picAndReg-btn .unosq-img {
+        display: none;
+    }
+
+    .picAndReg-btn . {
+        display: none;
+    }
+
+    .header-div {
+        flex-direction: column;
+    }
+
+    .spon .spon-title {
+        font-size: 12px;
+    }
+
+    .unosq-icons {
+        width: 100%;
+    }
+
+    .picAndReg-btn {
+        width: 100%;
+    }
+    .spon .spon-item {
+        width: 30%;
+    }
+}

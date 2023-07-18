@@ -29,9 +29,9 @@
   font-weight: 600;
   font-size: 2.4rem !important;
   margin-top: 2%;
-  margin-bottom: -10%;
+  margin-bottom: -8%;
   font-family: 'Ubuntu', sans-serif;
-  width: 60vw;
+  width: 80vw;
 }
 
 .indHR{
@@ -120,6 +120,10 @@
   border-bottom-left-radius: 20px;
   background-color: rgb(211, 230, 253);
 }
+.reg-logo
+{
+  height: 70%;
+}
 
 .button-reg {
   text-align: center;
@@ -154,9 +158,9 @@ form {
     display: none;
   }
   #individualHead{
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
     margin-top: 2.5%;
-    margin-bottom: -7.5%;
+    margin-bottom: -10%;
   }
 
   .registercard{
@@ -190,7 +194,7 @@ form {
   #individualHead{
     font-size: 1.5rem !important;
     margin-top: 2.5%;
-    margin-bottom: -16%;
+    margin-bottom: -20%;
   }
 
 
