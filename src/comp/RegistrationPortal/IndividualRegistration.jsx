@@ -51,8 +51,7 @@ const IndividualRegistrationForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
 
     console.log(formData);
 
