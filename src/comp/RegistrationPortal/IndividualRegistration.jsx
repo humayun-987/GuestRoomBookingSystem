@@ -82,6 +82,12 @@ const IndividualRegistrationForm = () => {
       return (
         <>
           <Toaster toastOptions={{ duration: 4000 }} />
+          <div id="indHead">
+            <div id="individualHead">
+              <p>Individual Registration</p>
+              <hr className="indHr" />
+            </div>
+          </div>
           <PersonalDetails
             page={1}
             nextStep={nextStep}
@@ -94,6 +100,12 @@ const IndividualRegistrationForm = () => {
       return (
         <>
           <Toaster toastOptions={{ duration: 4000 }} />
+          <div id="indHead">
+            <div id="individualHead">
+              <p>Individual Registration</p>
+              <hr className="indHr" />
+            </div>
+          </div>
           <ContactDetails
             page={2}
             nextStep={nextStep}
@@ -147,17 +159,17 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
   }
 
   return (
-    <>
+    <div>
       <Toaster toastOptions={{ duration: 4000 }} />
       <div className="loginbody">
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow rounded-3 my-5 con2">
+              <div className="registercard border-0 my-5 con2">
                 <div className="regimg">
                   <img src={logo} alt="logo" />
                 </div>
-                <form className="register-card-body" >
+                <form className="register-card-body">
                   <p className="signin">Personal Details</p>
                   <div className="form">
                     <div className="form-floating mb-3">
@@ -290,11 +302,14 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
         <div className={`indexedStep ${page == 1 ? "accomplished" : null}`}>
           1
         </div>
-        <div onClick={submitFormData} className={`indexedStep ${page == 2 ? "accomplished" : null}`}>
+        <div
+          onClick={submitFormData}
+          className={`indexedStep ${page == 2 ? "accomplished" : null}`}
+        >
           2
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -398,7 +413,7 @@ const ContactDetails = ({
                 <div className="regimg">
                   <img src={logo} alt="logo" />
                 </div>
-                <form className="register-card-body" >
+                <form className="register-card-body">
                   <p className="signin">Contact Details</p>
                   <div className="form">
                     <div className="form-floating mb-3">
@@ -511,7 +526,7 @@ const ContactDetails = ({
                       onClick={submitFormData}
                       id="next"
                     >
-                      Submit  
+                      Submit
                     </button>
                   </div>
                 </form>
@@ -522,7 +537,10 @@ const ContactDetails = ({
       </div>
 
       <div className="Steps">
-        <div onClick={prevStep} className={`indexedStep ${page == 1 ? "accomplished" : null}`}>
+        <div
+          onClick={prevStep}
+          className={`indexedStep ${page == 1 ? "accomplished" : null}`}
+        >
           1
         </div>
         <div className={`indexedStep ${page == 2 ? "accomplished" : null}`}>

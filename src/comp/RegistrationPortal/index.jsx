@@ -3,6 +3,9 @@ import { db } from "../../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom"; 
 import './RegistriationPortal.css'
+import Footer from "../footer";
+import Navbar from "../Navbar";
+
 
 export const RegistrationPage = () => {
   const navigate = useNavigate();
@@ -19,6 +22,7 @@ export const RegistrationPage = () => {
 
   return (
     <div className="Background">
+      <Navbar />
       <h2 className="Heading">Registration Page</h2>
       <div className="udghosh">
       <span
@@ -35,6 +39,7 @@ export const RegistrationPage = () => {
         Register as Contingent
       </span>
       </div>
+      <Footer />
     </div>
   );
 };
