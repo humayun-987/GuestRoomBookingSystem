@@ -285,7 +285,7 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
                       </label>
                     </div>
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={submitFormData}
                       id="next"
                     >
@@ -515,14 +515,14 @@ const ContactDetails = ({
                       </label>
                     </div>
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={prevStep}
                       id="prev"
                     >
                       Prev
                     </button>
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={submitFormData}
                       id="next"
                     >

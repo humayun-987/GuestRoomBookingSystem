@@ -83,7 +83,7 @@ const ContingentRegistrationForm = () => {
           <Toaster toastOptions={{ duration: 4000 }} />
           <div id="indHead">
             <div id="individualHead">
-              <p>Contigent Registration</p>
+              <p>Contingent Registration</p>
               <hr className="indHr" />
             </div>
           </div>
@@ -101,7 +101,7 @@ const ContingentRegistrationForm = () => {
           <Toaster toastOptions={{ duration: 4000 }} />
           <div id="indHead">
             <div id="individualHead">
-              <p>Contigent Registration</p>
+              <p>Contingent Registration</p>
               <hr className="indHr" />
             </div>
           </div>
@@ -120,7 +120,7 @@ const ContingentRegistrationForm = () => {
           <Toaster toastOptions={{ duration: 4000 }} />
           <div id="indHead">
             <div id="individualHead">
-              <p>Contigent Registration</p>
+              <p>Contingent Registration</p>
               <hr className="indHr" />
             </div>
           </div>
@@ -233,7 +233,7 @@ const SchoolDetails = ({ nextStep, handleFormData, values, page }) => {
                     </div>
 
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={submitFormData}
                       id="next"
                     >
@@ -411,14 +411,14 @@ const ContactDetails = ({
                       </label>
                     </div>
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={prevStep}
                       id="prev"
                     >
                       Prev
                     </button>
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={submitFormData}
                       id="next"
                     >
@@ -589,14 +589,14 @@ const SchoolAddress = ({
                     </div>
 
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={prevStep}
                       id="prev"
                     >
                       Prev
                     </button>
                     <button
-                      className="text-uppercase button"
+                      className="text-uppercase button-reg"
                       onClick={submitFormData}
                       id="next"
                     >
