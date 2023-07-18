@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { db } from "../../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import './style.css';
 import Footer from '../footer';
 import Navbar from "../Navbar";
+import { db } from "../firebaseConfig";
 
 export const RegistrationPage = () => {
   const navigate = useNavigate();

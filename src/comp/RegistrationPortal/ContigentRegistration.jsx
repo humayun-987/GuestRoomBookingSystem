@@ -11,12 +11,10 @@ const ContingentRegistrationForm = () => {
   // state for steps
   const [step, setstep] = useState(1);
 
-  // function for going to next step by increasing step state by 1
   const nextStep = () => {
     setstep(step + 1);
   };
 
-  // function for going to previous step by decreasing step state by 1
   const prevStep = () => {
     setstep(step - 1);
   };
@@ -37,10 +35,9 @@ const ContingentRegistrationForm = () => {
 
   let key, value;
   const handleInputData = (e) => {
-    // input value from the form
     console.log(e.target.name);
     console.log(e.target.value);
-    //updating for data state taking previous state and then adding new value to create new object
+
     key = e.target.name;
     value = e.target.value;
 
@@ -50,8 +47,7 @@ const ContingentRegistrationForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
 
     console.log(formData);
 
@@ -59,7 +55,6 @@ const ContingentRegistrationForm = () => {
       doc(db, "Contingent registration", formData.schoolName),
       formData
     );
-    console.log(formData);
 
     setFormData({
       schoolName: "",
