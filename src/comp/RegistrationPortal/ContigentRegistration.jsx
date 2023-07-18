@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../../firebaseConfig";
+import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { toast, Toaster } from "react-hot-toast";
@@ -56,7 +56,7 @@ const ContingentRegistrationForm = () => {
     console.log(formData);
 
     await setDoc(
-      doc(db, "Contingent reistration", formData.schoolName),
+      doc(db, "Contingent registration", formData.schoolName),
       formData
     );
     console.log(formData);

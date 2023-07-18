@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../../firebaseConfig";
+import { db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { toast, Toaster } from "react-hot-toast";
@@ -57,7 +57,7 @@ const IndividualRegistrationForm = () => {
     console.log(formData);
 
     await setDoc(
-      doc(db, "individual reistration", formData.fullName),
+      doc(db, "individual registration", formData.fullName),
       formData
     );
 

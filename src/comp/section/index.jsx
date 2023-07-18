@@ -144,7 +144,7 @@ export default function Section() {
             style={{ margin: "0" }}
           >
             <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
-              <div class="card-body">
+              <div class="card-body card-body-why">
                 <h5 class="card-title">Phase 1</h5>
                 <p class="card-text">
                   The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
@@ -155,7 +155,7 @@ export default function Section() {
             </div>
 
             <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
-              <div class="card-body">
+              <div class="card-body card-body-why">
                 <h5 class="card-title">Phase 2</h5>
                 <p class="card-text">
                   The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
@@ -171,7 +171,7 @@ export default function Section() {
           <div>
             <h1 className="d-flex justify-content-center header">PERKS </h1>{" "}
           </div>
-          <div className="row mt-4 mb-4">
+          <div className="row perkss mt-4 mb-4">
             <div className="col-lg-4 col-md-4 col-sm-12">
               <img
                 style={{ width: "300px", float: "center", margin: "auto" }}

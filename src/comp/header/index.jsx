@@ -1,6 +1,7 @@
 import "./style.css";
 import React from "react";
 import uns from "../../media/VECT1.png";
+import { NavLink } from "react-router-dom";
 export default function Header() {
     return (
         <>
@@ -11,10 +12,11 @@ export default function Header() {
             }}>
                     <div className="lower-layer" style={{
                     position: "absolute",
-                    width: "100%",
+                    width: "100vw",
                     zIndex: "-2",
                     opacity: "0.1",
                     position: "fixed",
+                    minHeight: "100vh",
                 }}>
                     <img src="/bg-head.jpg" alt="" style={{
                         width: "100%"
@@ -27,7 +29,17 @@ export default function Header() {
                     height: "100vh",
                     opacity: "0.4",
                     top: "0",
-                    backgroundColor: "rgb(0,0,0,0.8)"
+                    backgroundColor: "rgb(0,0,0,0.3)"
+                }}>
+                </div>
+                <div className="upper-layer" style={{
+                    position: "absolute",
+                    width: "100%",
+                    zIndex: "5",
+                    height: "100vh",
+                    opacity: "0.4",
+                    top: "0",
+                    pointerEvents: "none",
                 }}>
                 </div>
                 
@@ -94,11 +106,11 @@ export default function Header() {
                             />
                         </div>
                         <div className="reg-in-header">
-                            <a className='bs-a-n register-button' href="/register" smooth duration={500}>
+                            <NavLink className='bs-a-n register-button' to="/register" smooth duration={500}>
                                 <p className="nav-item-text">
                                     Register Now
                                 </p>
-                            </a>
+                            </NavLink>
                         </div>
 
                     </div>

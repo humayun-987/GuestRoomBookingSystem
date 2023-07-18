@@ -32,7 +32,7 @@ export default function Navbar() {
                 Contact
               </p>
             </Navlink>
-            <Navlink className='nav-item' to="/FAQs" smooth duration={500}>
+            <Navlink className='nav-item' to="/FAQs/#FAQs-section" smooth duration={500}>
               <p className="nav-item-text">
                 FAQs
               </p>
@@ -77,7 +77,7 @@ export default function Navbar() {
                 Contact
               </p>
             </Navlink>
-            <Navlink className='nav-item-sm' to="/FAQs" smooth duration={500}>
+            <Navlink className='nav-item-sm' to="/FAQs/#FAQs-section" smooth duration={500}>
               <p className="nav-item-text">
                 FAQs
               </p>

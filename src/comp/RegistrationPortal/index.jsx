@@ -20,8 +20,8 @@ export const RegistrationPage = () => {
   };
 
   return (
+    <>
     <section className="register-sec">
-
       <Navbar />
       <div className="Background" style={{
         paddingTop: "70px",
@@ -41,7 +41,7 @@ export const RegistrationPage = () => {
                 </button>
               </div>
             </div>
-            <div className="tittle">
+            <div className="title">
               <ol className="ordered1">
                 <li>Students directly register on the UNOSQ portal</li>
                 <li>Students fill in personal details by themselves</li>
@@ -63,7 +63,8 @@ export const RegistrationPage = () => {
               </div>
             </div>
             <div id="listContainer" class="hidden">
-              <div className="title2"><ol className="ordered2">
+              <div className="title">
+                <ol className="ordered2">
                 <li>Schools have to register on the UNOSQ portal</li>
                 <li>Schools collect the information of students and send to UNOSQ</li>
                 <li>Schools collect the fees from students and send to UNOSQ</li>
@@ -77,6 +78,7 @@ export const RegistrationPage = () => {
       </div>
       <Footer />
     </section>
+    </>
   );
 };
 export default RegistrationPage;
