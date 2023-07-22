@@ -10,6 +10,7 @@ import Contact from "../contact/contact";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
+import Review from "../reviews";
 
 // import "bootstrap";
 // import "react-bootstrap";
@@ -167,6 +168,7 @@ export default function Section() {
             </div>
           </div>
         </section>
+        <Review/>
         <section id="perks" style={{ padding: "0% 10%" }}>
           <div>
             <h1 className="d-flex justify-content-center header">PERKS </h1>{" "}

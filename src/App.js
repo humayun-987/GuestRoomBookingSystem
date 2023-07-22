@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import RegistrationPage from "./comp/RegistrationPortal/index";
 import IndividualRegistrationForm from "./comp/RegistrationPortal/IndividualRegistration";
 import ContingentRegistrationForm from "./comp/RegistrationPortal/ContigentRegistration";
-import Review from "./comp/reviews/index";
+
 
 function App() {
   return (
@@ -18,7 +18,8 @@ function App() {
           exact
           path="/"
           element={
-            <>
+            <> 
+              
               <Section />
             </>
           }
