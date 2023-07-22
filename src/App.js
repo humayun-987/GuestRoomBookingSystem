@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import RegistrationPage from "./comp/RegistrationPortal/index";
 import IndividualRegistrationForm from "./comp/RegistrationPortal/IndividualRegistration";
 import ContingentRegistrationForm from "./comp/RegistrationPortal/ContigentRegistration";
+import Brochure from "./comp/Brochure/Brochure";
 import Review from "./comp/reviews/index";
 
 function App() {
@@ -47,6 +48,11 @@ function App() {
           exact
           path="/contingentregister"
           element={<ContingentRegistrationForm />}
+        />
+        <Route
+          exact
+          path="/brochure"
+          element={<Brochure />}
         />
       </Routes>
     </div>
