@@ -11,6 +11,8 @@ import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
 
+import Highlights from "../Highlights";
+
 // import "bootstrap";
 // import "react-bootstrap";
 
@@ -133,6 +135,7 @@ export default function Section() {
             </div>
           </div>
         </div>
+        <Highlights />
         {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
           <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
            <ResultTable /> 
