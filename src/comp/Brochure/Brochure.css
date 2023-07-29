@@ -1,16 +1,16 @@
-.brochure-top{
+.brochure-top {
   height: 60px;
 }
-.brochure-background{
+.brochure-background {
   position: absolute;
-  top:0px;
-  left:0;
+  top: 0px;
+  left: 0;
   height: 110%;
   width: 100%;
   z-index: -1;
   opacity: 0.1;
 }
-.brochure-body{
+.brochure-body {
   position: relative;
 }
 
@@ -24,13 +24,12 @@
 .slides-wrapper {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  height: 110vh;
+  height: 100vh;
 }
-.slides-box{
+.slides-box {
   position: relative;
-  height: 110vh;
-  width: 50vw ;
+  height: 90vh;
+  aspect-ratio: 529 / 749;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -50,33 +49,44 @@
   opacity: 1;
   width: 100%;
   height: 100%;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .slides-nav {
-  border: solid 5px black;
+  border: 0;
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+  font-size: 100%;
+  transition: 0.2s;
+}
+.slides-nav:hover{
+  background-color: rgba(97, 179, 204, 0.5);
+  opacity: 0.8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
 }
 #slides-nav-left {
   position: fixed;
-  left: 10px;
+  left: 11vw;
   top: 50%;
   bottom: 50%;
   z-index: 20;
 }
 #slides-nav-right {
   position: fixed;
-  right: 10px;
+  right: 11vw;
   top: 50%;
   bottom: 50%;
   z-index: 20;
 }
 
-@media (min-width: 450px) and (max-width: 800px) {
-  .slides-box{
+@media (min-width: 500px) and (max-width: 800px) {
+  .slides-box {
     position: relative;
-    height: 110vh;
-    width: 80vw ;
+    height: 80vh;
+    aspect-ratio: 529 / 749;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
@@ -95,16 +105,19 @@
     opacity: 1;
     width: 100%;
     height: 100%;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .slides-wrapper {
     height: 80vh;
   }
-  .slides-box{
+  .slides-box {
     position: relative;
-    height: 80vh;
-    width: 90vw ;
+    height: 65vh;
+    aspect-ratio: 529 / 749;
     overflow: hidden;
   }
   .brochure-img {
@@ -122,5 +135,22 @@
     opacity: 1;
     width: 100%;
     height: 100%;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  #slides-nav-left {
+    position: absolute;
+    left: 25vw;
+    top: 85%;
+    bottom: 15%;
+    z-index: 20;
+  }
+  #slides-nav-right {
+    position: absolute;
+    right: 25vw;
+    top: 85%;
+    bottom: 15%;
+    z-index: 20;
   }
 }
