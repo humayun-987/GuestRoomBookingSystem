@@ -4,6 +4,7 @@ import head from "../../media/head.png";
 import tab from "../../media/RJ.png";
 import hod from "../../media/HD.png";
 // import ResultTable from "../ResultTable";
+import Timeline from "../Timeline";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 import Contact from "../contact/contact";
@@ -167,9 +168,14 @@ export default function Section() {
             </div>
           </div>
         </section>
+        {/* Timeline Start */}
+        <section id="timeline" style={{ padding: "0% 10%"}}>
+          <Timeline />
+        </section>
+        {/* Timeline End */}
         <section id="perks" style={{ padding: "0% 10%" }}>
           <div>
-            <h1 className="d-flex justify-content-center header">PERKS </h1>{" "}
+            <h1 className="d-flex justify-content-center header pt-5">PERKS </h1>{" "}
           </div>
           <div className="row perkss mt-4 mb-4">
             <div className="col-lg-4 col-md-4 col-sm-12">
