@@ -109,6 +109,20 @@
     -webkit-user-select: none;
     user-select: none;
   }
+  #slides-nav-left {
+    position: fixed;
+    left: 9vw;
+    top: 50%;
+    bottom: 50%;
+    z-index: 20;
+  }
+  #slides-nav-right {
+    position: fixed;
+    right: 9vw;
+    top: 50%;
+    bottom: 50%;
+    z-index: 20;
+  }
 }
 @media (max-width: 500px) {
   .slides-wrapper {
