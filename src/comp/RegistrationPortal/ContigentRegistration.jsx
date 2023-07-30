@@ -156,7 +156,7 @@ const SchoolDetails = ({ nextStep, handleFormData, values, page }) => {
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow my-5 con2">
+              <div className="registercard border-0 con2">
                 <div className="regimg">
                   <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>
@@ -301,7 +301,7 @@ const ContactDetails = ({
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow rounded-3 my-5 con2">
+              <div className="registercard border-0 rounded-3 con2">
                 <div className="regimg">
                   <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>
@@ -514,7 +514,7 @@ const SchoolAddress = ({
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow rounded-3 my-5 con2">
+              <div className="registercard border-0 rounded-3 con2">
                 <div className="regimg">
                   <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>

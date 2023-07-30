@@ -108,8 +108,15 @@
 .registercard {
   display: -webkit-box;
   width: 60vw;
-  height: 500px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 75vh;
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+@media (min-width:500px){
+  .registercard{
+    margin-bottom: 3rem !important;
+  }
 }
 
 .regimg {
@@ -166,15 +173,12 @@ form {
 
   .registercard{
     width: 70vw;
-
     height: fit-content;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .register-card-body {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 100%;
-    height: 550px;
     margin: 0;
     min-height: 400px;
   }
@@ -204,7 +208,6 @@ form {
 
   .registercard{
     width: 90vw;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .register-card-body {
     border-radius: 20px;
