@@ -1,13 +1,12 @@
 import React from 'react'
 import './style.css'
-import background from './bg-head.jpg'
 
 function Timeline() {
   return (
     <div>
         <section id="timeline">
-  <div class='row'>
-    <h1 className="col12 text-center">Timeline</h1>
+  <div class='row' id='items'>
+    <h1 class="col12 text-center pb-5" id='heading'>Timeline</h1>
   <div class="tl-item col-2 border-end border-start border-bottom border-secondary">
     <div className="tl-date">
         <h5 class="text-center">16 August</h5>
@@ -17,7 +16,7 @@ function Timeline() {
     </div>
 
     <div class="tl-content">
-      <h3 class="pt-5">Description</h3>
+      <h3 class="pt-5 text-center">Description</h3>
     </div>
   </div>
   
@@ -31,7 +30,7 @@ function Timeline() {
     </div>
 
     <div class="tl-content">
-      <h3 class="pt-5">Description</h3>
+      <h3 class="pt-5 text-center">Description</h3>
     </div>
 
   </div>
@@ -45,7 +44,7 @@ function Timeline() {
     </div>
 
     <div class="tl-content">
-      <h3 class="pt-5">Description</h3>
+      <h3 class="pt-5 text-center">Description</h3>
     </div>
 
   </div>
@@ -59,7 +58,7 @@ function Timeline() {
     </div>
 
     <div class="tl-content">
-      <h3 class="pt-5">Description</h3>
+      <h3 class="pt-5 text-center">Description</h3>
     </div>
 
   </div>
@@ -73,7 +72,7 @@ function Timeline() {
     </div>
 
     <div class="tl-content">
-      <h3 class="pt-5">Description</h3>
+      <h3 class="pt-5 text-center">Description</h3>
     </div>
 
   </div>
@@ -87,7 +86,7 @@ function Timeline() {
     </div>
 
     <div class="tl-content">
-      <h3 class="pt-5">Description</h3>
+      <h3 class="pt-5 text-center">Description</h3>
     </div>
 
   </div>
