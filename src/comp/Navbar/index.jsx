@@ -14,17 +14,17 @@ export default function Navbar() {
                 <img src="/logo.png" alt="" id="nav-logo" />
               </Navlink>
             </div>
-            <Navlink className='nav-item' to="/#" smooth duration={500}>
-              <p className="nav-item-text">
-                Home
-              </p>
-            </Navlink>
             <Navlink className='nav-item' to="/#about" smooth duration={500}>
               <p className="nav-item-text">
                 About
               </p>
             </Navlink>
-            <Navlink className='nav-item' target='_self' to="/" smooth duration={500}>
+            <Navlink className='nav-item' to="/brochure/#" smooth duration={500}>
+              <p className="nav-item-text">
+                Brochure
+              </p>
+            </Navlink>
+            <Navlink className='nav-item' target='_self' to="/#" smooth duration={500}>
               <img src="/UNOSQ-01-removebg-preview.png" alt="" id="nav-logo" />
             </Navlink>
             <Navlink className='nav-item' to="/#contact" smooth duration={500}>
@@ -62,14 +62,14 @@ export default function Navbar() {
             </Navlink>
           </div>
           <div className={`${isOpen ? "visible" : "not-visible"} navbar-bg-sm-2`}>
-            <Navlink className='nav-item-sm' to="/#" smooth duration={500}>
-              <p className="nav-item-text">
-                Home
-              </p>
-            </Navlink>
             <Navlink className='nav-item-sm' to="/#about" smooth duration={500}>
               <p className="nav-item-text">
                 About
+              </p>
+            </Navlink>
+            <Navlink className='nav-item-sm' to="/brochure/#" smooth duration={500}>
+              <p className="nav-item-text">
+                Brochure
               </p>
             </Navlink>
             <Navlink className='nav-item-sm' to="/#contact" smooth duration={500}>
