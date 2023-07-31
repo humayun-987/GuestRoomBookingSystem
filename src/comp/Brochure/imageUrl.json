@@ -1,0 +1,176 @@
+{
+    "photos": {
+        "page": 1,
+        "pages": 1,
+        "perpage": 100,
+        "total": 15,
+        "photo": [
+            {
+                "id": "53062318863",
+                "owner": "198789350@N02",
+                "secret": "0ba86bc206",
+                "server": "65535",
+                "farm": 66,
+                "title": "15",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062015069",
+                "owner": "198789350@N02",
+                "secret": "a55b86b9b1",
+                "server": "65535",
+                "farm": 66,
+                "title": "14",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062015089",
+                "owner": "198789350@N02",
+                "secret": "b859d7a132",
+                "server": "65535",
+                "farm": 66,
+                "title": "13",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53061832411",
+                "owner": "198789350@N02",
+                "secret": "6c144bbe79",
+                "server": "65535",
+                "farm": 66,
+                "title": "12",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062222165",
+                "owner": "198789350@N02",
+                "secret": "45bf7283a3",
+                "server": "65535",
+                "farm": 66,
+                "title": "11",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53061832451",
+                "owner": "198789350@N02",
+                "secret": "e66b0e932b",
+                "server": "65535",
+                "farm": 66,
+                "title": "10",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062222145",
+                "owner": "198789350@N02",
+                "secret": "0c3512c755",
+                "server": "65535",
+                "farm": 66,
+                "title": "9",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062015179",
+                "owner": "198789350@N02",
+                "secret": "f0e13e412c",
+                "server": "65535",
+                "farm": 66,
+                "title": "8",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062222270",
+                "owner": "198789350@N02",
+                "secret": "d726b46d56",
+                "server": "65535",
+                "farm": 66,
+                "title": "7",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53061832496",
+                "owner": "198789350@N02",
+                "secret": "853bfa2584",
+                "server": "65535",
+                "farm": 66,
+                "title": "6",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53061251397",
+                "owner": "198789350@N02",
+                "secret": "fae5a3ee6c",
+                "server": "65535",
+                "farm": 66,
+                "title": "5",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53061832521",
+                "owner": "198789350@N02",
+                "secret": "ea4aac75e1",
+                "server": "65535",
+                "farm": 66,
+                "title": "4",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062318993",
+                "owner": "198789350@N02",
+                "secret": "5c9ddd9003",
+                "server": "65535",
+                "farm": 66,
+                "title": "3",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53061832536",
+                "owner": "198789350@N02",
+                "secret": "8b01a73979",
+                "server": "65535",
+                "farm": 66,
+                "title": "2",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            },
+            {
+                "id": "53062222410",
+                "owner": "198789350@N02",
+                "secret": "5fa990b1c1",
+                "server": "65535",
+                "farm": 66,
+                "title": "1",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            }
+        ]
+    },
+    "stat": "ok"
+}

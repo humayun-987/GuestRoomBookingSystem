@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import head from "../../media/head.png";
 import tab from "../../media/RJ.png";
@@ -10,11 +10,19 @@ import Contact from "../contact/contact";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
+import { Leftfade,Rightfade,Bottomfade,FadeSrub} from "../ScrolltriggerFunc/ScrolltriggerFunc";
 
 // import "bootstrap";
 // import "react-bootstrap";
 
 export default function Section() {
+  useEffect(()=>{
+    Leftfade();
+    Rightfade();
+    Bottomfade();
+    // Discanim();
+    FadeSrub();
+  });
   return (
     <>
       <section className="complete-section">
