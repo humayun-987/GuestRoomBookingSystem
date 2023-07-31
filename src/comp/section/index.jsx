@@ -144,7 +144,6 @@ export default function Section() {
             </div>
           </div>
         </div>
-        <Highlights />
         {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
           <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
            <ResultTable /> 
@@ -179,36 +178,14 @@ export default function Section() {
             </div>
           </div>
         </section>
+        <Highlights />
+
         {/* Timeline Start */}
         <section id="timeline" style={{ padding: "0% 10%"}}>
           <Timeline />
         </section>
         {/* Timeline End */}
-        <section id="perks" style={{ padding: "0% 10%" }}>
-          <div>
-            <h1 className="d-flex justify-content-center header pt-5">PERKS </h1>{" "}
-          </div>
-          <div className="row perkss mt-4 mb-4">
-            <div className="col-lg-4 col-md-4 col-sm-12">
-              <img
-                style={{ width: "300px", float: "center", margin: "auto" }}
-                src={tab}
-              />
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-12">
-              <img
-                style={{ width: "300px", float: "center", margin: "auto" }}
-                src={hod}
-              />
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-12">
-              <img
-                style={{ width: "300px", float: "center", margin: "auto" }}
-                src={head}
-              />
-            </div>
-          </div>
-        </section>
+        
         <Contact />
         <Footer />
       </section>
