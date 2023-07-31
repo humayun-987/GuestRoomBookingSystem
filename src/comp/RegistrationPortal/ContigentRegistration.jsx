@@ -11,12 +11,10 @@ const ContingentRegistrationForm = () => {
   // state for steps
   const [step, setstep] = useState(1);
 
-  // function for going to next step by increasing step state by 1
   const nextStep = () => {
     setstep(step + 1);
   };
 
-  // function for going to previous step by decreasing step state by 1
   const prevStep = () => {
     setstep(step - 1);
   };
@@ -37,10 +35,9 @@ const ContingentRegistrationForm = () => {
 
   let key, value;
   const handleInputData = (e) => {
-    // input value from the form
     console.log(e.target.name);
     console.log(e.target.value);
-    //updating for data state taking previous state and then adding new value to create new object
+
     key = e.target.name;
     value = e.target.value;
 
@@ -50,16 +47,13 @@ const ContingentRegistrationForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     console.log(formData);
 
     await setDoc(
       doc(db, "Contingent registration", formData.schoolName),
       formData
     );
-    console.log(formData);
 
     setFormData({
       schoolName: "",
@@ -81,42 +75,48 @@ const ContingentRegistrationForm = () => {
       <section className="register-sec">
         <Toaster toastOptions={{ duration: 4000 }} />
         <Navbar />
-        <div id="indHead" style={{
-          paddingTop: "60px",
-        }}>
-          {step == 4 ? null :
+        <div
+          id="indHead"
+          style={{
+            paddingTop: "60px",
+          }}
+        >
+          {step == 4 ? null : (
             <div id="individualHead">
               <p>Contingent Registration</p>
               <hr className="indHr" />
             </div>
-          }
+          )}
         </div>
-        {step === 1 ? <SchoolDetails
-          page={1}
-          nextStep={nextStep}
-          handleFormData={handleInputData}
-          values={formData}
-        />
-          : step === 2 ? <ContactDetails
+        {step === 1 ? (
+          <SchoolDetails
+            page={1}
+            nextStep={nextStep}
+            handleFormData={handleInputData}
+            values={formData}
+          />
+        ) : step === 2 ? (
+          <ContactDetails
             page={2}
             nextStep={nextStep}
             prevStep={prevStep}
             handleFormData={handleInputData}
             values={formData}
           />
-            : step === 3 ? <SchoolAddress
-              Details
-              page={3}
-              nextStep={nextStep}
-              prevStep={prevStep}
-              handleFormData={handleInputData}
-              handleSubmit={handleSubmit}
-              values={formData}
-            />
-              : <RegisterSuccess />
-        }
+        ) : step === 3 ? (
+          <SchoolAddress
+            Details
+            page={3}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleFormData={handleInputData}
+            handleSubmit={handleSubmit}
+            values={formData}
+          />
+        ) : (
+          <RegisterSuccess />
+        )}
       </section>
-
     </>
   );
 };
@@ -156,7 +156,7 @@ const SchoolDetails = ({ nextStep, handleFormData, values, page }) => {
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow my-5 con2">
+              <div className="registercard border-0 con2">
                 <div className="regimg">
                   <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>
@@ -301,7 +301,7 @@ const ContactDetails = ({
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow rounded-3 my-5 con2">
+              <div className="registercard border-0 rounded-3 con2">
                 <div className="regimg">
                   <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>
@@ -467,6 +467,14 @@ const SchoolAddress = ({
     "Uttar Pradesh",
     "Uttarakhand",
     "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Lakshadweep",
+    "Delhi",
+    "Puducherry",
+    "Ladakh",
+    "Jammu and Kashmir",
   ];
 
   const validate = () => {
@@ -506,7 +514,7 @@ const SchoolAddress = ({
         <div className="container loginbox">
           <div className="row1">
             <div className="mx-auto">
-              <div className="registercard border-0 shadow rounded-3 my-5 con2">
+              <div className="registercard border-0 rounded-3 con2">
                 <div className="regimg">
                   <img src="/logo.png" alt="logo" className="reg-logo" />
                 </div>

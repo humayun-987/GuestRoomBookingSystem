@@ -1,0 +1,180 @@
+#highlights {
+  width: 937.5px;
+  height: 498px;
+  margin: auto;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  background-color: black;
+  position: relative;
+}
+
+#highlights-container {
+  display: flex;
+  height: 100%;
+}
+
+#highlights-text-bg {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background-image: linear-gradient(to right, black,transparent);
+  background-size: cover;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+@media (min-width:500px){
+  #highlights-text-bg {
+    top: 0;
+    left: 20%;
+  }
+}
+
+#highlights-text {
+  width: 20%;
+  z-index: 2;
+  color: white;
+}
+
+.highlights-text-arrowBtns {
+  height: 15%;
+  padding: 1.5% 0 1.5% 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.highlights-text-arrowBtns button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #4c7bfa;
+  outline: none;
+}
+
+.highlights-text-arrowBtns button:hover {
+  transform: scale(2);
+}
+
+#highlights-text-title-parent {
+  height: 70%;
+  text-align: left;
+}
+
+#highlights-text-title {
+  height: 30%;
+  padding: 1.5% 8.5% 1.5% 6.5%;
+  display: flex;
+  justify-content: baseline;
+  align-content: center;
+  align-items: center;
+}
+
+#highlights-text-title h3 {
+  font-size: 2rem;
+}
+
+#highlights-text-text {
+  height: 70%;
+  padding: 1.5% 8.5% 1.5% 6.5%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#highlights-text-text p {
+  font-size: 1rem;
+}
+
+#highlights-img {
+  width: 80%;
+
+}
+
+#highlights-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  #highlights {
+    width: 625px;
+    height: 332px;
+  }
+
+  #highlights-text-title h3 {
+    font-size: 1.5rem;
+  }
+
+  #highlights-text-text p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  #highlights {
+    width: 375px;
+    height: 199.2px;
+  }
+
+  #highlights-container {
+    position: relative;
+  }
+
+  #highlights-text-bg {
+    top: 99.2px;
+    width: 375px;
+    height: 100px;
+    background-image: linear-gradient(transparent,black);
+    opacity: 1;
+  }
+  
+  #highlights-text {
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .highlights-text-arrowBtns {
+    width: 6%;
+    height: 100%;
+  }
+
+  #highlights-text-title-parent {
+    width: 88%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #highlights-text-title {
+    padding: 0 0 1px 0;
+    height: 7.5px;
+  }
+
+  #highlights-text-title h3{
+    font-size: 0.7rem;
+  }
+  
+  #highlights-text-text {
+    padding: 0 0 0 0;
+    margin: 0;
+    height: 27.5px;
+  }
+  
+  #highlights-text-text p {
+    font-size: 0.5rem;
+    margin: 0;
+  }
+  
+  #highlights-img {
+    width: 375px;
+    height: 199.2px;
+    position: relative;
+  }
+}
