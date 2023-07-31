@@ -2,6 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Classes for animation :-
+// anim-fade-left  for left fade
+// anim-fade-right  for right fade
+// anim-fade-bot  for bottom fade
+// anim-fade-scrub  for fade with scroll
+
 export const Leftfade = () => {
   const elements = document.querySelectorAll(".anim-fade-left");
   elements.forEach((element) => {
