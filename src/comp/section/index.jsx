@@ -44,8 +44,8 @@ export default function Section() {
               <div className="accordion-item">
                 <h2 className="accordion-header d-flex justify-content-center" id="panelsStayOpen-headingOne">
                   <button
-                    style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                    className="accordion-button collapsed rounded-0"
+                    style={{ fontWeight: "bold" }}
+                    className="accordion-button collapsed rounded-0 sub-header about-que"
                     type="button"
                     data-mdb-toggle="collapse"
                     data-mdb-target="#panelsStayOpen-collapseOne"
@@ -61,7 +61,7 @@ export default function Section() {
                   aria-labelledby="headingOne"
                   data-bs-parent="#accordionPanelsStayOpenExample"
                 >
-                  <div className="accordion-body">
+                  <div className="accordion-body sub-content">
                     Udghosh, the annual sports festival of IIT Kanpur is a real display of sportsmanship;
                     many of its champions have gone on to greatness. It allows outstanding pupils
                     nationwide to showcase and improve their sports talents. Competing with our rivals
@@ -75,8 +75,8 @@ export default function Section() {
               <div className="accordion-item">
                 <p className="accordion-header d-flex justify-content-center">
                   <button
-                    style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                    className="accordion-button collapsed rounded-0"
+                    style={{ fontWeight: "bold" }}
+                    className="accordion-button collapsed rounded-0 sub-header about-que"
                     type="button"
                     data-mdb-toggle="collapse"
                     data-mdb-target="#panelsStayOpen-collapseTwo"
@@ -91,7 +91,7 @@ export default function Section() {
                   className="accordion-collapse collapse"
                   aria-labelledby="panelsStayOpen-headingTwo"
                 >
-                  <div className="accordion-body">
+                  <div className="accordion-body sub-content">
                     Udghosh proudly hosts UNOSQ, <b>an open school quiz tournament designed for
                       students in grades 5 - 12</b>. This quiz serves as a platform to promote sports among
                     schoolchildren. Through this examination, students not only gain knowledge about
@@ -110,8 +110,8 @@ export default function Section() {
               <div className="accordion-item">
                 <p className="accordion-header d-flex justify-content-center">
                   <button
-                    style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                    className="accordion-button collapsed rounded-0"
+                    style={{ fontWeight: "bold" }}
+                    className="accordion-button collapsed rounded-0 sub-header about-que"
                     type="button"
                     data-mdb-toggle="collapse"
                     data-mdb-target="#panelsStayOpen-collapseThree"
@@ -126,7 +126,7 @@ export default function Section() {
                   className="accordion-collapse collapse"
                   aria-labelledby="panelsStayOpen-headingThree"
                 >
-                  <div className="accordion-body">
+                  <div className="accordion-body sub-content">
                     At its most fundamental level, UNOSQ aims to provide school
                     students a platform to showcase their talent at the topmost
                     level. It provides them a opportunity to compete with students
@@ -156,8 +156,8 @@ export default function Section() {
           >
             <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
               <div class="card-body card-body-why">
-                <h5 class="card-title">Phase 1</h5>
-                <p class="card-text">
+                <h5 class="card-title sub-header">Phase 1</h5>
+                <p class="card-text sub-content">
                   The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
                   various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
                   From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
@@ -167,8 +167,8 @@ export default function Section() {
 
             <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
               <div class="card-body card-body-why">
-                <h5 class="card-title">Phase 2</h5>
-                <p class="card-text">
+                <h5 class="card-title sub-header">Phase 2</h5>
+                <p class="card-text sub-content">
                   The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
                   The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
                   will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine

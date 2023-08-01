@@ -6,7 +6,7 @@ function Timeline() {
     <div>
         <section id="timeline">
   <div class='row' id='items'>
-    <h1 class="col12 text-center pb-5" id='heading'>Timeline</h1>
+    <h1 class="col12 text-center pb-5 header" id='heading'>Timeline</h1>
   <div class="tl-item col-2 border-end border-start border-bottom border-secondary">
     <div className="tl-date">
         <h5 class="text-center">16 August</h5>

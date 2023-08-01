@@ -29,7 +29,7 @@ export default function Header() {
                     height: "100vh",
                     opacity: "0.4",
                     top: "0",
-                    backgroundColor: "rgb(0,0,0,0.3)"
+                    // backgroundColor: var(--bg-header-lower-layer-back),
                 }}>
                 </div>
                 <div className="upper-layer" style={{
@@ -112,7 +112,6 @@ export default function Header() {
                                 </p>
                             </NavLink>
                         </div>
-
                     </div>
                 </div>
             </section>

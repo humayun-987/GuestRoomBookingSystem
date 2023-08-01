@@ -2,6 +2,18 @@
 {
     text-align: center;
 }
+.header{
+    color: var(--bg-headlines);
+}
+.about-que{
+    background-color: var(--bg-about-button-back);
+}
+.sub-header{
+    color: var(--bg-sub-header);
+}
+.sub-content{
+    color: var(--bg-sub-content);
+}
 .card-body-why
 {
     overflow: scroll;
