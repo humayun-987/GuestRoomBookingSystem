@@ -12,6 +12,7 @@ import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
 import { Leftfade,Rightfade,Bottomfade,FadeSrub} from "../ScrolltriggerFunc/ScrolltriggerFunc";
+import Conduction from "../Conduction/Conduction";
 
 import Highlights from "../Highlights";
 
@@ -150,33 +151,7 @@ export default function Section() {
         </section> */}
         <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>
           <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
-          <div
-            className="d-flex justify-content-center row mt-4 mb-4"
-            style={{ margin: "0" }}
-          >
-            <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
-              <div class="card-body card-body-why">
-                <h5 class="card-title">Phase 1</h5>
-                <p class="card-text">
-                  The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
-                  various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
-                  From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
-                </p>
-              </div>
-            </div>
-
-            <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
-              <div class="card-body card-body-why">
-                <h5 class="card-title">Phase 2</h5>
-                <p class="card-text">
-                  The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
-                  The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
-                  will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
-                  the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
-                </p>
-              </div>
-            </div>
-          </div>
+          <Conduction />
         </section>
         <Highlights />
 
