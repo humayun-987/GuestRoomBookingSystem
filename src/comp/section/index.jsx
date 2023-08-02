@@ -5,6 +5,7 @@ import tab from "../../media/RJ.png";
 import hod from "../../media/HD.png";
 // import ResultTable from "../ResultTable";
 import Timeline from "../Timeline";
+import Reviews from "../reviews/card";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 import Contact from "../contact/contact";
@@ -17,7 +18,26 @@ import Highlights from "../Highlights";
 
 // import "bootstrap";
 // import "react-bootstrap";
-
+const reviews = [
+  {
+    reviewerName: "John Doe",
+    reviewerOrganization: "ABC School",
+    reviewText: "This product is amazing! I couldn't be happier with my purchase.",
+    imageUrl: "https://qph.cf2.quoracdn.net/main-qimg-134e3bf89fff27bf56bdbd04e7dbaedf.webp",
+  },
+  {
+    reviewerName: "Jane Smith",
+    reviewerOrganization: "ABC School",
+    reviewText: "Great product. It exceeded my expectations.",
+    imageUrl: "https://qph.cf2.quoracdn.net/main-qimg-134e3bf89fff27bf56bdbd04e7dbaedf.webp",
+  },
+  {
+    reviewerName: "Mike Johnson",
+    reviewerOrganization: "ABC School",
+    reviewText: "Decent product. Could use some improvements.",
+    imageUrl: "https://qph.cf2.quoracdn.net/main-qimg-134e3bf89fff27bf56bdbd04e7dbaedf.webp",
+  },
+];
 export default function Section() {
   useEffect(()=>{
     Leftfade();
@@ -26,6 +46,7 @@ export default function Section() {
     // Discanim();
     FadeSrub();
   });
+
   return (
     <>
       <section className="complete-section">
@@ -184,6 +205,22 @@ export default function Section() {
         <section id="timeline" style={{ padding: "0% 10%"}}>
           <Timeline />
         </section>
+
+      <div>
+          <h1 className="d-flex justify-content-center header"> TESTIMONIALS </h1>{" "}
+      </div>
+
+      <div className="review-cards-container">
+      {reviews.map((review, index) => (
+        <Reviews
+          key={index}
+          reviewerName={review.reviewerName}
+          reviewerOrganization={review.reviewer}
+          reviewText={review.reviewText}
+          imageUrl={review.imageUrl}
+        />
+      ))}
+    </div>
         {/* Timeline End */}
         
         <Contact />

@@ -1,3 +1,32 @@
+.review-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Each card will take 30% width and have some margin between them */
+  .review-card {
+    width: 30%;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .review-card {
+      width: 100%; /* On smaller screens, the cards will take 100% width and stack vertically */
+    }
+  }
+ 
+  
+  
+  
+  
+  
+
+
+
 .perkss
 {
     text-align: center;
