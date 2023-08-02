@@ -150,7 +150,7 @@ export default function Section() {
            <ResultTable /> 
         </section> */}
         <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>
-          <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
+          <h1 className="d-flex justify-content-center header anim-fade-left">CONDUCTION</h1>
           <Conduction />
         </section>
         <Highlights />

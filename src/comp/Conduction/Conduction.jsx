@@ -25,7 +25,7 @@ export default function Conduction() {
                             <h5 onClick={() => phaseclick(2)} className='cond-head-phase'> Phase 2</h5>
                             <p className={phase == 2 ? "phases-text-active" : "phases-text"}>
                                 The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
-                                The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
+                                The duration of the Phase 2 exam will be reduced to 75 minutes. Additionally, engaging talks and exhibitions
                                 will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
                                 the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
                             </p>
@@ -38,7 +38,7 @@ export default function Conduction() {
     else {
         return (
             <>
-                <div className="conduction-phase-body">
+                <div className="conduction-phase-body mt-4 mb-4">
                     <div className="conduct-phases-head">
                         <div className={phase == 1 ? "phases-head-active" : "phases-head"}>
                             <h5 onClick={() => phaseclick(1)} className='cond-head-phase'> Phase 1</h5>
@@ -55,7 +55,7 @@ export default function Conduction() {
                         </p>
                         <p className={phase == 2 ? "phases-text-active" : "phases-text"}>
                             The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
-                            The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
+                            The duration of the Phase 2 exam will be reduced to 75 minutes. Additionally, engaging talks and exhibitions
                             will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
                             the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
                         </p>
