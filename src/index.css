@@ -23,15 +23,13 @@ code {
   --bg-header-lower-layer-back: rgb(0,0,0,0.3);
   --bg-header-spon-title: black;
 
-  --bg-headlines: violet;
-  --bg-about-button-back: yellow;
+  --bg-headlines: black;
+  --bg-about-button-back: white;
 
-  --bg-sub-header: green;
-  --bg-sub-content: blue;
+  --bg-sub-header: black;
+  --bg-sub-content: black;
 
-  --bg-timeline-date: brown;
-  --bg-timeline-event: rgb(81, 197, 236);
-  --bg-timeline-content: rgb(217, 217, 29);
-
-  
+  --bg-timeline-date: black;
+  --bg-timeline-event: black;
+  --bg-timeline-content: black;
 }
