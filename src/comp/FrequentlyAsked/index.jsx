@@ -72,8 +72,8 @@ export default function FrequentlyAsked() {
                 </div>
         <h2 className="Faq-title">FAQs</h2>
         {faqsData.map((faq, index) => (
-          <div className={`faq ${activeIndex === index ? 'active' : ''}`} key={index}>
-            <div className="faq-question" onClick={() => handleFaqClick(index)}>
+          <div className={`faq ${activeIndex === index ? 'active' : ''}`} onClick={() => handleFaqClick(index)} key={index}>
+            <div className="faq-question" >
               <h3>{faq.question}</h3>
               {/* <svg width="15" height="10" viewBox="0 0 42 25" className={`arrow fa fa-chevron-up ${activeIndex === index ? 'rotate' : ''}`}>
                 <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
@@ -82,8 +82,19 @@ export default function FrequentlyAsked() {
                <i className={`arrow fa fa-chevron-down ${activeIndex === index ? 'rotate' : ''}`} aria-hidden="true"></i>
 
             </div>
-            <div className="faq-answer">
-              <p>{faq.answer}</p>
+            <div className="faq-answer" style={{
+              paddingLeft: "20px",
+            }}>
+              <p><span style={{
+                color: "Black",
+              }}></span> {faq.answer.split('\n').map((line) => {
+                return (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                );
+              })}</p>
             </div>
           </div>
         ))}

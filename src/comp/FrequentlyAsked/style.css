@@ -137,7 +137,7 @@
     max-height: 0;
     color: rgb(71, 142, 164);
     overflow: hidden;
-    transition: opacity 1.4s ease;
+    transition: opacity ease;
   }
   
   .faq-answer p {
@@ -148,7 +148,7 @@
   
   .faq.active .faq-answer {
     max-height: 300px;
-    animation: fade 1s ease-in-out;
+    animation: fade 0.5s ease-in-out;
   }
   
   .faq .faq-question .arrow {
