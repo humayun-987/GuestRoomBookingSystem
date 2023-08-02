@@ -1,9 +1,20 @@
+.conduction-section
+{
+    margin: 10vh 6vw 8vh 6vw;
+    padding: 2vh 2vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 10px 4px rgba(79, 79, 79, 0.4);
+    border-radius: 3px;
+}
 @media (min-width: 1070px) {
+    .conduction-section{
+        min-height: 100vh;
+    }
     .conduction-phase-body {
+        height: fit-content;
         display: flex;
         flex-direction: row;
-        height: 30vh;
-        background-color: rgb(173,216,230,1.4);
         width: 100%;
         border-radius: 10px;
     }
@@ -21,7 +32,6 @@
         margin-top: 20px;
         padding-left: 1.5rem;
         border-left: 2px solid white;
-        cursor: pointer;
 
         h5 {
             font-size: 10px;
@@ -31,6 +41,7 @@
     .cond-head-phase {
         font-size: 1.5rem;
         font-weight: 100;
+        cursor: pointer;
     }
 
     .phases-head-active {
@@ -38,7 +49,6 @@
         margin-top: 20px;
         padding-left: 1.5rem;
         border-left: 2px solid red;
-        cursor: pointer;
     }
 
     .conduct-phases-text {
@@ -47,29 +57,42 @@
         position: relative;
         width: 70vw;
         color: black;
-        font-size: 20px;
+        font-size: 18px;
+        transition: 1s;
+    }
+    .conduct-phases-text img {
+        border-radius: 2px;
+        height: 40vh;
+        margin: 5vh;
     }
 
     .phases-text {
-        position: absolute;
-        margin-top: 10px;
+        position: relative;
         opacity: 0;
-        transition: 0.5s;
+        transition: 1s;
     }
 
     .phases-text-active {
-        margin-top: 10px;
-        position: absolute;
-        transition: 0.5s;
+        position: relative;
+        transition: 1s;
     }
 }
 
 @media (max-width: 1070px) and (min-width: 800px){
+    .conduction-section{
+        min-height: 100vh;
+    }
+    .conduct-phases-text img {
+        border-radius: 2px;
+        height: 30vh;
+        margin: 5vh;
+    }
+
     .conduction-phase-body {
         display: flex;
         flex-direction: row;
-        height: 28vh;
-        background-color: rgb(173,216,230,1.4);
+        height: fit-content;
+        
         width: 100%;
         border-radius: 10px;
     }
@@ -87,15 +110,13 @@
         padding-left: 1.5rem;
         border-left: 2px solid white;
         cursor: pointer;
-
-        h5 {
-            font-size: 10px;
-        }
+        font-size: 25px;
     }
 
     .cond-head-phase {
         font-size: 1.5rem;
         font-weight: 100;
+        cursor: pointer;
     }
 
     .phases-head-active {
@@ -103,7 +124,6 @@
         margin-top: 20px;
         padding-left: 1.5rem;
         border-left: 2px solid red;
-        cursor: pointer;
     }
 
     .conduct-phases-text {
@@ -112,29 +132,29 @@
         position: relative;
         width: 75vw;
         color: black;
-        font-size: 17px;
+        font-size: 14px;
         margin-right: 20px;
     }
 
     .phases-text {
-        position: absolute;
-        margin-top: 10px;
         opacity: 0;
-        transition: 0.5s;
+        transition: 1s;
     }
 
     .phases-text-active {
-        margin-top: 10px;
-        position: absolute;
-        transition: 0.5s;
+        transition: 1s;
     }
 }
 
 @media (max-width: 800px) {
+    .phases-text-active img {
+        border-radius: 2px;
+        width: 60vw;
+        margin: 5vh;
+    }
     .conduction-phase-body {
         display: flex;
         height: fit-content;
-        background-color: rgb(173,216,230,1.4);
         width: 100%;
         border-radius: 10px;
     }
@@ -153,7 +173,6 @@
         margin-top: 20px;
         padding-left: 1.5rem;
         border-left: 2px solid white;
-        cursor: pointer;
 
         h5 {
             font-size: 10px;
@@ -163,6 +182,7 @@
     .cond-head-phase {
         font-size: 1.5rem;
         font-weight: 100;
+        cursor: pointer;
     }
 
     .phases-head-active {
@@ -170,21 +190,17 @@
         margin-top: 20px;
         padding-left: 1.5rem;
         border-left: 2px solid red;
-        cursor: pointer;
     }
 
 
     .phases-text {
-        margin-top: 10px;
         opacity: 0;
-        transition: 0.5s;
+        transition: 1s;
         display: none;
     }
 
     .phases-text-active {
-        margin-top: 10px;
-        transition: 0.5s;
-        height: fit-content;
+        transition: 1s;
     }
 
     
