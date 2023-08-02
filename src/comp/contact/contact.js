@@ -4,7 +4,7 @@ import './contactstyle.css'
 
 const Contact = () => {
     return (
-    <section id="contact" style={{ padding: "8% 4% 4% 4%" }}>
+    <section id="contact" className=' anim-fade-bot' style={{ padding: "8% 4% 4% 4%" }}>
         <h1 className="d-flex justify-content-center header">CONTACT US</h1>
         
         <div className="container">

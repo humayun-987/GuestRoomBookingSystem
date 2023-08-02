@@ -121,7 +121,7 @@ export default function Section() {
         <Highlights />
 
         {/* Timeline Start */}
-        <section id="timeline" style={{ padding: "0% 10%"}}>
+        <section id="timeline" className="anim-fade-bot" style={{ padding: "0% 10%"}}>
           <Timeline />
         </section>
         {/* Timeline End */}
