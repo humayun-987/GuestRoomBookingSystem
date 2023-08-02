@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../footer";
 import "./Brochure.css";
@@ -6,7 +6,7 @@ import brochure from "./imageUrl.json";
 
 const Brochure = () => {
   const [slideselected, setSideSelected] = useState(1);
-  const noofslides = 15;
+  const noofslides = 16;
   const photos = brochure.photos.photo;
   let slidesArray = photos.map(
     (slide, index) =>
@@ -23,10 +23,9 @@ const Brochure = () => {
   return (
     <>
       <Navbar />
-      <div className="brochure-top">
-      </div>
+      <div className="brochure-top"></div>
       <div className="brochure-body">
-        <img className="brochure-background" src="/bg-head.jpg"  />
+        <img className="brochure-background" src="/bg-head.jpg" />
         <div className="slide-pointer">
           PAGE {slideselected} OF {noofslides}
         </div>
@@ -41,14 +40,16 @@ const Brochure = () => {
             </button>
           ) : null}
           <div className="slides-box">
-          {slidesArray.map((slide, index) => (
-            <img
-              className={
-                slideselected === (index+1) ? "brochure-img-active" : "brochure-img"
-              }
-              src={slide}
-            />
-          ))}
+            {slidesArray.map((slide, index) => (
+              <img
+                className={
+                  slideselected === index + 1
+                    ? "brochure-img-active"
+                    : "brochure-img"
+                }
+                src={slide}
+              />
+            ))}
           </div>
           {slideselected < noofslides ? (
             <button
@@ -59,6 +60,14 @@ const Brochure = () => {
               <i className="fa fa-arrow-right" aria-hidden="true"></i>
             </button>
           ) : null}
+        </div>
+        <div id="broch-down">
+          <a
+            className="brochure-download"
+            href="https://drive.google.com/file/d/1kPUtlWNJwKL9EFX6oFrlTcWWl8AS34hX/view?usp=sharing"
+          >
+            <i class="fa fa-download" aria-hidden="true"></i>Download
+          </a>
         </div>
       </div>
       <Footer />
