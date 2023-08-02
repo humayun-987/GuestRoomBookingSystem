@@ -56,18 +56,33 @@ export default function FrequentlyAsked() {
 
   return (
     <>
+      <Navbar />
       <section id="FAQs-section">
-        <Navbar />
-        <h2 className="title">FAQs</h2>
+        <div className="lower-layer" style={{
+                    position: "absolute",
+                    width: "100vw",
+                    zIndex: "-20",
+                    opacity: "0.1",
+                    position: "fixed",
+                    minHeight: "100vh",
+                }}>
+                    <img src="/bg-head.jpg" alt="" style={{
+                        width: "100%"
+                    }} />
+                </div>
+        <h2 className="Faq-title">FAQs</h2>
         {faqsData.map((faq, index) => (
           <div className={`faq ${activeIndex === index ? 'active' : ''}`} key={index}>
-            <div className="question" onClick={() => handleFaqClick(index)}>
+            <div className="faq-question" onClick={() => handleFaqClick(index)}>
               <h3>{faq.question}</h3>
-              <svg width="15" height="10" viewBox="0 0 42 25" className={`arrow ${activeIndex === index ? 'rotate' : ''}`}>
+              {/* <svg width="15" height="10" viewBox="0 0 42 25" className={`arrow fa fa-chevron-up ${activeIndex === index ? 'rotate' : ''}`}>
                 <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
               </svg>
+               */}
+               <i className={`arrow fa fa-chevron-down ${activeIndex === index ? 'rotate' : ''}`} aria-hidden="true"></i>
+
             </div>
-            <div className="answer">
+            <div className="faq-answer">
               <p>{faq.answer}</p>
             </div>
           </div>
@@ -76,7 +91,7 @@ export default function FrequentlyAsked() {
           <p></p>
         </div>
       </section>
-      <Footer />
+        <Footer />
     </>
   );
 }
