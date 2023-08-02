@@ -127,7 +127,7 @@ const Highlights = () => {
         </div>
         <div id="highlights-img">
           <img
-            src={`https://live.staticflickr.com/${photo[currentIndex].server}/${photo[currentIndex].id}_${photo[currentIndex].secret}.jpg`}
+            src={`https://live.staticflickr.com/${photo[currentIndex].server}/${photo[currentIndex].id}_${photo[currentIndex].secret}_c.jpg`}
             alt={photo[currentIndex].head}
           />
         </div>

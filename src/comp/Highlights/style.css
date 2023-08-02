@@ -48,12 +48,13 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #4c7bfa;
+  color: #909090;
   outline: none;
+  transition: 0.2s ease-in-out;
 }
 
 .highlights-text-arrowBtns button:hover {
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 #highlights-text-title-parent {

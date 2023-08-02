@@ -15,9 +15,9 @@ function Timeline() {
       <p class="f2 heading--sanSerif text-center">Registration Ends</p>
     </div>
 
-    <div class="tl-content">
+    {/* <div class="tl-content">
       <h3 class="pt-5 text-center">Description</h3>
-    </div>
+    </div> */}
   </div>
   
 
@@ -29,9 +29,9 @@ function Timeline() {
       <p class="f2 heading--sanSerif text-center">Exam Phase-1</p>
     </div>
 
-    <div class="tl-content">
+    {/* <div class="tl-content">
       <h3 class="pt-5 text-center">Description</h3>
-    </div>
+    </div> */}
 
   </div>
 
@@ -42,10 +42,10 @@ function Timeline() {
     <div class="tl-year">
       <p class="f2 heading--sanSerif text-center">Result Phase-1</p>
     </div>
-
+{/* 
     <div class="tl-content">
       <h3 class="pt-5 text-center">Description</h3>
-    </div>
+    </div> */}
 
   </div>
 
@@ -57,9 +57,9 @@ function Timeline() {
       <p class="f2 heading--sanSerif text-center">Exam Phase-2</p>
     </div>
 
-    <div class="tl-content">
+    {/* <div class="tl-content">
       <h3 class="pt-5 text-center">Description</h3>
-    </div>
+    </div> */}
 
   </div>
 
@@ -70,10 +70,10 @@ function Timeline() {
     <div class="tl-year">
       <p class="f2 heading--sanSerif text-center">Result Phase-2</p>
     </div>
-
+{/* 
     <div class="tl-content">
       <h3 class="pt-5 text-center">Description</h3>
-    </div>
+    </div> */}
 
   </div>
 
@@ -84,10 +84,10 @@ function Timeline() {
     <div class="tl-year">
       <p class="f2 heading--sanSerif text-center">Felicitation</p>
     </div>
-
+{/* 
     <div class="tl-content">
       <h3 class="pt-5 text-center">Description</h3>
-    </div>
+    </div> */}
 
   </div>
   </div>
