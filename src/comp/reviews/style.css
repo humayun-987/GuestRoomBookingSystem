@@ -4,11 +4,11 @@
   margin-bottom: 50px;
 }
  
-.container{
+.review .container{
   width: 80%;
   margin: auto;
 }
-.container h1{
+.bg .container h1{
   
   padding: 100px 0;
   color: #fff;
@@ -16,14 +16,14 @@
   text-align: center;
 
 }
-.row{
+.bg .container .row{
   display: flex ;
   align-items: center;
   flex-wrap: wrap;
   margin: 50px ;
 }
 
-.col{
+.bg .container .row .col{
   flex-basis: 50%;
   min-width: 250px;
 }

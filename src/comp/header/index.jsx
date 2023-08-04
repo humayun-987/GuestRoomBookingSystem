@@ -12,14 +12,13 @@ export default function Header() {
             }}>
                     <div className="lower-layer" style={{
                     position: "absolute",
-                    width: "100%",
                     zIndex: "-2",
-                    opacity: "0.1",
+                    opacity: "0.15",
                     position: "fixed",
-                    minHeight: "100vh",
                 }}>
                     <img src="/bg-head.jpg" alt="" style={{
-                        width: "100%"
+                      minHeight: "100vh",
+                      width: "100%",
                     }} />
                 </div>
                 <div className="lower-layer" style={{

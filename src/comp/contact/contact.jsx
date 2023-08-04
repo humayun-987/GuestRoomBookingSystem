@@ -4,13 +4,17 @@ import './contactstyle.css'
 
 const Contact = () => {
     return (
-    <section id="contact" className=' anim-fade-bot' style={{ padding: "8% 4% 4% 4%" }}>
-        <h1 className="d-flex justify-content-center header">CONTACT US</h1>
+    <section id="contact" className='anim-fade-bot' style={{ padding: "4% 4% 8% 4%",
+    marginTop: "8%",
+    }}>
+        <h1 className="d-flex justify-content-center header" style={{
+            paddingBottom: "0%"
+        }}>CONTACT US</h1>
         
         <div className="container">
         
         <div className="row">
-            <div className="col-lg-4">
+            <div className="col-lg-4 anim-fade-left">
                 <div className="card p-0">
                     <div className="card-image">
                         <img src="https://live.staticflickr.com/65535/52978166884_b69905cd6e.jpg"
@@ -45,7 +49,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 anim-fade-bot">
                 <div className="card p-0">
                     <div className="card-image">
                         <img src="https://live.staticflickr.com/65535/52978022281_fcc79560d0.jpg"
@@ -80,7 +84,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 anim-fade-right">
                 <div className="card p-0">
                     <div className="card-image">
                         <img src="https://live.staticflickr.com/65535/52994241225_42970bcabd.jpg" alt="" />

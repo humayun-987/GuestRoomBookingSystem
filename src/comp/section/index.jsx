@@ -11,8 +11,8 @@ import Contact from "../contact/contact";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
-import { Leftfade,Rightfade,Bottomfade,FadeSrub} from "../ScrolltriggerFunc/ScrolltriggerFunc";
-import Conduction from "../Conduction/Conduction";
+import { Leftfade, Rightfade, Bottomfade, FadeSrub } from "../ScrolltriggerFunc/ScrolltriggerFunc";
+import AboutUs from "../About US/About";
 
 import Highlights from "../Highlights";
 
@@ -20,7 +20,7 @@ import Highlights from "../Highlights";
 // import "react-bootstrap";
 
 export default function Section() {
-  useEffect(()=>{
+  useEffect(() => {
     Leftfade();
     Rightfade();
     Bottomfade();
@@ -34,8 +34,8 @@ export default function Section() {
       }}>
         <Navbar />
         <Header />
-          <Conduction />
-        <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6%" }}>
+        <AboutUs />
+        <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6% 0 6%"}}>
           <h1 className="d-flex justify-content-center header">Conduction</h1>
           <div
             className="back mt-4 mb-4"
@@ -53,7 +53,7 @@ export default function Section() {
                     type="button"
                     data-mdb-toggle="collapse"
                     data-mdb-target="#panelsStayOpen-collapseOne"
-                    aria-expanded="false"
+                    aria-expanded="true"
                     aria-controls="panelsStayOpen-collapseOne"
                   >
                     Phase-1
@@ -61,7 +61,7 @@ export default function Section() {
                 </h2>
                 <div
                   id="panelsStayOpen-collapseOne"
-                  className="accordion-collapse collapse"
+                  className="accordion-collapse collapse show"
                   aria-labelledby="headingOne"
                   data-bs-parent="#accordionPanelsStayOpenExample"
                 >
@@ -92,7 +92,7 @@ export default function Section() {
                 </p>
                 <div
                   id="panelsStayOpen-collapseTwo"
-                  className="accordion-collapse collapse"
+                  className="accordion-collapse collapse show"
                   aria-labelledby="panelsStayOpen-headingTwo"
                 >
                   <div className="accordion-body">
@@ -121,11 +121,11 @@ export default function Section() {
         <Highlights />
 
         {/* Timeline Start */}
-        <section id="timeline" className="anim-fade-bot" style={{ padding: "0% 10%"}}>
+        <section id="timeline" className="anim-fade-bot">
           <Timeline />
         </section>
         {/* Timeline End */}
-        
+
         <Contact />
         <Footer />
       </section>

@@ -76,13 +76,13 @@ export const Bottomfade = () => {
         opacity: 1,
         y: 0,
         ease: "Power2.easeInOut",
-        duration: 1,
+        duration: 0.5,
       }
     );
     ScrollTrigger.create({
       trigger: element,
-      start: "top 100%",
-      end: "bottom 95%",
+      start: "top 95%",
+      end: "bottom 85%",
       onEnter: () => anim.play(),
     });
   });
