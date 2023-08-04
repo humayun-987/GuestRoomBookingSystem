@@ -80,12 +80,12 @@
 
 @media (max-width: 1070px) and (min-width: 800px){
     .conduction-section{
-        min-height: 100vh;
+        min-height: fit-content;
     }
     .conduct-phases-text img {
         border-radius: 2px;
-        height: 30vh;
-        margin: 5vh;
+        height: 30%;
+        margin: 5vh 5vw;
     }
 
     .conduction-phase-body {
