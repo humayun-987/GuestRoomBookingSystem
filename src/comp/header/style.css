@@ -55,6 +55,10 @@
 
 }
 
+.spon .spon-img .pw {
+    width: 50%; 
+}
+
 .reg-in-header {
     display: flex;
     align-items: center;

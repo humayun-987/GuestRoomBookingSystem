@@ -61,8 +61,8 @@ export default function Header() {
                                 </div>
                                 <div className="spon-img">
                                     <img
-                                        className=""
-                                        src="/PurpleTutor.png"
+                                        className="pw"
+                                        src="/pw-1.png"
                                     />
                                 </div>
 
@@ -76,7 +76,7 @@ export default function Header() {
                                 <div className="spon-img">
                                     <img
                                         className=""
-                                        src="/scooboo.png"
+                                        src=""
                                     />
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ export default function Header() {
                                 <div className="spon-img">
                                     <img
                                         className=""
-                                        src="/GRADEZY.png"
+                                        src="/Extramarks.png"
                                     />
                                 </div>
                             </div>

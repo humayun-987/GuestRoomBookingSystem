@@ -57,7 +57,7 @@ const Contact = () => {
 
                         <ul className="social-icons d-flex justify-content-center">
                         <li >
-                                <a href="tel:7063656415">
+                                <a href="tel:9933853782">
                                 <i class="bi bi-telephone-fill"></i>
                                 </a>
                             </li>
@@ -67,7 +67,7 @@ const Contact = () => {
                                 </a>
                             </li>
                             <li >
-                                <a href="mailto:anupams20@iitk.ac.in">
+                                <a href="mailto:sourits20@iitk.ac.in">
                                     <i className="bi bi-envelope"></i>
                                 </a>
                             </li>
