@@ -113,7 +113,7 @@
         position: absolute;
         height: 100vh;
         z-index: 15;
-        width: 100vw;
+        width: 100%;
     }
     .navbar-bg-sm-2
     {

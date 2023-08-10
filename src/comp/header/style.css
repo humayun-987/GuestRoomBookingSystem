@@ -3,10 +3,11 @@
     flex-direction: row;
     height: 100%;
 }
-.upper-layer
-{
-    background-image: linear-gradient(to bottom right,rgba(179, 82, 82, 0.5), rgba(13, 72, 135, 0.5));
+
+.upper-layer {
+    background-image: linear-gradient(to bottom right, rgba(179, 82, 82, 0.5), rgba(13, 72, 135, 0.5));
 }
+
 .unosq-icons {
     display: flex;
     flex-direction: column;
@@ -89,6 +90,7 @@
     .picAndReg-btn {
         width: 100%;
     }
+
     .spon .spon-item {
         width: 30%;
     }

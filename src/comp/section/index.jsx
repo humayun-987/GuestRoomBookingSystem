@@ -12,7 +12,8 @@ import Contact from "../contact/contact";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
-import { Leftfade,Rightfade,Bottomfade,FadeSrub} from "../ScrolltriggerFunc/ScrolltriggerFunc";
+import { Leftfade, Rightfade, Bottomfade, FadeSrub } from "../ScrolltriggerFunc/ScrolltriggerFunc";
+import AboutUs from "../About US/About";
 
 import Highlights from "../Highlights";
 
@@ -39,7 +40,7 @@ const reviews = [
   },
 ];
 export default function Section() {
-  useEffect(()=>{
+  useEffect(() => {
     Leftfade();
     Rightfade();
     Bottomfade();
@@ -49,11 +50,14 @@ export default function Section() {
 
   return (
     <>
-      <section className="complete-section">
+      <section className="complete-section" style={{
+        width: "100%",
+      }}>
         <Navbar />
         <Header />
-        <div id="about" className="mt-40" style={{ padding: "10% 6%" }}>
-          <h1 className="d-flex justify-content-center header">ABOUT US</h1>
+        <AboutUs />
+        <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6% 0 6%"}}>
+          <h1 className="d-flex justify-content-center header">Conduction</h1>
           <div
             className="back mt-4 mb-4"
             style={{
@@ -70,15 +74,15 @@ export default function Section() {
                     type="button"
                     data-mdb-toggle="collapse"
                     data-mdb-target="#panelsStayOpen-collapseOne"
-                    aria-expanded="false"
+                    aria-expanded="true"
                     aria-controls="panelsStayOpen-collapseOne"
                   >
-                    WHAT IS UDGHOSH?
+                    Phase-1
                   </button>
                 </h2>
                 <div
                   id="panelsStayOpen-collapseOne"
-                  className="accordion-collapse collapse"
+                  className="accordion-collapse collapse show"
                   aria-labelledby="headingOne"
                   data-bs-parent="#accordionPanelsStayOpenExample"
                 >
@@ -104,12 +108,12 @@ export default function Section() {
                     aria-expanded="false"
                     aria-controls="panelsStayOpen-collapseTwo"
                   >
-                    WHAT IS UNOSQ?
+                    Phase-2
                   </button>
                 </p>
                 <div
                   id="panelsStayOpen-collapseTwo"
-                  className="accordion-collapse collapse"
+                  className="accordion-collapse collapse show"
                   aria-labelledby="panelsStayOpen-headingTwo"
                 >
                   <div className="accordion-body">
@@ -128,85 +132,21 @@ export default function Section() {
                   </div>
                 </div>
               </div>
-              <div className="accordion-item">
-                <p className="accordion-header d-flex justify-content-center">
-                  <button
-                    style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                    className="accordion-button collapsed rounded-0"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#panelsStayOpen-collapseThree"
-                    aria-expanded="false"
-                    aria-controls="panelsStayOpen-collapseThree"
-                  >
-                    WHY UNOSQ?
-                  </button>
-                </p>
-                <div
-                  id="panelsStayOpen-collapseThree"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="panelsStayOpen-headingThree"
-                >
-                  <div className="accordion-body">
-                    At its most fundamental level, UNOSQ aims to provide school
-                    students a platform to showcase their talent at the topmost
-                    level. It provides them a opportunity to compete with students
-                    all over the country giving them a exposure of competition
-                    outside their comfort zone, challenges their mind, help them
-                    gain self confidence so that they can be ready for the future
-                    endeavours. UNOSQ will provide an exposure to SPORTS and its
-                    importance in students' lives that they would otherwise be
-                    unaware of. UNOSQ also provides the students' an opportunity
-                    to interact with the renowned personalities in the field of
-                    education and sports.{" "}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
         {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
           <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
-           <ResultTable /> 
+          <ResultTable /> 
         </section> */}
-        <section id="conduction" style={{ marginTop: "0%", padding: "0% 6%" }}>
-          <h1 className="d-flex justify-content-center header">CONDUCTION</h1>
-          <div
-            className="d-flex justify-content-center row mt-4 mb-4"
-            style={{ margin: "0" }}
-          >
-            <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
-              <div class="card-body card-body-why">
-                <h5 class="card-title">Phase 1</h5>
-                <p class="card-text">
-                  The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
-                  various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
-                  From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
-                </p>
-              </div>
-            </div>
-
-            <div class="card col-lg-12" style={{ marginBottom: "50px", width: "90%" }}>
-              <div class="card-body card-body-why">
-                <h5 class="card-title">Phase 2</h5>
-                <p class="card-text">
-                  The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
-                  The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
-                  will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
-                  the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
         <Highlights />
 
         {/* Timeline Start */}
-        <section id="timeline" style={{ padding: "0% 10%"}}>
+        <section id="timeline" className="anim-fade-bot">
           <Timeline />
         </section>
 
-      <div>
+      {/* <div>
           <h1 className="d-flex justify-content-center header"> TESTIMONIALS </h1>{" "}
       </div>
 
@@ -220,9 +160,9 @@ export default function Section() {
           imageUrl={review.imageUrl}
         />
       ))}
-    </div>
+    </div> */}
         {/* Timeline End */}
-        
+
         <Contact />
         <Footer />
       </section>

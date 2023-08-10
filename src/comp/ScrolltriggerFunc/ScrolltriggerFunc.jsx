@@ -2,6 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Classes for animation :-
+// anim-fade-left  for left fade
+// anim-fade-right  for right fade
+// anim-fade-bot  for bottom fade
+// anim-fade-scrub  for fade with scroll
+
 export const Leftfade = () => {
   const elements = document.querySelectorAll(".anim-fade-left");
   elements.forEach((element) => {
@@ -70,13 +76,13 @@ export const Bottomfade = () => {
         opacity: 1,
         y: 0,
         ease: "Power2.easeInOut",
-        duration: 1,
+        duration: 0.5,
       }
     );
     ScrollTrigger.create({
       trigger: element,
-      start: "top 100%",
-      end: "bottom 95%",
+      start: "top 95%",
+      end: "bottom 85%",
       onEnter: () => anim.play(),
     });
   });

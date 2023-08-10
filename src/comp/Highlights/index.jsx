@@ -24,16 +24,16 @@ const Highlights = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % photo.length);
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
-  
+
 
   const icon1 = windowWidth < 500 ? faChevronLeft : faChevronUp;
   const icon2 = windowWidth < 500 ? faChevronRight : faChevronDown;
@@ -82,59 +82,65 @@ const Highlights = () => {
 
   const handlePrevClick = () => {
     let newIndex = currentIndex - 1;
-    if(newIndex<0) newIndex+=3;
+    if (newIndex < 0) newIndex += 3;
 
-    newIndex=newIndex%3;
+    newIndex = newIndex % 3;
     setCurrentIndex(newIndex);
   };
 
   const handleNextClick = () => {
-    const newIndex = (currentIndex + 1)%3;
+    const newIndex = (currentIndex + 1) % 3;
     setCurrentIndex(newIndex);
   };
 
   return (
     <>
-    <h1 className="d-flex justify-content-center header">Perks and Rewards</h1>
-    <div id="highlights">
-      <div id="highlights-text-bg"></div>
-      <div id="highlights-container">
-        <div id="highlights-text">
-          <div className="highlights-text-arrowBtns">
-            <button
-              id="highlights-prevBtn"
-              onClick={handlePrevClick}
-            >
-              <FontAwesomeIcon icon={icon1} />
-            </button>
-          </div>
-          <div id="highlights-text-title-parent">
-            <div id="highlights-text-title">
-              <h3>{photo[currentIndex].head}</h3>
+      <section className="anim-fade-bot" style={{
+        padding: "6% 6% 0% 6%",
+        marginTop: "8%",
+      }}>
+
+        <h1 className="d-flex justify-content-center header">Perks and Rewards</h1>
+        <div id="highlights">
+          <div id="highlights-text-bg"></div>
+          <div id="highlights-container">
+            <div id="highlights-text">
+              <div className="highlights-text-arrowBtns">
+                <button
+                  id="highlights-prevBtn"
+                  onClick={handlePrevClick}
+                >
+                  <FontAwesomeIcon icon={icon1} />
+                </button>
+              </div>
+              <div id="highlights-text-title-parent">
+                <div id="highlights-text-title">
+                  <h3>{photo[currentIndex].head}</h3>
+                </div>
+                <div id="highlights-text-text">
+                  <p>{photo[currentIndex].text}</p>
+                </div>
+              </div>
+              <div className="highlights-text-arrowBtns">
+                <button
+                  id="highlights-nextBtn"
+                  onClick={handleNextClick}
+                >
+                  <FontAwesomeIcon icon={icon2} />
+                </button>
+              </div>
             </div>
-            <div id="highlights-text-text">
-              <p>{photo[currentIndex].text}</p>
+            <div id="highlights-img">
+              <img
+                src={`https://live.staticflickr.com/${photo[currentIndex].server}/${photo[currentIndex].id}_${photo[currentIndex].secret}_c.jpg`}
+                alt={photo[currentIndex].head}
+              />
             </div>
-          </div>
-          <div className="highlights-text-arrowBtns">
-            <button
-              id="highlights-nextBtn"
-              onClick={handleNextClick}
-            >
-              <FontAwesomeIcon icon={icon2} />
-            </button>
           </div>
         </div>
-        <div id="highlights-img">
-          <img
-            src={`https://live.staticflickr.com/${photo[currentIndex].server}/${photo[currentIndex].id}_${photo[currentIndex].secret}.jpg`}
-            alt={photo[currentIndex].head}
-          />
-        </div>
-      </div>
-    </div>
+      </section>
     </>
-    
+
   );
 };
 

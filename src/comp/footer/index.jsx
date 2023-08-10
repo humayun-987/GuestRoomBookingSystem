@@ -14,7 +14,7 @@ return (
   <footer className="text-center text-white" >
  
  
-  <div className="container pt-4">
+  <div className="pt-4">
 
     <section className="mb-4">
     

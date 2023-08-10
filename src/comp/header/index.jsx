@@ -7,19 +7,18 @@ export default function Header() {
         <>
             <section className="header-sec" style={{
                 height: "100vh",
-                width: "100vw",
+                width: "100%",
                 paddingTop: "60px",
             }}>
                     <div className="lower-layer" style={{
                     position: "absolute",
-                    width: "100vw",
                     zIndex: "-2",
-                    opacity: "0.1",
+                    opacity: "0.15",
                     position: "fixed",
-                    minHeight: "100vh",
                 }}>
                     <img src="/bg-head.jpg" alt="" style={{
-                        width: "100%"
+                      minHeight: "100vh",
+                      width: "100%",
                     }} />
                 </div>
                 <div className="lower-layer" style={{

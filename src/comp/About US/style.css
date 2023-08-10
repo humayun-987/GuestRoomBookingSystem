@@ -1,0 +1,208 @@
+.conduction-section
+{
+    margin: 10vh 6vw 8vh 6vw;
+    padding: 2vh 2vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 10px 4px rgba(79, 79, 79, 0.4);
+    border-radius: 3px;
+}
+@media (min-width: 1070px) {
+    .conduction-section{
+        min-height: 100vh;
+    }
+    .conduction-phase-body {
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .conduct-phases-head {
+        flex-direction: column;
+        width: 13vw;
+        color: black;
+        padding-left: 1rem;
+        margin-right: 10px;
+    }
+
+    .phases-head {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 1.5rem;
+        border-left: 2px solid white;
+
+        h5 {
+            font-size: 10px;
+        }
+    }
+
+    .cond-head-phase {
+        font-size: 1.5rem;
+        font-weight: 100;
+        cursor: pointer;
+    }
+
+    .phases-head-active {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 1.5rem;
+        border-left: 2px solid red;
+    }
+
+    .conduct-phases-text {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 70vw;
+        color: black;
+        font-size: 18px;
+        transition: 1s;
+    }
+    .conduct-phases-text img {
+        border-radius: 2px;
+        height: 40vh;
+        margin: 5vh;
+    }
+
+    .phases-text {
+        position: relative;
+        opacity: 0;
+        transition: 1s;
+    }
+
+    .phases-text-active {
+        position: relative;
+        transition: 1s;
+    }
+}
+
+@media (max-width: 1070px) and (min-width: 800px){
+    .conduction-section{
+        min-height: fit-content;
+    }
+    .conduct-phases-text img {
+        border-radius: 2px;
+        height: 30%;
+        margin: 5vh 5vw;
+    }
+
+    .conduction-phase-body {
+        display: flex;
+        flex-direction: row;
+        height: fit-content;
+        
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .conduct-phases-head {
+        width: 20vw;
+        color: black;
+        padding-left: 1rem;
+        margin-right: 10px;
+    }
+
+    .phases-head {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 1.5rem;
+        border-left: 2px solid white;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .cond-head-phase {
+        font-size: 1.5rem;
+        font-weight: 100;
+        cursor: pointer;
+    }
+
+    .phases-head-active {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 1.5rem;
+        border-left: 2px solid red;
+    }
+
+    .conduct-phases-text {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 75vw;
+        color: black;
+        font-size: 14px;
+        margin-right: 20px;
+    }
+
+    .phases-text {
+        opacity: 0;
+        transition: 1s;
+    }
+
+    .phases-text-active {
+        transition: 1s;
+    }
+}
+
+@media (max-width: 800px) {
+    .phases-text-active img {
+        border-radius: 2px;
+        width: 60vw;
+        margin: 5vh;
+    }
+    .conduction-phase-body {
+        display: flex;
+        height: fit-content;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .conduct-phases-head {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        color: black;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .phases-head {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 1.5rem;
+        border-left: 2px solid white;
+
+        h5 {
+            font-size: 10px;
+        }
+    }
+
+    .cond-head-phase {
+        font-size: 1.5rem;
+        font-weight: 100;
+        cursor: pointer;
+    }
+
+    .phases-head-active {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 1.5rem;
+        border-left: 2px solid red;
+    }
+
+
+    .phases-text {
+        opacity: 0;
+        transition: 1s;
+        display: none;
+    }
+
+    .phases-text-active {
+        transition: 1s;
+    }
+
+    
+    
+}

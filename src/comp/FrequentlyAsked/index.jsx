@@ -1,104 +1,118 @@
+
 import React, { useState } from 'react';
-import "../FrequentlyAsked/style.css"
-import { Collapse } from 'react-bootstrap';
+import '../FrequentlyAsked/style.css';
 import Navbar from '../Navbar';
 import Footer from '../footer';
 
 export default function FrequentlyAsked() {
-  const [showNavColor, setShowNavColor] = useState(false);
-  const [showNavColorSecond, setShowNavColorSecond] = useState(false);
-  const [showNavColorThird, setShowNavColorThird] = useState(false);
+  const faqsData = [
+    {
+      question: 'Q1. Is the exam free of cost?',
+      answer: 'No. Registration Fee for UNOSQ is ₹120 per participant including all taxes.',
+    },
+    {
+      question: 'Q2. What is the registration procedure',
+      answer:
+        'If Your school participates as a contingent, then the school has to register as a contingent on the UNOSQ Website, collect data and registration fees from the students and send them to us. If the students participate by themselves Individually, they have to register directly on the UNOSQ website.',
+    },
+    {
+      question: 'Q3. In how many phases will the exam be conducted?',
+      answer:
+        '2 PHASES\nRegistration- 17 July - 16 August\nPhase I exam- 20 August\nPhase II exam– 3 September',
+    },
+    {
+      question: 'Q4. How will the exam be conducted?',
+      answer: 'Phase 1 and Phase 2 exam both will be conducted in ONLINE mode only.',
+    },
+    {
+      question: 'Q5. How many students will be qualified for Phase 2.',
+      answer: '100 students from each pool',
+    },
+    {
+      question: 'Q6. Exam will be of which type is subjective or objective?',
+      answer: 'Objective MCQ questions',
+    },
+    {
+      question: 'Q7. In which medium will the exam be conducted?',
+      answer: 'English and Hindi',
+    },
+    {
+      question: 'Q8. How many pools are there?',
+      answer:
+        'There are total of 4 Pools for different class students these are:\nPool Youngsters - Class 5-6\nPool Rising Stars - Class 7-8\nPool Champions - Class 9-10\nPool Pioneers - Class 11-12',
+    },
+    // Add more FAQs here...
+  ];
 
+  const [activeIndex, setActiveIndex] = useState(null);
 
-
-  const FAQItem = ({ question, answer }) => {
-    const [open, setOpen] = useState(false);
-
-    const handleToggle = () => {
-      setOpen(!open);
-    };
-    const arrowClassName = open ? 'arrow up' : 'arrow down';
-    const renderAnswer = () => {
-      const boldTextRegex = /\*\*(.*?)\*\*/g;
-      const lines = answer.split('%BR%');
-      return lines.map((line, index) => (
-        <React.Fragment key={index}>
-          {line.replace(boldTextRegex, '<strong>$1</strong>')}
-          <br />
-        </React.Fragment>
-      ));
-    };
-
-    return (
-      <div className='question-box'>
-
-        <h5 className="question" onClick={handleToggle}>{question}</h5>
-        <Collapse in={open}>
-          <div className={`answer ${open ? 'open' : ''}`}>
-            <p className="answer-text">
-              {renderAnswer()}
-            </p>
-          </div>
-        </Collapse>
-      </div>
-    );
+  const handleFaqClick = (index) => {
+    if (index === activeIndex) {
+      setActiveIndex(null);
+    } else {
+      setActiveIndex(index);
+    }
   };
+
   return (
     <>
+      <Navbar />
       <section id="FAQs-section">
-        {/* <div className='class1'>
-        Write Code here and check in url/FAQs
-    </div> */}
-        <Navbar />
-        <div className='faq-box'>
-          <div className='faq-container'>
-            <h2 className='faq-head'>FAQs</h2>
-            <FAQItem
-              question="Q1. Is the exam free of cost?"
-              answer="No. Registration Fee for UNOSQ is ₹120 per participant including all taxes."
-            />
-            <FAQItem
-              question=" Q2. What is the registration procedure?"
-              answer="If Your school participates as a contingent, then the school has to register as a contingent on the UNOSQ Website, collect data and registration fees from the students and send them to us. If the students participate by themselves Individually, they have to register directly on the UNOSQ website."
-            />
-            <FAQItem
-              question="Q3. How will the exam be conducted? "
-              answer="ONLINE "
-            />
-            <FAQItem
-              question="Q4. In how many phases will the exam be conducted?"
-              answer="2 PHASES %BR%
-        Registration- 17 July - 16 August %BR%
-        Phase I exam- 20 August %BR%
-          Phase II exam– 3 September"
-            />
-            <FAQItem
-              question="Q5. How many students will be qualified for Phase 2."
-              answer="100 students from each pool"
-            />
-            <FAQItem
-              question="Q6. Exam will be of which type is subjective or objective?"
-              answer="Objective MCQ questions"
-            />
-            <FAQItem
-              question="Q7. In which medium will the exam be conducted?"
-              answer="English and Hindi"
-            />
-            <FAQItem
-              question="Q8. How many pools are there?"
-              answer="4 Pools %BR% Pool Youngsters - Class 5-6 %BR%
-        Pool Rising Stars - Class 7-8 %BR%
-        Pool Champions - Class 9-10 %BR%
-        Pool Pioneers - Class 11-12"
-            />
-            {/* Add more FAQItems as needed */}
+        <div className="lower-layer" style={{
+                    position: "absolute",
+                    width: "100vw",
+                    zIndex: "-20",
+                    opacity: "0.1",
+                    position: "fixed",
+                    minHeight: "100vh",
+                }}>
+                    <img src="/bg-head.jpg" alt="" style={{
+                        width: "100%"
+                    }} />
+                </div>
+        <h2 className="Faq-title">FAQs</h2>
+        {faqsData.map((faq, index) => (
+          <div className={`faq ${activeIndex === index ? 'active' : ''}`} onClick={() => handleFaqClick(index)} key={index}>
+            <div className="faq-question" >
+              <h3>{faq.question}</h3>
+              {/* <svg width="15" height="10" viewBox="0 0 42 25" className={`arrow fa fa-chevron-up ${activeIndex === index ? 'rotate' : ''}`}>
+                <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
+              </svg>
+               */}
+               <i className={`arrow fa fa-chevron-down ${activeIndex === index ? 'rotate' : ''}`} aria-hidden="true"></i>
+
+            </div>
+            <div className="faq-answer" style={{
+              paddingLeft: "20px",
+            }}>
+              <p><span style={{
+                color: "Black",
+              }}></span> {faq.answer.split('\n').map((line) => {
+                return (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                );
+              })}</p>
+            </div>
           </div>
+        ))}
+        <div id="break">
+          <p></p>
         </div>
-        <Footer />
       </section>
+        <Footer />
     </>
   );
 }
+
+
+ 
+
+
+
+
 
 
 {/*<div className='faq-container'>
