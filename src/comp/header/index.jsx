@@ -66,7 +66,7 @@ export default function Header() {
                                 </div>
 
                             </div>
-                            <div className="spon-item">
+                            {/* <div className="spon-item">
                                 <div className="spon-title">
                                     <p>
                                         In Association With
@@ -78,7 +78,7 @@ export default function Header() {
                                         src=""
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="spon-item">
                                 <div className="spon-title">
                                     <p>
