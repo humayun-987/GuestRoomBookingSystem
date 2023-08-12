@@ -149,9 +149,9 @@
                 "isfamily": 0
             },
             {
-                "id": "53084778843",
+                "id": "53111760495",
                 "owner": "196568425@N05",
-                "secret": "367f6c98fb",
+                "secret": "5a81dd0eeb",
                 "server": "65535",
                 "farm": 66,
                 "title": "3",
@@ -171,12 +171,12 @@
                 "isfamily": 0
             },
             {
-                "id": "53084472694",
+                "id": "53111343821",
                 "owner": "196568425@N05",
-                "secret": "2e6608305c",
+                "secret": "92d7cac6eb",
                 "server": "65535",
                 "farm": 66,
-                "title": "1",
+                "title": "3",
                 "ispublic": 1,
                 "isfriend": 0,
                 "isfamily": 0
