@@ -64,7 +64,7 @@ const Brochure = () => {
         <div id="broch-down">
           <a
             className="brochure-download"
-            href="https://drive.google.com/file/d/1kPUtlWNJwKL9EFX6oFrlTcWWl8AS34hX/view?usp=sharing"
+            href="https://drive.google.com/file/d/1LAUErlGdS46a96NVp4WfaC3qEe7qkXr_/view?usp=drive_link"
           >
             <i class="fa fa-download" aria-hidden="true"></i>Download
           </a>
