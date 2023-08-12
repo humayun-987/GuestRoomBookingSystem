@@ -12,7 +12,7 @@ import Contact from "../contact/contact";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
-import { Leftfade, Rightfade, Bottomfade, FadeSrub } from "../ScrolltriggerFunc/ScrolltriggerFunc";
+import { Leftfade, Rightfade, Bottomfade, FadeSrub, NewRightfade } from "../ScrolltriggerFunc/ScrolltriggerFunc";
 import AboutUs from "../About US/About";
 
 import Highlights from "../Highlights";
@@ -56,7 +56,7 @@ export default function Section() {
         <Navbar />
         <Header />
         <AboutUs />
-        <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6% 0 6%"}}>
+        <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6% 0 6%" }}>
           <h1 className="d-flex justify-content-center header">Conduction</h1>
           <div
             className="back mt-4 mb-4"
@@ -69,8 +69,8 @@ export default function Section() {
               <div className="accordion-item">
                 <h2 className="accordion-header d-flex justify-content-center" id="panelsStayOpen-headingOne">
                   <button
-                    style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                    className="accordion-button collapsed rounded-0"
+                    style={{ fontWeight: "bold" }}
+                    className="accordion-button collapsed rounded-0 sub-header about-que"
                     type="button"
                     data-mdb-toggle="collapse"
                     data-mdb-target="#panelsStayOpen-collapseOne"
@@ -86,65 +86,53 @@ export default function Section() {
                   aria-labelledby="headingOne"
                   data-bs-parent="#accordionPanelsStayOpenExample"
                 >
-                  <div className="accordion-body">
-                    Udghosh, the annual sports festival of IIT Kanpur is a real display of sportsmanship;
-                    many of its champions have gone on to greatness. It allows outstanding pupils
-                    nationwide to showcase and improve their sports talents. Competing with our rivals
-                    and raising awareness for all major sports was the task. They left a legacy for us to
-                    carry on, and we can boast of the strongest growth curve a sports festival in the
-                    nation has ever seen. Our vision is unimpaired by the respect we have gained as a
-                    festival.
-                  </div>
+                  <div className="accordion-body sub-content">
+                    The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
+                    various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
+                    From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
                 </div>
               </div>
-              <div className="accordion-item">
-                <p className="accordion-header d-flex justify-content-center">
-                  <button
-                    style={{ backgroundColor: "lightblue", fontWeight: "bold" }}
-                    className="accordion-button collapsed rounded-0"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#panelsStayOpen-collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="panelsStayOpen-collapseTwo"
-                  >
-                    Phase-2
-                  </button>
-                </p>
-                <div
-                  id="panelsStayOpen-collapseTwo"
-                  className="accordion-collapse collapse show"
-                  aria-labelledby="panelsStayOpen-headingTwo"
+            </div>
+            <div className="accordion-item">
+              <p className="accordion-header d-flex justify-content-center">
+                <button
+                  style={{ fontWeight: "bold" }}
+                  className="accordion-button collapsed rounded-0 sub-header about-que"
+                  type="button"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo"
                 >
-                  <div className="accordion-body">
-                    Udghosh proudly hosts UNOSQ, <b>an open school quiz tournament designed for
-                      students in grades 5 - 12</b>. This quiz serves as a platform to promote sports among
-                    schoolchildren. Through this examination, students not only gain knowledge about
-                    sports but also have their mental, logical, and verbal abilities tested and receive
-                    national recognition. As an added benefit, UNOSQ organises online seminars
-                    conducted by notable academic and sports figures, further enriching the learning
-                    experience for the participants.
-                    <b>The primary objective of UNOSQ is to give school children a platform to showcase
-                      their talents and abilities</b>. It allows them to compete with students nationwide,
-                    challenging their intellect and fostering self-confidence for their future endeavours. .
-                    Additionally, UNOSQ provides an invaluable opportunity for children to meet and
-                    interact with celebrated figures from the fields of education and sports.
-                  </div>
+                  Phase-2
+                </button>
+              </p>
+              <div
+                id="panelsStayOpen-collapseTwo"
+                className="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingTwo"
+              >
+                <div className="accordion-body sub-content">
+                  The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
+                  The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
+                  will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
+                  the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
+      </div>
+      {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
           <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
           <ResultTable /> 
         </section> */}
-        <Highlights />
+      <Highlights />
 
-        {/* Timeline Start */}
-        <section id="timeline" className="anim-fade-bot">
-          <Timeline />
-        </section>
+      {/* Timeline Start */}
+      <section id="timeline" className="anim-fade-bot">
+        <Timeline />
+      </section>
 
       {/* <div>
           <h1 className="d-flex justify-content-center header"> TESTIMONIALS </h1>{" "}
@@ -161,11 +149,11 @@ export default function Section() {
         />
       ))}
     </div> */}
-        {/* Timeline End */}
+      {/* Timeline End */}
 
-        <Contact />
-        <Footer />
-      </section>
+      <Contact />
+      <Footer />
+    </section >
 
     </>
   );

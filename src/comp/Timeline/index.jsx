@@ -15,10 +15,6 @@ function Timeline() {
           <div class="tl-year">
             <p class="f2 heading--sanSerif text-center">Registration Ends</p>
           </div>
-
-          {/* <div class="tl-content">
-      <h3 class="pt-5 text-center">Description</h3>
-    </div> */}
         </div>
 
 

@@ -3,9 +3,11 @@
     flex-direction: row;
     height: 100%;
 }
-
-.upper-layer {
-    background-image: linear-gradient(to bottom right, rgba(179, 82, 82, 0.5), rgba(13, 72, 135, 0.5));
+.lower-layer{
+    background-color: var(--bg-header-lower-layer-back);
+}
+.upper-layer{
+    background-image: linear-gradient(to bottom right,rgba(179, 82, 82, 0.5), rgba(13, 72, 135, 0.5));
 }
 
 .unosq-icons {
@@ -48,6 +50,7 @@
 
 .spon .spon-title {
     font-size: 15px;
+    color: var(--bg-header-spon-title);
 }
 
 .spon .spon-img img {

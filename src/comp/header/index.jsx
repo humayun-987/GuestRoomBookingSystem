@@ -3,70 +3,73 @@ import React from "react";
 import uns from "../../media/VECT1.png";
 import { NavLink } from "react-router-dom";
 export default function Header() {
-    return (
-        <>
-            <section className="header-sec" style={{
-                height: "100vh",
-                width: "100%",
-                paddingTop: "60px",
-            }}>
-                    <div className="lower-layer" style={{
-                    position: "absolute",
-                    zIndex: "-2",
-                    opacity: "0.15",
-                    position: "fixed",
-                }}>
-                    <img src="/bg-head.jpg" alt="" style={{
-                      minHeight: "100vh",
-                      width: "100%",
-                    }} />
-                </div>
-                <div className="lower-layer" style={{
-                    position: "absolute",
-                    width: "100%",
-                    zIndex: "-1",
-                    height: "100vh",
-                    opacity: "0.4",
-                    top: "0",
-                    backgroundColor: "rgb(0,0,0,0.3)"
-                }}>
-                </div>
-                <div className="upper-layer" style={{
-                    position: "absolute",
-                    width: "100%",
-                    zIndex: "5",
-                    height: "100vh",
-                    opacity: "0.4",
-                    top: "0",
-                    pointerEvents: "none",
-                }}>
-                </div>
-                
-                <div className="header-div">
+  return (
+    <>
+      <section className="header-sec" style={{
+        height: "100vh",
+        width: "100%",
+        paddingTop: "60px",
+      }}>
+        <div className="lower-layer" style={{
+          position: "absolute",
+          zIndex: "-2",
+          opacity: "0.15",
+          position: "fixed",
+        }}>
+          <img src="/bg-head.jpg" alt="" style={{
+            minHeight: "100vh",
+            width: "100%",
+          }} />
+        </div>
+        <div className="lower-layer" style={{
+          position: "absolute",
+          width: "100%",
+          zIndex: "-1",
+          height: "100vh",
+          opacity: "0.4",
+          top: "0",
+          // backgroundColor: var(--bg-header-lower-layer-back),
+        }}>
+        </div>
+        <div className="upper-layer" style={{
+          position: "absolute",
+          width: "100%",
+          zIndex: "5",
+          height: "100vh",
+          opacity: "0.4",
+          top: "0",
+          pointerEvents: "none",
+        }}>
+        </div>
 
-                    <div className="unosq-icons">
-                        <div className="unosq-img">
-                            <img
-                                style={{ margin: "auto", display: "block" }}
-                                src="./UNOSQ-01-removebg-preview.png"
-                            />
-                        </div>
-                        <div className="spon">
-                            <div className="spon-item">
-                                <div className="spon-title">
-                                    <p>
-                                        Presented By
-                                    </p>
-                                </div>
-                                <div className="spon-img">
-                                    <img
-                                        className="pw"
-                                        src="/pw-1.png"
-                                    />
-                                </div>
+        <div className="header-div">
 
-                            </div>
-                            {/* <div className="spon-item">
+          <div className="unosq-icons">
+            <div className="unosq-img">
+              <img
+                style={{ margin: "auto", display: "block" }}
+                src="./UNOSQ-01-removebg-preview.png"
+              />
+            </div>
+            <div className="spon">
+              <div className="spon-item">
+                <div className="spon-title">
+                  <p>
+                    Presented By
+                  </p>
+                </div>
+                <div className="spon-img">
+                  <a href="https://www.pw.live/" target="_blank" id="hyperlinking">
+
+                    <img
+                      className="pw"
+                      src="/pw-1.png"
+                    />
+                  </a>
+                </div>
+
+              </div>
+              {/* <div className="spon-item">
                                 <div className="spon-title">
                                     <p>
                                         In Association With
@@ -79,44 +82,45 @@ export default function Header() {
                                     />
                                 </div>
                             </div> */}
-                            <div className="spon-item">
-                                <div className="spon-title">
-                                    <p>
-                                        Powered By
-                                    </p>
-                                </div>
-                                <div className="spon-img">
-                                    <img
-                                        className=""
-                                        src="/Extramarks.png"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="picAndReg-btn">
-                        <div className="unosq-img">
-                            <img
-                                style={{
-                                    display: "block",
-                                    margin: "auto",
-                                }}
-                                src={uns}
-                            />
-                        </div>
-                        <div className="reg-in-header">
-                            <NavLink className='bs-a-n register-button' to="/register" smooth duration={500}>
-                                <p className="nav-item-text">
-                                    Register Now
-                                </p>
-                            </NavLink>
-                        </div>
-
-                    </div>
+              <div className="spon-item">
+                <div className="spon-title">
+                  <p>
+                    Powered By
+                  </p>
                 </div>
-            </section>
-        </>
-    );
+                <div className="spon-img">
+                  <a href="https://www.extramarks.com/" target="_blank" id="hyperlinking">
+                    <img
+                      className="em"
+                      src="/Extramarks.png"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="picAndReg-btn">
+            <div className="unosq-img">
+              <img
+                style={{
+                  display: "block",
+                  margin: "auto",
+                }}
+                src={uns}
+              />
+            </div>
+            <div className="reg-in-header">
+              <NavLink className='bs-a-n register-button' to="/register" smooth duration={500}>
+                <p className="nav-item-text">
+                  Register Now
+                </p>
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
 
 

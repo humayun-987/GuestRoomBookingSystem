@@ -12,10 +12,24 @@ code {
     monospace;
 }
 :root {
-  --bg-navbar: #c2c2c2;
-  --bg-navbar-text: rgb(84, 84, 84);
-  --bg-normal-p-text: #4e4343;
-  --bg-normal-heading: rgb(129, 92, 39);
   --bg-website-bg: rgb(255, 255, 255);
+  --bg-navbar: #c2c2c2;
+  
+  --bg-navbar-text: rgb(84, 84, 84);
   --bg-navbar-text-hover: rgb(60, 83, 184);
+  --bg-reg-button: rgb(97, 179, 204);
+  /* --bg-reg-button-text:  */
+
+  --bg-header-lower-layer-back: rgb(0,0,0,0.3);
+  --bg-header-spon-title: black;
+
+  --bg-headlines: black;
+  --bg-about-button-back: lightblue;
+
+  --bg-sub-header: black;
+  --bg-sub-content: black;
+
+  --bg-timeline-date: black;
+  --bg-timeline-event: black;
+  --bg-timeline-content: black;
 }

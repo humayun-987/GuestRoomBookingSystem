@@ -7,19 +7,21 @@ body {
 @media only screen and (min-width: 769px) {
   #timeline {
     /* display: flex; */
-    align: center;
-
-    &:hover {
-      .tl-item {
-        width: 16%;
-      }
-    }
+    align-items: center;
+  }
+  #items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* justify-content: space-between; */
+    /* row-gap: 20px; */
   }
 
   .tl-item {
     transform: translate3d(0, 0, 0);
     position: relative;
-    /* width: 17%; */
+    width: 16%;
     /* border-radius: 0 0 10px 10px; */
     height: 30vh;
     min-height: 100px;
@@ -66,6 +68,7 @@ body {
       }
 
       .tl-content {
+        color: var(--bg-timeline-content);
         opacity: 1;
         transform: translateY(0);
         transition: all 0.75s ease 0.5s;
@@ -97,6 +100,7 @@ body {
 
   .tl-year {
     position: absolute;
+    color: var(--bg-timeline-event);
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -127,6 +131,7 @@ body {
 
   .tl-date {
     position: absolute;
+    color: var(--bg-timeline-date);
     top: 20%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -137,6 +142,7 @@ body {
 @media only screen and (max-width: 768px) and (min-width: 484px) {
 
   #items {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -200,6 +206,7 @@ body {
 @media only screen and (max-width: 483px) {
 
   #items {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
