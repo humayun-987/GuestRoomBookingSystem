@@ -10,7 +10,7 @@ function Timeline() {
         <h1 class="col12 text-center pb-5" id='heading'>Timeline</h1>
         <div class="tl-item col-2 border-end border-start border-bottom border-secondary">
           <div className="tl-date">
-            <h5 class="text-center">22 August</h5>
+            <h5 class="text-center">23 August</h5>
           </div>
           <div class="tl-year">
             <p class="f2 heading--sanSerif text-center">Registration Ends</p>

@@ -149,7 +149,7 @@
     .phases-text-active img {
         border-radius: 2px;
         width: 60vw;
-        margin: 5vh;
+        margin: 5vh 3vw;
     }
     .conduction-phase-body {
         display: flex;

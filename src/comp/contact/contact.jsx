@@ -13,7 +13,9 @@ const Contact = () => {
         
         <div className="container">
         
-        <div className="row">
+        <div className="row" style={{
+            overflow: "hidden"
+        }} >
             <div className="col-lg-4 anim-fade-left">
                 <div className="card p-0">
                     <div className="card-image">
@@ -84,7 +86,9 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-lg-4 anim-fade-right">
+            <div className="col-lg-4 anim-fade-right" style={{
+                overflow: "hidden"
+            }}>
                 <div className="card p-0">
                     <div className="card-image">
                         <img src="https://live.staticflickr.com/65535/52994241225_42970bcabd.jpg" alt="" />

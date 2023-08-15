@@ -16,6 +16,7 @@ import { Leftfade, Rightfade, Bottomfade, FadeSrub, NewRightfade } from "../Scro
 import AboutUs from "../About US/About";
 
 import Highlights from "../Highlights";
+import Partns from "../Partners";
 
 // import "bootstrap";
 // import "react-bootstrap";
@@ -152,6 +153,7 @@ export default function Section() {
       {/* Timeline End */}
 
       <Contact />
+      <Partns />
       <Footer />
     </section >
 

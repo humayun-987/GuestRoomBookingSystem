@@ -203,7 +203,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 483px) {
+@media only screen and (max-width: 484px) {
 
   #items {
     display: flex;

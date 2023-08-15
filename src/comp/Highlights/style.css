@@ -115,7 +115,7 @@
 
 @media (max-width: 500px) {
   #highlights {
-    width: 375px;
+    width: 90%;
     height: 199.2px;
   }
 
@@ -125,7 +125,7 @@
 
   #highlights-text-bg {
     top: 99.2px;
-    width: 375px;
+    width: 100%;
     height: 100px;
     background-image: linear-gradient(transparent,black);
     opacity: 1;
@@ -174,7 +174,7 @@
   }
   
   #highlights-img {
-    width: 375px;
+    width: 100%;
     height: 199.2px;
     position: relative;
   }
