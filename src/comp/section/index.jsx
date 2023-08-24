@@ -5,7 +5,6 @@ import tab from "../../media/RJ.png";
 import hod from "../../media/HD.png";
 // import ResultTable from "../ResultTable";
 import Timeline from "../Timeline";
-import Reviews from "../reviews/card";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 import Contact from "../contact/contact";
@@ -14,7 +13,7 @@ import Navbar from "../Navbar";
 import Header from "../header";
 import { Leftfade, Rightfade, Bottomfade, FadeSrub, NewRightfade } from "../ScrolltriggerFunc/ScrolltriggerFunc";
 import AboutUs from "../About US/About";
-
+// import ReviewCard from "../reviews/card";
 import Highlights from "../Highlights";
 
 // import "bootstrap";

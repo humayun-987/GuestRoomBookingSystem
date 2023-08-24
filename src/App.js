@@ -8,7 +8,7 @@ import RegistrationPage from "./comp/RegistrationPortal/index";
 import IndividualRegistrationForm from "./comp/RegistrationPortal/IndividualRegistration";
 import ContingentRegistrationForm from "./comp/RegistrationPortal/ContigentRegistration";
 import Brochure from "./comp/Brochure/Brochure";
-import Review from "./comp/reviews/index";
+// import Review from "./comp/reviews/index";
 
 function App() {
   return (
@@ -19,8 +19,7 @@ function App() {
           exact
           path="/"
           element={
-            <> 
-              
+            <>
               <Section />
             </>
           }
@@ -36,10 +35,7 @@ function App() {
           }
         />
 
-        <Route
-          exact
-          path="/register" 
-          element={<RegistrationPage />} />
+        <Route exact path="/register" element={<RegistrationPage />} />
         <Route
           exact
           path="/individualregister"
@@ -50,11 +46,7 @@ function App() {
           path="/contingentregister"
           element={<ContingentRegistrationForm />}
         />
-        <Route
-          exact
-          path="/brochure"
-          element={<Brochure />}
-        />
+        <Route exact path="/brochure" element={<Brochure />} />
       </Routes>
     </div>
   );
