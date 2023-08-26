@@ -8,6 +8,7 @@ import RegistrationPage from "./comp/RegistrationPortal/index";
 import IndividualRegistrationForm from "./comp/RegistrationPortal/IndividualRegistration";
 import ContingentRegistrationForm from "./comp/RegistrationPortal/ContigentRegistration";
 import Brochure from "./comp/Brochure/Brochure";
+import { RegistrationClosed } from "./comp/registrationClosed";
 // import Review from "./comp/reviews/index";
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
           }
         />
 
-        <Route exact path="/register" element={<RegistrationPage />} />
+        <Route exact path="/register" element={<RegistrationClosed />} />
         <Route
           exact
           path="/individualregister"
