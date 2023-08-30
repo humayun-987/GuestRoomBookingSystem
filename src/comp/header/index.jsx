@@ -69,19 +69,21 @@ export default function Header() {
                 </div>
 
               </div>
-              {/* <div className="spon-item">
+              <div className="spon-item">
                                 <div className="spon-title">
                                     <p>
                                         In Association With
                                     </p>
                                 </div>
                                 <div className="spon-img">
+                                  <a href="http://www.speedexam.net/">
                                     <img
                                         className=""
-                                        src=""
+                                        src="/spped_exam-removebg-preview.png"
                                     />
+                                    </a>
                                 </div>
-                            </div> */}
+                            </div>
               <div className="spon-item">
                 <div className="spon-title">
                   <p>
@@ -89,7 +91,7 @@ export default function Header() {
                   </p>
                 </div>
                 <div className="spon-img">
-                  <a href="https://www.extramarks.com/" target="_blank" id="hyperlinking">
+                  <a href="https://www.extramarks.com/" target="_top" id="hyperlinking">
                     <img
                       className="em"
                       src="/Extramarks.png"
