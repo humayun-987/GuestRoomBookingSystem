@@ -79,6 +79,11 @@ export default function Section() {
                   Phase 2 exam will be conducted on 3 September 2023. Selected candidates for the same are listed below, you will be contacted for further process.
                 </p>
               </li>
+              <li>
+                <p className="notif1">
+                  Top 150 candidates from each pool are advanced to Phase 2 exam.
+                </p>
+              </li>
             </ul>
 
 
