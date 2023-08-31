@@ -92,6 +92,14 @@ tbody {
     border-radius: 4px;
     cursor: pointer;
 }
+.result-table-header-select-search {
+    padding: 0.5vw;
+    font-size: 1.6vw;
+    border: 0.1vw solid #ccc;
+    border-radius: 0.4vw;
+    width: 100%;
+    margin-bottom: 1vw;
+  }
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -133,5 +141,8 @@ tbody {
         font-size: 2.8vw;
         
     }
+    .result-table-header-select-search {
+        font-size: 1.8vw;
+      }
 
 }

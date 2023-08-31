@@ -52,6 +52,40 @@ export default function Section() {
       }}>
         <Navbar />
         <Header />
+        <section id="result" style={{ marginTop: "40px", padding: "0% 6%" }}>
+          <h2 style={{
+            textAlign: "center",
+            margin: "40px 0 0 0"
+          }}>
+            Notices
+          </h2>
+          <div className="notices" style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            fontSize: "1rem",
+            textAlign: "left",
+            margin: "0 0 20px 0"
+          }}>
+            <ul>
+              <li>
+                <p className="notif1">
+                  Thanks for your patience, students can view their personal scores on Exam portal, <a href="https://candidate.speedexam.net/signin.aspx?site=iitkanpur">here itself.</a>
+                </p>
+
+              </li>
+              <li>
+                <p className="notif1">
+                  Phase 2 exam will be conducted on 3 September 2023. Selected candidates for the same are listed below, you will be contacted for further process.
+                </p>
+              </li>
+            </ul>
+
+
+          </div>
+          <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
+          <ResultTable />
+        </section>
         <AboutUs />
         <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6% 0 6%" }}>
           <h1 className="d-flex justify-content-center header">Conduction</h1>
@@ -120,38 +154,6 @@ export default function Section() {
             </div>
           </div>
         </div>
-        <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
-          <h2 style={{
-            textAlign: "center",
-          }}>
-            Notices
-          </h2>
-          <div className="notices" style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            fontSize: "1rem",
-            textAlign: "left",
-          }}>
-            <ul>
-              <li>
-                <p className="notif1">
-                  Thanks for your patience, students can view their personal scores on Exam portal, <a href="https://candidate.speedexam.net/signin.aspx?site=iitkanpur">here itself.</a>
-                </p>
-
-              </li>
-              <li>
-                <p className="notif1">
-                  Phase 2 exam will be conducted on 3 September 2023. Selected candidates for the same are listed below, you will be contacted for further process. 
-                </p>
-              </li>
-            </ul>
-
-
-          </div>
-          <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
-          <ResultTable />
-        </section>
         <Highlights />
 
         {/* Timeline Start */}
