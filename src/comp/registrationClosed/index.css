@@ -1,0 +1,12 @@
+.register-closed-main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.register-closed-main div{
+    margin: 10px;
+    color: rgb(185, 116, 6);
+}

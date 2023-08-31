@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 
-import head from "../../media/head.png";
-import tab from "../../media/RJ.png";
-import hod from "../../media/HD.png";
-// import ResultTable from "../ResultTable";
+import ResultTable from "../Result/ResultTable";
 import Timeline from "../Timeline";
-import Reviews from "../reviews/card";
 import "./section.css";
 import { NavLink } from "react-router-dom";
 import Contact from "../contact/contact";
@@ -14,7 +10,7 @@ import Navbar from "../Navbar";
 import Header from "../header";
 import { Leftfade, Rightfade, Bottomfade, FadeSrub, NewRightfade } from "../ScrolltriggerFunc/ScrolltriggerFunc";
 import AboutUs from "../About US/About";
-
+// import ReviewCard from "../reviews/card";
 import Highlights from "../Highlights";
 import Partns from "../Partners";
 
@@ -91,51 +87,79 @@ export default function Section() {
                     The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
                     various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
                     From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="accordion-item">
-              <p className="accordion-header d-flex justify-content-center">
-                <button
-                  style={{ fontWeight: "bold" }}
-                  className="accordion-button collapsed rounded-0 sub-header about-que"
-                  type="button"
-                  data-mdb-toggle="collapse"
-                  data-mdb-target="#panelsStayOpen-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseTwo"
+              <div className="accordion-item">
+                <p className="accordion-header d-flex justify-content-center">
+                  <button
+                    style={{ fontWeight: "bold" }}
+                    className="accordion-button collapsed rounded-0 sub-header about-que"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#panelsStayOpen-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTwo"
+                  >
+                    Phase-2
+                  </button>
+                </p>
+                <div
+                  id="panelsStayOpen-collapseTwo"
+                  className="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingTwo"
                 >
-                  Phase-2
-                </button>
-              </p>
-              <div
-                id="panelsStayOpen-collapseTwo"
-                className="accordion-collapse collapse show"
-                aria-labelledby="panelsStayOpen-headingTwo"
-              >
-                <div className="accordion-body sub-content">
-                  The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
-                  The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
-                  will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
-                  the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
+                  <div className="accordion-body sub-content">
+                    The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
+                    The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
+                    will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
+                    the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
+        <section id="result" style={{ marginTop: "0%", padding: "0% 6%" }}>
+          <h2 style={{
+            textAlign: "center",
+          }}>
+            Notices
+          </h2>
+          <div className="notices" style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            fontSize: "1rem",
+            textAlign: "left",
+          }}>
+            <ul>
+              <li>
+                <p className="notif1">
+                  Thanks for your patience, students can view their personal scores on Exam portal, <a href="https://candidate.speedexam.net/signin.aspx?site=iitkanpur">here itself.</a>
+                </p>
+
+              </li>
+              <li>
+                <p className="notif1">
+                  Phase 2 exam will be conducted on 3 September 2023. Selected candidates for the same are listed below, you will be contacted for further process. 
+                </p>
+              </li>
+            </ul>
+
+
+          </div>
           <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
-          <ResultTable /> 
-        </section> */}
-      <Highlights />
+          <ResultTable />
+        </section>
+        <Highlights />
 
-      {/* Timeline Start */}
-      <section id="timeline" className="anim-fade-bot">
-        <Timeline />
-      </section>
+        {/* Timeline Start */}
+        <section id="timeline" className="anim-fade-bot">
+          <Timeline />
+        </section>
 
-      {/* <div>
+        {/* <div>
           <h1 className="d-flex justify-content-center header"> TESTIMONIALS </h1>{" "}
       </div>
 
@@ -150,12 +174,12 @@ export default function Section() {
         />
       ))}
     </div> */}
-      {/* Timeline End */}
+        {/* Timeline End */}
 
-      <Contact />
-      <Partns />
-      <Footer />
-    </section >
+        <Contact />
+        <Partns />
+        <Footer />
+      </section >
 
     </>
   );

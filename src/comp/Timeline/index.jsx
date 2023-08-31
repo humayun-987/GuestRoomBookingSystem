@@ -34,7 +34,7 @@ function Timeline() {
 
         <div class="tl-item col-2 border-end border-bottom border-secondary">
           <div className="tl-date">
-            <h5 class="text-center">30 August</h5>
+            <h5 class="text-center">31 August</h5>
           </div>
           <div class="tl-year">
             <p class="f2 heading--sanSerif text-center">Result Phase-1</p>

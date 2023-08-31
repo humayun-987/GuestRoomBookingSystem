@@ -1,0 +1,22 @@
+.register-success-body{
+    margin: 30px 10px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.register-success-cont{
+    width: 80%;
+    height: 100vh;
+}
+.go-to-home-cont{
+    margin-top: 30px;
+}
+.go-to-home{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(97,179,204,1);
+    text-decoration: none;
+    background-color: rgb(97,179,204,1);
+}
