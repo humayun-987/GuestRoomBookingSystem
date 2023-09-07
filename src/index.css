@@ -15,6 +15,8 @@ code {
   --bg-website-bg: rgb(255, 255, 255);
   --bg-navbar: #c2c2c2;
   
+  --bg-result-highligh2: rgba(196, 35, 83, 0.8);
+  --bg-result-highligh1: rgba(35, 74, 183, 0.8);
   --bg-navbar-text: rgb(84, 84, 84);
   --bg-navbar-text-hover: rgb(60, 83, 184);
   --bg-reg-button: rgb(97, 179, 204);

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import ResultTable from "../Result/ResultTable";
+import Result2 from "../Result2/ResultTable";
 import Timeline from "../Timeline";
 import "./section.css";
 import { NavLink } from "react-router-dom";
@@ -65,26 +66,38 @@ export default function Section() {
             justifyContent: "center",
             fontSize: "1rem",
             textAlign: "left",
-            margin: "0 0 20px 0"
+            margin: "0 0 0 0"
           }}>
             <ul>
               <li>
                 <p className="notif1">
-                  Thanks for your patience, students can view their personal scores on Exam portal, <a href="https://candidate.speedexam.net/signin.aspx?site=iitkanpur">here itself.</a>
+                  Phase 2 & Phase 1 Results are displayed below. You can check your scores on exam portal by loging in to Portal, <a target="_blank" href="https://candidate.speedexam.net/signin.aspx?site=iitkanpur">here itself.</a>
                 </p>
-
               </li>
               <li>
                 <p className="notif1">
-                  Phase 2 exam will be conducted on 3 September 2023. Selected candidates for the same are listed below, you will be contacted for further process.
+                  <span style={{
+                    fontWeight: "bold"
+                  }}>Top 3 Overall Rankers of Phase 2</span> from each pool will get to attend Udghosh'23 (Oct 6th-8th), and will be contacted for further Process. <a target="_blank" href="https://www.instagram.com/udghosh_iitk/?hl=en">Click here</a> to know more about Udghosh IIT Kanpur.
                 </p>
               </li>
             </ul>
 
 
           </div>
-          <h1 className="d-flex justify-content-center header" >PHASE-1 RESULT</h1>
+          <div className="phase2ress" style={{
+            margin: "80px 0"
+          }}>
+            <h1 className="d-flex justify-content-center header" > <span style={{
+              color: "var(--bg-result-highligh2)"
+            }}>PHASE-2 RESULT</span></h1>
+            <Result2 />
+          </div>
+          <h1 className="d-flex justify-content-center header" ><span style={{
+            color: "var(--bg-result-highligh1)"
+          }}>PHASE-1 RESULT</span></h1>
           <ResultTable />
+
         </section>
         <AboutUs />
         <div className="mt-40 anim-fade-bot" style={{ padding: "6% 6% 0 6%" }}>

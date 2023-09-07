@@ -1,12 +1,16 @@
 /* Styles for the main container */
-.result-table {
+.result-table-2 {
     width: 100%;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: rgb(255, 255, 255, 0.3);
     /* backdrop-filter: blur(4px); */
-    border: 2px solid var(--bg-result-highligh1);
+    border: 2px solid var(--bg-result-highligh2);
+}
+.Bold{
+    font-weight: bold;
+    color: var(--bg-result-highligh2);
 }
 
 /* Styles for the header */
