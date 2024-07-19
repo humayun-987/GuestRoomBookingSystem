@@ -71,14 +71,7 @@ export default function Section() {
             <ul>
               <li>
                 <p className="notif1">
-                  Phase 2 & Phase 1 Results are displayed below. You can check your scores on exam portal by loging in to Portal, <a target="_blank" href="https://candidate.speedexam.net/signin.aspx?site=iitkanpur">here itself.</a>
-                </p>
-              </li>
-              <li>
-                <p className="notif1">
-                  <span style={{
-                    fontWeight: "bold"
-                  }}>Top 3 Overall Rankers of Phase 2</span> from each pool will get to attend Udghosh'23 (Oct 6th-8th), and will be contacted for further Process. <a target="_blank" href="https://www.instagram.com/udghosh_iitk/?hl=en">Click here</a> to know more about Udghosh IIT Kanpur.
+                  Phase 2 & Phase 1 Results of UNOSQ'23 are displayed below.
                 </p>
               </li>
             </ul>
@@ -131,9 +124,9 @@ export default function Section() {
                   data-bs-parent="#accordionPanelsStayOpenExample"
                 >
                   <div className="accordion-body sub-content">
-                    The Phase 1 exam for UNOSQ will be conducted ONLINE .It will encompass a syllabus that includes object-type questions covering
-                    various aspects such  as Logical Reasoning ,Verbal Ability,Quantitative Aptitude,and Sports.The duration of the exam will be 90 minutes.
-                    From Phase 1,the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
+                    The Phase 1 exam for UNOSQ will be conducted ONLINE. It will encompass a syllabus that includes object-type questions covering
+                    various aspects such  as Logical Reasoning, Verbal Ability, Quantitative Aptitude and Sports Trivia.The duration of the exam will be 90 minutes.
+                    From Phase 1, the top 100 performers will qualify for the Phase 2 Exam in each of the four pools.
                   </div>
                 </div>
               </div>
@@ -157,10 +150,10 @@ export default function Section() {
                   aria-labelledby="panelsStayOpen-headingTwo"
                 >
                   <div className="accordion-body sub-content">
-                    The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1,with an increase of difficulty level.
-                    The duration of the Phase 2 exam will be reduced to 75 minutes.Additionally,engaging talks and exhibitions
-                    will enhance the enthusiasm and excitement  of the students who qualify for Phase2.This crucial round will determine
-                    the top three winners of UNOSQ'23,who will receive exciting prizes and complimentary passes to Udghosh Pronite.
+                    The syllabus for Phase 2 of UNOSQ will remain the same as Phase 1, with an increase of difficulty level.
+                    The duration of the Phase 2 exam will be reduced to 75 minutes. Additionally,engaging talks and exhibitions
+                    will enhance the enthusiasm and excitement  of the students who qualify for Phase2. This crucial round will determine
+                    the top three winners of UNOSQ'24, who will receive exciting prizes and complimentary passes to Udghosh Pronite.
                   </div>
                 </div>
               </div>

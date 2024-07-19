@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import "./navbar.css"
 import { HashLink as Navlink } from "react-router-hash-link"
+import { Modal, Button } from "react-bootstrap";
+
 export default function Navbar() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [isOpen, setIsopen] = useState(false);
   const toggle = () => setIsopen(!isOpen);
   return (
@@ -25,7 +30,7 @@ export default function Navbar() {
               </p>
             </Navlink>
             <Navlink className='nav-item' target='_self' to="/#" smooth duration={500}>
-              <img src="/UNOSQ-01-removebg-preview.png" alt="" id="nav-logo" />
+              <img src="/UNOSQ_new_logo.png" alt="" id="nav-logo" />
             </Navlink>
             <Navlink className='nav-item' to="/#contact" smooth duration={500}>
               <p className="nav-item-text">
@@ -38,11 +43,24 @@ export default function Navbar() {
               </p>
             </Navlink>
             <div className="right-attach">
-              <Navlink className='bs-a-n register-button' to="/register" smooth duration={500}>
-                <p className="nav-item-text">
-                  Register
-                </p>
-              </Navlink>
+              <Button variant="primary" className="bs-a-n register-button" onClick={handleShow}>
+                Register
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Choose Registration Type</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="d-flex justify-content-around">
+                    <Navlink to="/individualregister" className="btn btn-primary" onClick={handleClose}>
+                      Individual Registration
+                    </Navlink>
+                    <Navlink to="/contingentregister" className="btn btn-secondary" onClick={handleClose}>
+                      Contingent Registration
+                    </Navlink>
+                  </div>
+                </Modal.Body>
+              </Modal>
             </div>
           </div>
 
@@ -82,13 +100,25 @@ export default function Navbar() {
                 FAQs
               </p>
             </Navlink>
-            <Navlink className='nav-item-sm' to="/register" smooth duration={500}>
-              <Navlink className='bs-a-n register-button' to="/register" smooth duration={500}>
-                <p className="nav-item-text">
-                  Register
-                </p>
-              </Navlink>
-            </Navlink>
+            
+            <Button variant="primary" className="bs-a-n register-button" onClick={handleShow}>
+              Register
+            </Button>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Choose Registration Type</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div className="d-flex justify-content-around">
+                  <Navlink to="/individualregister" className="btn btn-primary" onClick={handleClose}>
+                    Individual Registration
+                  </Navlink>
+                  <Navlink to="/contingentregister" className="btn btn-secondary" onClick={handleClose}>
+                    Contingent Registration
+                  </Navlink>
+                </div>
+              </Modal.Body>
+            </Modal>
           </div>
 
           {/* toggle by clicking anywhere in page */}

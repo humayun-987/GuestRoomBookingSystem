@@ -45,6 +45,10 @@
 .partn img{
     width:180px;
 }
+.unosq{
+    color:rgb(74, 66, 66);
+}
+
 @media screen and (max-width: 900px){
     .partnersContent{
         flex-direction: column;

@@ -2,22 +2,39 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../footer";
 import "./Brochure.css";
-import brochure from "./imageUrl.json";
+import image1 from "./brochurePages/with sponsers brochure-images-0.jpg";
+import image2 from "./brochurePages/with sponsers brochure-images-1.jpg";
+import image3 from "./brochurePages/with sponsers brochure-images-2.jpg";
+import image4 from "./brochurePages/with sponsers brochure-images-3.jpg";
+import image5 from "./brochurePages/with sponsers brochure-images-4.jpg";
+import image6 from "./brochurePages/with sponsers brochure-images-5.jpg";
+import image7 from "./brochurePages/with sponsers brochure-images-6.jpg";
+import image8 from "./brochurePages/with sponsers brochure-images-7.jpg";
+import image9 from "./brochurePages/with sponsers brochure-images-8.jpg";
+import image10 from "./brochurePages/with sponsers brochure-images-9.jpg";
+import image11 from "./brochurePages/with sponsers brochure-images-10.jpg";
+import image12 from "./brochurePages/with sponsers brochure-images-11.jpg";
+import image13 from "./brochurePages/with sponsers brochure-images-12.jpg";
+import image14 from "./brochurePages/with sponsers brochure-images-13.jpg";
+import image15 from "./brochurePages/with sponsers brochure-images-14.jpg";
+import image16 from "./brochurePages/with sponsers brochure-images-15.jpg";
+import image17 from "./brochurePages/with sponsers brochure-images-16.jpg";
 
 const Brochure = () => {
-  const [slideselected, setSideSelected] = useState(1);
-  const noofslides = 16;
-  const photos = brochure.photos.photo;
-  let slidesArray = photos.map(
-    (slide, index) =>
-      `https://live.staticflickr.com/${slide.server}/${slide.id}_${slide.secret}_b.jpg`
-  );
-  slidesArray.reverse();
-  const slideleftcom = () => {
-    if (slideselected > 1) setSideSelected(slideselected - 1);
+  const [slideSelected, setSlideSelected] = useState(1);
+  const photos = [
+    image1, image2, image3, image4, image5, image6, image7, image8,
+    image9, image10, image11, image12, image13, image14, image15,
+    image16, image17
+  ];
+  const noOfSlides = photos.length;
+
+  const slideLeft = () => {
+    if (slideSelected > 1) setSlideSelected(slideSelected - 1);
   };
-  const sliderightcom = () => {
-    if (slideselected < noofslides) setSideSelected(slideselected + 1);
+
+  const slideRight = () => {
+    if (slideSelected < noOfSlides) setSlideSelected(slideSelected + 1);
   };
 
   return (
@@ -25,48 +42,40 @@ const Brochure = () => {
       <Navbar />
       <div className="brochure-top"></div>
       <div className="brochure-body">
-        <img className="brochure-background" src="/bg-head.jpg" />
+        <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
         <div className="slide-pointer">
-          PAGE {slideselected} OF {noofslides}
+          PAGE {slideSelected} OF {noOfSlides}
         </div>
         <div className="slides-wrapper">
-          {slideselected > 1 ? (
-            <button
-              className="slides-nav"
-              id="slides-nav-left"
-              onClick={slideleftcom}
-            >
+          {slideSelected > 1 && (
+            <button className="slides-nav" id="slides-nav-left" onClick={slideLeft}>
               <i className="fa fa-arrow-left" aria-hidden="true"></i>
             </button>
-          ) : null}
+          )}
           <div className="slides-box">
-            {slidesArray.map((slide, index) => (
+            {photos.map((photo, index) => (
               <img
-                className={
-                  slideselected === index + 1
-                    ? "brochure-img-active"
-                    : "brochure-img"
-                }
-                src={slide}
+                key={index}
+                className={slideSelected === index + 1 ? "brochure-img-active" : "brochure-img"}
+                src={photo}
+                alt={`Page ${index + 1}`}
               />
             ))}
           </div>
-          {slideselected < noofslides ? (
-            <button
-              className="slides-nav"
-              id="slides-nav-right"
-              onClick={sliderightcom}
-            >
+          {slideSelected < noOfSlides && (
+            <button className="slides-nav" id="slides-nav-right" onClick={slideRight}>
               <i className="fa fa-arrow-right" aria-hidden="true"></i>
             </button>
-          ) : null}
+          )}
         </div>
         <div id="broch-down">
           <a
             className="brochure-download"
-            href="https://drive.google.com/file/d/1LAUErlGdS46a96NVp4WfaC3qEe7qkXr_/view?usp=drive_link"
+            href="https://drive.google.com/file/d/12eOYQRaA81OAGWeMCmwZ7xQnuFeAPvhW/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <i class="fa fa-download" aria-hidden="true"></i>Download
+            <i className="fa fa-download" aria-hidden="true"></i> Download
           </a>
         </div>
       </div>

@@ -65,7 +65,7 @@ return (
   </div>
   <div className="text-center text-white p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
     © 2022 Copyright:  
-    <a className="text-white" target='blank' href= "https://udghosh.org.in/">  UDGHOSH22</a>
+    <a className="text-white" target='blank' href= "https://udghosh.org.in/">  UDGHOSH24</a>
   </div>
 </footer>
     </div>

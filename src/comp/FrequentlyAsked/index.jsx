@@ -8,28 +8,28 @@ export default function FrequentlyAsked() {
   const faqsData = [
     {
       question: 'Q1. Is the exam free of cost?',
-      answer: 'No. Registration Fee for UNOSQ is ₹120 per participant including all taxes.',
+      answer: 'No. The Registration Fee for UNOSQ is ₹120 per participant including all taxes.',
     },
     {
       question: 'Q2. What is the registration procedure',
       answer:
-        'If Your school participates as a contingent, then the school has to register as a contingent on the UNOSQ Website, collect data and registration fees from the students and send them to us. If the students participate by themselves Individually, they have to register directly on the UNOSQ website.',
+        'If Your school participates as a contingent, then the school has to register as a contingent on the UNOSQ Website, collect data and registration fees from the students and send them to us. If the students participate by themselves Individually, then they have to register directly on the UNOSQ website.',
     },
     {
       question: 'Q3. In how many phases will the exam be conducted?',
       answer:
-        '2 PHASES\nRegistration- 17 July - 16 August\nPhase I exam- 20 August\nPhase II exam– 3 September',
+        '2 PHASES:\nRegistration- 15 July - 15 August\nPhase I exam - 25 August\nPhase II exam – 1 September',
     },
     {
       question: 'Q4. How will the exam be conducted?',
-      answer: 'Phase 1 and Phase 2 exam both will be conducted in ONLINE mode only.',
+      answer: 'Online mode',
     },
     {
       question: 'Q5. How many students will be qualified for Phase 2.',
       answer: '100 students from each pool',
     },
     {
-      question: 'Q6. Exam will be of which type is subjective or objective?',
+      question: 'Q6. Exam will be of which type: subjective or objective?',
       answer: 'Objective MCQ questions',
     },
     {
@@ -39,7 +39,7 @@ export default function FrequentlyAsked() {
     {
       question: 'Q8. How many pools are there?',
       answer:
-        'There are total of 4 Pools for different class students these are:\nPool Youngsters - Class 5-6\nPool Rising Stars - Class 7-8\nPool Champions - Class 9-10\nPool Pioneers - Class 11-12',
+        '4 Pools:\nPool LITTLE CHAMPS - Class 5-6\nPool SUPER NOVA - Class 7-8\nPool THE TITANS - Class 9-10\nPool ELITE EXPLORERS - Class 11-12',
     },
     // Add more FAQs here...
   ];

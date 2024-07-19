@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.css';
-import Typed from 'react-typed';
+import { ReactTyped as Typed } from 'react-typed';
 import { useState } from 'react';
 
 export default function Partners() {
-    let Partners = [
+    let Partners23 = [
         {
             title: "Presented By",
             name: "Physics Wallah",
@@ -59,6 +59,62 @@ export default function Partners() {
             ]
         }
     ];
+
+    let Partners22 = [
+        {
+            title: "Presented By",
+            name: "Purple Tutor",
+            link: "https://purpletutor.com/",
+            img: "/PurpleTutor.png",
+            status: [
+                {
+                    content: "THE MOST",
+                    status: "static"
+                },
+                {
+                    content: ["AFFORDABLE", "VALUABLE", "RELIABLE"],
+                    status: "blink"
+                },
+                {
+                    content: "Learning PLATFORM",
+                    status: "static"
+                }
+
+            ]
+        },
+        {
+            title: "Powered By",
+            name: "Gradeazy",
+            link: "https://www.gradeazy.com/",
+            img: "/gradeazy.png",
+            content: [
+                {
+                    content: "POWERING",
+                    status: "static"
+                },
+                {
+                    content: ["NEW AGE CLASSROOMS"],
+                    status: "blink"
+                }
+            ]
+        },
+        {
+            title: "Associate Partner",
+            name: "Scooboo",
+            link: "https://scooboo.in/",
+            img: "/scooboo.png",
+            content: [
+                {
+                    content: ["CREATE", "CONDUCT"],
+                    status: "static"
+                },
+                {
+                    content: "EXAMS EVERYWHERE",
+                    status: "blink"
+                }
+            ]
+        }
+    ];
     // let cards = document.getElementsByClassName("partn");
     // let [card, setCard] = useState({});
 
@@ -100,12 +156,41 @@ export default function Partners() {
     return (
         <section className="partners">
             {/* <Highlighting /> */}
-            <h2 className="partnersHeading">
-                Our Partners
+            <h1 className="partnersHeading">
+                Previous Partners
+            </h1>
+            <h2 className="unosq">
+                UNOSQ'23
             </h2>
             <div className="partnersContent">
                 {
-                    Partners.map((partner, index) => {
+                    Partners23.map((partner, index) => {
+                        return (
+                            <a href={partner.link} className="linkingPart" target='_blank' style={{
+                                textDecoration: "none",
+                                color: "black",
+                            }} >
+                                <div className="partn">
+                                    <h4 className='eachPartn' style={{
+                                        color: "rgb(0, 0, 0, 0.8)",
+                                    }}>{partner.title}</h4>
+                                    <img src={partner.img} alt={partner.title} className="partnImg" />
+                                    <p className="partnName">
+                                        {partner.name}
+                                    </p>
+                                </div>
+                            </a>
+                        );
+                    })
+                }
+            </div>
+
+            <h2 className="unosq">
+                UNOSQ'22
+            </h2>
+            <div className="partnersContent">
+                {
+                    Partners22.map((partner, index) => {
                         return (
                             <a href={partner.link} className="linkingPart" target='_blank' style={{
                                 textDecoration: "none",

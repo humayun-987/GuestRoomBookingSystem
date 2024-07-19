@@ -9,7 +9,7 @@ const data = [
     },
     {
         fieldName: "WHAT IS UNOSQ?",
-        img: "./UNOSQ-01-removebg-preview.png",
+        img: "./UNOSQ_new_logo.png",
         fieldText: "Udghosh proudly hosts UNOSQ, an open school quiz tournament designed for students in grades 5 - 12. This quiz serves as a platform to promote sports among schoolchildren. Through this examination, students not only gain knowledge about sports but also have their mental, logical, and verbal abilities tested and receive national recognition. As an added benefit, UNOSQ organises online seminars conducted by notable academic and sports figures, further enriching the learning experience for the participants. The primary objective of UNOSQ is to give school children a platform to showcase their talents and abilities. It allows them to compete with students nationwide, challenging their intellect and fostering self-confidence for their future endeavours. . Additionally, UNOSQ provides an invaluable opportunity for children to meet and interact with celebrated figures from the fields of education and sports."
     },
     {

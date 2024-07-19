@@ -1,8 +1,13 @@
 import "./style.css";
-import React from "react";
-import uns from "../../media/VECT1.png";
+import React, { useState } from "react"; // Import useState from React
+import uns from "../../media/VECT2.png";
 import { NavLink } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
+
 export default function Header() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <section className="header-sec" style={{
@@ -43,15 +48,19 @@ export default function Header() {
         </div>
 
         <div className="header-div">
-
           <div className="unosq-icons">
             <div className="unosq-img">
               <img
-                style={{ margin: "auto", display: "block" }}
-                src="./UNOSQ-01-removebg-preview.png"
+                style={{ 
+                  margin: "auto", 
+                  display: "block", 
+                  width: "350px", 
+                  height: "350px", 
+                  transform: "translateY(20px)" 
+                }}
+                src="./UNOSQ_new_logo.png"
               />
-            </div>
-            <div className="spon">
+                          {/* <div className="spon">
               <div className="spon-item">
                 <div className="spon-title">
                   <p>
@@ -99,7 +108,9 @@ export default function Header() {
                   </a>
                 </div>
               </div>
+            </div> */}
             </div>
+
           </div>
           <div className="picAndReg-btn">
             <div className="unosq-img">
@@ -112,11 +123,29 @@ export default function Header() {
               />
             </div>
             <div className="reg-in-header">
-              <NavLink className='bs-a-n register-button' to="/register" smooth duration={500}>
+              {/* <NavLink className='bs-a-n register-button' to="/individualregister" smooth duration={500}>
                 <p className="nav-item-text">
                   Register Now
                 </p>
-              </NavLink>
+              </NavLink> */}
+              <Button variant="primary" className="bs-a-n register-button" onClick={handleShow}>
+                Register Now
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Choose Registration Type</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="d-flex justify-content-around">
+                    <NavLink to="/individualregister" className="btn btn-primary" onClick={handleClose}>
+                      Individual Registration
+                    </NavLink>
+                    <NavLink to="/contingentregister" className="btn btn-secondary" onClick={handleClose}>
+                      Contingent Registration
+                    </NavLink>
+                  </div>
+                </Modal.Body>
+              </Modal>
             </div>
           </div>
         </div>

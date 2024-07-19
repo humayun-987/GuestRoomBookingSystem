@@ -81,11 +81,13 @@
   bottom: 50%;
   z-index: 20;
 }
-.brochure-download{
+.brochure-download {
   padding: 10px;
   border-radius: 14px;
   background-color: #24a0ed;
   color: white;
+  position: relative;
+  top: -30px;
 }
 #broch-down{
   display: flex;

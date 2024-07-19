@@ -240,16 +240,16 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
                       >
                         <option value="">Select</option>
                         <option value="Youngsters(class 5-6)">
-                          Pool Youngsters(class 5-6)
+                          Pool Little Champs (class 5-6)
                         </option>
                         <option value="Rising Stars(class 7-8)">
-                          Pool Rising Stars(class 7-8)
+                          Pool Super Nova (class 7-8)
                         </option>
                         <option value="Champions(class 9-10)">
-                          Pool Champions(class 9-10)
+                          Pool The Titans (class 9-10)
                         </option>
                         <option value="Pioneers(class 11-12)">
-                          Pool Pioneers(class 11-12)
+                          Pool Elite Explorers (class 11-12)
                         </option>
                       </select>
                       <label className="input" htmlFor="floatingInput">
