@@ -14,6 +14,7 @@ import AboutUs from "../About US/About";
 // import ReviewCard from "../reviews/card";
 import Highlights from "../Highlights";
 import Partns from "../Partners";
+import Papers from "../SamplePaper";
 
 // import "bootstrap";
 // import "react-bootstrap";
@@ -165,6 +166,9 @@ export default function Section() {
         {/* Timeline Start */}
         <section id="timeline" className="anim-fade-bot">
           <Timeline />
+        </section>
+        <section id="paper" className="anim-fade-bot">
+          <Papers />
         </section>
 
         {/* <div>

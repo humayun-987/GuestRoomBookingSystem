@@ -51,7 +51,7 @@ const ContingentRegistrationForm = () => {
     console.log(formData);
 
     await setDoc(
-      doc(db, "Contingent registration", formData.schoolName),
+      doc(db, "Contingent Registration 24", formData.schoolName),
       formData
     );
 

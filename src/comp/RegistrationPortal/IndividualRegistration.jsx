@@ -56,7 +56,7 @@ const IndividualRegistrationForm = () => {
     console.log(formData);
 
     await setDoc(
-      doc(db, "individual registration", formData.fullName),
+      doc(db, "Individual Registration 24", formData.fullName),
       formData
     );
 
@@ -239,16 +239,16 @@ const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
                         required
                       >
                         <option value="">Select</option>
-                        <option value="Youngsters(class 5-6)">
+                        <option value="Little Champs(class 5-6)">
                           Pool Little Champs (class 5-6)
                         </option>
-                        <option value="Rising Stars(class 7-8)">
+                        <option value="Super Nova(class 7-8)">
                           Pool Super Nova (class 7-8)
                         </option>
-                        <option value="Champions(class 9-10)">
+                        <option value="The Titans(class 9-10)">
                           Pool The Titans (class 9-10)
                         </option>
-                        <option value="Pioneers(class 11-12)">
+                        <option value="Elite Explorers(class 11-12)">
                           Pool Elite Explorers (class 11-12)
                         </option>
                       </select>

@@ -71,7 +71,7 @@ const Brochure = () => {
         <div id="broch-down">
           <a
             className="brochure-download"
-            href="https://drive.google.com/file/d/12eOYQRaA81OAGWeMCmwZ7xQnuFeAPvhW/view?usp=sharing"
+            href="https://drive.usercontent.google.com/u/0/uc?id=12eOYQRaA81OAGWeMCmwZ7xQnuFeAPvhW&export=download"
             target="_blank"
             rel="noopener noreferrer"
           >
