@@ -83,3 +83,28 @@ body {
     font-size: 1rem;
   }
 }
+
+
+
+@media only screen and (max-width: 480px) {
+  .tl-date {
+    font-size: 0.9rem;
+  }
+
+  .tl-year p {
+    font-size: 0.9rem;
+  }
+
+  .tl-item {
+    padding: 6px;
+  }
+
+  #heading {
+    font-size: 2rem;
+  }
+
+  .tl-year {
+    top: 50%; 
+    width: 90%; 
+  }
+}
