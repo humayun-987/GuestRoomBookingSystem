@@ -205,7 +205,7 @@ const SchoolDetails = ({ nextStep, handleFormData, values, page }) => {
                         autoComplete="off"
                       />
                       <label className="input" htmlFor="floatingInput">
-                        POC's Name
+                        Point of Contact Name
                       </label>
                     </div>
 

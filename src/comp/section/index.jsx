@@ -15,6 +15,7 @@ import AboutUs from "../About US/About";
 import Highlights from "../Highlights";
 import Partns from "../Partners";
 import Papers from "../SamplePaper";
+import NotificationBar from "../NotificationBar";
 
 // import "bootstrap";
 // import "react-bootstrap";
@@ -53,6 +54,7 @@ export default function Section() {
         width: "100%",
       }}>
         <Navbar />
+        <NotificationBar message="The deadline has been extended to 20th August, and the fee payment portal will be accessible from 19th to 20th August." duration={5000} />
         <Header />
         <section id="result" style={{ marginTop: "40px", padding: "0% 6%" }}>
           <h2 style={{
@@ -71,8 +73,15 @@ export default function Section() {
           }}>
             <ul>
               <li>
-                <p className="notif1">
+                {/* <p className="notif1">
                   Phase 2 & Phase 1 Results of UNOSQ'23 are displayed below.
+                </p> */}
+
+                <p className="notif1">
+                Reminder !! There is a session scheduled today, 16th August, at 5 PM with Aditya Srivastav, UPSC AIR 1
+                </p>
+                <p className="notif2">
+                <b>Session Links:</b> <a href="https://iitk-ac-in.zoom.us/j/95950506632?pwd=7Fyh99Q6cYN9Rqk9BQaRCXbydtkLJh.1">Zoom</a> <a href="https://www.youtube.com/@Udghoshiitk">Youtube</a>
                 </p>
               </li>
             </ul>
