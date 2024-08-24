@@ -16,7 +16,7 @@ function Timeline() {
         </div>
         <div className="tl-item col-2 border-end border-start border-bottom border-secondary">
           <div className="tl-date">
-            <h5 className="text-center">15 August</h5>
+            <h5 className="text-center">28 August</h5>
           </div>
           <div className="tl-year">
             <p className="f2 heading--sanSerif text-center">Registration Ends</p>
@@ -25,7 +25,7 @@ function Timeline() {
 
         <div className="tl-item col-2 border-end border-bottom border-secondary">
           <div className="tl-date">
-            <h5 className="text-center">25 August</h5>
+            <h5 className="text-center">1 September</h5>
           </div>
           <div className="tl-year">
             <p className="f2 heading--sanSerif text-center">Exam Phase-1</p>
@@ -34,7 +34,7 @@ function Timeline() {
 
         <div className="tl-item col-2 border-end border-bottom border-secondary">
           <div className="tl-date">
-            <h5 className="text-center">28 August</h5>
+            <h5 className="text-center">5 September</h5>
           </div>
           <div className="tl-year">
             <p className="f2 heading--sanSerif text-center">Result Phase-1</p>
@@ -43,7 +43,7 @@ function Timeline() {
 
         <div className="tl-item col-2 border-end border-bottom border-secondary">
           <div className="tl-date">
-            <h5 className="text-center">1 September</h5>
+            <h5 className="text-center">8 September</h5>
           </div>
           <div className="tl-year">
             <p className="f2 heading--sanSerif text-center">Exam Phase-2</p>
@@ -52,7 +52,7 @@ function Timeline() {
 
         <div className="tl-item col-2 border-end border-bottom border-secondary">
           <div className="tl-date">
-            <h5 className="text-center">5 September</h5>
+            <h5 className="text-center">10 September</h5>
           </div>
           <div className="tl-year">
             <p className="f2 heading--sanSerif text-center">Result Phase-2</p>

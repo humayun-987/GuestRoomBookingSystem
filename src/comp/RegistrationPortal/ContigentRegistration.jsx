@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "../firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc ,serverTimestamp} from "firebase/firestore";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { toast, Toaster } from "react-hot-toast";
 import "./individual.css";
@@ -50,10 +50,10 @@ const ContingentRegistrationForm = () => {
   const handleSubmit = async () => {
     console.log(formData);
 
-    await setDoc(
-      doc(db, "Contingent Registration 24", formData.schoolName),
-      formData
-    );
+    await setDoc(doc(db, "Contingent Registration 24", formData.schoolName), {
+      ...formData,
+      createdAt: serverTimestamp(), // Add this line to include the createdAt field
+    });
 
     setFormData({
       schoolName: "",

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { db } from "../firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { toast, Toaster } from "react-hot-toast";
 import "./individual.css";
 import RegisterSuccess from "./Registersuccess";
-import Navbar from "../Navbar"
+import Navbar from "../Navbar";
 
 const IndividualRegistrationForm = () => {
   // state for steps
@@ -41,7 +41,7 @@ const IndividualRegistrationForm = () => {
     // input value from the form
     console.log(e.target.name);
     console.log(e.target.value);
-    //updating for data state taking previous state and then adding new value to create new object
+    // updating form data state
     key = e.target.name;
     value = e.target.value;
 
@@ -52,13 +52,12 @@ const IndividualRegistrationForm = () => {
   };
 
   const handleSubmit = async () => {
-
     console.log(formData);
 
-    await setDoc(
-      doc(db, "Individual Registration 24", formData.fullName),
-      formData
-    );
+    await setDoc(doc(db, "Individual Registration 24", formData.fullName), {
+      ...formData,
+      createdAt: serverTimestamp(), // Add this line to include the createdAt field
+    });
 
     setFormData({
       fullName: "",
@@ -81,23 +80,23 @@ const IndividualRegistrationForm = () => {
       <section className="register-sec">
         <Toaster toastOptions={{ duration: 4000 }} />
         <Navbar />
-        <div id="indHead" style={{
-          paddingTop: "60px",
-        }}>
-          {step == 3 ? null :
+        <div id="indHead" style={{ paddingTop: "60px" }}>
+          {step == 3 ? null : (
             <div id="individualHead">
               <p>Individual Registration</p>
               <hr className="indHr" />
             </div>
-          }
+          )}
         </div>
-        {step === 1 ? <PersonalDetails
-          page={1}
-          nextStep={nextStep}
-          handleFormData={handleInputData}
-          values={formData}
-        />
-          : step === 2 ? <ContactDetails
+        {step === 1 ? (
+          <PersonalDetails
+            page={1}
+            nextStep={nextStep}
+            handleFormData={handleInputData}
+            values={formData}
+          />
+        ) : step === 2 ? (
+          <ContactDetails
             page={2}
             nextStep={nextStep}
             prevStep={prevStep}
@@ -105,13 +104,14 @@ const IndividualRegistrationForm = () => {
             handleSubmit={handleSubmit}
             values={formData}
           />
-            : <RegisterSuccess />
-        }
-
+        ) : (
+          <RegisterSuccess />
+        )}
       </section>
     </>
   );
 };
+
 
 const PersonalDetails = ({ nextStep, handleFormData, values, page }) => {
   const validate = () => {

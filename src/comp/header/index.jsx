@@ -1,10 +1,11 @@
 import "./style.css";
 import React, { useState } from "react"; // Import useState from React
 import uns from "../../media/VECT2.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -131,6 +132,7 @@ export default function Header() {
               <Button variant="primary" className="bs-a-n register-button" onClick={handleShow}>
                 Register Now
               </Button>
+  
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                   <Modal.Title>Choose Registration Type</Modal.Title>
@@ -146,6 +148,18 @@ export default function Header() {
                   </div>
                 </Modal.Body>
               </Modal>
+            </div>
+            <br/>
+            <div className="reg-in-header">
+              {/* <NavLink className='bs-a-n register-button' to="/individualregister" smooth duration={500}>
+                <p className="nav-item-text">
+                  Register Now
+                </p>
+              </NavLink> */}
+              <Button variant="primary" className="bs-a-n register-button" onClick={() => navigate("/payment")}>
+                Pay Now
+              </Button>
+
             </div>
           </div>
         </div>

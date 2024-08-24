@@ -1,0 +1,35 @@
+.dropdown-section {
+    margin-bottom: 20px;
+  }
+  
+  .dropdown-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .dropdown-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+    opacity: 0;
+    padding: 0 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .dropdown-content.show {
+    max-height: 500px; /* Set this to a value that can fit the entire content */
+    opacity: 1;
+    padding: 20px;
+  }
+  
