@@ -6,9 +6,18 @@ import { Modal, Button } from "react-bootstrap";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showRegistrationModal, setShowRegistrationModal] = useState(false);
+
+  // State for the second modal
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  // Handlers for the first modal
+  const handleShowRegistrationModal = () => setShowRegistrationModal(true);
+  const handleCloseRegistrationModal = () => setShowRegistrationModal(false);
+
+  // Handlers for the second modal
+  const handleShowPaymentModal = () => setShowPaymentModal(true);
+  const handleClosePaymentModal = () => setShowPaymentModal(false);
   return (
     <>
       <section className="header-sec" style={{
@@ -123,43 +132,66 @@ export default function Header() {
                 src={uns}
               />
             </div>
+             {/* First Button and Modal */}
             <div className="reg-in-header">
-              {/* <NavLink className='bs-a-n register-button' to="/individualregister" smooth duration={500}>
-                <p className="nav-item-text">
-                  Register Now
-                </p>
-              </NavLink> */}
-              <Button variant="primary" className="bs-a-n register-button" onClick={handleShow}>
+              <Button variant="primary" className="bs-a-n register-button" onClick={handleShowRegistrationModal}>
                 Register Now
               </Button>
-  
-              <Modal show={show} onHide={handleClose}>
+
+              <Modal show={showRegistrationModal} onHide={handleCloseRegistrationModal}>
                 <Modal.Header closeButton>
                   <Modal.Title>Choose Registration Type</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <div className="d-flex justify-content-around">
-                    <NavLink to="/individualregister" className="btn btn-primary" onClick={handleClose}>
+                    <NavLink to="/individualregister" className="btn btn-primary" onClick={handleCloseRegistrationModal}>
                       Individual Registration
                     </NavLink>
-                    <NavLink to="/contingentregister" className="btn btn-secondary" onClick={handleClose}>
+                    <NavLink to="/contingentregister" className="btn btn-secondary" onClick={handleCloseRegistrationModal}>
                       Contingent Registration
                     </NavLink>
                   </div>
                 </Modal.Body>
               </Modal>
             </div>
+
             <br/>
+
+            {/* Second Button and Modal */}
+            <div className="reg-in-header">
+              <Button variant="primary" className="bs-a-n register-button" onClick={handleShowPaymentModal}>
+                Pay Now
+              </Button>
+
+              <Modal show={showPaymentModal} onHide={handleClosePaymentModal}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Choose Payment Type</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="d-flex justify-content-around">
+                    <NavLink to="/individualpayment" className="btn btn-primary" onClick={handleClosePaymentModal}>
+                      Individual Payment
+                    </NavLink>
+                    <NavLink to="/contingentpayment" className="btn btn-secondary" onClick={handleClosePaymentModal}>
+                      Contingent Payment
+                    </NavLink>
+                  </div>
+                </Modal.Body>
+              </Modal>
+            </div>
+
+
+
+
             <div className="reg-in-header">
               {/* <NavLink className='bs-a-n register-button' to="/individualregister" smooth duration={500}>
                 <p className="nav-item-text">
                   Register Now
                 </p>
               </NavLink> */}
-              <Button variant="primary" className="bs-a-n register-button" onClick={() => navigate("/payment")}>
+              {/* <Button variant="primary" className="bs-a-n register-button" onClick={() => navigate("/payment")}>
                 Pay Now
-              </Button>
-
+              </Button> */}
             </div>
           </div>
         </div>

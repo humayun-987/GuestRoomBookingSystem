@@ -10,6 +10,8 @@ import ContingentRegistrationForm from "./comp/RegistrationPortal/ContigentRegis
 import Brochure from "./comp/Brochure/Brochure";
 import { RegistrationClosed } from "./comp/registrationClosed";
 import Payment from "./comp/Payment";
+import IndividualPayment from "./comp/Payment/individualpayment";
+import ContingentPayment from "./comp/Payment/contingentpayment";
 // import Review from "./comp/reviews/index";
 
 function App() {
@@ -28,13 +30,15 @@ function App() {
         />
         <Route
           exact
-          path="/payment"
-          element={
-            <>
-              <Payment />
-            </>
-          }
+          path="/individualpayment"
+          element={<IndividualPayment />}
         />
+        <Route
+          exact
+          path="/contingentpayment"
+          element={<ContingentPayment />}
+        />
+        
 
         <Route
           exact
