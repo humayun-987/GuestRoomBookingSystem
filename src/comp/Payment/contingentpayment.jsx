@@ -10,18 +10,18 @@ const ContingentPayment = () => {
 
   return (
     <div className="register-success-body">
-        <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
+      <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
       <div className="register-success-cont">
         <h1 className="finalmessage">Thanks for registering for UNOSQ'24.</h1>
-        <p className="payment-heading">Please refer to below pdf for payment instructions:</p>
+        <p className="payment-heading">Please refer to the PDF below for payment instructions:</p>
 
         <div className="payment-container">
           <div className="pdf-container">
-            <embed
+            <iframe
               src="https://drive.google.com/file/d/1SvDOjNgqun4kpXLZY19wk-B__UQyETcx/preview"
-              type="application/pdf"
               className="pdf-frame"
-            />
+              title="Payment Instructions"
+            ></iframe>
           </div>
           <div className="details-and-buttons">
             <div className="payment-details">
@@ -36,16 +36,6 @@ const ContingentPayment = () => {
               </p>
             </div>
             <div className="buttons-container">
-              {/* Payment Link Button
-              <a
-                href="https://drive.google.com/file/d/1SvDOjNgqun4kpXLZY19wk-B__UQyETcx/view?usp=sharing"
-                className="payment-button"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Click Here to View Payment Instructions
-              </a> */}
-
               {/* Form Submission Button */}
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdSZRsXqZDPpDjtMdzmKVaBLulNah5XYXd9JBL9qhV4Q7ngyQ/viewform?usp=sf_link"

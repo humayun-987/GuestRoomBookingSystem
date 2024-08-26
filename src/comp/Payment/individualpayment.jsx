@@ -1,29 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 
 const IndividualPayment = () => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
-
-  const toggleDropdown = (dropdown) => {
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
-  };
-
   return (
     <div className="register-success-body">
-        <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
+      <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
       <div className="register-success-cont">
         <h1 className="finalmessage">Thanks for registering for UNOSQ'24.</h1>
-        
-        <p className="payment-heading">Please refer to below pdf for payment instructions:</p>
+
+        <p className="payment-heading">Please refer to the PDF below for payment instructions:</p>
         <p>Please make a payment of <strong>₹120</strong> through SBI Collect.</p>
 
         <div className="payment-container">
           <div className="pdf-container">
-            <embed
+            <iframe
               src="https://drive.google.com/file/d/1wF9mecPl7X6vojg-1GW6UySEZN9I9MYZ/preview"
-              type="application/pdf"
               className="pdf-frame"
-            />
+              title="Payment Instructions PDF"
+            ></iframe>
           </div>
           <div className="buttons-container">
             {/* Payment Link Button */}

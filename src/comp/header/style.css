@@ -3,11 +3,13 @@
     flex-direction: row;
     height: 100%;
 }
-.lower-layer{
+
+.lower-layer {
     background-color: var(--bg-header-lower-layer-back);
 }
-.upper-layer{
-    background-image: linear-gradient(to bottom right,rgba(179, 82, 82, 0.5), rgba(13, 72, 135, 0.5));
+
+.upper-layer {
+    background-image: linear-gradient(to bottom right, rgba(179, 82, 82, 0.5), rgba(13, 72, 135, 0.5));
 }
 
 .unosq-icons {
@@ -28,7 +30,6 @@
     align-items: center;
     overflow: hidden;
 }
-
 
 .unosq-img img {
     width: 70%;
@@ -56,11 +57,10 @@
 .spon .spon-img img {
     width: 70%;
     min-width: 80px;
-
 }
 
 .spon .spon-img .pw {
-    width: 50%; 
+    width: 50%;
 }
 
 .reg-in-header {
@@ -70,6 +70,30 @@
 }
 
 @media screen and (max-width: 768px) {
+    .reg-in-header {
+        text-align: center; /* Center content on small screens */
+    }
+
+    .register-button {
+        width: 100%; /* Full width for smaller screens */
+        max-width: none; /* Remove the max-width constraint */
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .d-flex {
+        flex-direction: column; /* Stack buttons vertically in modals */
+        align-items: center; /* Center buttons horizontally */
+    }
+
+    .btn {
+        margin: 10px 0; /* Space between buttons in vertical stack */
+        width: 100%; /* Full width buttons */
+        max-width: 220px; /* Constrain max width for buttons */
+    }
+
     .unosq-img {
         height: 50vh;
     }
@@ -98,7 +122,6 @@
         width: 30%;
     }
 }
-
 
 .btn-primary, .btn-secondary {
     display: inline-block;

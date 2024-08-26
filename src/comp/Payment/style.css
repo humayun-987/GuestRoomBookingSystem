@@ -135,7 +135,7 @@
 }
 
 
-@media (width < 800px)
+@media (width < 768px)
 {
   .payment-container
   {
@@ -144,5 +144,8 @@
   .pdf-container
   {
     width: 100%;
+  }
+  .pdf-frame {
+    height: 300px; /* Adjust for smaller screens */
   }
 }
