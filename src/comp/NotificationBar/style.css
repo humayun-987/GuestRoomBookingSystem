@@ -5,7 +5,7 @@
     width: 100%;
     overflow: hidden; /* Hide the part of the text that goes out of bounds */
     background-color: #f8d7da;
-    z-index: 1000;
+    z-index: 1;
   }
   
   .notification-bar {

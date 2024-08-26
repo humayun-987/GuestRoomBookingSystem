@@ -61,7 +61,7 @@ function Papers() {
           <div id="sp-down">
           <a
             className="sp-download"
-            href="https://drive.usercontent.google.com/u/0/uc?id=1AJQNTa2aFwTzGgrptVsqX4W1yY8JTULX&export=download"
+            href="https://drive.usercontent.google.com/u/0/uc?id=1Cz3PwK3tg4e9F6u7r17GWFe6XK7OP4au&export=download"
             target="_blank"
             rel="noopener noreferrer"
           >
