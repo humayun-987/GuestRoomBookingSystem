@@ -46,7 +46,7 @@
 }
 
 .spon .spon-item {
-    width: 30%;
+    width: 35%;
 }
 
 .spon .spon-title {
@@ -60,7 +60,7 @@
 }
 
 .spon .spon-img .pw {
-    width: 50%;
+    width: 80%;
 }
 
 .reg-in-header {
@@ -70,13 +70,40 @@
 }
 
 @media screen and (max-width: 768px) {
+    .spon {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        margin: 0;
+    }
+
+    .spon .spon-item {
+        width: 80%; 
+        margin-bottom: 20px;
+    }
+
+    .spon .spon-title {
+        font-size: 14px; 
+        text-align: center; 
+    }
+
+    .spon .spon-img img {
+        width: 50%; 
+        min-width: 60px; 
+        margin: 0 auto; 
+    }
+
+    .spon .spon-img .pw {
+        width: 60%;
+    }
+
     .reg-in-header {
-        text-align: center; /* Center content on small screens */
+        text-align: center;
     }
 
     .register-button {
-        width: 100%; /* Full width for smaller screens */
-        max-width: none; /* Remove the max-width constraint */
+        width: 100%;
+        max-width: none;
     }
 
     .modal-body {
@@ -84,14 +111,14 @@
     }
 
     .d-flex {
-        flex-direction: column; /* Stack buttons vertically in modals */
-        align-items: center; /* Center buttons horizontally */
+        flex-direction: column;
+        align-items: center;
     }
 
     .btn {
-        margin: 10px 0; /* Space between buttons in vertical stack */
-        width: 100%; /* Full width buttons */
-        max-width: 220px; /* Constrain max width for buttons */
+        margin: 10px 0;
+        width: 100%;
+        max-width: 220px;
     }
 
     .unosq-img {
@@ -106,10 +133,6 @@
         flex-direction: column;
     }
 
-    .spon .spon-title {
-        font-size: 12px;
-    }
-
     .unosq-icons {
         width: 100%;
     }
@@ -118,10 +141,16 @@
         width: 100%;
     }
 
+    .spon .spon-title {
+        font-size: 12px;
+    }
+
     .spon .spon-item {
-        width: 30%;
+        width: 80%;
+        margin-bottom: 20px;
     }
 }
+
 
 .btn-primary, .btn-secondary {
     display: inline-block;
@@ -135,19 +164,18 @@
     line-height: 1.5;
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    width: 220px; /* Fixed width */
-    height: 40px; /* Fixed height */
+    width: 220px; 
+    height: 40px; 
     white-space: nowrap;
 }
 
 .btn-primary:focus, .btn-primary:hover,
 .btn-secondary:focus, .btn-secondary:hover,
 .btn-primary:active, .btn-secondary:active {
-    width: 220px; /* Ensure width remains the same in active/hover/focus states */
-    height: 40px; /* Ensure height remains the same in active/hover/focus states */
+    width: 220px; 
+    height: 40px; 
 }
 
-/* Primary Button Specific Styles */
 .btn-primary {
     color: #fff;
     background-color: #007bff;
@@ -173,7 +201,6 @@
     border-color: #002752;
 }
 
-/* Secondary Button Specific Styles */
 .btn-secondary {
     color: #fff;
     background-color: #6c757d;
