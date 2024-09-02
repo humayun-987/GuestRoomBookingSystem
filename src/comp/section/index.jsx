@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import ResultTable from "../Result/ResultTable";
-import Result2 from "../Result2/ResultTable";
+// import ResultTable from "../Result/ResultTable";
+// import Result2 from "../Result2/ResultTable";
 import Timeline from "../Timeline";
 import "./section.css";
 import { NavLink } from "react-router-dom";
@@ -126,7 +126,7 @@ export default function Section() {
 
 
           </div>
-          <div className="phase2ress" style={{
+          {/* <div className="phase2ress" style={{
             margin: "80px 0"
           }}>
             <h1 className="d-flex justify-content-center header" > <span style={{
@@ -137,7 +137,7 @@ export default function Section() {
           <h1 className="d-flex justify-content-center header" ><span style={{
             color: "var(--bg-result-highligh1)"
           }}>PHASE-1 RESULT</span></h1>
-          <ResultTable />
+          <ResultTable /> */}
 
         </section>
         <AboutUs />

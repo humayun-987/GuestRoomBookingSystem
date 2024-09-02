@@ -74,12 +74,16 @@
         flex-direction: column;
         align-items: center;
         height: auto;
-        margin: 0;
+        /* margin-left: auto; */
     }
 
     .spon .spon-item {
         width: 80%; 
         margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centers the image container */
+        text-align: center; /* Centers the title text */
     }
 
     .spon .spon-title {
@@ -87,10 +91,15 @@
         text-align: center; 
     }
 
+    .spon .spon-img {
+        display: flex;
+        justify-content: center; /* Ensures the image is centered */
+        width: 100%;
+    }
+
     .spon .spon-img img {
         width: 50%; 
         min-width: 60px; 
-        margin: 0 auto; 
     }
 
     .spon .spon-img .pw {
