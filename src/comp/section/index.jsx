@@ -54,7 +54,7 @@ export default function Section() {
         width: "100%",
       }}>
         <Navbar />
-        <NotificationBar message="The exam dates for UNOSQ are postponed. Kindly refer to the Notices section for the updated dates." duration={5000} />
+        <NotificationBar message="The results for Phase 1 will be announced on 5th September. Please check the Notices section for the complete exam timeline and further updates." duration={5000} />
         <Header />
         <section id="result" style={{ marginTop: "40px", padding: "0% 6%" }}>
           <h2 style={{
@@ -71,6 +71,7 @@ export default function Section() {
             textAlign: "left",
             margin: "0 0 0 0"
           }}>
+            {/* <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div> */}
 
 <h5 style={{ textAlign: "center", marginTop: "40px" }}>Important Dates</h5>
             <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
@@ -114,6 +115,7 @@ export default function Section() {
                 {/* <p className="notif1">
                   Phase 2 & Phase 1 Results of UNOSQ'23 are displayed below.
                 </p> */}
+
 
                 <p className="notif1">
                 Reminder !! There is a session scheduled today, 16th August, at 5 PM with Aditya Srivastav, UPSC AIR 1

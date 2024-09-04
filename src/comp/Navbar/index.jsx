@@ -52,7 +52,7 @@ export default function Navbar() {
                   <Modal.Title>Registration Closed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Registration is currently closed. Please check back later.
+                  Registrations are currently closed.
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
@@ -107,8 +107,8 @@ export default function Navbar() {
                 <Modal.Title>Registration Closed</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                Registration is currently closed. Please check back later.
-                <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
+                Registrations are currently closed.
+                {/* <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div> */}
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

@@ -149,8 +149,7 @@ export default function Header() {
                   <Modal.Title>Registration Closed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <div>Registration is currently closed. Please check back later.</div>
-                  <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
+                  <div>Registrations are currently closed.</div>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleCloseRegistrationModal}>
@@ -180,8 +179,7 @@ export default function Header() {
                   <Modal.Title>Payment Closed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <div>Payment is currently closed. Please check back later.</div>
-                  <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
+                  <div>Registrations are currently closed.</div>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClosePaymentModal}>
