@@ -78,28 +78,30 @@ export default function Header() {
                   transform: "translateY(20px)",
                 }}
                 src="./UNOSQ_new_logo.png"
+                alt="UNOSQ Logo"
               />
             </div>
 
-            {/* Moved Sponsor Section */}
+            {/* Sponsor Section */}
             <div className="spon" style={{ marginTop: "60px", marginRight: "50px" }}>
               <div className="spon-item">
                 <div className="spon-title">
                   <h5>Technology Partner</h5>
                 </div>
                 <div className="spon-img">
-                  <a href="https://hiremee.co.in/" target="_blank" id="hyperlinking">
-                    <img className="pw" src="/hiremee.jpg" />
+                  <a href="https://hiremee.co.in/" target="_blank" rel="noopener noreferrer">
+                    <img className="pw" src="/hiremee.jpg" alt="HireMee" />
                   </a>
                 </div>
               </div>
-              {/* <div className="spon-item">
+              {/* Additional Sponsors (Commented Out)
+              <div className="spon-item">
                 <div className="spon-title">
                   <p>Powered By</p>
                 </div>
                 <div className="spon-img">
-                  <a href="https://www.extramarks.com/students/k-12?utm_source=iitkanpur&utm_medium=unosq&utm_campaign=website" target="_blank" id="hyperlinking">
-                    <img className="em" src="/Extramarks.png" />
+                  <a href="https://www.extramarks.com/students/k-12?utm_source=iitkanpur&utm_medium=unosq&utm_campaign=website" target="_blank" rel="noopener noreferrer">
+                    <img className="em" src="/Extramarks.png" alt="Extramarks" />
                   </a>
                 </div>
               </div>
@@ -108,11 +110,12 @@ export default function Header() {
                   <p>In Association With</p>
                 </div>
                 <div className="spon-img">
-                  <a href="https://www.speedexam.net/" target="_blank" id="hyperlinking">
-                    <img className="se" src="/speedexam_logo.png" />
+                  <a href="https://www.speedexam.net/" target="_blank" rel="noopener noreferrer">
+                    <img className="se" src="/speedexam_logo.png" alt="SpeedExam" />
                   </a>
                 </div>
-              </div> */}
+              </div>
+              */}
             </div>
           </div>
 
@@ -124,10 +127,11 @@ export default function Header() {
                   margin: "auto",
                 }}
                 src={uns}
+                alt="UNOSQ Vector"
               />
             </div>
 
-            {/* First Button and Modal */}
+            {/* Register Now Button and Modal */}
             <div className="reg-in-header">
               <Button
                 variant="primary"
@@ -142,32 +146,23 @@ export default function Header() {
                 onHide={handleCloseRegistrationModal}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>Choose Registration Type</Modal.Title>
+                  <Modal.Title>Registration Closed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <div className="d-flex justify-content-around">
-                    <NavLink
-                      to="/individualregister"
-                      className="btn btn-primary"
-                      onClick={handleCloseRegistrationModal}
-                    >
-                      Individual Registration
-                    </NavLink>
-                    <NavLink
-                      to="/contingentregister"
-                      className="btn btn-secondary"
-                      onClick={handleCloseRegistrationModal}
-                    >
-                      Contingent Registration
-                    </NavLink>
-                  </div>
+                  <div>Registration is currently closed. Please check back later.</div>
+                  <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
                 </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleCloseRegistrationModal}>
+                    Close
+                  </Button>
+                </Modal.Footer>
               </Modal>
             </div>
 
             <br />
 
-            {/* Second Button and Modal */}
+            {/* Pay Now Button and Modal */}
             <div className="reg-in-header">
               <Button
                 variant="primary"
@@ -182,26 +177,17 @@ export default function Header() {
                 onHide={handleClosePaymentModal}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>Choose Payment Type</Modal.Title>
+                  <Modal.Title>Payment Closed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <div className="d-flex justify-content-around">
-                    <NavLink
-                      to="/individualpayment"
-                      className="btn btn-primary"
-                      onClick={handleClosePaymentModal}
-                    >
-                      Individual Payment
-                    </NavLink>
-                    <NavLink
-                      to="/contingentpayment"
-                      className="btn btn-secondary"
-                      onClick={handleClosePaymentModal}
-                    >
-                      Contingent Payment
-                    </NavLink>
-                  </div>
+                  <div>Payment is currently closed. Please check back later.</div>
+                  <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
                 </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClosePaymentModal}>
+                    Close
+                  </Button>
+                </Modal.Footer>
               </Modal>
             </div>
           </div>

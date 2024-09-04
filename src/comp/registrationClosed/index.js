@@ -6,7 +6,8 @@ export const RegistrationClosed = () => {
     <>
       <div className="register-closed-main">
         <div>Registrations are closed. </div>
-      </div>
+        <div>Results will be Declared on 5th September</div>
+    </div>
     </>
   );
 };

@@ -9,6 +9,7 @@ export default function Navbar() {
   const handleShow = () => setShow(true);
   const [isOpen, setIsopen] = useState(false);
   const toggle = () => setIsopen(!isOpen);
+
   return (
     <>
       <nav className="navbar">
@@ -48,22 +49,19 @@ export default function Navbar() {
               </Button>
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Choose Registration Type</Modal.Title>
+                  <Modal.Title>Registration Closed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <div className="d-flex justify-content-around">
-                    <Navlink to="/individualregister" className="btn btn-primary" onClick={handleClose}>
-                      Individual Registration
-                    </Navlink>
-                    <Navlink to="/contingentregister" className="btn btn-secondary" onClick={handleClose}>
-                      Contingent Registration
-                    </Navlink>
-                  </div>
+                  Registration is currently closed. Please check back later.
                 </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                </Modal.Footer>
               </Modal>
             </div>
           </div>
-
 
           {/* Navbar for small screens */}
           <div className="navbar-bg-sm">
@@ -106,18 +104,17 @@ export default function Navbar() {
             </Button>
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Choose Registration Type</Modal.Title>
+                <Modal.Title>Registration Closed</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div className="d-flex justify-content-around">
-                  <Navlink to="/individualregister" className="btn btn-primary" onClick={handleClose}>
-                    Individual Registration
-                  </Navlink>
-                  <Navlink to="/contingentregister" className="btn btn-secondary" onClick={handleClose}>
-                    Contingent Registration
-                  </Navlink>
-                </div>
+                Registration is currently closed. Please check back later.
+                <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
               </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
             </Modal>
           </div>
 
