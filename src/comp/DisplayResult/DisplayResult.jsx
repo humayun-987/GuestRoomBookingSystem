@@ -74,7 +74,7 @@ function ResultTable() {
                         <tr>
                             <th>S.I no.</th>
                             <th>Name</th>
-                            <th>Mobile Number</th>
+                            
                             <th>School name</th>
                             <th>State</th>
                             <th>Percentage Obtained (%)</th>
@@ -85,7 +85,7 @@ function ResultTable() {
                             <tr key={index}>
                                 <td>{item["S.I no."]}</td>
                                 <td>{item["Name"]}</td>
-                                <td>{item["Mobile Number"]}</td>
+                                
                                 <td>{item["School name"]}</td>
                                 <td>{item["State"]}</td>
                                 <td>{item["Percentage Obtained (%)"]}</td>
