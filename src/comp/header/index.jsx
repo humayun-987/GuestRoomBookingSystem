@@ -13,6 +13,7 @@ export default function Header() {
   const handleCloseRegistrationModal = () => setShowRegistrationModal(false);
   const handleShowPaymentModal = () => setShowPaymentModal(true);
   const handleClosePaymentModal = () => setShowPaymentModal(false);
+  const isSmallScreen = window.innerWidth < 768;
 
   return (
     <>
@@ -42,29 +43,37 @@ export default function Header() {
             }}
           />
         </div>
+
+
+
+
         <div
-          className="lower-layer"
-          style={{
-            position: "absolute",
-            width: "100%",
-            zIndex: "-1",
-            height: "100vh",
-            opacity: "0.4",
-            top: "0",
-          }}
-        ></div>
-        <div
-          className="upper-layer"
-          style={{
-            position: "absolute",
-            width: "100%",
-            zIndex: "5",
-            height: "100vh",
-            opacity: "0.4",
-            top: "0",
-            pointerEvents: "none",
-          }}
-        ></div>
+  className="lower-layer"
+  style={{
+    position: "absolute",
+    width: "100%",
+    zIndex: "-1",
+    height: isSmallScreen ? "115vh" : "100vh",
+    opacity: "0.4",
+    top: "0",
+  }}
+></div>
+<div
+  className="upper-layer"
+  style={{
+    position: "absolute",
+    width: "100%",
+    zIndex: "5",
+    height: isSmallScreen ? "115vh" : "100vh",
+    opacity: "0.4",
+    top: "0",
+    pointerEvents: "none",
+  }}
+></div>
+
+
+
+
 
         <div className="header-div">
           <div className="unosq-icons">

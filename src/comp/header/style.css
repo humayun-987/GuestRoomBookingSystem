@@ -108,11 +108,14 @@
 
     .reg-in-header {
         text-align: center;
+        margin-bottom: -1px; /* Add space to avoid overlapping */
+
     }
 
     .register-button {
-        width: 100%;
-        max-width: none;
+        width: 100%; /* Full width for smaller screens */
+        max-width: 280px; /* Make sure button doesn't get too large */
+
     }
 
     .modal-body {
@@ -139,7 +142,8 @@
     }
 
     .header-div {
-        flex-direction: column;
+       flex-direction: column;
+        padding-bottom: 60px; 
     }
 
     .unosq-icons {
@@ -158,6 +162,7 @@
         width: 80%;
         margin-bottom: 20px;
     }
+    
 }
 
 
