@@ -22,6 +22,9 @@
     .review-card {
       width: 100%; /* On smaller screens, the cards will take 100% width and stack vertically */
     }
+    #id{
+      margin-top: 116px;
+    }
   }
  
   
