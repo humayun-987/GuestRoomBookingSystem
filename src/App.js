@@ -12,6 +12,7 @@ import { RegistrationClosed } from "./comp/registrationClosed";
 import Payment from "./comp/Payment";
 import IndividualPayment from "./comp/Payment/individualpayment";
 import ContingentPayment from "./comp/Payment/contingentpayment";
+import DisplayResult from "./comp/DisplayResult/DisplayResult";
 // import Review from "./comp/reviews/index";
 
 function App() {
@@ -62,6 +63,8 @@ function App() {
           element={<ContingentRegistrationForm />}
         />
         <Route exact path="/brochure" element={<Brochure />} />
+        <Route exact path="/DisplayResult" element={<DisplayResult />} />
+
       </Routes>
     </div>
   );

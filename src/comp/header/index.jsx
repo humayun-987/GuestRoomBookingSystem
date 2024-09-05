@@ -189,7 +189,47 @@ export default function Header() {
                   </Button>
                 </Modal.Footer>
               </Modal>
-            </div>
+              <Modal
+                show={showPaymentModal}
+                onHide={handleClosePaymentModal}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Payment Closed</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div>Payment is currently closed. Please check back later.</div>
+                  <div style={{ fontSize: '17px', fontWeight: 'bold' }}>Results will be declared on 5th September.</div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClosePaymentModal}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+              </div>
+
+
+
+              <div className="reg-in-header">
+              <Button
+                variant="primary"
+                className="bs-a-n register-button mt-4"
+                onClick={() => navigate("/DisplayResult")}
+                
+              >
+                Qualified Candidates
+              </Button>
+
+              
+              </div>
+
+
+
+
+              
+
+
+
           </div>
         </div>
       </section>

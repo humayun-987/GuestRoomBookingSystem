@@ -57,56 +57,60 @@ export default function Section() {
         <NotificationBar message="The exam dates for UNOSQ are postponed. Kindly refer to the Notices section for the updated dates." duration={5000} />
         <Header />
         <section id="result" style={{ marginTop: "40px", padding: "0% 6%" }}>
-          <h2 style={{
-            textAlign: "center",
-            margin: "40px 0 0 0"
-          }}>
-            Notices
-          </h2>
-          <div className="notices" style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            fontSize: "1rem",
-            textAlign: "left",
-            margin: "0 0 0 0"
-          }}>
+  <h2 style={{ textAlign: "center", margin: "40px 0 0 0" }}>Notices</h2>
+  <div className="notices" style={{ display: "flex", flexDirection: "column", justifyContent: "center", fontSize: "1rem", textAlign: "left", margin: "0 0 0 0" }}>
+    <h5 style={{ textAlign: "center", marginTop: "40px" }}>Important Dates</h5>
+    <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
+      <tbody>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Registration Deadline</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}><del>16 August</del> 28 August</td>
+        </tr>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Phase 1 Exam</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}><del>25 August</del> 1 September</td>
+        </tr>
+        {/* <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 1 (Class 5-6)</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>
+            <a href="./Pool Little Champs (Class 5-6) - Final Result.xlsx" download>Download Result (Class 5-6)</a>
+          </td>
+        </tr>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 1 (Class 7-8)</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>
+            <a href="./Pool Super Nova (Class7-8)- Final Result.xlsx" download>Download Result (Class 7-8)</a>
+          </td>
+        </tr>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 1 (Class 9-10)</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>
+            <a href="./The Titans ( Class 9-10) - Final Result.xlsx" download>Download Result (Class 9-10)</a>
+          </td>
+        </tr>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 1 (Class 11-12)</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>
+            <a href="./Elite Explorers ( Class 11 - 12) - Final Result.xlsx" download>Download Result (Class 11-12)</a>
+          </td>
+        </tr> */}
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Phase 2 Exam</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>8 September</td>
+        </tr>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 2</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>10 September</td>
+        </tr>
+        <tr>
+          <td style={{ border: "1px solid black", padding: "8px" }}>Felicitation</td>
+          <td style={{ border: "1px solid black", padding: "8px" }}>6 October</td>
+        </tr>
+      </tbody>
+    </table>
 
-<h5 style={{ textAlign: "center", marginTop: "40px" }}>Important Dates</h5>
-            <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
-              {/* <thead>
-                <tr>
-                  <th style={{ border: "1px solid black", padding: "8px" }}>Event</th>
-                  <th style={{ border: "1px solid black", padding: "8px" }}>Date</th>
-                </tr>
-              </thead> */}
-              <tbody>
-                <tr>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>Registration Deadline</td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}><del>16 August</del> 28 August</td>
-                </tr>
-                <tr>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>Phase 1 Exam</td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}><del>25 August</del> 1 September</td>
-                </tr>
-                <tr>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 1</td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}><del>28 August</del> 5 September</td>
-                </tr>
-                <tr>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>Phase 2 Exam</td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>8 September</td>
-                </tr>
-                <tr>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>Result Phase 2</td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>10 September</td>
-                </tr>
-                <tr>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>Felicitation</td>
-                  <td style={{ border: "1px solid black", padding: "8px" }}>6 October</td>
-                </tr>
-              </tbody>
-            </table>
+
+
 
             <h5 style={{ textAlign: "center", marginTop: "40px" }}>Previous Events</h5>
             <ul>
