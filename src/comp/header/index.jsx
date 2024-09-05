@@ -53,7 +53,7 @@ export default function Header() {
     position: "absolute",
     width: "100%",
     zIndex: "-1",
-    height: isSmallScreen ? "112vh" : "100vh",
+    height: isSmallScreen ? "115vh" : "100vh",
     opacity: "0.4",
     top: "0",
   }}
@@ -64,7 +64,7 @@ export default function Header() {
     position: "absolute",
     width: "100%",
     zIndex: "5",
-    height: isSmallScreen ? "112vh" : "100vh",
+    height: isSmallScreen ? "115vh" : "100vh",
     opacity: "0.4",
     top: "0",
     pointerEvents: "none",

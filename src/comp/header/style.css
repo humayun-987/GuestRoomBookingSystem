@@ -108,7 +108,7 @@
 
     .reg-in-header {
         text-align: center;
-        margin-bottom: 40px; /* Add space to avoid overlapping */
+        margin-bottom: -1px; /* Add space to avoid overlapping */
 
     }
 
@@ -143,7 +143,7 @@
 
     .header-div {
        flex-direction: column;
-        padding-bottom: 60px; /* Ensure enough space below the button */
+        padding-bottom: 60px; 
     }
 
     .unosq-icons {
@@ -162,10 +162,7 @@
         width: 80%;
         margin-bottom: 20px;
     }
-    .lower-layer,.upper-layer{
-        height: 112vh;
-
-    }
+    
 }
 
 

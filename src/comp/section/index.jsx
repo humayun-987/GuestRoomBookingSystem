@@ -57,7 +57,7 @@ export default function Section() {
         <Navbar />
         <NotificationBar message="The exam dates for UNOSQ are postponed. Kindly refer to the Notices section for the updated dates." duration={5000} />
         <Header />
-        <section id="result" style={{ marginTop: isSmallScreen ? "120px" : "40px", padding: "0% 6%" }}>
+        <section id="result" style={{ marginTop: isSmallScreen ? "130px" : "40px", padding: "0% 6%" }}>
   <h2 style={{ textAlign: "center", margin: "40px 0 0 0" }}>Notices</h2>
   <div className="notices" style={{ display: "flex", flexDirection: "column", justifyContent: "center", fontSize: "1rem", textAlign: "left", margin: "0 0 0 0" }}>
     <h5 style={{ textAlign: "center", marginTop: "40px" }}>Important Dates</h5>
