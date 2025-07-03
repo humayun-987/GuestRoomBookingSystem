@@ -9,6 +9,7 @@ import Contact from "../contact/contact";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import Header from "../header";
+import Hero from "../Hero";
 import {
   Leftfade,
   Rightfade,

@@ -48,34 +48,29 @@ export default function Header() {
 
 
         <div
-  className="lower-layer"
-  style={{
-    position: "absolute",
-    width: "100%",
-    zIndex: "-1",
-    height: isSmallScreen ? "115vh" : "100vh",
-    opacity: "0.4",
-    top: "0",
-  }}
-></div>
-<div
-  className="upper-layer"
-  style={{
-    position: "absolute",
-    width: "100%",
-    zIndex: "5",
-    height: isSmallScreen ? "115vh" : "100vh",
-    opacity: "0.4",
-    top: "0",
-    pointerEvents: "none",
-  }}
-></div>
-
-
-
-
-
-        <div className="header-div">
+          className="lower-layer"
+          style={{
+            position: "absolute",
+            width: "100%",
+            zIndex: "-1",
+            height: isSmallScreen ? "115vh" : "100vh",
+            opacity: "0.4",
+            top: "0",
+          }}
+        ></div>
+        <div
+          className="upper-layer"
+          style={{
+            position: "absolute",
+            width: "100%",
+            zIndex: "5",
+            height: isSmallScreen ? "115vh" : "100vh",
+            opacity: "0.4",
+            top: "0",
+            pointerEvents: "none",
+          }}
+        ></div>
+         <div className="header-div">
           <div className="unosq-icons">
             <div className="unosq-img">
               <img
@@ -213,27 +208,27 @@ export default function Header() {
                   </Button>
                 </Modal.Footer>
               </Modal>
-              </div>
+            </div>
 
 
 
-              <div className="reg-in-header">
+            <div className="reg-in-header">
               <Button
                 variant="primary"
                 className="bs-a-n register-button mt-4"
                 onClick={() => navigate("/DisplayResult")}
-                
+
               >
                 Qualified Candidates
               </Button>
 
-              
-              </div>
+
+            </div>
 
 
 
 
-              
+
 
 
 

@@ -11,16 +11,18 @@
   margin: auto;
   }
 
-  @media screen and (max-width: 736px)
-  .flex.flex-tabs ul {
-      width: 100%;
+  @media screen and (max-width: 736px){
+      .flex.flex-tabs ul {
+          width: 100%;
+      }
   }
 
 
-  @media screen and (max-width: 980px)
-.flex.flex-tabs ul {
+  @media screen and (max-width: 980px){
+    .flex.flex-tabs ul {
     width: 30%;
 }
+  }
 
 
 element.style {

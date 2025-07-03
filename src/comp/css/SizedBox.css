@@ -1,0 +1,23 @@
+.outer-sized-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inner-sized-box {
+  flex-grow: 1;
+  max-width: 1120px;
+  padding: 0 40px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .inner-sized-box {
+    padding: 0 var(--tablet-padding);
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .inner-sized-box {
+    padding: 0 var(--phone-padding);
+  }
+}
