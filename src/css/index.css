@@ -1,0 +1,57 @@
+:root {
+  /* 60% Background/Base */
+  --color-background: hsl(27, 100%, 98%);
+
+  /* 30% Secondary UI */
+  --color-primary: hsl(29, 100%, 50%);
+  --color-primary-light: hsl(29, 100%, 60%);
+  --color-primary-dark: hsl(29, 100%, 40%);
+
+  /* 10% Accent */
+  --color-accent: hsl(249, 68%, 50%);
+  --color-accent-light: hsl(249, 68%, 60%);
+  --color-accent-dark: hsl(249, 68%, 40%);
+
+  /* Text */
+  --text-color: hsl(30, 12%, 10%);
+  --text-secondary: hsl(0, 0%, 35%);
+  --text-inverse: hsl(0, 0%, 100%);
+
+  /* Border and Shadows */
+  --border-color: hsl(217, 30%, 85%);
+  --border-radius: 8px;
+  --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  /* Spacing Scale */
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+
+  /* Screen Breakpoints */
+  --laptop-max-width: 1200px; /* Desktop is more morethan 1200px */
+  --tablet-man-width: 810px;
+  --phone-max-width: 425px;
+
+  --default-padding: 40px;
+  --tablet-padding: 32px;
+  --phone-padding: 20px;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--color-background);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+}

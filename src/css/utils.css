@@ -1,0 +1,104 @@
+/********** Section Name **********/
+
+.section-name {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 12px;
+  padding: var(--spacing-1) var(--spacing-2);
+  color: var(--text-color);
+  background-color: #ffe4cc;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+
+/********** Section Heading **********/
+
+.section-heading {
+  font-size: 48px;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.section-sub-heading {
+  font-size: 32px;
+  line-height: 34px;
+  font-weight: bold;
+}
+
+.section-content {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1200px) {
+  .section-heading {
+    font-size: 36px;
+    line-height: 38px;
+  }
+
+  .section-sub-heading {
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: bold;
+  }
+
+  .section-content {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .section-heading {
+    font-size: 32px;
+    line-height: 34px;
+  }
+}
+
+/********** Section Box **********/
+
+.section-box {
+  padding: 100px 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+@media screen and (max-width: 1200px) {
+  .section-box {
+    padding: 64px 0;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .section-box {
+    padding: 48px 0;
+  }
+}
+
+/********** Primary Button **********/
+
+.primary-btn {
+  display: inline-flex;
+  background-color: var(--color-accent);
+  color: var(--text-inverse);
+  padding: var(--spacing-2) var(--spacing-4);
+  border: none;
+  border-radius: 99999px;
+  cursor: pointer;
+  align-items: center;
+  overflow: clip;
+  transition: 250ms;
+}
+
+.primary-btn * {
+  transition: 250ms;
+}
+
+.primary-btn:hover {
+  background-color: var(--color-accent-light);
+  box-shadow: var(--shadow-default);
+}
+
+.primary-btn:active {
+  background-color: var(--color-accent-dark);
+}
