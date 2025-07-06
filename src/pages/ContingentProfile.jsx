@@ -1,0 +1,84 @@
+import React, { useEffect, useState } from "react";
+import "./css/IndividualProfile.css"
+import NavigationBar from "../components/NavigationBar";
+import { db, auth } from "../comp/firebaseConfig";
+import {
+    collection,
+    doc,
+    setDoc,
+    onSnapshot
+} from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import ContingentProfileForm from "./ContingentProfileForm";
+
+const ContingentProfilesContainer = () => {
+    const [profiles, setProfiles] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribeAuth = onAuthStateChanged(auth, (firebaseUser) => {
+            if (firebaseUser) {
+                setUser(firebaseUser);
+                const profilesRef = collection(db, "Contingent Users'25", firebaseUser.uid, "profiles");
+
+                const unsubscribeSnap = onSnapshot(profilesRef, async (snapshot) => {
+                    if (snapshot.empty) {
+                        const defaultProfileRef = doc(profilesRef);
+                        await setDoc(defaultProfileRef, {
+                            username: "contingent_" + firebaseUser.uid.substring(0, 6),
+                            schoolName: "",
+                            pocName: "",
+                            principalName: "",
+                            schoolEmail: "",
+                            pocEmail: "",
+                            principalPhone: "",
+                            pocPhone: "",
+                            whatsapp: "",
+                            schoolAddress: "",
+                            numberOfStudents: "",
+                            state: "",
+                            city: "",
+                            applicationPassword: "Application Password will be provided after payment",
+                            paymentSuccessful: false
+                        });
+                    } else {
+                        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        setProfiles(data);
+                        setLoading(false);
+                    }
+                });
+
+                return () => unsubscribeSnap();
+            } else {
+                setLoading(false);
+            }
+        });
+
+        return () => unsubscribeAuth();
+    }, []);
+
+    return (
+        <div className="container">
+            <NavigationBar />
+            {loading ? (
+                <div className="loader-wrapper">
+                    <div className="spinner"></div>
+                </div>
+            ) : (
+                <div className="profile-list">
+                    {profiles.map((profile) => (
+                        <ContingentProfileForm
+                            key={profile.id}
+                            profileId={profile.id}
+                            initialData={profile}
+                            user={user}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default ContingentProfilesContainer;

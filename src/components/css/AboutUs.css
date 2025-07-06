@@ -1,0 +1,63 @@
+.about-us .basic-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex-basis: 1;
+}
+
+.about-us .basic-info .img-section {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  flex: 5;
+}
+
+.about-us .basic-info .content-section {
+  flex: 7;
+}
+
+.about-us .basic-info .content-section h1 {
+  padding-bottom: 20px;
+}
+
+.about-us .basic-info .content-section p {
+  padding-bottom: 40px;
+}
+
+.about-us .basic-info .content-section .stats {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 64px;
+}
+
+.about-us .basic-info .content-section .stats .stats-data {
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 1200px) {
+  .about-us .basic-info .img-section {
+    gap: 40px;
+  }
+
+  .about-us .basic-info .img-section div img {
+    width: 200px;
+  }
+
+  .about-us .basic-info .content-section .stats {
+    gap: 48px;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .about-us .basic-info {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .about-us .basic-info .content-section .stats {
+    grid-template-columns: repeat(2, max-content);
+    grid-template-rows: repeat(2, max-content);
+    gap: 32px;
+  }
+}
