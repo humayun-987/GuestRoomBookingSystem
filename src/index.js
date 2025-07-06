@@ -20,20 +20,39 @@
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import "./css/index.css";
 import "./css/utils.css";
 import FAQ from "./pages/FAQ.jsx";
-import { Signinup } from "./pages/Login.jsx";
+import { IndividualLogin } from "./pages/IndividualLogin.jsx";
+import { IndividualSignup } from "./pages/IndividualSignup.jsx";
+import { ContingentSignup } from "./pages/Contingent_Signup.jsx";
+import { ContingentLogin } from "./pages/Contingent_Login.jsx";
+// import Brochure from "./comp/Brochure/Brochure.jsx";
+import IndividualProfilesContainer from "./pages/IndividualProfile.jsx";
+import ContingentProfilesContainer from "./pages/ContingentProfile.jsx";
+import IndividualPayment from "./comp/Payment/individualpayment";
+import ContingentPayment from "./comp/Payment/contingentpayment";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/FAQ" element={<FAQ />} />
-        <Route path="/register" element={<Signinup />} />
+        {/* <Route path="/brochure" element={<Brochure />} /> */}
+        <Route path="/individual_login" element={<IndividualLogin />} />
+        <Route path="/individual_signup" element={<IndividualSignup />} />
+        <Route path="/contingent_signup" element={<ContingentSignup />} />
+        <Route path="/contingent_login" element={<ContingentLogin />} />
+        <Route path="/contingentPayment" element={<ContingentPayment />} />
+        <Route path="/individualPayment" element={<IndividualPayment />} />
+        <Route path="/individual_profile/:uid" element={<IndividualProfilesContainer />} />
+        <Route path="/contingent_profile/:uid" element={<ContingentProfilesContainer />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

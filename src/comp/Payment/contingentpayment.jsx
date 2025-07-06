@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-
+import NavigationBar from "../../components/NavigationBar";
 const ContingentPayment = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -10,7 +10,8 @@ const ContingentPayment = () => {
 
   return (
     <div className="register-success-body">
-      <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
+      {/* <img className="brochure-background" src="/bg-head.jpg" alt="Background" /> */}
+      <NavigationBar/>
       <div className="register-success-cont">
         <h1 className="finalmessage">Thanks for registering for UNOSQ'24.</h1>
         <p className="payment-heading">Please refer to the PDF below for payment instructions:</p>

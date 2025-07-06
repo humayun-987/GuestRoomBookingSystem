@@ -1,0 +1,118 @@
+.sample-section {
+    padding: 60px 20px;
+    text-align: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+@media screen and (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #222;
+    }
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.paper-card {
+    background: radial-gradient(circle at top left, #fdf6ec 0%, #ffffff 100%);
+    border-radius: 16px;
+    padding: 20px 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 240px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paper-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.paper-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.paper-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #00a6ff, #009dff, #007bff);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #0056d2;
+}
+
+@media screen and (max-width: 480px) {
+
+    .sample-section {
+        width: 85%;
+    }
+
+    .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .paper-card {
+        background: radial-gradient(circle at top left, #fdf6ec 0%, #ffffff 100%);
+        border-radius: 16px;
+        padding: 10px 10px;
+        padding-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .paper-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .paper-card h3 {
+        font-size: large;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .download-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #00a6ff, #009dff, #007bff);
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: smaller;
+        transition: background 0.3s ease;
+    }
+
+}

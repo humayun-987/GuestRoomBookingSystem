@@ -1,0 +1,224 @@
+.timeline-container {
+  position: relative;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+}
+.timeline-heading{
+ 
+}
+.heading {
+  font-size: 2.5rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin: 20px 0;
+}
+
+.item-title{
+  color:rgb(71, 71, 72);
+}
+
+.timeline-item.right {
+  justify-content: flex-end;
+}
+
+.content {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  padding-left: 50px;
+  border-left: 6px solid;
+  border-radius: 10px;
+  width: 45%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border: 6px solid;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: calc(50% - 36px);
+  left: -36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.timeline-item.right .content {
+  text-align: right;
+  border-left: none;
+  border-right: 6px solid;
+  padding-right: 50px;
+}
+
+.timeline-item.right .icon-circle {
+  left: auto;
+  right: -36px;
+}
+@media screen and (max-width: 650px) {
+
+  .timeline-container {
+    width: 80%;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    padding-left: 50px;
+    border-left: 6px solid;
+    border-radius: 10px;
+    width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    border: 6px solid;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: calc(50% - 36px);
+    left: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-item.right .content {
+    text-align: right;
+    padding-right: 50px;
+    padding-left: 0px;
+    border-left: none;
+    border-right: 6px solid;
+  }
+
+  .timeline-item.right .icon-circle {
+    left: auto;
+    right: -30px;
+  }
+
+  .description {
+    font-size: smaller;
+  }
+}
+@media screen and (max-width: 800px) and (min-width: 650px) {
+
+  .timeline-container {
+    width: 80%;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    padding-left: 2px;
+    padding-left: 50px;
+    border-left: 6px solid;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    border: 6px solid;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: calc(50% - 36px);
+    left: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-item.right .content {
+    text-align: right;
+    padding-right: 50px;
+    padding-left: 0px;
+    border-left: none;
+    border-right: 6px solid;
+  }
+
+  .timeline-item.right .icon-circle {
+    left: auto;
+    right: -30px;
+  }
+
+  .description {
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 1250px) and (min-width: 800px) {
+   .content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    padding-left: 2px;
+    padding-left: 50px;
+    border-left: 6px solid;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+   .timeline-item.right .content {
+    text-align: right;
+    padding-right: 50px;
+    padding-left: 0px;
+    border-left: none;
+    border-right: 6px solid;
+  }
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    border: 6px solid;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: calc(50% - 36px);
+    left: -36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.timeline-item.right .icon-circle {
+    left: auto;
+    right: -30px;
+  }
+
+  .timeline-container {
+    position: relative;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0;
+  }
+}

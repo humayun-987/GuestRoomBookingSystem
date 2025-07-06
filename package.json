@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fortawesome/fontawesome-free": "^6.4.0",
@@ -35,6 +36,7 @@
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
     "react-step-progress-bar": "^1.0.3",
+    "react-toastify": "^11.0.5",
     "react-transition-group": "^4.4.5",
     "react-typed": "^2.0.12",
     "web-vitals": "^2.1.4"
@@ -62,5 +64,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^5.0.43",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^2.2.19"
   }
 }

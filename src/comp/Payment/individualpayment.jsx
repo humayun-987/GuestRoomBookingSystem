@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
-
+import NavigationBar from "../../components/NavigationBar";
 const IndividualPayment = () => {
   return (
     <div className="register-success-body">
-      <img className="brochure-background" src="/bg-head.jpg" alt="Background" />
+      {/* <img className="brochure-background" src="/bg-head.jpg" alt="Background" /> */}
+      <NavigationBar/>
       <div className="register-success-cont">
         <h1 className="finalmessage">Thanks for registering for UNOSQ'24.</h1>
 

@@ -21,7 +21,6 @@ const ContingentLogin = () => {
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
   const [loading, setLoading] = useState(false);
-
   const [showModal, setShowModal] = useState(false);
   const [resetEmail, setResetEmail] = useState('');
   const [sending, setSending] = useState(false);

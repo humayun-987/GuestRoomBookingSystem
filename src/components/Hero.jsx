@@ -1,11 +1,56 @@
 import SizedBox from "./SizedBox";
 import SwipeUp from "./SwipeUp";
 import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 import { RxPaperPlane } from "react-icons/rx";
 import "./css/Hero.css";
-import { Link } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../comp/firebaseConfig";
+import {
+  collection,
+  getDocs,
+  doc
+} from "firebase/firestore";
+import { db } from "../comp/firebaseConfig";
 
 export default function Hero() {
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [userType, setUserType] = useState(null); // "contingent" | "individual" | null
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const checkUserType = async () => {
+      if (!user) return;
+
+      const contingentRef = collection(db, "Contingent Users'25", user.uid, "profiles");
+      const individualRef = collection(db, "Individual Users'25", user.uid, "profiles");
+
+      const [contingentSnap, individualSnap] = await Promise.all([
+        getDocs(contingentRef),
+        getDocs(individualRef)
+      ]);
+
+      if (!contingentSnap.empty) {
+        setUserType("contingent");
+      } else if (!individualSnap.empty) {
+        setUserType("individual");
+      } else {
+        setUserType(null);
+      }
+    };
+
+    checkUserType();
+  }, [user]);
+
   return (
     <SizedBox className="nav-hero-box">
       <div className="hero">
@@ -28,10 +73,15 @@ export default function Hero() {
               </motion.p>
 
               <motion.div className="hero-btn-box">
-                <Link to={"/register"} className="register-btn primary-btn">
+                {/* <Link to={"/register"} className="register-btn primary-btn">
                   <span>Register Now</span>
                   <RxPaperPlane />
-                </Link>
+                </Link> */}
+                {user? (
+                  <button className="register-btn primary-btn" type="button" onClick={() => navigate(`/${userType === "contingent" ? "contingent_profile" : "individual_profile"}/${user.uid}`)}>Your Profile</button>
+                ):(
+                  <button className="register-btn primary-btn" type="button" onClick={() => setShowModal(true)}>Register Now</button>
+                )}
                 <div>
                   Only <b>20</b> days left to register!
                 </div>
@@ -44,6 +94,43 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-xl p-8 w-[90%] max-w-md animate-fadeIn">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Register As</h3>
+            <p className="text-gray-600 text-center mb-6">Choose how you'd like to register</p>
+
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => {
+                  setShowModal(false);
+                  navigate("/contingent_signup");
+                }}
+                className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition"
+              >
+                Contingent
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowModal(false);
+                  navigate("/individual_signup");
+                }}
+                className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition"
+              >
+                Individual
+              </button>
+
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-gray-500 hover:text-gray-700 text-sm underline text-center mt-2"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </SizedBox>
   );
 }
