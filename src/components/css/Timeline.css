@@ -1,0 +1,49 @@
+.timeline {
+  display: flex;
+  gap: 48px;
+}
+
+.timeline .image {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  position: sticky;
+  top: 100px;
+  height: max-content;
+}
+
+.timeline .image div img {
+  width: 500px;
+}
+
+.timeline .content {
+  flex: 7;
+}
+
+.timeline .content .timeline-comp .timeline-date {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.timeline .content .timeline-comp .timeline-date div {
+  padding: var(--spacing-1) var(--spacing-3);
+  margin-right: var(--spacing-4);
+  font-weight: 600;
+  text-align: center;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  text-wrap: nowrap;
+  width: min-content;
+}
+
+.timeline .content .timeline-comp .timeline-event {
+  padding: var(--spacing-3) 0;
+  margin: var(--spacing-4) 0;
+  font-weight: 600;
+  font-size: large;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #d2d2d2;
+}
