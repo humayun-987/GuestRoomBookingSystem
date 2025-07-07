@@ -14,7 +14,7 @@ const SamplePapers = () => {
       {/* <section className="sample-section"> */}
       {/* <h2 className="section-title">📚 Sample Papers</h2> */}
       <div className="text-left mt-8 flex items-start ml-4">
-        <div className="section-name mb-4">Sample Papers</div>
+        <div className="section-name md-6 md:mb-14">Sample Papers</div>
       </div>
       <div className="card-grid md:mb-10 text-center">
         {samplePapers.map((paper, index) => (
