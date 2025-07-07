@@ -1,4 +1,3 @@
-import { Timeline } from "antd";
 import { motion } from "motion/react";
 import SizedBox from "./SizedBox";
 import "./css/Timeline.css";
@@ -15,7 +14,7 @@ const TimelineObj = [
 const App = () => (
   <>
     <SizedBox>
-      <div className="timeline section-box">
+      <div className="timeline-box section-box">
         <div className="image">
           <div>
             <div className="section-name">Timeline</div>
@@ -25,35 +24,34 @@ const App = () => (
           </div>
         </div>
         <div className="content">
-          <Timeline
-            className="timeline-comp"
-            mode="left"
-            items={TimelineObj.map((e) => {
-              return {
-                label: (
-                  <div className="timeline-date">
-                    <div>{e.date}</div>
-                  </div>
-                ),
-                children: (
+          <div className="timeline-container">
+            <div className="timeline">
+              {TimelineObj.map((item, index) => (
+                <div
+                  key={index}
+                  className={`timeline-item ${
+                    index % 2 === 0 ? "left" : "right"
+                  }`}
+                >
                   <motion.div
                     initial={{
                       opacity: 0,
-                      translateY: "100%",
+                      translateY: 100,
                     }}
                     whileInView={{
                       opacity: 1,
                       translateY: 0,
                     }}
                     viewport={{ once: false }}
-                    className="timeline-event"
+                    className="content"
                   >
-                    {e.event}
+                    <span className="date">{item.date}</span>
+                    <p className="event">{item.event}</p>
                   </motion.div>
-                ),
-              };
-            })}
-          />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </SizedBox>
