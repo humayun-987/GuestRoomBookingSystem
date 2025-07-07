@@ -1,0 +1,75 @@
+.footer-outer {
+  background: linear-gradient(
+    to bottom right,
+    hsl(249, 68%, 10%),
+    hsl(30, 12%, 10%),
+    hsl(29, 100%, 10%)
+  );
+}
+
+.footer {
+  border: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.footer * {
+  color: #e8e8e8;
+  font-weight: 300;
+}
+
+.footer .info-box > div {
+  padding-bottom: var(--spacing-4);
+}
+
+.footer .info-box {
+  display: flex;
+  justify-content: flex-end;
+  gap: calc(var(--spacing-4) * 2);
+  word-spacing: 2px;
+  line-height: 25px;
+}
+
+.footer .info-box .info {
+  flex: 2.5;
+}
+
+.footer .info-box .quick-links {
+  flex: 1;
+  text-wrap: nowrap;
+}
+
+.footer .info-box .contact {
+  flex: 1;
+  text-wrap: nowrap;
+}
+
+.footer .info-box h1,
+.footer .info-box h2 {
+  font-weight: 500;
+  padding-bottom: var(--spacing-3);
+}
+
+.footer .info-box .quick-links a {
+  text-decoration: none;
+}
+
+.footer .info-box .quick-links ul li {
+  list-style-type: none;
+  padding: 2px 0;
+}
+
+.footer .info-box .contact div {
+  padding: 2px 0;
+}
+
+.footer .credits {
+  padding-top: var(--spacing-4);
+  padding-bottom: calc(var(--spacing-4) * 2);
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer .info-box {
+    display: block;
+  }
+}

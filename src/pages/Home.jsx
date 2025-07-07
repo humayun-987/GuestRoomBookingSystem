@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import SponsorsMarquee from "../components/SponsorsMarquee";
 import AboutUs from "../components/AboutUs";
 import PerksRewards from "../components/PerksRewards";
+import FooterUn from "../components/FooterUn";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <SponsorsMarquee />
       <AboutUs />
       <PerksRewards />
+      <FooterUn/>
     </>
   );
 }
