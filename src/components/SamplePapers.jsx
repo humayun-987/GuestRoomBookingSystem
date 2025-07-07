@@ -1,6 +1,6 @@
 import React from "react";
 import "./SamplePapers.css"; // Add styles separately
-
+import SizedBox from "./SizedBox";
 const samplePapers = [
   { title: "Pool Little Champs", link: "#" },
   { title: "Pool Super Nova", link: "#" },
@@ -10,9 +10,13 @@ const samplePapers = [
 
 const SamplePapers = () => {
   return (
-    <section className="sample-section">
-      <h2 className="section-title">📚 Sample Papers</h2>
-      <div className="card-grid">
+    <SizedBox>
+      {/* <section className="sample-section"> */}
+      {/* <h2 className="section-title">📚 Sample Papers</h2> */}
+      <div className="text-left mt-8 flex items-start ml-4">
+        <div className="section-name mb-4">Sample Papers</div>
+      </div>
+      <div className="card-grid md:mb-10 text-center">
         {samplePapers.map((paper, index) => (
           <div className="paper-card" key={index}>
             <div className="paper-icon">📝</div>
@@ -23,7 +27,8 @@ const SamplePapers = () => {
           </div>
         ))}
       </div>
-    </section>
+      {/* </section> */}
+    </SizedBox>
   );
 };
 

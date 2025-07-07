@@ -6,6 +6,8 @@ import PerksRewards from "../components/PerksRewards";
 import Timeline from "../components/Timeline";
 import SamplePapers from "../components/SamplePapers";
 import Sponsors from "../components/Sponsors";
+import TeamSection from "../components/TeamSection";
+import FooterUn from "../components/FooterUn";
 
 function Home() {
   return (
@@ -14,10 +16,12 @@ function Home() {
       <Hero />
       <SponsorsMarquee />
       <AboutUs />
-      {/* <Timeline /> */}
+      <Timeline />
       <SamplePapers />
       {/* <Sponsors /> */}
       <PerksRewards />
+      <TeamSection />
+      <FooterUn/>
     </>
   );
 }
