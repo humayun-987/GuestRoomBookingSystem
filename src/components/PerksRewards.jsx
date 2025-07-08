@@ -110,7 +110,7 @@ export default function PerksSection() {
           <h2 className="text-xl md:text-4xl font-bold text-gray-900 mb-6 md:mb-10 leading-tight">
             Inspiring rewards, exposure and intellect talks
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
             {perks.map((perk, idx) => (
               <PerkCard key={idx} {...perk} />
             ))}
