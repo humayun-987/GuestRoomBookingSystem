@@ -14,7 +14,8 @@ import IndividualPayment from "./comp/Payment/individualpayment";
 import ContingentPayment from "./comp/Payment/contingentpayment";
 import DisplayResult from "./comp/DisplayResult/DisplayResult";
 // import Review from "./comp/reviews/index";
-
+import Homepage from "./comp/section2";
+import { Home } from "@mui/icons-material";
 function App() {
   return (
     <div>
@@ -25,11 +26,11 @@ function App() {
           path="/"
           element={
             <>
-              <Section />
+              <Homepage />
             </>
           }
         />
-        <Route
+        {/* <Route
           exact
           path="/individualpayment"
           element={<IndividualPayment />}
@@ -63,7 +64,7 @@ function App() {
           element={<ContingentRegistrationForm />}
         />
         <Route exact path="/brochure" element={<Brochure />} />
-        <Route exact path="/DisplayResult" element={<DisplayResult />} />
+        <Route exact path="/DisplayResult" element={<DisplayResult />} /> */}
 
       </Routes>
     </div>

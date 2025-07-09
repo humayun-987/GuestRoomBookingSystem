@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "unosq-23-1"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
