@@ -15,7 +15,7 @@ import { db } from "../comp/firebaseConfig";
 const NavItems = [
   {
     label: "About",
-    to: "/",
+    to: "/#about",
   },
   {
     label: "Brochure",
@@ -71,7 +71,7 @@ export default function NavigationBar() {
       <SizedBox outerClassName="outer-nav-box">
         <nav>
           <Link className="logo-div" to={"/"}>
-            <img src="/images/logo.svg" alt="UNOSQ Logo" />
+            <img src="/images/UNOSQ_logo.png" alt="UNOSQ Logo" />
             UNOSQ
           </Link>
 
