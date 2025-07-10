@@ -186,7 +186,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                                 type="button"
                                 onClick={handlePayment}
                                 disabled={isEditing || isSaving || profileData.paymentSuccessful}
-                                className={`w-full py-3 rounded-xl font-semibold transition-colors ${profileData.paymentSuccessful ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-500 text-white"}`}
+                                className={`w-full py-3 rounded-xl font-semibold transition-colors ${profileData.paymentSuccessful ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-600 text-white"}`}
                             >
                                 <p>{profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}</p>
                             </button>

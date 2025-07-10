@@ -80,7 +80,7 @@ nav ul a:hover {
     border-radius: 4px;
     padding: 16px;
     border: 1px solid var(--text-color);
-    background-color: var(--color-background);
+    background-color: rgba(0,0,0,0.7);
     transform: translate(calc(100% + var(--phone-padding)), 0);
     z-index: 999;
     transition: 250ms;
@@ -88,6 +88,7 @@ nav ul a:hover {
   
   nav ul a {
     width: min-content;
+    color: white;
   }
   
   nav #menu-toggle-checkbox:checked ~ .menu-toggle {
