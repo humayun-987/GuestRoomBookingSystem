@@ -1,0 +1,17 @@
+.backgroundDiv{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('landscape-3837559_1280.png'); /* Assuming bg.png is in public folder */
+  background-size: cover;
+  background-position: center;
+  border: 0px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.myForm{
+    background-color: transparent;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}

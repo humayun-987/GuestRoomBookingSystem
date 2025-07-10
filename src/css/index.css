@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 60% Background/Base */
+  background: url("/public/images/login/background-white-mirrored.jpg");
+  /* 30% Secondary UI */
+  --color-primary: hsl(29, 100%, 50%);
+  --color-primary-light: hsl(29, 91%, 59%);
+  --color-primary-dark: hsl(29, 100%, 50%);
+
+  /* 10% Accent */
+  --color-accent: hsl(249, 68%, 50%);
+  --color-accent-light: hsl(249, 68%, 60%);
+  --color-accent-dark: hsl(249, 68%, 40%);
+
+  /* Text */
+  --text-color: hsl(30, 12%, 10%);
+  --text-secondary: hsl(0, 0%, 35%);
+  --text-inverse: hsl(0, 0%, 100%);
+
+  /* Border and Shadows */
+  --border-color: hsl(217, 30%, 85%);
+  --border-radius: 8px;
+  --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  /* Spacing Scale */
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+
+  /* Screen Breakpoints */
+  --laptop-max-width: 1200px;
+  /* Desktop is more morethan 1200px */
+  --tablet-man-width: 810px;
+  --phone-max-width: 425px;
+
+  --default-padding: 40px;
+  --tablet-padding: 32px;
+  --phone-padding: 20px;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  color: var(--text-color);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+  border: 2px solid #000;
+  /* adds space around the thumb */
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3e3e3e #1f1f1f;
+}
+
+.Toastify__toast {
+  z-index: 999999 !important;
+  opacity: 1 !important;
+}

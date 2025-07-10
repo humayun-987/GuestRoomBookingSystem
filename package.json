@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fortawesome/fontawesome-free": "^6.4.0",
@@ -13,24 +14,29 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.26.3",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
-    "firebase": "^10.12.3",
+    "firebase": "^10.14.1",
     "gsap": "^3.12.2",
     "mdb-react-ui-kit": "^4.1.0",
     "mdb-ui-kit": "^4.3.0",
+    "motion": "^12.23.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
     "react-excel-renderer": "^1.1.0",
     "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.5.0",
     "react-pdf": "^9.1.0",
     "react-responsive": "^9.0.2",
+    "react-router": "^7.6.3",
     "react-router-dom": "^6.14.1",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
     "react-step-progress-bar": "^1.0.3",
+    "react-toastify": "^11.0.5",
     "react-transition-group": "^4.4.5",
     "react-typed": "^2.0.12",
     "web-vitals": "^2.1.4"
@@ -58,5 +64,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^5.0.43",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^2.2.19"
   }
 }
