@@ -4,12 +4,11 @@
 
 :root {
   /* 60% Background/Base */
-  --color-background: hsl(27, 100%, 98%);
-
+  background: url("/public/images/login/background-white-mirrored.jpg");
   /* 30% Secondary UI */
   --color-primary: hsl(29, 100%, 50%);
-  --color-primary-light: hsl(29, 100%, 60%);
-  --color-primary-dark: hsl(29, 100%, 40%);
+  --color-primary-light: hsl(29, 91%, 59%);
+  --color-primary-dark: hsl(29, 100%, 50%);
 
   /* 10% Accent */
   --color-accent: hsl(249, 68%, 50%);
@@ -33,7 +32,8 @@
   --spacing-4: 32px;
 
   /* Screen Breakpoints */
-  --laptop-max-width: 1200px; /* Desktop is more morethan 1200px */
+  --laptop-max-width: 1200px;
+  /* Desktop is more morethan 1200px */
   --tablet-man-width: 810px;
   --phone-max-width: 425px;
 
@@ -48,7 +48,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 body {
   color: var(--text-color);
   background-color: var(--color-background);
@@ -60,6 +59,7 @@ body {
   padding: 0;
   font-family: "Quicksand", sans-serif;
 }
+
 /* WebKit Browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
   width: 8px;
@@ -75,7 +75,8 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #333;
   border-radius: 10px;
-  border: 2px solid #000; /* adds space around the thumb */
+  border: 2px solid #000;
+  /* adds space around the thumb */
   transition: background-color 0.3s ease;
 }
 
@@ -88,6 +89,7 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #3e3e3e #1f1f1f;
 }
+
 .Toastify__toast {
   z-index: 999999 !important;
   opacity: 1 !important;
