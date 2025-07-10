@@ -102,7 +102,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
 
     return (
         <SizedBox>
-            <div className="flex">
+            <div className="flex flex-col-reverse items-center lg:flex-row">
                 <div className="bg-gradient-to-b from-gray-900 to-[#222631] shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6 pb-3">
                     <div className="flex items-center gap-4 relative mb-2">
                         <div className="flex flex-col justify-center items-center gap-2">
@@ -124,11 +124,6 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                                     />
                                 </button>
                             </div>
-                        </div>
-                        <div className="absolute top-10 lg:top-0 right-0">
-                            <button onClick={handleLogout} className="flex gap-2 items-center justify-center p-2 rounded-lg">
-                                <img src="/logout.png" alt="Logout" className="w-8" />
-                            </button>
                         </div>
                         <div className="relative">
                             <h2 className="md:text-2xl text-xl font-semibold text-white mb-2">{profileData.schoolName}</h2>
@@ -177,6 +172,14 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                             </button>
                         </div>
                     )}
+                     <div className="mt-2 px-2">
+                        <button
+                            onClick={handleLogout}
+                            className={`w-full py-3 flex text-center gap-2 justify-center items-center rounded-xl font-semibold bg-red-600 text-white`}>
+                            <img src="/logout.png" alt="Logout" className="w-6" />
+                            <span>Logout</span>
+                        </button>
+                    </div>
                     {complete && (
                         <div className="col-span-full mt-2 px-2">
                             <button

@@ -1,4 +1,3 @@
-
 import { motion } from "motion/react";
 import SizedBox from "./SizedBox";
 import SwipeUp from "./SwipeUp";
@@ -8,15 +7,15 @@ import { Link } from "react-router-dom";
 const QuickLinks = [
   {
     label: "About",
-    to: "/",
+    to: "/#about",
   },
   {
     label: "Brochure",
-    to: "https://drive.usercontent.google.com/u/0/uc?id=12eOYQRaA81OAGWeMCmwZ7xQnuFeAPvhW&export=download",
+    to: "https://drive.google.com/uc?export=download&id=1bkV3ZTR2b8pnVE0uvT98L1Fh5xR2e4Ob",
   },
   {
     label: "Contact",
-    to: "#",
+    to: "/#contact",
   },
   {
     label: "FAQs",
@@ -32,31 +31,45 @@ export default function PerksRewards() {
           <div className="info">
             <h1>UNOSQ</h1>
             <h4>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis,
-              repellendus vitae voluptas fugit nemo corrupti consectetur
-              officiis dignissimos delectus similique asperiores sed saepe
-              necessitatibus placeat?
+              UNOSQ is not just a quiz; it's a celebration of intellect and sportsmanship, offering participants the chance to interact with academic luminaries and celebrated sports personalities through specially curated seminars and workshops.
             </h4>
           </div>
           <div className="quick-links">
             <h2>Quick Links</h2>
             <ul>
               {QuickLinks.map((e) => (
-                <li>
-                  <Link to={e.to}>{e.label}</Link>
-                </li>
-              ))}
+  <li key={e.label}>
+    {e.to.startsWith("/#") ? (
+      <a
+        href={e.to}
+        onClick={(eClick) => {
+          eClick.preventDefault();
+          const id = e.to.replace("/#", "");
+          const section = document.getElementById(id);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+      >
+        {e.label}
+      </a>
+    ) : (
+      <Link to={e.to}>{e.label}</Link>
+    )}
+  </li>
+))}
+
             </ul>
           </div>
           <div className="contact">
             <h2>Contact Info</h2>
-            <div className="address">IIT Kanpur, UP 208018</div>
-            <div className="email">unosq@iitk.ac.in</div>
-            <div className="mobile">+91 123 456 7891</div>
+            <div className="address">IIT Kanpur, UP 208016</div>
+            <div className="email"><a href={`mailto: Unosq.udghosh@gmail.com`}>Unosq.udghosh@gmail.com</a></div>
+            <div className="mobile">+91 8619757403</div>
           </div>
         </div>
-        <div className="credits">
-          @ 2025 UNOSQ - IIT Kanpur. All rights reserved.
+        <div className="credits flex">
+          <span>@ 2025</span> <a href="https://udghosh.org.in/home">Udghosh</a><span> - IIT Kanpur. All rights reserved.</span>
         </div>
       </div>
     </SizedBox>

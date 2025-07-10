@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import SizedBox from "./SizedBox";
 import { onAuthStateChanged } from "firebase/auth";
+import { HashLink } from "react-router-hash-link";
 import { auth } from "../comp/firebaseConfig"; // make sure path is correct
 import "./css/NavigationBar.css";
 import {
@@ -19,11 +20,11 @@ const NavItems = [
   },
   {
     label: "Brochure",
-    to: "https://drive.usercontent.google.com/u/0/uc?id=12eOYQRaA81OAGWeMCmwZ7xQnuFeAPvhW&export=download",
+    to: "https://drive.google.com/uc?export=download&id=1bkV3ZTR2b8pnVE0uvT98L1Fh5xR2e4Ob",
   },
   {
     label: "Contact",
-    to: "#",
+    to: "/#contact",
   },
   {
     label: "FAQs",
@@ -65,7 +66,6 @@ export default function NavigationBar() {
 
     checkUserType();
   }, [user]);
-  
   return (
     <>
       <SizedBox outerClassName="outer-nav-box">
@@ -87,11 +87,28 @@ export default function NavigationBar() {
           </label>
 
           <ul className="nav-links flex items-center">
-            {NavItems.map((e, i) => (
-              <Link to={e.to} key={i}>
-                {e.label}
-              </Link>
-            ))}
+            {NavItems.map((e, i) =>
+              e.to.includes("#") ? (
+                <HashLink
+                  smooth
+                  to={e.to}
+                  key={i}
+                  onClick={(event) => {
+                    const id = e.to.split("#")[1];
+                    const target = document.getElementById(id);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  {e.label}
+                </HashLink>
+              ) : (
+                <Link to={e.to} key={i}>
+                  {e.label}
+                </Link>
+              )
+            )}
             {/* Show Profile button only if user is logged in */}
             {user && (
               <Link

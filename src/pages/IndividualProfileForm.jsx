@@ -119,7 +119,7 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
 
     return (
         <SizedBox>
-            <div className="flex">
+            <div className="flex flex-col-reverse items-center lg:flex-row">
                 <div className="bg-gradient-to-b from-gray-900 to-[#222631] shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6 pb-3">
                     <div className="left"></div>
                     {/* Avatar, Edit and Logout */}
@@ -139,11 +139,6 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
                                     <img src={isEditing ? "/cancel.png" : "/edit.png"} alt={isEditing ? "Cancel" : "Edit"} className="w-5 h-5" />
                                 </button>
                             </div>
-                        </div>
-                        <div className="absolute top-10 lg:top-0 right-0">
-                            <button onClick={handleLogout} className="p-2 rounded-lg">
-                                <img src="/logout.png" alt="Logout" className="w-8" />
-                            </button>
                         </div>
                         <div>
                             <h2 className="md:text-3xl text-xl font-semibold text-white">{profileData.name}</h2>
@@ -237,15 +232,22 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
                             </button>
                         </div>
                     )}
-
+                    <div className="mt-2 px-2">
+                        <button
+                            onClick={handleLogout}
+                            className={`w-full py-3 flex text-center gap-2 justify-center items-center rounded-xl font-semibold bg-red-600 text-white`}
+                        >
+                            <img src="/logout.png" alt="Logout" className="w-6" />
+                            <span>Logout</span>
+                        </button>
+                    </div>
                     {/* Payment Button */}
                     {complete && (
                         <div className="mt-2 px-2">
                             <button
                                 onClick={handlePayment}
                                 disabled={isEditing || isSaving || profileData.paymentSuccessful}
-                                className={`w-full py-3 rounded-xl font-semibold ${profileData.paymentSuccessful ? "bg-green-600 cursor-not-allowed" : "bg-red-500"} text-white`}
-                            >
+                                className={`w-full py-3 rounded-xl font-semibold ${profileData.paymentSuccessful ? "bg-green-600 cursor-not-allowed" : "bg-red-500"} text-white`}>
                                 {profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}
                             </button>
                         </div>

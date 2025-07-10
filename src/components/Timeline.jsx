@@ -4,11 +4,11 @@ import SizedBox from "./SizedBox";
 import "./css/Timeline.css";
 
 const TimelineObj = [
-  { date: "15 July", event: "Registration Starts" },
-  { date: "28 August", event: "Registration Ends" },
-  { date: "1 September", event: "Exam Phase-1" },
-  { date: "5 September", event: "Result Phase-1" },
-  { date: "8 September", event: "Exam Phase-2" },
+  { date: "10 July", event: "Registration Starts" },
+  { date: "15 August", event: "Registration Ends" },
+  { date: "31 August", event: "Exam Phase-1" },
+  { date: "4 September", event: "Result Phase-1" },
+  { date: "7 September", event: "Exam Phase-2" },
   { date: "10 September", event: "Result Phase-2" },
 ];
 

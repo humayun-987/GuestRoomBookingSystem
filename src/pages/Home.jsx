@@ -20,7 +20,7 @@ function Home() {
       <SamplePapers />
       {/* <Sponsors /> */}
       <PerksRewards />
-      {/* <TeamSection /> */}
+      <TeamSection />
       <FooterUn/>
     </>
   );

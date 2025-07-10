@@ -259,6 +259,10 @@
       font-size: 3em;
     }
   }
+  .login-box form{
+padding-left: 8px;
+padding-right: 8px;
+  }
 }
 
 @media (max-width: 1020px) {

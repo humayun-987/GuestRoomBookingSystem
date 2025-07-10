@@ -7,7 +7,7 @@ import Conduction from "./Conduction";
 export default function AboutUs() {
   return (
     <SizedBox>
-      <div className="about-us section-box">
+      <div id="about" className="about-us section-box">
         <div className="basic-info">
           <div className="img-section">
             <div>
