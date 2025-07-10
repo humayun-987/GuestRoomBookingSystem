@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import SizedBox from "../components/SizedBox";
 
 const fields = [
     { id: "schoolName", label: "School Name", type: "text" },
@@ -100,88 +101,99 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     };
 
     return (
-        <div className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6">
-            <div className="flex items-center gap-4 relative mb-2">
-                <div className="flex flex-col justify-center items-center gap-2">
-                    <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
-                        <img
-                            src={profileData.username ? "/school.png" : "/placeholder-profile.png"}
-                            alt="Profile"
-                            className="w-full h-full rounded-full object-cover"
-                        />
-                        <button
-                            className={`absolute bottom-[-6px] right-[-6px] m-0 rounded-full p-[6px] shadow-md transition-all ${isEditing ? "bg-red-600 text-white hover:bg-red-700" : "bg-green-600 text-white hover:bg-green-700"}`}
-                            onClick={() => setIsEditing(!isEditing)}
-                            disabled={isSaving}
-                        >
-                            <img
-                                src={isEditing ? "/cancel.png" : "/edit.png"}
-                                alt={isEditing ? "Cancel" : "Edit"}
-                                className="w-5 h-5"
-                            />
-                        </button>
+        <SizedBox>
+            <div className="flex">
+                <div className="bg-gradient-to-b from-gray-900 to-[#222631] shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6 pb-3">
+                    <div className="flex items-center gap-4 relative mb-2">
+                        <div className="flex flex-col justify-center items-center gap-2">
+                            <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
+                                <img
+                                    src={profileData.username ? "/school.png" : "/placeholder-profile.png"}
+                                    alt="Profile"
+                                    className="w-full h-full rounded-full object-cover"
+                                />
+                                <button
+                                    className={`absolute bottom-[-6px] right-[-6px] m-0 rounded-full p-[6px] shadow-md transition-all ${isEditing ? "bg-red-600 text-white hover:bg-red-700" : "bg-green-600 text-white hover:bg-green-700"}`}
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    disabled={isSaving}
+                                >
+                                    <img
+                                        src={isEditing ? "/cancel.png" : "/edit.png"}
+                                        alt={isEditing ? "Cancel" : "Edit"}
+                                        className="w-5 h-5"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                        <div className="absolute top-10 lg:top-0 right-0">
+                            <button onClick={handleLogout} className="flex gap-2 items-center justify-center p-2 rounded-lg">
+                                <img src="/logout.png" alt="Logout" className="w-8" />
+                            </button>
+                        </div>
+                        <div className="relative">
+                            <h2 className="md:text-2xl text-xl font-semibold text-white mb-2">{profileData.schoolName}</h2>
+                            <p className="text-white md:text-sm text-xs mb-2">UID: {user?.uid}</p>
+                        </div>
                     </div>
+
+                    <form className="space-y-4 h-[56vh] md:h-[52vh] overflow-y-auto mt-0 mb-2 px-2">
+                        {fields.map(({ id, label, type, disabled }) => (
+                            <div key={id}>
+                                <label className="block text-sm font-medium text-gray-200 mb-1">{label}</label>
+                                <input
+                                    type={type}
+                                    id={id}
+                                    value={profileData[id] || ""}
+                                    onChange={(e) => handleInputChange(e, id)}
+                                    disabled={disabled || !isEditing || isSaving}
+                                    placeholder={`Enter your ${label.toLowerCase()}`}
+                                    className="w-full p-2 rounded-lg border border-gray-300 bg-white text-sm"
+                                />
+                            </div>
+                        ))}
+                    </form>
                 </div>
-                <div className="absolute top-10 lg:top-0 right-0">
-                    <button onClick={handleLogout} className="flex gap-2 items-center justify-center p-2 rounded-lg">
-                        <img src="/logout.png" alt="Logout" className="w-8 lg:w-10" />
-                    </button>
-                </div>
-                <div className="relative">
-                    <h2 className="md:text-3xl text-xl font-semibold text-white mb-2">{profileData.schoolName}</h2>
-                    <p className="text-white md:text-sm text-xs mb-2">UID: {user?.uid}</p>
+                <div className="md:w-[50%] w-[95%] mt-3 mb-0 p-6">
+                    <div className="image">
+                        <img className="w-30" src="/profile.png" alt="" />
+                    </div>
+                    {/* Save Button */}
+                    {isSaving ? (
+                        <div className="flex justify-center items-center">
+                            <div className="loading loading-dots loading-lg text-blue-500"></div>
+                        </div>
+                    ) : (
+                        <div className="col-span-full mt-6 px-2">
+                            <button
+                                type="button"
+                                onClick={handleUpdate}
+                                disabled={!isEditing || isSaving}
+                                className={`w-full py-3 rounded-xl font-semibold transition-colors ${isEditing && !isSaving
+                                    ? "bg-blue-600 text-white hover:bg-blue-700"
+                                    : complete ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-600 text-white"
+                                    }`}
+                            >
+                                {isEditing ? "Save Changes" : complete ? "Your profile is Complete" : "Complete your profile"}
+                            </button>
+                        </div>
+                    )}
+                    {complete && (
+                        <div className="col-span-full mt-2 px-2">
+                            <button
+                                type="button"
+                                onClick={handlePayment}
+                                disabled={isEditing || isSaving || profileData.paymentSuccessful}
+                                className={`w-full py-3 rounded-xl font-semibold transition-colors ${profileData.paymentSuccessful ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-500 text-white"}`}
+                            >
+                                <p>{profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}</p>
+                            </button>
+                        </div>
+                    )}
+
                 </div>
             </div>
+        </SizedBox>
 
-            <form className="space-y-4 h-[56vh] md:h-[50vh] overflow-y-auto mt-0 mb-2 px-2">
-                {fields.map(({ id, label, type, disabled }) => (
-                    <div key={id}>
-                        <label className="block text-sm font-medium text-gray-200 mb-1">{label}</label>
-                        <input
-                            type={type}
-                            id={id}
-                            value={profileData[id] || ""}
-                            onChange={(e) => handleInputChange(e, id)}
-                            disabled={disabled || !isEditing || isSaving}
-                            placeholder={`Enter your ${label.toLowerCase()}`}
-                            className="w-full p-2 rounded-lg border border-gray-300 bg-white text-sm"
-                        />
-                    </div>
-                ))}
-            </form>
-
-            {isSaving ? (
-                <div className="flex justify-center items-center">
-                    <div className="loading loading-dots loading-lg text-blue-500"></div>
-                </div>
-            ) : (
-                <div className="col-span-full mt-6 px-2">
-                    <button
-                        type="button"
-                        onClick={handleUpdate}
-                        disabled={!isEditing || isSaving}
-                        className={`w-full py-3 rounded-xl font-semibold transition-colors ${isEditing && !isSaving
-                            ? "bg-blue-600 text-white hover:bg-blue-700"
-                            : complete ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-600 text-white"
-                            }`}
-                    >
-                        {isEditing ? "Save Changes" : complete ? "Your profile is Complete" : "Complete your profile"}
-                    </button>
-                </div>
-            )}
-            {complete && (
-                <div className="col-span-full mt-2 px-2">
-                    <button
-                        type="button"
-                        onClick={handlePayment}
-                        disabled={isEditing || isSaving || profileData.paymentSuccessful}
-                        className={`w-full py-3 rounded-xl font-semibold transition-colors ${profileData.paymentSuccessful ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-500 text-white"}`}
-                    >
-                        <p>{profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}</p>
-                    </button>
-                </div>
-            )}
-        </div>
     );
 };
 

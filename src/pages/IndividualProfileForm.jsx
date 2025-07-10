@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import SizedBox from "../components/SizedBox";
 
 const fields = [
     { id: "name", label: "Name", type: "text" },
@@ -117,133 +118,142 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
     };
 
     return (
-        <div className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6">
-            {/* Avatar, Edit and Logout */}
-            <div className="flex relative items-center gap-4">
-                <div className="flex flex-col justify-center items-center gap-2">
-                    <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
-                        <img
-                            src={profileData.username ? generateAvatarUrl() : "/placeholder-profile.png"}
-                            alt="Profile"
-                            className="w-full h-full rounded-full object-cover"
-                        />
-                        <button
-                            className={`absolute bottom-[-6px] right-[-6px] rounded-full p-[6px] shadow-md ${isEditing ? "bg-red-600" : "bg-green-600"} text-white hover:bg-opacity-80`}
-                            onClick={() => setIsEditing(!isEditing)}
-                            disabled={isSaving}
-                        >
-                            <img src={isEditing ? "/cancel.png" : "/edit.png"} alt={isEditing ? "Cancel" : "Edit"} className="w-5 h-5" />
-                        </button>
-                    </div>
-                </div>
-                <div className="absolute top-10 lg:top-0 right-0">
-                    <button onClick={handleLogout} className="p-2 rounded-lg">
-                        <img src="/logout.png" alt="Logout" className="w-8 lg:w-10" />
-                    </button>
-                </div>
-                <div>
-                    <h2 className="md:text-3xl text-xl font-semibold text-white">{profileData.name}</h2>
-                    <p className="text-white md:text-sm text-xs">UID: {profileId}</p>
-                </div>
-            </div>
-
-            {/* Application Password */}
-            <div className="mt-2">
-                <p className="block text-sm text-white mb-2">Application Password:</p>
-                <input
-                    type="text"
-                    value={profileData.applicationPassword}
-                    disabled
-                    className="w-full p-2 mb-4 rounded-lg border-2 border-gray-400 bg-white text-xs text-gray-900"
-                />
-            </div>
-
-            {/* Form */}
-            <form className="space-y-4 h-[45vh] overflow-y-auto px-2">
-                {fields.map(({ id, label, type, disabled }) => (
-                    <div key={id}>
-                        <label className="block text-xs font-medium text-gray-200 mb-1">{label}</label>
-                        <input
-                            type={type}
-                            id={id}
-                            value={profileData[id] || ""}
-                            onChange={(e) => handleInputChange(e, id)}
-                            disabled={disabled || !isEditing || isSaving}
-                            placeholder={`Enter your ${label.toLowerCase()}`}
-                            className="w-full p-2 rounded-lg border border-gray-300 bg-white text-sm"
-                        />
-                    </div>
-                ))}
-
-                {/* Gender */}
-                <div>
-                    <label className="block text-sm font-medium text-gray-200 mb-1">Gender</label>
-                    <div className="flex space-x-6">
-                        {["male", "female"].map((g) => (
-                            <label key={g} className="flex items-center space-x-2 text-white cursor-pointer">
-                                <input
-                                    type="radio"
-                                    name={`gender-${profileId}`}
-                                    value={g}
-                                    checked={profileData.gender === g}
-                                    onChange={handleGenderChange}
-                                    disabled={!isEditing}
-                                    className="hidden peer"
+        <SizedBox>
+            <div className="flex">
+                <div className="bg-gradient-to-b from-gray-900 to-[#222631] shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6 pb-3">
+                    <div className="left"></div>
+                    {/* Avatar, Edit and Logout */}
+                    <div className="flex relative items-center gap-4">
+                        <div className="flex flex-col justify-center items-center gap-2">
+                            <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
+                                <img
+                                    src={profileData.username ? generateAvatarUrl() : "/placeholder-profile.png"}
+                                    alt="Profile"
+                                    className="w-full h-full rounded-full object-cover"
                                 />
-                                <div className="w-4 h-4 rounded-full border-2 border-gray-300 peer-checked:border-4 peer-checked:border-yellow-700 peer-checked:bg-yellow-400" />
-                                <span>{g.charAt(0).toUpperCase() + g.slice(1)}</span>
-                            </label>
-                        ))}
+                                <button
+                                    className={`absolute bottom-[-6px] right-[-6px] rounded-full p-[6px] shadow-md ${isEditing ? "bg-red-600" : "bg-green-600"} text-white hover:bg-opacity-80`}
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    disabled={isSaving}
+                                >
+                                    <img src={isEditing ? "/cancel.png" : "/edit.png"} alt={isEditing ? "Cancel" : "Edit"} className="w-5 h-5" />
+                                </button>
+                            </div>
+                        </div>
+                        <div className="absolute top-10 lg:top-0 right-0">
+                            <button onClick={handleLogout} className="p-2 rounded-lg">
+                                <img src="/logout.png" alt="Logout" className="w-8" />
+                            </button>
+                        </div>
+                        <div>
+                            <h2 className="md:text-3xl text-xl font-semibold text-white">{profileData.name}</h2>
+                            <p className="text-white md:text-sm text-xs">UID: {profileId}</p>
+                        </div>
                     </div>
-                </div>
 
-                {/* Pool */}
-                <div>
-                    <label className="block text-sm font-medium text-gray-200 mb-1">Pool</label>
-                    <select
-                        value={profileData.pool}
-                        onChange={handlePoolChange}
-                        disabled={!isEditing}
-                        className="w-full p-2 rounded-lg border border-gray-300 mb-2"
-                    >
-                        <option value="">Select Pool</option>
-                        {validPools.map(pool => (
-                            <option key={pool} value={pool}>{pool}</option>
+                    {/* Application Password */}
+                    <div className="mt-2">
+                        <p className="block text-sm text-white mb-2">Application Password:</p>
+                        <input
+                            type="text"
+                            value={profileData.applicationPassword}
+                            disabled
+                            className="w-full p-2 mb-4 rounded-lg border-2 border-gray-400 bg-white text-xs text-gray-900"
+                        />
+                    </div>
+
+                    <form className="space-y-4 h-[50vh] overflow-y-auto px-2">
+                        {fields.map(({ id, label, type, disabled }) => (
+                            <div key={id}>
+                                <label className="block text-xs font-medium text-gray-200 mb-1">{label}</label>
+                                <input
+                                    type={type}
+                                    id={id}
+                                    value={profileData[id] || ""}
+                                    onChange={(e) => handleInputChange(e, id)}
+                                    disabled={disabled || !isEditing || isSaving}
+                                    placeholder={`Enter your ${label.toLowerCase()}`}
+                                    className="w-full p-2 rounded-lg border border-gray-300 bg-white text-sm"
+                                />
+                            </div>
                         ))}
-                    </select>
-                </div>
-            </form>
 
-            {/* Save Button */}
-            {isSaving ? (
-                <div className="flex justify-center items-center mt-2">
-                    <div className="loading loading-dots loading-lg text-blue-500"></div>
-                </div>
-            ) : (
-                <div className="mt-2 px-2">
-                    <button
-                        onClick={handleUpdate}
-                        disabled={!isEditing || isSaving}
-                        className={`w-full py-3 rounded-xl font-semibold ${isEditing ? "bg-blue-600 hover:bg-blue-700" : complete ? "bg-green-600 cursor-not-allowed" : "bg-red-600"} text-white`}
-                    >
-                        {isEditing ? "Save Changes" : complete ? "Your profile is Complete" : "Complete your profile"}
-                    </button>
-                </div>
-            )}
+                        {/* Gender */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-200 mb-1">Gender</label>
+                            <div className="flex space-x-6">
+                                {["male", "female"].map((g) => (
+                                    <label key={g} className="flex items-center space-x-2 text-white cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name={`gender-${profileId}`}
+                                            value={g}
+                                            checked={profileData.gender === g}
+                                            onChange={handleGenderChange}
+                                            disabled={!isEditing}
+                                            className="hidden peer"
+                                        />
+                                        <div className="w-4 h-4 rounded-full border-2 border-gray-300 peer-checked:border-4 peer-checked:border-yellow-700 peer-checked:bg-yellow-400" />
+                                        <span>{g.charAt(0).toUpperCase() + g.slice(1)}</span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
 
-            {/* Payment Button */}
-            {complete && (
-                <div className="mt-2 px-2">
-                    <button
-                        onClick={handlePayment}
-                        disabled={isEditing || isSaving || profileData.paymentSuccessful}
-                        className={`w-full py-3 rounded-xl font-semibold ${profileData.paymentSuccessful ? "bg-green-600 cursor-not-allowed" : "bg-red-500"} text-white`}
-                    >
-                        {profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}
-                    </button>
+                        {/* Pool */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-200 mb-1">Pool</label>
+                            <select
+                                value={profileData.pool}
+                                onChange={handlePoolChange}
+                                disabled={!isEditing}
+                                className="w-full p-2 rounded-lg border border-gray-300 mb-2"
+                            >
+                                <option value="">Select Pool</option>
+                                {validPools.map(pool => (
+                                    <option key={pool} value={pool}>{pool}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </form>
                 </div>
-            )}
-        </div>
+                <div className="md:w-[50%] w-[95%] mt-3 mb-0 p-6">
+                    <div className="image">
+                        <img className="w-30" src="/profile.png" alt="" />
+                    </div>
+                    {/* Save Button */}
+                    {isSaving ? (
+                        <div className="flex justify-center items-center mt-2">
+                            <div className="loading loading-dots loading-lg text-blue-500"></div>
+                        </div>
+                    ) : (
+                        <div className="mt-2 px-2">
+                            <button
+                                onClick={handleUpdate}
+                                disabled={!isEditing || isSaving}
+                                className={`w-full py-3 rounded-xl font-semibold ${isEditing ? "bg-blue-600 hover:bg-blue-700" : complete ? "bg-green-600 cursor-not-allowed" : "bg-red-600"} text-white`}
+                            >
+                                {isEditing ? "Save Changes" : complete ? "Your profile is Complete" : "Complete your profile"}
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Payment Button */}
+                    {complete && (
+                        <div className="mt-2 px-2">
+                            <button
+                                onClick={handlePayment}
+                                disabled={isEditing || isSaving || profileData.paymentSuccessful}
+                                className={`w-full py-3 rounded-xl font-semibold ${profileData.paymentSuccessful ? "bg-green-600 cursor-not-allowed" : "bg-red-500"} text-white`}
+                            >
+                                {profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}
+                            </button>
+                        </div>
+                    )}
+
+                </div>
+            </div>
+        </SizedBox>
     );
 };
 
