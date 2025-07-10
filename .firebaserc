@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "my-unosq",
-    "myProject": "my-unosq"
+    "default": "unosq-23-1"
   },
   "targets": {},
   "etags": {}
