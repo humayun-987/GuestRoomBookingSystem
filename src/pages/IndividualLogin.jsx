@@ -70,7 +70,7 @@ export function IndividualLogin() {
         navigate("/login");
         return;
       }
-      toast.success('Signup successful!');
+      toast.success('Sign in successful!');
       console.log("signed in successfully")
       navigate(`/individual_profile/${user.uid}`);
     } catch (error) {

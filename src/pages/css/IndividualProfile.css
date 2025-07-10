@@ -1,6 +1,6 @@
 .container {
-    min-height: 100vh;
-    width: 100vw;
+    /* min-height: 100vh;
+    width: 100vw; */
     background: url("/public/images/login/background-white.jpeg");
     padding-bottom: 1rem;
 }

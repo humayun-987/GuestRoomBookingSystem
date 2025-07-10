@@ -93,7 +93,7 @@ export default function NavigationBar() {
               </Link>
             ))}
             {/* Show Profile button only if user is logged in */}
-            {user && userType && (
+            {user && (
               <Link
                 to={`/${userType === "contingent" ? "contingent_profile" : "individual_profile"}/${user.uid}`}
                 className="profile-link"

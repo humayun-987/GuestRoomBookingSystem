@@ -127,9 +127,12 @@ export function ContingentSignup() {
                             <span>Continue with Google</span>
                         </button>
                     </form>
-                    <span className="text-link">
-                        Already Have an account?{" "}
-                        <span onClick={() => navigate("/contingent_login")}>
+                    <span style={{ textAlign: "center", fontSize: "14px", width: "100%", display: "block", marginTop: "20px" }}>
+                        Don't Have an account?{" "}
+                        <span
+                            style={{ cursor: "pointer", color: "rgb(0, 51, 255)", fontSize: "14px", fontWeight: "500", textDecoration: "underline" }}
+                            onClick={() => { navigate("/contingent_login") }}
+                        >
                             Login
                         </span>
                     </span>

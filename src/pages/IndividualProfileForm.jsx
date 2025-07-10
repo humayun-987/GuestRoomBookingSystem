@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../comp/firebaseConfig";
-import { doc, updateDoc, getDoc, getDocs, collectionGroup, where, query } from "firebase/firestore";
+import { doc, updateDoc, getDocs, collection, where, query } from "firebase/firestore";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -60,7 +60,7 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
     };
 
     const isUsernameAvailable = async (username, profileId) => {
-        const q = query(collectionGroup(db, "profiles"), where("username", "==", username));
+        const q = query(collection(db, "Individual Users'25"), where("username", "==", username));
         const querySnapshot = await getDocs(q);
         return querySnapshot.empty || (
             querySnapshot.docs.length === 1 && querySnapshot.docs[0].id === profileId
@@ -85,14 +85,20 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
             return;
         }
 
-        const userDocRef = doc(db, "Individual Users'25", user.uid);
-        await updateDoc(userDocRef, { ...profileData, email: user.email });
+        try {
+            await updateDoc(doc(db, "Individual Users'25", user.uid), {
+                ...profileData,
+                email: user.email,
+            });
 
-        setTimeout(() => {
             setIsSaving(false);
             setIsEditing(false);
             toast.success("Profile updated successfully!");
-        }, 2000);
+        } catch (error) {
+            setIsSaving(false);
+            toast.error("Error updating profile.");
+            console.error("Update error:", error);
+        }
     };
 
     const handleLogout = () => {

@@ -54,7 +54,8 @@ const IndividualProfilesContainer = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className="min-h-[100vh] w-screen bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/login/background-white.jpeg')" }}>
             <NavigationBar />
             {loading ? (
                 <div className="loader-wrapper">

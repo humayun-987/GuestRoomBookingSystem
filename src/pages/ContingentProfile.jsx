@@ -52,17 +52,19 @@ const ContingentProfilesContainer = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className="min-h-[100vh] w-screen bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/login/background-white.jpeg')" }}>
             <NavigationBar />
             {loading ? (
-                <div className="loader-wrapper">
-                    <div className="spinner"></div>
+                <div className="w-full h-screen flex justify-center items-center">
+                    <div className="loading loading-spinner w-20 h-20 text-gray-300"></div>
                 </div>
             ) : (
                 <div className="profile-list">
                     {profiles.map((profile) => (
                         <ContingentProfileForm
                             key={profile.id}
+                            profileId={profile.id}
                             initialData={profile}
                             user={user}
                         />
