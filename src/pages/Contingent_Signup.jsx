@@ -14,6 +14,7 @@ import { auth, db } from "../comp/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet";
 
 export function ContingentSignup() {
     const [email, setEmail] = useState("");
@@ -78,6 +79,13 @@ export function ContingentSignup() {
 
     return (
         <div className="login-signup-box">
+            <Helmet>
+                <title>Contingent Registration | UNOSQ'25</title>
+                <meta
+                    name="description"
+                    content="Register as contingent for the Udghosh National Open Science Quiz 2025 hosted by IIT Kanpur."
+                />
+            </Helmet>
             <NavigationBar />
             <div>
                 <div className="illustartion">

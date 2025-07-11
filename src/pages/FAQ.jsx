@@ -1,6 +1,8 @@
 import { Collapse } from "antd";
 import SizedBox from "../components/SizedBox";
+import { Helmet } from "react-helmet";
 import NavigationBar from "../components/NavigationBar";
+
 const items = [
   {
     key: "1",
@@ -62,6 +64,13 @@ const items = [
 export default function FAQ() {
   return (
     <>
+      <Helmet>
+        <title>FAQs | UNOSQ'25</title>
+        <meta
+          name="description"
+          content="Find answers to all your questions about the Udghosh National Open Science Quiz 2025."
+        />
+      </Helmet>
       <SizedBox>
         <NavigationBar />
         <Collapse
