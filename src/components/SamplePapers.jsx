@@ -2,10 +2,10 @@ import React from "react";
 import "./SamplePapers.css"; // Add styles separately
 import SizedBox from "./SizedBox";
 const samplePapers = [
-  { title: "Pool Little Champs", link: "https://drive.usercontent.google.com/u/0/uc?id=1pzmCU9R1RwA9QTe0wVR3GWL7urIsKSbi&export=download" },
-  { title: "Pool Super Nova", link: "https://drive.usercontent.google.com/u/0/uc?id=1Us9O-aYHY8Vy3PUi8tEI95KqmS8LS5th&export=download" },
-  { title: "Pool The Titans", link: "https://drive.usercontent.google.com/u/0/uc?id=1RoubVWjnbKc_evdgfMYJepY8bGE1tZvZ&export=download" },
-  { title: "Pool Elite Explorers", link: "https://drive.usercontent.google.com/u/0/uc?id=1Cz3PwK3tg4e9F6u7r17GWFe6XK7OP4au&export=download" },
+  { title: "Pool Little Champs", link: "https://drive.google.com/uc?export=download&id=1RgffuHXWgvX3UNwqYY85b4jVv4IFl7y9" },
+  { title: "Pool Super Nova", link: "https://drive.google.com/uc?export=download&id=1GYz96DG6TKNDiR58jCRphU8MXRC_r5ji" },
+  { title: "Pool The Titans", link: "https://drive.google.com/uc?export=download&id=13TLSFRkANqOVIiYN2gE79NBko7aZ47RY" },
+  { title: "Pool Elite Explorers", link: "https://drive.google.com/uc?export=download&id=13ksousfiKmWl-VXVvILIpkQLmJ_Jk8ui" },
 ];
 
 const SamplePapers = () => {

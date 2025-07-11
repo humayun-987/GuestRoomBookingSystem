@@ -52,7 +52,7 @@ export function ContingentSignup() {
 
             const defaultProfileRef = doc(db, "Contingent Users'25", user.uid);
             await setDoc(defaultProfileRef, {
-                username: "contingent_" + user.uid.substring(0, 6),
+                username: "",
                 schoolName: "",
                 pocName: "",
                 principalName: "",

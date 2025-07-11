@@ -31,13 +31,17 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [complete, setComplete] = useState(null);
+    const [showEditHint, setShowEditHint] = useState(true);
 
     useEffect(() => {
         if (profileData) {
             setComplete(isProfileComplete());
         }
     }, [profileData]);
-
+    useEffect(() => {
+        const timer = setTimeout(() => setShowEditHint(false), 5000);
+        return () => clearTimeout(timer);
+    }, []);
     const isIndianPhoneNumber = (phone) => /^[6-9]\d{9}$/.test(phone);
 
     const isProfileComplete = () => {
@@ -127,17 +131,28 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
                         <div className="flex flex-col justify-center items-center gap-2">
                             <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
                                 <img
-                                    src={profileData.username ? generateAvatarUrl() : "/placeholder-profile.png"}
+                                    src={profileData.username ? generateAvatarUrl() : "/default-profile.png"}
                                     alt="Profile"
                                     className="w-full h-full rounded-full object-cover"
                                 />
-                                <button
-                                    className={`absolute bottom-[-6px] right-[-6px] rounded-full p-[6px] shadow-md ${isEditing ? "bg-red-600" : "bg-green-600"} text-white hover:bg-opacity-80`}
-                                    onClick={() => setIsEditing(!isEditing)}
-                                    disabled={isSaving}
-                                >
-                                    <img src={isEditing ? "/cancel.png" : "/edit.png"} alt={isEditing ? "Cancel" : "Edit"} className="w-5 h-5" />
-                                </button>
+                                <div className="absolute bottom-[-6px] right-[-6px]">
+                                    {showEditHint && (
+                                        <div className="absolute top-full left-full mb-2 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded shadow z-10 animate-bounce whitespace-nowrap">
+                                            Click to Edit
+                                        </div>
+                                    )}
+                                    <button
+                                        className={`rounded-full p-[6px] shadow-md transition-all ${isEditing ? "bg-red-600 text-white hover:bg-red-700" : "bg-green-600 text-white hover:bg-green-700"}`}
+                                        onClick={() => setIsEditing(!isEditing)}
+                                        disabled={isSaving}
+                                    >
+                                        <img
+                                            src={isEditing ? "/cancel.png" : "/edit.png"}
+                                            alt={isEditing ? "Cancel" : "Edit"}
+                                            className="w-5 h-5"
+                                        />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -224,8 +239,8 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
                     ) : (
                         <div className="mt-2 px-2">
                             <button
-                                onClick={handleUpdate}
-                                disabled={!isEditing || isSaving}
+                                onClick={isEditing ? handleUpdate : complete ? () => setIsEditing(isEditing) : () => setIsEditing(!isEditing)}
+                                disabled={isSaving}
                                 className={`w-full py-3 rounded-xl font-semibold ${isEditing ? "bg-blue-600 hover:bg-blue-700" : complete ? "bg-green-600 cursor-not-allowed" : "bg-red-600"} text-white`}
                             >
                                 {isEditing ? "Save Changes" : complete ? "Your profile is Complete" : "Complete your profile"}

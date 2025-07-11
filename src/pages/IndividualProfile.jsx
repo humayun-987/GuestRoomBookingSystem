@@ -22,7 +22,7 @@ const IndividualProfilesContainer = () => {
                 if (!snapshot.exists()) {
                     const defaultProfile = {
                         name: "",
-                        username: `user_${firebaseUser.uid.substring(0, 6)}`,
+                        username: "",
                         email: firebaseUser.email,
                         age: "",
                         phone: "",
@@ -54,7 +54,7 @@ const IndividualProfilesContainer = () => {
     }, []);
 
     return (
-        <div className="min-h-[100vh] w-screen bg-cover bg-center"
+        <div className="min-h-[100vh] w-screen bg-cover bg-center pb-4"
             style={{ backgroundImage: "url('/images/login/background-white.jpeg')" }}>
             <NavigationBar />
             {loading ? (

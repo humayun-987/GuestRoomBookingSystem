@@ -20,7 +20,7 @@ const ContingentProfilesContainer = () => {
                 const unsubscribeSnap = onSnapshot(profileRef, async (docSnap) => {
                     if (!docSnap.exists()) {
                         await setDoc(profileRef, {
-                            username: "contingent_" + firebaseUser.uid.substring(0, 6),
+                            username: "",
                             schoolName: "",
                             pocName: "",
                             principalName: "",
@@ -52,7 +52,7 @@ const ContingentProfilesContainer = () => {
     }, []);
 
     return (
-        <div className="min-h-[100vh] w-screen bg-cover bg-center"
+        <div className="min-h-[100vh] w-screen bg-cover bg-center pb-4"
             style={{ backgroundImage: "url('/images/login/background-white.jpeg')" }}>
             <NavigationBar />
             {loading ? (

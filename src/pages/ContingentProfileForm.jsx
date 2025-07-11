@@ -29,10 +29,15 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [complete, setComplete] = useState(null);
+    const [showEditHint, setShowEditHint] = useState(true);
 
     const handleInputChange = (e, id) => {
         setProfileData(prev => ({ ...prev, [id]: e.target.value }));
     };
+    useEffect(() => {
+        const timer = setTimeout(() => setShowEditHint(false), 5000);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         if (profileData) {
@@ -108,21 +113,28 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                         <div className="flex flex-col justify-center items-center gap-2">
                             <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
                                 <img
-                                    src={profileData.username ? "/school.png" : "/placeholder-profile.png"}
+                                    src={ "/school.png"}
                                     alt="Profile"
                                     className="w-full h-full rounded-full object-cover"
                                 />
-                                <button
-                                    className={`absolute bottom-[-6px] right-[-6px] m-0 rounded-full p-[6px] shadow-md transition-all ${isEditing ? "bg-red-600 text-white hover:bg-red-700" : "bg-green-600 text-white hover:bg-green-700"}`}
-                                    onClick={() => setIsEditing(!isEditing)}
-                                    disabled={isSaving}
-                                >
-                                    <img
-                                        src={isEditing ? "/cancel.png" : "/edit.png"}
-                                        alt={isEditing ? "Cancel" : "Edit"}
-                                        className="w-5 h-5"
-                                    />
-                                </button>
+                                <div className="absolute bottom-[-6px] right-[-6px]">
+                                    {showEditHint && (
+                                        <div className="absolute top-full left-full mb-2 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded shadow z-10 animate-bounce whitespace-nowrap">
+                                            Click to Edit
+                                        </div>
+                                    )}
+                                    <button
+                                        className={`rounded-full p-[6px] shadow-md transition-all ${isEditing ? "bg-red-600 text-white hover:bg-red-700" : "bg-green-600 text-white hover:bg-green-700"}`}
+                                        onClick={() => setIsEditing(!isEditing)}
+                                        disabled={isSaving}
+                                    >
+                                        <img
+                                            src={isEditing ? "/cancel.png" : "/edit.png"}
+                                            alt={isEditing ? "Cancel" : "Edit"}
+                                            className="w-5 h-5"
+                                        />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className="relative">
@@ -161,8 +173,8 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                         <div className="col-span-full mt-6 px-2">
                             <button
                                 type="button"
-                                onClick={handleUpdate}
-                                disabled={!isEditing || isSaving}
+                                onClick={isEditing ? handleUpdate : complete ? () => setIsEditing(isEditing) : () => setIsEditing(!isEditing)}
+                                disabled={isSaving}
                                 className={`w-full py-3 rounded-xl font-semibold transition-colors ${isEditing && !isSaving
                                     ? "bg-blue-600 text-white hover:bg-blue-700"
                                     : complete ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-600 text-white"
@@ -172,7 +184,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                             </button>
                         </div>
                     )}
-                     <div className="mt-2 px-2">
+                    <div className="mt-2 px-2">
                         <button
                             onClick={handleLogout}
                             className={`w-full py-3 flex text-center gap-2 justify-center items-center rounded-xl font-semibold bg-red-600 text-white`}>

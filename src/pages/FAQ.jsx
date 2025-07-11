@@ -6,7 +6,7 @@ const items = [
     key: "1",
     label: <h3>Is the exam free of cost ?</h3>,
     children:
-      "No. The Registration Fee for UNOSQ is ₹120 per participant including all taxes.",
+      "No. The Registration Fee for UNOSQ is ₹130 per participant including all taxes.",
   },
   {
     key: "2",
@@ -17,7 +17,7 @@ const items = [
   {
     key: "3",
     label: <h3>In how many phases will the exam be conducted ?</h3>,
-    children: "Registration- 15 July - 15 August",
+    children: "Exam is conducted in 2 phases and registration is open till 15th Aug.",
   },
   {
     key: "4",

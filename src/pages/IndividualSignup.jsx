@@ -53,7 +53,7 @@ export function IndividualSignup() {
 
             const userDocRef = doc(db, "Individual Users'25", user.uid);
             await setDoc(userDocRef, {
-                username: "user_" + user.uid.substring(0, 6),
+                username: "",
                 email: user.email,
                 name: "",
                 age: "",
