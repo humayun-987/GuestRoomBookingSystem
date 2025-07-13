@@ -76,7 +76,8 @@ export function ContingentSignup() {
                 state: "",
                 city: "",
                 applicationPassword: "Application Password will be provided after payment",
-                paymentSuccessful: false
+                paymentSuccessful: false,
+                timestamp: new Date()
             });
 
             toast.success('Signed in with Google!');

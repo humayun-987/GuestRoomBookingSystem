@@ -79,7 +79,8 @@ export function IndividualSignup() {
                 gender: "",
                 pool: "",
                 applicationPassword: "Application Password will be provided after payment",
-                paymentSuccessful: false
+                paymentSuccessful: false,
+                timestamp: new Date()
             });
 
             console.log("Signed up with Google successfully");

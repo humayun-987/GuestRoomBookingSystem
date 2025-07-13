@@ -34,7 +34,8 @@ const ContingentProfilesContainer = () => {
                             state: "",
                             city: "",
                             applicationPassword: "Application Password will be provided after payment",
-                            paymentSuccessful: false
+                            paymentSuccessful: false,
+                            timestamp: new Date()
                         });
                     } else {
                         setProfiles([{ id: docSnap.id, ...docSnap.data() }]);

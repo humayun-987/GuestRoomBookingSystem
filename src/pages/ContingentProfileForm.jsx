@@ -36,6 +36,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     };
     useEffect(() => {
         const timer = setTimeout(() => setShowEditHint(false), 5000);
+        toast.success("Please fill in your details!");
         return () => clearTimeout(timer);
     }, []);
 
@@ -72,9 +73,30 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
 
     const handlePayment = () => navigate('/contingentPayment');
 
+    const validateProfileData = (profileData) => {
+        const requiredFields = [
+            "schoolName", "username", "pocName", "principalName", "schoolEmail", "pocEmail", "pocPhone", "principalPhone", "whatsapp",
+            "schoolAddress", "numberOfStudents", "state", "city"
+        ];
+
+        for (let field of requiredFields) {
+            if (!profileData[field] || profileData[field].toString().trim() === "") {
+                return `Please fill out ${field}`;
+            }
+        }
+        return true;
+    };
+
     const handleUpdate = async () => {
         if (!user) return;
         setIsSaving(true);
+
+        const validationResult = validateProfileData(profileData);
+        if (validationResult !== true) {
+            toast.error(validationResult);
+            setIsSaving(false);
+            return;
+        }
 
         if (profileData.whatsapp && !isIndianPhoneNumber(profileData.whatsapp)) {
             setIsSaving(false);
@@ -113,7 +135,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                         <div className="flex flex-col justify-center items-center gap-2">
                             <div className="relative border-4 border-yellow-600 rounded-full w-20 h-20 mb-2 transition-transform transform hover:scale-105">
                                 <img
-                                    src={ "/school.png"}
+                                    src={"/school.png"}
                                     alt="Profile"
                                     className="w-full h-full rounded-full object-cover"
                                 />

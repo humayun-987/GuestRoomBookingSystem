@@ -37,7 +37,8 @@ const IndividualProfilesContainer = () => {
                         gender: "",
                         pool: "",
                         applicationPassword: "Application Password will be provided after payment",
-                        paymentSuccessful: false
+                        paymentSuccessful: false,
+                        timestamp: new Date()
                     };
                     await setDoc(profileRef, defaultProfile);
                     setProfile({ id: firebaseUser.uid, ...defaultProfile });

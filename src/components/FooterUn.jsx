@@ -21,6 +21,10 @@ const QuickLinks = [
     label: "FAQs",
     to: "/FAQ",
   },
+  {
+    label: "Contingent form",
+    to: "/school_contingent_form",
+  },
 ];
 
 export default function PerksRewards() {

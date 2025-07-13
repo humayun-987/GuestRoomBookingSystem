@@ -38,10 +38,16 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
             setComplete(isProfileComplete());
         }
     }, [profileData]);
+
     useEffect(() => {
-        const timer = setTimeout(() => setShowEditHint(false), 5000);
+        toast.success("Please fill in your details!");
+        const timer = setTimeout(() => {
+            setShowEditHint(false);
+        }, 5000);
+
         return () => clearTimeout(timer);
     }, []);
+
     const isIndianPhoneNumber = (phone) => /^[6-9]\d{9}$/.test(phone);
 
     const isProfileComplete = () => {
@@ -71,11 +77,30 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
             querySnapshot.docs.length === 1 && querySnapshot.docs[0].id === profileId
         );
     };
+    const validateProfileData = (profileData) => {
+        const requiredFields = [
+            "name", "username", "email", "age", "phone", "whatsapp",
+            "address", "school", "dob", "parentsName", "class", "state", "city", "gender", "pool"
+        ];
 
+        for (let field of requiredFields) {
+            if (!profileData[field] || profileData[field].toString().trim() === "") {
+                return `Please fill out ${field}`;
+            }
+        }
+        return true;
+    };
     const handleUpdate = async () => {
         if (!user) return;
 
         setIsSaving(true);
+
+        const validationResult = validateProfileData(profileData);
+        if (validationResult !== true) {
+            toast.error(validationResult);
+            setIsSaving(false);
+            return;
+        }
 
         if (profileData.phone && !isIndianPhoneNumber(profileData.phone)) {
             setIsSaving(false);
