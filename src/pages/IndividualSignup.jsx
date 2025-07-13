@@ -1,6 +1,6 @@
 import { HiMail } from "react-icons/hi";
 import "./css/IndividualSignup.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import NavigationBar from "../components/NavigationBar";
 import {
     createUserWithEmailAndPassword,
@@ -23,6 +23,15 @@ export function IndividualSignup() {
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
     const [loading, setLoading] = useState(false);
+    const hasShownToast = useRef(false);
+
+    useEffect(() => {
+        if (!hasShownToast.current) {
+            toast.success("Sign up with a new email!");
+            toast.success("Login if already signed up!");
+            hasShownToast.current = true;
+        }
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

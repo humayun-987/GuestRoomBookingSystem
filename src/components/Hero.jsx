@@ -104,7 +104,7 @@ export default function Hero() {
               <button
                 onClick={() => {
                   setShowModal(false);
-                  navigate("/contingent_login");
+                  navigate("/contingent_signup");
                 }}
                 className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition"
               >
@@ -114,7 +114,7 @@ export default function Hero() {
               <button
                 onClick={() => {
                   setShowModal(false);
-                  navigate("/individual_login");
+                  navigate("/individual_signup");
                 }}
                 className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition"
               >
