@@ -70,7 +70,7 @@ export function ContingentLogin() {
         navigate("/contingent_login");
         return;
       }
-      toast.success('Sign in successful!');
+      // toast.success('Sign in successful!');
       console.log("signed in successfully")
       navigate(`/contingent_profile/${user.uid}`);
     } catch (error) {

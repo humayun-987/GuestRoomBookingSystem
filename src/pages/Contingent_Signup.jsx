@@ -80,7 +80,7 @@ export function ContingentSignup() {
                 timestamp: new Date()
             });
 
-            toast.success('Signed in with Google!');
+            // toast.success('Signed in with Google!');
             navigate(`/contingent_profile/${user.uid}`);
         } catch (err) {
             toast.error(err.message);

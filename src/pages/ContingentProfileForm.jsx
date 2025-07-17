@@ -30,13 +30,21 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     const [isSaving, setIsSaving] = useState(false);
     const [complete, setComplete] = useState(null);
     const [showEditHint, setShowEditHint] = useState(true);
+    const [showWarningModal, setShowWarningModal] = useState(false);
+    
+    useEffect(() => {
+        if (profileData && !isProfileComplete()) {
+            setShowWarningModal(true);
+            toast.warning("Completion of profile is necessary to make payment and register for UNOSQ'25.");
+        }
+    }, []);
 
     const handleInputChange = (e, id) => {
         setProfileData(prev => ({ ...prev, [id]: e.target.value }));
     };
     useEffect(() => {
         const timer = setTimeout(() => setShowEditHint(false), 5000);
-        toast.success("Please fill in your details!");
+        // toast.success("Please fill in your details!");
         return () => clearTimeout(timer);
     }, []);
 
@@ -129,6 +137,34 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
 
     return (
         <SizedBox>
+            {showWarningModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-2xl shadow-lg max-w-md w-[90%] p-6 text-center">
+                        <h2 className="text-xl font-bold text-red-600 mb-4">⚠️ Important Notice</h2>
+                        <p className="text-gray-800 mb-6">
+                            Completion of profile is <strong>necessary</strong> to be able to make payment and register for <strong>UNOSQ'25</strong>.
+                        </p>
+                        <div className="flex justify-center gap-4">
+                            <button
+                                onClick={() => {
+                                    setIsEditing(true);
+                                    setShowWarningModal(false);
+                                }}
+                                className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
+                            >
+                                Complete Your Profile
+                            </button>
+                            <button
+                                onClick={() => setShowWarningModal(false)}
+                                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="flex flex-col-reverse items-center lg:flex-row">
                 <div className="bg-gradient-to-b from-gray-900 to-[#222631] shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6 pb-3">
                     <div className="flex items-center gap-4 relative mb-2">

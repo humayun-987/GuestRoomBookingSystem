@@ -70,8 +70,8 @@ export function IndividualLogin() {
         navigate("/login");
         return;
       }
-      toast.success('Sign in successful!');
-      console.log("signed in successfully")
+      // toast.success('Sign in successful!');
+      // console.log("signed in successfully")
       navigate(`/individual_profile/${user.uid}`);
     } catch (error) {
       toast.error("Invalid login credentials");
