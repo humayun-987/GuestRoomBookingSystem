@@ -74,6 +74,24 @@
   font-family: monospace;
 }
 
+.register-type-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-type-btn a {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  transition: 250ms;
+}
+
+.register-type-btn a svg:hover {
+  fill: lightblue;
+}
+
 @media screen and (max-width: 1200px) {
   .hero {
     --large-size: 48px;

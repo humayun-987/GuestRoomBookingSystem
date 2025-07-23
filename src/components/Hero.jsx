@@ -2,7 +2,6 @@ import SizedBox from "./SizedBox";
 import SwipeUp from "./SwipeUp";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
-import { RxPaperPlane } from "react-icons/rx";
 import "./css/Hero.css";
 import { useNavigate, Link } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
@@ -13,6 +12,7 @@ import {
   doc
 } from "firebase/firestore";
 import { db } from "../comp/firebaseConfig";
+import { IoInformationCircleSharp } from "react-icons/io5";
 
 export default function Hero() {
   const [showModal, setShowModal] = useState(false);
@@ -106,9 +106,9 @@ export default function Hero() {
                   setShowModal(false);
                   navigate("/contingent_signup");
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition"
+                className="register-type-btn bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition"
               >
-                Contingent
+                Contingent <a target="_blank" href="/videos/contingent.mp4"><IoInformationCircleSharp/></a>
               </button>
 
               <button
@@ -116,9 +116,9 @@ export default function Hero() {
                   setShowModal(false);
                   navigate("/individual_signup");
                 }}
-                className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition"
+                className="register-type-btn bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition"
               >
-                Individual
+                Individual <a target="_blank" href="/videos/indivisual.mp4"><IoInformationCircleSharp/></a>
               </button>
 
               <button
