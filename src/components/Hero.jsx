@@ -6,11 +6,7 @@ import "./css/Hero.css";
 import { useNavigate, Link } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../comp/firebaseConfig";
-import {
-  collection,
-  getDocs,
-  doc
-} from "firebase/firestore";
+import { collection, getDocs, doc } from "firebase/firestore";
 import { db } from "../comp/firebaseConfig";
 import { IoInformationCircleSharp } from "react-icons/io5";
 
@@ -19,7 +15,7 @@ export default function Hero() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [userType, setUserType] = useState(null); // "contingent" | "individual" | null
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -31,12 +27,22 @@ export default function Hero() {
     const checkUserType = async () => {
       if (!user) return;
 
-      const contingentRef = collection(db, "Contingent Users'25", user.uid, "profiles");
-      const individualRef = collection(db, "Individual Users'25", user.uid, "profiles");
+      const contingentRef = collection(
+        db,
+        "Contingent Users'25",
+        user.uid,
+        "profiles"
+      );
+      const individualRef = collection(
+        db,
+        "Individual Users'25",
+        user.uid,
+        "profiles"
+      );
 
       const [contingentSnap, individualSnap] = await Promise.all([
         getDocs(contingentRef),
-        getDocs(individualRef)
+        getDocs(individualRef),
       ]);
 
       if (!contingentSnap.empty) {
@@ -77,10 +83,30 @@ export default function Hero() {
                   <span>Register Now</span>
                   <RxPaperPlane />
                 </Link> */}
-                {user? (
-                  <button className="register-btn primary-btn" type="button" onClick={() => navigate(`/${userType === "contingent" ? "contingent_profile" : "individual_profile"}/${user.uid}`)}>Your Profile</button>
-                ):(
-                  <button className="register-btn primary-btn" type="button" onClick={() => setShowModal(true)}>Register Now</button>
+                {user ? (
+                  <button
+                    className="register-btn primary-btn"
+                    type="button"
+                    onClick={() =>
+                      navigate(
+                        `/${
+                          userType === "contingent"
+                            ? "contingent_profile"
+                            : "individual_profile"
+                        }/${user.uid}`
+                      )
+                    }
+                  >
+                    Your Profile
+                  </button>
+                ) : (
+                  <button
+                    className="register-btn primary-btn"
+                    type="button"
+                    onClick={() => setShowModal(true)}
+                  >
+                    Register Now
+                  </button>
                 )}
                 <div>
                   Only <b>20</b> days left to register!
@@ -97,8 +123,12 @@ export default function Hero() {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl p-8 w-[90%] max-w-md animate-fadeIn">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Register As</h3>
-            <p className="text-gray-600 text-center mb-6">Choose how you'd like to register</p>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+              Register As
+            </h3>
+            <p className="text-gray-600 text-center mb-6">
+              Choose how you'd like to register
+            </p>
 
             <div className="flex flex-col gap-4">
               <button
@@ -108,7 +138,7 @@ export default function Hero() {
                 }}
                 className="register-type-btn bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition"
               >
-                Contingent <a target="_blank" href="/videos/contingent.mp4"><IoInformationCircleSharp/></a>
+                Contingent
               </button>
 
               <button
@@ -118,7 +148,7 @@ export default function Hero() {
                 }}
                 className="register-type-btn bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition"
               >
-                Individual <a target="_blank" href="/videos/indivisual.mp4"><IoInformationCircleSharp/></a>
+                Individual
               </button>
 
               <button
@@ -127,6 +157,9 @@ export default function Hero() {
               >
                 Cancel
               </button>
+              <div className="help">
+                <IoInformationCircleSharp/> Watch Registration <a target="_blank" href="/videos/contingent.mp4">Contingent</a> and <a target="_blank" href="/videos/indivisual.mp4">Individual</a>
+              </div>
             </div>
           </div>
         </div>
