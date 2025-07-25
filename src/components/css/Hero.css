@@ -81,15 +81,22 @@
   justify-content: center;
 }
 
-.register-type-btn a {
-  position: absolute;
-  right: 10px;
+.help {
+  /* display: flex;
+  align-items: center; */
+}
+.help svg {
   font-size: 20px;
-  transition: 250ms;
+  margin-right: 10px;
+  fill: darkblue;
+  display: inline;
 }
 
-.register-type-btn a svg:hover {
-  fill: lightblue;
+.help a {
+  text-decoration: underline;
+  padding: 0 8px;
+  font-weight: bold;
+  color: blue;
 }
 
 @media screen and (max-width: 1200px) {
@@ -125,14 +132,14 @@
   .hero .hero-text {
     width: 100%;
   }
-  
+
   .hero .hero-img {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  
-  .hero .hero-img img{
+
+  .hero .hero-img img {
     width: 100%;
   }
 }
