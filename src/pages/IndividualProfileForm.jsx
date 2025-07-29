@@ -318,12 +318,12 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
                     {/* Payment Button */}
                     {complete && (
                         <div className="mt-2 px-2">
-                            <button
+                            {/* <button
                                 onClick={handlePayment}
                                 disabled={isEditing || isSaving || profileData.paymentSuccessful}
                                 className={`w-full py-3 rounded-xl font-semibold ${profileData.paymentSuccessful ? "bg-green-600 cursor-not-allowed" : "bg-red-600"} text-white`}>
-                                {profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}
-                            </button>
+                                {profileData.paymentSuccessful ? "Payment Done" : ""}
+                            </button> */}
                         </div>
                     )}
 
