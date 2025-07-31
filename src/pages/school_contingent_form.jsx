@@ -17,7 +17,7 @@ const initialState = {
   email: "",
   whatsapp: "",
   schoolAddress: "",
-  numberOfStudents: "",
+  // numberOfStudents: "",
   state: "",
   city: ""
 };

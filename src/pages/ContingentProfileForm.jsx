@@ -59,7 +59,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     const isProfileComplete = () => {
         const requiredFields = [
             "schoolName", "username", "pocName", "principalName", "schoolEmail", "pocEmail", "pocPhone", "principalPhone", "whatsapp",
-            "schoolAddress", "numberOfStudents", "state", "city"
+            "schoolAddress", "state", "city"
         ];
         return requiredFields.every((field) => profileData[field]?.toString().trim() !== "");
     };
@@ -84,7 +84,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     const validateProfileData = (profileData) => {
         const requiredFields = [
             "schoolName", "username", "pocName", "principalName", "schoolEmail", "pocEmail", "pocPhone", "principalPhone", "whatsapp",
-            "schoolAddress", "numberOfStudents", "state", "city"
+            "schoolAddress", "state", "city"
         ];
 
         for (let field of requiredFields) {

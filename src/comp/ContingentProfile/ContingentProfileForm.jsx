@@ -41,7 +41,7 @@ const ContingentProfileForm = ({ profileId, initialData, user, onDelete }) => {
     const isProfileComplete = () => {
         const requiredFields = [
             "schoolName", "username","pocName","principalName", "schoolEmail","pocEmail", "pocPhone","principalPhone", "whatsapp",
-            "schoolAddress", "numberOfStudents", "state", "city"
+            "schoolAddress", "state", "city"
         ];
         return requiredFields.every((field) => profileData[field]?.toString().trim() !== "");
     };
