@@ -17,7 +17,7 @@ const fields = [
     { id: "principalPhone", label: "Principal Phone Number", type: "tel" },
     { id: "whatsapp", label: "WhatsApp Number", type: "tel" },
     { id: "schoolAddress", label: "School Address", type: "text" },
-    { id: "numberOfStudents", label: "Number of Students", type: "number" },
+    // { id: "numberOfStudents", label: "Number of Students", type: "number" },
     { id: "state", label: "State", type: "text" },
     { id: "city", label: "City", type: "text" }
 ];
