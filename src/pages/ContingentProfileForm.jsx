@@ -18,7 +18,7 @@ const fields = [
     { id: "principalPhone", label: "Principal Phone Number", type: "tel" },
     { id: "whatsapp", label: "WhatsApp Number", type: "tel" },
     { id: "schoolAddress", label: "School Address", type: "text" },
-    { id: "numberOfStudents", label: "Number of Students", type: "number" },
+    // { id: "numberOfStudents", label: "Number of Students", type: "number" },
     { id: "state", label: "State", type: "text" },
     { id: "city", label: "City", type: "text" }
 ];
@@ -59,7 +59,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     const isProfileComplete = () => {
         const requiredFields = [
             "schoolName", "username", "pocName", "principalName", "schoolEmail", "pocEmail", "pocPhone", "principalPhone", "whatsapp",
-            "schoolAddress", "numberOfStudents", "state", "city"
+            "schoolAddress", "state", "city"
         ];
         return requiredFields.every((field) => profileData[field]?.toString().trim() !== "");
     };
@@ -84,7 +84,7 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
     const validateProfileData = (profileData) => {
         const requiredFields = [
             "schoolName", "username", "pocName", "principalName", "schoolEmail", "pocEmail", "pocPhone", "principalPhone", "whatsapp",
-            "schoolAddress", "numberOfStudents", "state", "city"
+            "schoolAddress", "state", "city"
         ];
 
         for (let field of requiredFields) {
@@ -252,14 +252,14 @@ const ContingentProfileForm = ({ profileId, initialData, user }) => {
                     </div>
                     {complete && (
                         <div className="col-span-full mt-2 px-2">
-                            <button
+                            {/* <button
                                 type="button"
                                 onClick={handlePayment}
                                 disabled={isEditing || isSaving || profileData.paymentSuccessful}
                                 className={`w-full py-3 rounded-xl font-semibold transition-colors ${profileData.paymentSuccessful ? "bg-green-600 text-white cursor-not-allowed" : "bg-red-600 text-white"}`}
                             >
-                                <p>{profileData.paymentSuccessful ? "Payment Done" : "Make Payment"}</p>
-                            </button>
+                                <p>{profileData.paymentSuccessful ? "Payment Done" : ""}</p>
+                            </button> */}
                         </div>
                     )}
 

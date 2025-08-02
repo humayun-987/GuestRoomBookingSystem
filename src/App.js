@@ -1,6 +1,10 @@
 import React from "react";
 import "bootstrap";
 import "react-bootstrap";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import { BiLogoFacebook, BiLogoInstagram, BiLogoYoutube, BiLogoWhatsapp, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
+
+
 // import Section from "./comp/section/index";
 
 // import IndividualLogin from "./comp/IndividualLogin/IndividualLogin";

@@ -58,7 +58,7 @@ const ContingentSignup = () => {
                 pocPhone: "",
                 whatsapp: "",
                 schoolAddress: "",
-                numberOfStudents: "",
+                // numberOfStudents: "",
                 state: "",
                 city: "",
                 applicationPassword: "Application Password will be provided after payment",
