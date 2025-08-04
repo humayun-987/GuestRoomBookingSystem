@@ -15,6 +15,7 @@ export default function Hero() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [userType, setUserType] = useState(null); // "contingent" | "individual" | null
+  const [tab, setTab] = useState("register");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -89,10 +90,9 @@ export default function Hero() {
                     type="button"
                     onClick={() =>
                       navigate(
-                        `/${
-                          userType === "contingent"
-                            ? "contingent_profile"
-                            : "individual_profile"
+                        `/${userType === "contingent"
+                          ? "contingent_profile"
+                          : "individual_profile"
                         }/${user.uid}`
                       )
                     }
@@ -122,19 +122,44 @@ export default function Hero() {
       </div>
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-xl p-8 w-[90%] max-w-md animate-fadeIn">
+          <div className="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md animate-fadeIn">
+            <div className="flex justify-center mb-6">
+              <button
+                onClick={() => setTab("register")}
+                className={`px-4 py-2 font-semibold ${tab === "register"
+                    ? "border-b-2 border-blue-600 text-blue-600"
+                    : "text-gray-500"
+                  }`}
+              >
+                Register
+              </button>
+              <button
+                onClick={() => setTab("login")}
+                className={`px-4 py-2 font-semibold ${tab === "login"
+                    ? "border-b-2 border-blue-600 text-blue-600"
+                    : "text-gray-500"
+                  }`}
+              >
+                Login
+              </button>
+            </div>
+
             <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
-              Register As
+              {tab === "register" ? "Register As" : "Login As"}
             </h3>
             <p className="text-gray-600 text-center mb-6">
-              Choose how you'd like to register
+              Choose how you'd like to {tab}
             </p>
 
             <div className="flex flex-col gap-4">
               <button
                 onClick={() => {
                   setShowModal(false);
-                  navigate("/contingent_signup");
+                  navigate(
+                    tab === "register"
+                      ? "/contingent_signup"
+                      : "/contingent_login"
+                  );
                 }}
                 className="register-type-btn bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition"
               >
@@ -144,7 +169,11 @@ export default function Hero() {
               <button
                 onClick={() => {
                   setShowModal(false);
-                  navigate("/individual_signup");
+                  navigate(
+                    tab === "register"
+                      ? "/individual_signup"
+                      : "/individual_login"
+                  );
                 }}
                 className="register-type-btn bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition"
               >
@@ -157,13 +186,33 @@ export default function Hero() {
               >
                 Cancel
               </button>
-              <div className="help">
-                <IoInformationCircleSharp/> Watch Registration <a target="_blank" href="/videos/contingent.mp4">Contingent</a> and <a target="_blank" href="/videos/indivisual.mp4">Individual</a>
+
+              <div className="help text-sm text-gray-600 text-center mt-4">
+                <IoInformationCircleSharp className="inline-block mr-1 text-lg" />
+                Watch <b>Registration</b> videos:{" "}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="/videos/contingent.mp4"
+                  className="text-blue-600 underline"
+                >
+                  Contingent
+                </a>{" "}
+                and{" "}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="/videos/indivisual.mp4"
+                  className="text-green-600 underline"
+                >
+                  Individual
+                </a>
               </div>
             </div>
           </div>
         </div>
       )}
+
     </SizedBox>
   );
 }
