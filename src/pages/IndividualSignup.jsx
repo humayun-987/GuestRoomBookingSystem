@@ -337,7 +337,7 @@ export function IndividualSignup() {
                 </div>
                 <div className="login-box relative overflow-hidden">
                     {/* Fixed Header */}
-                    <div className="logo z-10 sticky top-0 left-0 right-0 py-4 flex items-center justify-center border-b mb-0 px-8">
+                    <div className="logo z-10 sticky top-0 left-0 py-4 flex items-center justify-center border-b mb-0 px-4 md:px-8">
                         <img src="/images/UNOSQ_logo.png" alt="logo" className="h-10 w-auto" />
                         <span className="text-2xl text-gray-800">UNOSQ</span>
                     </div>
@@ -401,6 +401,9 @@ export function IndividualSignup() {
 
                                 <div className="absolute bottom-0 left-0 right-0 px-6 py-4 bg-[#FFF7EC] border-t">
                                     <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Continue to Signup</button>
+                                     <span className="text-center text-sm block mt-4">
+                                    Already have an account? <span className="text-blue-700 underline cursor-pointer" onClick={() => navigate("/individual_login")}>Login</span>
+                                </span>
                                 </div>
                             </form>
                         ) : (
