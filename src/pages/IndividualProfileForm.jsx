@@ -359,7 +359,7 @@ const fields = [
     { id: "city", label: "City", type: "text" },
 ];
 
-const validPools = ["Little Champs", "Super Nova", "The Titans", "Elite Explorers"];
+const validPools = ["Little Champs 5-6", "Super Nova 7-8", "The Titans 9-10", "Elite Explorers 11-12"];
 
 const IndividualProfileForm = ({ profileId, initialData, user }) => {
     const navigate = useNavigate();
