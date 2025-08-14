@@ -369,11 +369,15 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
     const [complete, setComplete] = useState(null);
     const [showEditHint, setShowEditHint] = useState(true);
     const [showWarningModal, setShowWarningModal] = useState(false);
+    const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
 
     useEffect(() => {
         if (profileData && !isProfileComplete()) {
             setShowWarningModal(true);
             toast.warning("Completion of profile is necessary to make payment and register for UNOSQ'25.");
+        }
+        else if (profileData) {
+            setShowWhatsAppModal(true);
         }
     }, []);
     useEffect(() => {
@@ -518,6 +522,36 @@ const IndividualProfileForm = ({ profileId, initialData, user }) => {
                     </div>
                 </div>
             )}
+            {showWhatsAppModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl shadow-xl max-w-md w-[90%] p-6 text-center">
+                        <h2 className="text-2xl font-bold text-green-700 mb-3 flex items-center justify-center gap-2">
+                            📢 Join Us on WhatsApp!
+                        </h2>
+                        <p className="text-gray-700 mb-6">
+                            Be part of our <strong>UNOSQ'25 community</strong> on WhatsApp!
+                            Get event updates, announcements, and exclusive content directly on your phone.
+                        </p>
+                        <div className="flex justify-center gap-4">
+                            <a
+                                href="https://chat.whatsapp.com/K86WshycqTj3vm99dJkpJp"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-5 rounded-full shadow-md transform transition hover:scale-105"
+                            >
+                                Join Now
+                            </a>
+                            <button
+                                onClick={() => setShowWhatsAppModal(false)}
+                                className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-5 rounded-full shadow-sm"
+                            >
+                                Maybe Later
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="flex flex-col-reverse items-center lg:flex-row">
                 <div className="bg-gradient-to-b from-gray-900 to-[#222631] shadow-xl rounded-xl md:w-[50%] w-[95%] mt-3 mb-0 p-6 pb-3">
                     <div className="left"></div>
