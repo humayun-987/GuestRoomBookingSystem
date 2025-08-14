@@ -22,15 +22,13 @@ export default function Hero() {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    
-      setShowWhatsAppModal(true);
     return () => unsubscribe();
   }, []);
 
   useEffect(() => {
     const checkUserType = async () => {
       if (!user) return;
-
+      setShowWhatsAppModal(true);
       const contingentRef = collection(
         db,
         "Contingent Users'25",
