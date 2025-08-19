@@ -12,7 +12,7 @@ const QuickLinks = [
   },
   {
     label: "Brochure",
-    to: "https://drive.google.com/uc?export=download&id=1bkV3ZTR2b8pnVE0uvT98L1Fh5xR2e4Ob",
+    to: "https://drive.google.com/uc?export=download&id=1WZc74KWeDX9V8KYyEHcJ49bUcjv-Puq6",
   },
   {
     label: "Contact",
