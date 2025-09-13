@@ -29,6 +29,7 @@ import { IndividualLogin } from "./pages/IndividualLogin.jsx";
 import { IndividualSignup } from "./pages/IndividualSignup.jsx";
 import { ContingentSignup } from "./pages/Contingent_Signup.jsx";
 import { ContingentLogin } from "./pages/Contingent_Login.jsx";
+import ClosedRegistrationModal from "./pages/ClosedRegistrationModal.jsx";
 // import Brochure from "./comp/Brochure/Brochure.jsx";
 import IndividualProfilesContainer from "./pages/IndividualProfile.jsx";
 import ContingentProfilesContainer from "./pages/ContingentProfile.jsx";
@@ -37,6 +38,7 @@ import ContingentPayment from "./comp/Payment/contingentpayment";
 import ContingentApplicationForm from "./pages/school_contingent_form.jsx";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Close } from "@mui/icons-material";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -47,8 +49,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/FAQ" element={<FAQ />} />
         {/* <Route path="/brochure" element={<Brochure />} /> */}
         <Route path="/individual_login" element={<IndividualLogin />} />
-        <Route path="/individual_signup" element={<IndividualSignup />} />
-        <Route path="/contingent_signup" element={<ContingentSignup />} />
+        {/* <Route path="/individual_signup" element={<IndividualSignup />} /> */}
+        <Route path="/individual_signup" element={<ClosedRegistrationModal />} />
+        {/* <Route path="/contingent_signup" element={<ContingentSignup />} /> */}
+        <Route path="/contingent_signup" element={<ClosedRegistrationModal />} />
         <Route path="/contingent_login" element={<ContingentLogin />} />
         <Route path="/contingentPayment" element={<ContingentPayment />} />
         <Route path="/individualPayment" element={<IndividualPayment />} />
