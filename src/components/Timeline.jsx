@@ -5,11 +5,11 @@ import "./css/Timeline.css";
 
 const TimelineObj = [
   { date: "10 July", event: "Registration Starts" },
-  { date: "27 August", event: "Registration Ends" },
-  { date: "31 August", event: "Exam Phase-1" },
-  { date: "4 September", event: "Result Phase-1" },
-  { date: "7 September", event: "Exam Phase-2" },
-  { date: "10 September", event: "Result Phase-2" },
+  { date: "3 September", event: "Registration Ends" },
+  { date: "7 September", event: "Exam Phase-1" },
+  { date: "10 September", event: "Result Phase-1" },
+  { date: "14 September", event: "Exam Phase-2" },
+  { date: "15 September", event: "Result Phase-2" },
 ];
 
 const App = () => (
