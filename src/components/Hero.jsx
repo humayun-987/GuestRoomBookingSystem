@@ -115,25 +115,32 @@ export default function Hero() {
                   <RxPaperPlane />
                 </Link> */}
                 {user ? (
+                  // <button
+                  //   className="register-btn primary-btn"
+                  //   type="button"
+                  //   onClick={() =>
+                  //     navigate(
+                  //       `/${userType === "contingent"
+                  //         ? "contingent_profile"
+                  //         : "individual_profile"
+                  //       }/${user.uid}`
+                  //     )
+                  //   }
+                  // >
+                  //   Your Profile
+                  // </button>
                   <button
                     className="register-btn primary-btn"
                     type="button"
-                    onClick={() =>
-                      navigate(
-                        `/${userType === "contingent"
-                          ? "contingent_profile"
-                          : "individual_profile"
-                        }/${user.uid}`
-                      )
-                    }
+                    onClick={() => navigate("/result")}
                   >
-                    Your Profile
+                    View Results
                   </button>
                 ) : (
                   <button
                     className="register-btn primary-btn"
                     type="button"
-                     onClick={() => navigate("/result")}
+                    onClick={() => navigate("/result")}
                   >
                     View Results
                   </button>

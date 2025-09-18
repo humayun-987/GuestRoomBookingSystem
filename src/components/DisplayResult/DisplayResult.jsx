@@ -73,7 +73,7 @@ function ResultTable() {
     };
 
     // Top 3 Students
-const topThree = [...data].sort((a, b) => a.RANK - b.RANK).slice(0, 3);
+    const topThree = [...data].sort((a, b) => a.RANK - b.RANK).slice(0, 3);
 
 
     return (
@@ -91,9 +91,9 @@ const topThree = [...data].sort((a, b) => a.RANK - b.RANK).slice(0, 3);
                             <button
                                 key={poolName}
                                 onClick={() => setPool(poolName)}
-                                className={`px-4 py-2 rounded-lg font-medium transition ${pool === poolName
-                                        ? "bg-blue-600 text-white shadow-md"
-                                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                className={`px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base transition ${pool === poolName
+                                    ? "bg-blue-600 text-white shadow-md"
+                                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                                     }`}
                             >
                                 {poolName}
@@ -102,9 +102,9 @@ const topThree = [...data].sort((a, b) => a.RANK - b.RANK).slice(0, 3);
                     </div>
 
                     {/* Items per page & Filters */}
-                    <div className="flex gap-3 mt-2 md:mt-0 flex-wrap">
+                    <div className="flex gap-2 md:gap-3 mt-2 md:mt-0 flex-wrap">
                         <select
-                            className="px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500"
+                            className="px-2 py-1 md:px-3 md:py-2 text-sm md:text-base rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500"
                             value={itemsPerPage}
                             onChange={changeItemsPerPage}
                         >
@@ -119,7 +119,7 @@ const topThree = [...data].sort((a, b) => a.RANK - b.RANK).slice(0, 3);
                             placeholder="Search by name..."
                             value={searchName}
                             onChange={(e) => setSearchName(e.target.value)}
-                            className="px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500"
+                            className="px-4 py-2 md:px-3 md:py-2 text-sm md:text-base rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500"
                         />
 
                         <input
@@ -127,37 +127,12 @@ const topThree = [...data].sort((a, b) => a.RANK - b.RANK).slice(0, 3);
                             placeholder="Search by ID..."
                             value={searchID}
                             onChange={(e) => setSearchID(e.target.value)}
-                            className="px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500"
+                            className="px-4 py-2 md:px-3 md:py-2 text-sm md:text-base rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
+
                 </div>
 
-                {/* Top 3 Compact & Vibrant Cards */}
-                {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4 p-4">
-          {topThree.map((student, index) => (
-            <div
-              key={index}
-              className={`flex flex-col items-center justify-center p-4 rounded-xl shadow-xl transition transform hover:scale-105 w-40 sm:w-44 ${
-                index === 0
-                  ? "bg-gradient-to-tr from-pink-500 to-purple-600 text-white scale-105"
-                  : index === 1
-                  ? "bg-gradient-to-tr from-blue-500 to-cyan-500 text-white"
-                  : "bg-gradient-to-tr from-lime-400 to-teal-500 text-white"
-              }`}
-            >
-              <div className="text-4xl mb-2">
-                {index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉"}
-              </div>
-              <h2 className="font-semibold text-center text-lg truncate">
-                {student["STUDENT NAME"]}
-              </h2>
-              <p className="text-sm mt-1 text-center">
-                ID: {student["# ID NO"]} | Total: {student["TOTAL MARKS"]}
-              </p>
-              <p className="mt-1 font-bold text-sm">Rank #{student.RANK}</p>
-            </div>
-          ))}
-        </div> */}
                 {/* Top 3 Compact & Scrollable Winner Cards */}
                 <div className="flex overflow-x-auto gap-3 p-4">
                     {topThree.map((student, index) => (
