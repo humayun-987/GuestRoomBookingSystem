@@ -133,14 +133,18 @@ export default function Hero() {
                   <button
                     className="register-btn primary-btn"
                     type="button"
-                    onClick={() => setShowModal(true)}
+                     onClick={() => navigate("/result")}
                   >
-                    Register Now
+                    View Results
                   </button>
+                  // <button
+                  //   className="register-btn primary-btn"
+                  //   type="button"
+                  //   onClick={() => setShowModal(true)}
+                  // >
+                  //   Register Now
+                  // </button>
                 )}
-                <div>
-                  Only <b>20</b> days left to register!
-                </div>
               </motion.div>
             </SwipeUp>
           </div>

@@ -36,6 +36,7 @@ import ContingentProfilesContainer from "./pages/ContingentProfile.jsx";
 import IndividualPayment from "./comp/Payment/individualpayment";
 import ContingentPayment from "./comp/Payment/contingentpayment";
 import ContingentApplicationForm from "./pages/school_contingent_form.jsx";
+import Result from "./pages/Results.jsx";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Close } from "@mui/icons-material";
@@ -59,6 +60,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/individual_profile/:uid" element={<IndividualProfilesContainer />} />
         <Route path="/contingent_profile/:uid" element={<ContingentProfilesContainer />} />
         <Route path="/school_contingent_form" element={<ContingentApplicationForm />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

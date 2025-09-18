@@ -15,9 +15,13 @@ import { db } from "../comp/firebaseConfig";
 
 const NavItems = [
   {
-    label: "About",
-    to: "/#about",
+    label: "Results",
+    to: "/result",
   },
+  // {
+  //   label: "About",
+  //   to: "/#about",
+  // },
   {
     label: "Brochure",
     to: "https://drive.google.com/uc?export=download&id=1WZc74KWeDX9V8KYyEHcJ49bUcjv-Puq6",

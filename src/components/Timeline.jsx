@@ -9,7 +9,7 @@ const TimelineObj = [
   { date: "7 September", event: "Exam Phase-1" },
   { date: "10 September", event: "Result Phase-1" },
   { date: "14 September", event: "Exam Phase-2" },
-  { date: "15 September", event: "Result Phase-2" },
+  { date: "18 September", event: "Result Phase-2" },
 ];
 
 const App = () => (
