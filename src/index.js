@@ -16,8 +16,6 @@ import ProtectedRoute from "./pages/ProtectedRoute.jsx";
 
 // Pages
 import LandingPage    from "./pages/LandingPage.jsx";
-import Home           from "./pages/Home.jsx";
-import FAQ            from "./pages/FAQ.jsx";
 
 // New Auth pages
 import Login  from "./pages/Login.jsx";
@@ -38,8 +36,6 @@ createRoot(document.getElementById("root")).render(
 
           {/* ── Landing & public ── */}
           <Route path="/"    element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/FAQ"  element={<FAQ />} />
 
           {/* ── Auth pages ── */}
           <Route path="/login"  element={<Login />} />

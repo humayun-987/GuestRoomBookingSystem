@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 :root {
-  /* 60% Background/Base */
-  background: url("/public/images/login/background-white-mirrored.jpg");
   /* 30% Secondary UI */
   --color-primary: hsl(29, 100%, 50%);
   --color-primary-light: hsl(29, 91%, 59%);

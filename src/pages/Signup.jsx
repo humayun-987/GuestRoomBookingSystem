@@ -7,7 +7,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
-import { auth, db } from "../comp/firebaseConfig";
+import { auth, db } from "../firebaseConfig";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
 

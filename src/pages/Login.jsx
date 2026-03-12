@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "../comp/firebaseConfig";
+import { auth } from "../firebaseConfig";
 import { useAuth, ROLE_HOME } from "./AuthContext";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";

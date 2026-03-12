@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, ROLE_HOME } from "./AuthContext.jsx";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../comp/firebaseConfig";
+import { db } from "../firebaseConfig";
 
 /* ─── Google Fonts ─────────────────────────────────────────── */
 const fontLink = document.createElement("link");
@@ -47,11 +47,15 @@ const injectStyles = () => {
     }
     .lp-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px; font-weight: 700;
+      font-size: 24px; font-weight: 700;
       color: var(--gold);
       letter-spacing: 0.5px;
     }
     .lp-logo span { color: var(--text); font-weight: 400; }
+    @media (max-width: 600px) {
+      .lp-logo { font-size: 20px; letter-spacing: 0.2px; }
+      .lp-logo span { display: none}
+    }
     .lp-nav-btns { display: flex; gap: 12px; align-items: center; }
     .lp-btn-ghost {
       background: transparent;
@@ -602,14 +606,14 @@ async function fetchLiveRooms() {
     }
     const isOccupied = activeBookings.some(b => {
       if (b.roomId !== room.id) return false;
-      const bIn  = b.checkIn?.toDate?.()  || new Date(0);
+      const bIn = b.checkIn?.toDate?.() || new Date(0);
       const bOut = b.checkOut?.toDate?.() || new Date(0);
       return bIn <= today && bOut >= today;
     });
-    if (isOccupied) return { ...room, statusLabel: "Booked",     badge: "badge-red"   };
+    if (isOccupied) return { ...room, statusLabel: "Booked", badge: "badge-red" };
     const isPending = activeBookings.some(b => b.roomId === room.id && b.status === "pending");
-    if (isPending)  return { ...room, statusLabel: "Pending",    badge: "badge-gold"  };
-    return               { ...room, statusLabel: "Available",  badge: "badge-green" };
+    if (isPending) return { ...room, statusLabel: "Pending", badge: "badge-gold" };
+    return { ...room, statusLabel: "Available", badge: "badge-green" };
   });
 }
 
@@ -672,8 +676,8 @@ const BRANCHES = [
 ];
 
 function BookingLifecycle() {
-  const [active, setActive]   = useState(0);
-  const [branch, setBranch]   = useState("approve");
+  const [active, setActive] = useState(0);
+  const [branch, setBranch] = useState("approve");
 
   const stage = STAGES[active];
 
@@ -757,9 +761,9 @@ function BookingLifecycle() {
 
 
 export default function LandingPage() {
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const { user, role, loading } = useAuth();
-  const navRef    = useRef(null);
+  const navRef = useRef(null);
   const [liveRooms, setLiveRooms] = useState([]);
   const [roomsLoading, setRoomsLoading] = useState(true);
 
@@ -781,26 +785,26 @@ export default function LandingPage() {
   }, [user, role, loading]);
 
   const features = [
-    { icon: "🏛️", title: "Multi-Hostel Support",  desc: "Manage guest rooms across all 14 halls from a single unified platform." },
-    { icon: "⚡", title: "Instant Booking",        desc: "Request a guest room in minutes. Rooms are held immediately on submission." },
-    { icon: "✅", title: "Warden Approval",        desc: "Every booking is reviewed by your hostel warden before confirmation." },
-    { icon: "🔐", title: "Role-Based Access",      desc: "Students, wardens, caretakers and admins each see only what they need." },
-    { icon: "📋", title: "Booking History",        desc: "Track all your past and current bookings with full status visibility." },
-    { icon: "🛎️", title: "Check-in / Check-out",  desc: "Caretakers manage guest arrivals and departures with a single click." },
+    { icon: "🏛️", title: "Multi-Hostel Support", desc: "Manage guest rooms across all 14 halls from a single unified platform." },
+    { icon: "⚡", title: "Instant Booking", desc: "Request a guest room in minutes. Rooms are held immediately on submission." },
+    { icon: "✅", title: "Warden Approval", desc: "Every booking is reviewed by your hostel warden before confirmation." },
+    { icon: "🔐", title: "Role-Based Access", desc: "Students, wardens, caretakers and admins each see only what they need." },
+    { icon: "📋", title: "Booking History", desc: "Track all your past and current bookings with full status visibility." },
+    { icon: "🛎️", title: "Check-in / Check-out", desc: "Caretakers manage guest arrivals and departures with a single click." },
   ];
 
   const steps = [
     { n: "1", title: "Create Account", desc: "Sign up as a student with your college email." },
-    { n: "2", title: "Choose a Room",  desc: "Browse available rooms across all hostels." },
+    { n: "2", title: "Choose a Room", desc: "Browse available rooms across all hostels." },
     { n: "3", title: "Submit Request", desc: "Fill in guest details and submit for warden review." },
-    { n: "4", title: "Guest Arrives",  desc: "Caretaker checks in your guest upon arrival." },
+    { n: "4", title: "Guest Arrives", desc: "Caretaker checks in your guest upon arrival." },
   ];
 
   const roles = [
-    { icon: "🎓", title: "Student",     desc: "Book guest rooms for family and visitors. Track request status in real time.",        perms: ["Book Rooms", "View Status", "Booking History"] },
-    { icon: "🏠", title: "Warden",      desc: "Review and approve guest room requests for your assigned hostel.",                    perms: ["Approve / Reject", "Conditional Approval", "View All Requests"] },
-    { icon: "🛎️", title: "Caretaker",  desc: "Manage physical check-ins and check-outs for arriving guests.",                      perms: ["Check-in Guests", "Check-out Guests", "View Active Stays"] },
-    { icon: "⚙️", title: "Administrator", desc: "Configure hostels, rooms, and generate staff invite codes.",                       perms: ["Room Config", "Invite Codes", "All Bookings"] },
+    { icon: "🎓", title: "Student", desc: "Book guest rooms for family and visitors. Track request status in real time.", perms: ["Book Rooms", "View Status", "Booking History"] },
+    { icon: "🏠", title: "Warden", desc: "Review and approve guest room requests for your assigned hostel.", perms: ["Approve / Reject", "Conditional Approval", "View All Requests"] },
+    { icon: "🛎️", title: "Caretaker", desc: "Manage physical check-ins and check-outs for arriving guests.", perms: ["Check-in Guests", "Check-out Guests", "View Active Stays"] },
+    { icon: "⚙️", title: "Administrator", desc: "Configure hostels, rooms, and generate staff invite codes.", perms: ["Room Config", "Invite Codes", "All Bookings"] },
   ];
 
   const now = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
@@ -810,7 +814,7 @@ export default function LandingPage() {
 
       {/* ── NAV ─────────────────────────────────── */}
       <nav ref={navRef} className="lp-nav">
-        <div className="lp-logo">IIT Kanpur <span>· Hostel Guests</span></div>
+        <div className="lp-logo">IIT Kanpur <span>· Guests Room Management System</span></div>
         <div className="lp-nav-btns">
           <button className="lp-btn-ghost" onClick={() => navigate("/login")}>Login</button>
           <button className="lp-btn-solid" onClick={() => navigate("/signup")}>Register</button>
@@ -888,9 +892,9 @@ export default function LandingPage() {
       {/* ── STATS ───────────────────────────────── */}
       <div className="lp-stats">
         {[
-          { num: "14",   label: "Halls of Residence" },
+          { num: "14", label: "Halls of Residence" },
           { num: "100+", label: "Guest Rooms" },
-          { num: "4",    label: "User Roles" },
+          { num: "4", label: "User Roles" },
           { num: "24/7", label: "System Availability" },
         ].map((s, i) => (
           <div key={i} className="lp-stat">
@@ -915,9 +919,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-{/* ── BOOKING LIFECYCLE ────────────────── */}
+      {/* ── BOOKING LIFECYCLE ────────────────── */}
       <BookingLifecycle />
-      
+
       {/* ── HOW IT WORKS ────────────────────────── */}
       <section className="lp-section lp-how">
         <div className="lp-section-label">Process</div>
@@ -968,7 +972,7 @@ export default function LandingPage() {
 
       {/* ── FOOTER ──────────────────────────────── */}
       <footer className="lp-footer">
-        <div className="lp-footer-logo">IIT Kanpur · Hostel Guest Portal</div>
+        <div className="lp-footer-logo">IIT Kanpur · Guest Room Portal</div>
         <div className="lp-footer-text">Student Welfare Office · All Halls of Residence</div>
       </footer>
 
