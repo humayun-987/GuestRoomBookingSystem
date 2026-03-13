@@ -3,103 +3,76 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth, ROLE_HOME } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
 
+const IITK_DOMAIN = "iitk.ac.in";
+const isIITKEmail = (email) =>
+  typeof email === "string" && email.trim().toLowerCase().endsWith(`@${IITK_DOMAIN}`);
+
 const injectSignupCSS = () => {
   if (document.getElementById("signup-css")) return;
   const s = document.createElement("style");
   s.id = "signup-css";
   s.textContent = `
-    .signup-wrap {
-      display: flex;
-      min-height: 100vh;
-    }
+    .signup-wrap { display: flex; min-height: 100vh; }
 
-    /* ── Left decorative panel ── */
     .signup-left {
-      flex: 1;
-      padding: 48px 60px;
-      display: flex;
-      flex-direction: column;
+      flex: 1; padding: 48px 60px;
+      display: flex; flex-direction: column;
       border-right: 1px solid var(--border);
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
     .signup-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(48px, 5.5vw, 72px);
-      font-weight: 600;
-      line-height: 1.05;
-      color: var(--cream);
-      margin: 0 0 16px;
+      font-weight: 600; line-height: 1.05;
+      color: var(--cream); margin: 0 0 16px;
     }
     .signup-desc {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 360px;
-      font-weight: 300;
+      font-size: 15px; color: var(--muted);
+      line-height: 1.7; max-width: 360px; font-weight: 300;
     }
-
-    /* ── Right form panel ── */
     .signup-right {
-      width: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 40px;
-      position: relative;
-      z-index: 1;
+      width: 520px; display: flex;
+      align-items: center; justify-content: center;
+      padding: 48px 40px; position: relative; z-index: 1;
       background: rgba(13, 27, 42, 0.3);
     }
-    .signup-card {
-      width: 100%;
-      max-width: 460px;
-    }
+    .signup-card { width: 100%; max-width: 460px; }
 
-    /* ── Profile grid: 2 cols on desktop ── */
     .signup-profile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 16px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px;
     }
 
-    /* ── Tablet (≤ 900px) ── */
+    .signup-email-hint {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 6px; padding: 10px 14px;
+      margin-bottom: 20px;
+      font-size: 12px; color: var(--muted); line-height: 1.5;
+    }
+    .signup-email-hint strong { color: var(--gold); font-weight: 500; }
+    .signup-email-error {
+      font-size: 12px; color: #f87171;
+      margin-top: 5px; display: flex; align-items: center; gap: 5px;
+    }
+
     @media (max-width: 900px) {
       .signup-wrap { flex-direction: column; }
-
-      .signup-left {
-        flex: none;
-        padding: 24px 24px 20px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
+      .signup-left { flex: none; padding: 24px 24px 20px; border-right: none; border-bottom: 1px solid var(--border); }
       .signup-left-spacer { display: none; }
       .signup-left-roles  { display: none !important; }
       .signup-title { font-size: 34px; margin-bottom: 8px; }
       .signup-desc  { font-size: 13px; }
-
-      .signup-right {
-        width: 100%;
-        padding: 28px 24px 48px;
-        align-items: flex-start;
-        background: none;
-      }
+      .signup-right { width: 100%; padding: 28px 24px 48px; align-items: flex-start; background: none; }
       .signup-card { max-width: 100%; }
-
-      /* single column on tablet for profile fields */
-      .signup-profile-grid {
-        grid-template-columns: 1fr;
-      }
+      .signup-profile-grid { grid-template-columns: 1fr; }
     }
-
-    /* ── Mobile (≤ 480px) ── */
     @media (max-width: 480px) {
       .signup-left  { padding: 18px 16px 14px; }
       .signup-title { font-size: 28px; }
@@ -120,15 +93,16 @@ export default function Signup() {
     if (!loading && user && role) navigate(ROLE_HOME[role], { replace: true });
   }, [user, role, loading]);
 
-  const [step, setStep]         = useState(0);
-  const [mode, setMode]         = useState(isStaffMode ? "staff" : "student");
+  const [step, setStep]             = useState(0);
+  const [mode, setMode]             = useState(isStaffMode ? "staff" : "student");
   const [inviteCode, setInviteCode] = useState("");
-  const [codeData, setCodeData] = useState(null);
-  const [verifying, setVerifying] = useState(false);
+  const [codeData, setCodeData]     = useState(null);
+  const [verifying, setVerifying]   = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [showPass, setShowPass]     = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
+  // Verification modal state
   // Profile fields
   const [name, setName]       = useState("");
   const [phone, setPhone]     = useState("");
@@ -138,8 +112,18 @@ export default function Signup() {
 
   // Credential fields
   const [email, setEmail]       = useState("");
+  const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm]   = useState("");
+
+  const handleEmailChange = (val) => {
+    setEmail(val);
+    if (val && !isIITKEmail(val)) {
+      setEmailError(`Only @${IITK_DOMAIN} email addresses are allowed`);
+    } else {
+      setEmailError("");
+    }
+  };
 
   /* ── Verify invite code ── */
   const verifyCode = async () => {
@@ -159,65 +143,65 @@ export default function Signup() {
 
   /* ── Validate step 1 ── */
   const validateProfile = () => {
-    if (!name.trim()) { message.error("Enter your full name"); return false; }
-    if (!/^[0-9]{10}$/.test(phone)) { message.error("Enter a valid 10-digit phone number"); return false; }
-    if (mode === "student" && !rollNo.trim()) { message.error("Enter your roll number"); return false; }
-    if (mode === "student" && !hostel.trim()) { message.error("Enter your hostel name"); return false; }
+    if (!name.trim())                         { message.error("Enter your full name"); return false; }
+    if (!/^[0-9]{10}$/.test(phone))           { message.error("Enter a valid 10-digit phone number"); return false; }
+    if (mode === "student" && !rollNo.trim())  { message.error("Enter your roll number"); return false; }
+    if (mode === "student" && !hostel.trim())  { message.error("Enter your hostel name"); return false; }
     return true;
   };
 
   /* ── Final signup ── */
   const handleSignup = async (e) => {
     e.preventDefault();
-    if (!email) { message.error("Enter email"); return; }
-    if (password.length < 6) { message.error("Password must be at least 6 characters"); return; }
-    if (password !== confirm) { message.error("Passwords don't match"); return; }
+    if (!email)               { message.error("Enter email"); return; }
+    if (!isIITKEmail(email))  { message.error(`Only @${IITK_DOMAIN} email addresses are allowed`); return; }
+    if (password.length < 6)  { message.error("Password must be at least 6 characters"); return; }
+    if (password !== confirm)  { message.error("Passwords don't match"); return; }
+
     setSubmitting(true);
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
-      const uid = cred.user.uid;
+      const uid  = cred.user.uid;
 
       if (mode === "student") {
+        // Students — @iitk.ac.in domain is sufficient verification.
+        // Save profile and let AuthContext redirect to dashboard.
         await setDoc(doc(db, "users_student", uid), {
           email, role: "student", createdAt: new Date(),
           name: name.trim(), phone: phone.trim(),
-          rollNo: rollNo.trim(), hostel: hostel.trim(), department: department.trim(),
+          rollNo: rollNo.trim(), hostel: hostel.trim(),
+          department: department.trim(),
         });
-        message.success("Account created!");
-        navigate("/student/dashboard");
-        return;
+        message.success("Account created! Welcome to the portal.");
+
+      } else {
+        // Staff — sign out IMMEDIATELY so AuthContext never detects the role
+        // and redirects to dashboard. uid is already captured, so Firestore
+        // writes succeed even after signOut.
+        await auth.signOut();
+
+        const roleMap = { warden: "users_warden", caretaker: "users_caretaker", admin: "users_admin" };
+        await updateDoc(doc(db, "invite_codes", inviteCode.trim()), {
+          used: true, usedBy: uid, usedAt: new Date(),
+        });
+        await setDoc(doc(db, roleMap[codeData.role], uid), {
+          email, role: codeData.role, createdAt: new Date(),
+          name: name.trim(), phone: phone.trim(),
+          hostelId: codeData.hostelId || null,
+          hostelName: codeData.hostelName || null,
+        });
+        message.success("Account created! You can now sign in.");
+        navigate("/login");
       }
 
-      const roleMap = { warden: "users_warden", caretaker: "users_caretaker", admin: "users_admin" };
-      await updateDoc(doc(db, "invite_codes", inviteCode.trim()), {
-        used: true, usedBy: uid, usedAt: new Date(),
-      });
-      await setDoc(doc(db, roleMap[codeData.role], uid), {
-        email, role: codeData.role, createdAt: new Date(),
-        name: name.trim(), phone: phone.trim(),
-        hostelId: codeData.hostelId || null,
-        hostelName: codeData.hostelName || null,
-      });
-      message.success("Account created!");
-      const routes = { warden: "/warden/dashboard", caretaker: "/caretaker/dashboard", admin: "/admin/hostels" };
-      navigate(routes[codeData.role] || "/login");
     } catch (err) {
-      message.error(err.message || "Signup failed");
+      if (err.code === "auth/email-already-in-use") {
+        message.error("An account with this email already exists. Please sign in.");
+      } else {
+        message.error(err.message || "Signup failed");
+      }
     }
     setSubmitting(false);
-  };
-
-  /* ── Google signup (students only) ── */
-  const handleGoogle = async () => {
-    try {
-      const cred = await signInWithPopup(auth, new GoogleAuthProvider());
-      await setDoc(doc(db, "users_student", cred.user.uid), {
-        email: cred.user.email, role: "student", createdAt: new Date(),
-        name: name.trim(), phone: phone.trim(),
-        rollNo: rollNo.trim(), hostel: hostel.trim(), department: department.trim(),
-      });
-      message.success("Signed up with Google!");
-    } catch { message.error("Google signup failed"); }
   };
 
   const stepLabels = [
@@ -236,9 +220,7 @@ export default function Signup() {
         {/* ── Left panel ── */}
         <div className="signup-left">
           <div style={{ cursor: "pointer", color: "var(--muted)", fontSize: 13 }}
-            onClick={() => navigate("/")}>
-            ← Back to home
-          </div>
+            onClick={() => navigate("/")}>← Back to home</div>
 
           <div className="signup-left-spacer" style={{ flex: 1 }} />
 
@@ -255,7 +237,6 @@ export default function Signup() {
 
           <div className="signup-left-spacer" style={{ flex: 1 }} />
 
-          {/* Role list — hidden on mobile via CSS */}
           <div className="signup-left-roles" style={{ paddingTop: 40 }}>
             {[
               { icon: "🎓", label: "Student — Self-register" },
@@ -283,7 +264,7 @@ export default function Signup() {
               </div>
             </div>
 
-            {/* ── Step indicator ── */}
+            {/* Step indicator */}
             <div className="pr-steps" style={{ marginBottom: 28 }}>
               {stepLabels.map((label, i) => (
                 <div key={i} className="pr-step" style={{ flex: i < stepLabels.length - 1 ? 1 : "none" }}>
@@ -301,13 +282,9 @@ export default function Signup() {
               <div className="pr-a1">
                 <div style={{ display: "flex", gap: 10, marginBottom: 24 }}>
                   <button className={`pb pb-full ${mode === "student" ? "pb-gold" : "pb-ghost"}`}
-                    onClick={() => setMode("student")}>
-                    🎓 Student
-                  </button>
+                    onClick={() => setMode("student")}>🎓 Student</button>
                   <button className={`pb pb-full ${mode === "staff" ? "pb-gold" : "pb-ghost"}`}
-                    onClick={() => setMode("staff")}>
-                    🔑 Staff
-                  </button>
+                    onClick={() => setMode("staff")}>🔑 Staff</button>
                 </div>
 
                 {mode === "student" ? (
@@ -350,7 +327,6 @@ export default function Signup() {
             {/* ══ STEP 1: Profile info ══ */}
             {step === 1 && (
               <div className="pr-a1">
-                {/* Name + Phone always side-by-side if there's room */}
                 <div className="signup-profile-grid">
                   <div className="pr-field">
                     <label className="pr-label">Full Name</label>
@@ -392,9 +368,7 @@ export default function Signup() {
                 <div style={{ display: "flex", gap: 10, marginTop: 4 }}>
                   <button className="pb pb-ghost pb-full" onClick={() => setStep(0)}>← Back</button>
                   <button className="pb pb-gold pb-full"
-                    onClick={() => { if (validateProfile()) setStep(2); }}>
-                    Next →
-                  </button>
+                    onClick={() => { if (validateProfile()) setStep(2); }}>Next →</button>
                 </div>
               </div>
             )}
@@ -402,10 +376,31 @@ export default function Signup() {
             {/* ══ STEP 2: Credentials ══ */}
             {step === 2 && (
               <form className="pr-a1" onSubmit={handleSignup}>
+
+                {/* IITK email notice */}
+                <div className="signup-email-hint">
+                  <span style={{ fontSize: 16, flexShrink: 0 }}>🎓</span>
+                  <span>
+                    Use your <strong>IITK email address</strong> — only{" "}
+                    <strong>@{IITK_DOMAIN}</strong> accounts are accepted.
+                  </span>
+                </div>
+
                 <div className="pr-field">
                   <label className="pr-label">Email Address</label>
-                  <input className="pr-input" type="email" placeholder="you@iitk.ac.in"
-                    value={email} onChange={e => setEmail(e.target.value)} />
+                  <input
+                    className="pr-input"
+                    type="email"
+                    placeholder={`yourname@${IITK_DOMAIN}`}
+                    value={email}
+                    onChange={e => handleEmailChange(e.target.value)}
+                    style={{ borderColor: emailError ? "rgba(248,113,113,0.5)" : "" }}
+                  />
+                  {emailError && (
+                    <div className="signup-email-error">
+                      <span>✕</span> {emailError}
+                    </div>
+                  )}
                 </div>
 
                 <div className="pr-field">
@@ -436,26 +431,11 @@ export default function Signup() {
 
                 <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
                   <button type="button" className="pb pb-ghost pb-full" onClick={() => setStep(1)}>← Back</button>
-                  <button type="submit" className="pb pb-gold pb-full" disabled={submitting}>
+                  <button type="submit" className="pb pb-gold pb-full"
+                    disabled={submitting || !!emailError}>
                     {submitting ? "Creating…" : "Create Account →"}
                   </button>
                 </div>
-
-                {mode === "student" && (
-                  <>
-                    <div className="pr-divider">
-                      <div className="pr-divider-line" />
-                      <span className="pr-divider-text">or</span>
-                      <div className="pr-divider-line" />
-                    </div>
-                    <button type="button" className="pb pb-ghost pb-full"
-                      style={{ padding: "11px", fontSize: 14, gap: 10 }}
-                      onClick={handleGoogle}>
-                      <span style={{ fontWeight: 700, fontFamily: "serif", fontSize: 16, color: "#4285F4" }}>G</span>
-                      Continue with Google
-                    </button>
-                  </>
-                )}
               </form>
             )}
 

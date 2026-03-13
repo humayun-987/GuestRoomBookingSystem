@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  sendPasswordResetEmail,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useAuth, ROLE_HOME } from "./AuthContext";
 import { message } from "antd";
@@ -16,79 +11,43 @@ const injectLoginCSS = () => {
   const s = document.createElement("style");
   s.id = "login-css";
   s.textContent = `
-    .login-wrap {
-      display: flex;
-      min-height: 100vh;
-    }
+    .login-wrap { display: flex; min-height: 100vh; }
 
-    /* ── Left decorative panel ── */
     .login-left {
-      flex: 1;
-      padding: 48px 60px;
-      display: flex;
-      flex-direction: column;
+      flex: 1; padding: 48px 60px;
+      display: flex; flex-direction: column;
       border-right: 1px solid var(--border);
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
     .login-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(52px, 6vw, 80px);
-      font-weight: 600;
-      line-height: 1.05;
-      color: var(--cream);
-      margin: 0 0 16px;
+      font-weight: 600; line-height: 1.05;
+      color: var(--cream); margin: 0 0 16px;
     }
     .login-desc {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 360px;
-      font-weight: 300;
-      margin: 0;
+      font-size: 15px; color: var(--muted);
+      line-height: 1.7; max-width: 360px;
+      font-weight: 300; margin: 0;
     }
-
-    /* ── Right form panel ── */
     .login-right {
-      width: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px;
-      position: relative;
-      z-index: 1;
+      width: 500px; display: flex;
+      align-items: center; justify-content: center;
+      padding: 48px; position: relative; z-index: 1;
       background: rgba(13, 27, 42, 0.3);
     }
-    .login-card {
-      width: 100%;
-      max-width: 420px;
-    }
+    .login-card { width: 100%; max-width: 420px; }
 
-    /* ── Tablet (≤ 900px): stack, hide left decorative text ── */
     @media (max-width: 900px) {
       .login-wrap { flex-direction: column; }
-
-      .login-left {
-        flex: none;
-        padding: 24px 24px 20px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
+      .login-left { flex: none; padding: 24px 24px 20px; border-right: none; border-bottom: 1px solid var(--border); }
       .login-left-spacer { display: none; }
       .login-left-footer { display: none !important; }
       .login-title { font-size: 36px; margin-bottom: 8px; }
       .login-desc  { font-size: 13px; }
-
-      .login-right {
-        width: 100%;
-        padding: 32px 24px 48px;
-        align-items: flex-start;
-        background: none;
-      }
+      .login-right { width: 100%; padding: 32px 24px 48px; align-items: flex-start; background: none; }
       .login-card { max-width: 100%; }
     }
-
-    /* ── Mobile (≤ 480px) ── */
     @media (max-width: 480px) {
       .login-left  { padding: 20px 18px 16px; }
       .login-title { font-size: 30px; }
@@ -106,9 +65,9 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [busy, setBusy]         = useState(false);
-  const [resetModal, setResetModal] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
-  const [resetBusy, setResetBusy]   = useState(false);
+  const [resetModal, setResetModal]   = useState(false);
+  const [resetEmail, setResetEmail]   = useState("");
+  const [resetBusy, setResetBusy]     = useState(false);
 
   useEffect(() => { injectPortalTheme(); injectLoginCSS(); }, []);
   useEffect(() => {
@@ -121,15 +80,11 @@ export default function Login() {
     setBusy(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      // AuthContext detects the session and redirects automatically
     } catch {
       message.error("Invalid email or password");
     }
     setBusy(false);
-  };
-
-  const handleGoogle = async () => {
-    try { await signInWithPopup(auth, new GoogleAuthProvider()); }
-    catch { message.error("Google sign-in failed"); }
   };
 
   const handleReset = async (e) => {
@@ -138,7 +93,7 @@ export default function Login() {
     setResetBusy(true);
     try {
       await sendPasswordResetEmail(auth, resetEmail);
-      message.success("Reset link sent!");
+      message.success("Reset link sent — check your inbox");
       setResetModal(false);
       setResetEmail("");
     } catch (err) { message.error(err.message); }
@@ -155,11 +110,8 @@ export default function Login() {
         {/* ── Left panel ── */}
         <div className="login-left">
           <div style={{ cursor: "pointer", color: "var(--muted)", fontSize: 13 }}
-            onClick={() => navigate("/")}>
-            ← Back to home
-          </div>
+            onClick={() => navigate("/")}>← Back to home</div>
 
-          {/* Spacer pushes content to vertical centre on desktop */}
           <div className="login-left-spacer" style={{ flex: 1 }} />
 
           <div style={{ paddingTop: 24 }}>
@@ -175,7 +127,6 @@ export default function Login() {
 
           <div className="login-left-spacer" style={{ flex: 1 }} />
 
-          {/* Role chips — hidden on tablet/mobile via CSS */}
           <div className="login-left-footer" style={{ paddingTop: 40 }}>
             <p style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.3px", marginBottom: 12 }}>
               PORTAL ACCESS FOR
@@ -208,7 +159,8 @@ export default function Login() {
               <div className="pr-field">
                 <label className="pr-label">Email Address</label>
                 <input className="pr-input" type="email" placeholder="you@iitk.ac.in"
-                  value={email} onChange={e => setEmail(e.target.value)} />
+                  value={email}
+                  onChange={e => setEmail(e.target.value)} />
               </div>
 
               <div className="pr-field">
@@ -236,21 +188,6 @@ export default function Login() {
               </button>
             </form>
 
-            <div className="pr-divider">
-              <div className="pr-divider-line" />
-              <span className="pr-divider-text">or</span>
-              <div className="pr-divider-line" />
-            </div>
-
-            <button className="pb pb-ghost pb-full"
-              style={{ padding: "11px", fontSize: 14, gap: 10 }}
-              onClick={handleGoogle}>
-              <span style={{ fontWeight: 700, fontFamily: "serif", fontSize: 16, color: "#4285F4" }}>
-                <img className="w-6" src="/google.png" alt="" />
-              </span>
-              Continue with Google
-            </button>
-
             <div style={{ textAlign: "center", marginTop: 28 }}>
               <span style={{ fontSize: 13, color: "var(--muted)" }}>New student? </span>
               <span style={{ fontSize: 13, color: "var(--gold)", cursor: "pointer", fontWeight: 500 }}
@@ -275,12 +212,12 @@ export default function Login() {
             </div>
             <div className="pr-modal-body">
               <p style={{ color: "var(--muted)", fontSize: 13, marginBottom: 20 }}>
-                Enter your registered email and we'll send a reset link.
+                Enter your registered IITK email and we'll send a reset link.
               </p>
               <form onSubmit={handleReset}>
                 <div className="pr-field">
                   <label className="pr-label">Email</label>
-                  <input className="pr-input" type="email" placeholder="your@email.com"
+                  <input className="pr-input" type="email" placeholder="you@iitk.ac.in"
                     value={resetEmail} onChange={e => setResetEmail(e.target.value)} />
                 </div>
                 <button type="submit" className="pb pb-gold pb-full pb-lg"
