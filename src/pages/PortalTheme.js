@@ -458,6 +458,17 @@ export const injectPortalTheme = () => {
       border-radius: 4px; padding: 10px 14px; font-size: 13px; color: #f59e0b;
       margin-bottom: 16px;
     }
+    .pr-date-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .pr-date-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {

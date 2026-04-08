@@ -5,22 +5,22 @@ import { useAuth } from "./AuthContext";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
 import { DocumentViewer } from "./StudentDashboard";
-
+import { useNavigate } from "react-router-dom";
 const STATUS = {
-  pending:     { cls: "pt-amber",  label: "Pending",     bcard: "pending" },
-  approved:    { cls: "pt-green",  label: "Approved",    bcard: "approved" },
-  conditional: { cls: "pt-green",  label: "Approved with Condition", bcard: "conditional" },
-  checked_in:  { cls: "pt-purple", label: "Checked In",  bcard: "checked_in" },
-  checked_out: { cls: "pt-muted",  label: "Checked Out", bcard: "checked_out" },
-  rejected:    { cls: "pt-red",    label: "Rejected",    bcard: "rejected" },
+  pending: { cls: "pt-amber", label: "Pending", bcard: "pending" },
+  approved: { cls: "pt-green", label: "Approved", bcard: "approved" },
+  conditional: { cls: "pt-green", label: "Approved with Condition", bcard: "conditional" },
+  checked_in: { cls: "pt-purple", label: "Checked In", bcard: "checked_in" },
+  checked_out: { cls: "pt-muted", label: "Checked Out", bcard: "checked_out" },
+  rejected: { cls: "pt-red", label: "Rejected", bcard: "rejected" },
 };
 
 export default function WardenDashboard() {
   const { profile, logout } = useAuth();
-  const [tab, setTab]           = useState("pending");
+  const [tab, setTab] = useState("pending");
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading]   = useState(true);
-
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   useEffect(() => { injectPortalTheme(); }, []);
 
   const fetchBookings = async () => {
@@ -39,8 +39,8 @@ export default function WardenDashboard() {
 
   useEffect(() => { fetchBookings(); }, [profile]);
 
-  const pending    = bookings.filter(b => b.status === "pending");
-  const reviewed   = bookings.filter(b => ["approved", "conditional", "rejected"].includes(b.status));
+  const pending = bookings.filter(b => b.status === "pending");
+  const reviewed = bookings.filter(b => ["approved", "conditional", "rejected"].includes(b.status));
   const inProgress = bookings.filter(b => ["checked_in", "checked_out"].includes(b.status));
 
   return (
@@ -53,16 +53,58 @@ export default function WardenDashboard() {
           <div className="pr-brand-sub">Warden Portal</div>
         </div>
         <div className="pr-topbar-right">
-          <div style={{ textAlign: "right" }}>
-            <div className="pr-user-name">{profile?.name}</div>
-            <div className="pr-user-role">Warden · {profile?.hostelName}</div>
-          </div>
-          <button className="pr-logout" onClick={logout}>Sign Out</button>
+          <button
+            className="pr-logout"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </button>
+
+          <button
+            className="pr-logout"
+            onClick={logout}
+          >
+            Sign Out
+          </button>
         </div>
       </div>
 
       <div className="pr-body">
         <div className="pr-page-header pr-a1">
+          <div
+            style={{
+              marginBottom: 16,
+              padding: "10px 14px",
+              borderRadius: 6,
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(201,168,76,0.15)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            <div style={{ lineHeight: 1.2 }}>
+              <span style={{ fontSize: 14, fontWeight: 500 }}>
+                {profile?.name}
+              </span>
+              <span style={{ fontSize: 12, color: "var(--muted)", display: "block" }}>
+                {profile?.hostelName}
+              </span>
+            </div>
+
+            <span
+              style={{
+                fontSize: 11,
+                color: "#4ade80",
+                background: "rgba(74,222,128,0.08)",
+                border: "1px solid rgba(74,222,128,0.25)",
+                padding: "3px 8px",
+                borderRadius: 999
+              }}
+            >
+              ● Active
+            </span>
+          </div>
           <div className="pr-eyebrow">Warden Portal</div>
           <h1 className="pr-page-title">Booking Approvals</h1>
           <p className="pr-page-sub">{profile?.hostelName} — review and approve guest room requests</p>
@@ -70,9 +112,9 @@ export default function WardenDashboard() {
 
         <div className="pr-stats pr-a2">
           {[
-            { num: pending.length,    label: "Pending Review", color: "#f59e0b" },
-            { num: reviewed.length,   label: "Reviewed",       color: "var(--gold)" },
-            { num: inProgress.length, label: "Active Stays",   color: "#a78bfa" },
+            { num: pending.length, label: "Pending Review", color: "#f59e0b" },
+            { num: reviewed.length, label: "Reviewed", color: "var(--gold)" },
+            { num: inProgress.length, label: "Active Stays", color: "#a78bfa" },
           ].map(({ num, label, color }) => (
             <div key={label} className="pr-stat">
               <div className="pr-stat-num" style={{ color }}>{num}</div>
@@ -89,9 +131,9 @@ export default function WardenDashboard() {
           <>
             <div className="pr-tabs pr-a2">
               {[
-                { key: "pending",  label: "Pending",          count: pending.length },
-                { key: "reviewed", label: "Reviewed",         count: null },
-                { key: "active",   label: "Active / History", count: null },
+                { key: "pending", label: "Pending", count: pending.length },
+                { key: "reviewed", label: "Reviewed", count: null },
+                { key: "active", label: "Active / History", count: null },
               ].map(t => (
                 <button key={t.key}
                   className={`pr-tab ${tab === t.key ? "active" : ""}`}
@@ -130,10 +172,10 @@ export default function WardenDashboard() {
 }
 
 function WardenCard({ booking, onRefresh, readOnly = false }) {
-  const [noteModal, setNoteModal]   = useState(false);
+  const [noteModal, setNoteModal] = useState(false);
   const [noteAction, setNoteAction] = useState("");
-  const [note, setNote]             = useState("");
-  const [busy, setBusy]             = useState(false);
+  const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
   const [popConfirm, setPopConfirm] = useState(false);
   const cfg = STATUS[booking.status] || { cls: "pt-muted", label: booking.status, bcard: "checked_out" };
   const fmt = ts => ts?.toDate?.().toLocaleDateString("en-IN") || "—";
@@ -181,8 +223,10 @@ function WardenCard({ booking, onRefresh, readOnly = false }) {
 
         {/* Documents */}
         <div style={{ marginTop: 12, marginBottom: 4 }}>
-          <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 8,
-            textTransform: "uppercase", letterSpacing: 1 }}>Submitted Documents</div>
+          <div style={{
+            fontSize: 12, color: "var(--muted)", marginBottom: 8,
+            textTransform: "uppercase", letterSpacing: 1
+          }}>Submitted Documents</div>
           <DocumentViewer docs={booking.documents} />
         </div>
         {!readOnly && booking.status === "pending" && (

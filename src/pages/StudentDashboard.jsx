@@ -7,9 +7,9 @@ import { db } from "../firebaseConfig";
 import { useAuth } from "./AuthContext";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
-
+import { useNavigate } from "react-router-dom";
 /* ── Cloudinary config ── */
-const CLOUD_NAME    = "dzoqdhk17";
+const CLOUD_NAME = "dzoqdhk17";
 const UPLOAD_PRESET = "iitk_docs";
 
 const uploadToCloudinary = async (file, publicId) => {
@@ -75,13 +75,13 @@ const buildEmailContent = ({ wardenEmail, caretakerEmail, booking }) => {
 };
 
 const STATUS = {
-  pending:     { cls: "pt-amber",  label: "Pending Approval",  bcard: "pending" },
-  approved:    { cls: "pt-green",  label: "Approved",          bcard: "approved" },
-  conditional: { cls: "pt-green",  label: "Approved with Condition", bcard: "approved" },
-  checked_in:  { cls: "pt-purple", label: "Checked In",        bcard: "checked_in" },
-  checked_out: { cls: "pt-muted",  label: "Checked Out",       bcard: "checked_out" },
-  rejected:    { cls: "pt-red",    label: "Rejected",          bcard: "rejected" },
-  cancelled:   { cls: "pt-muted",  label: "Cancelled",         bcard: "checked_out" },
+  pending: { cls: "pt-amber", label: "Pending Approval", bcard: "pending" },
+  approved: { cls: "pt-green", label: "Approved", bcard: "approved" },
+  conditional: { cls: "pt-green", label: "Approved with Condition", bcard: "approved" },
+  checked_in: { cls: "pt-purple", label: "Checked In", bcard: "checked_in" },
+  checked_out: { cls: "pt-muted", label: "Checked Out", bcard: "checked_out" },
+  rejected: { cls: "pt-red", label: "Rejected", bcard: "rejected" },
+  cancelled: { cls: "pt-muted", label: "Cancelled", bcard: "checked_out" },
 };
 
 /* ── Check if two date ranges overlap ── */
@@ -120,10 +120,10 @@ const runCleanup = async () => {
 
 export default function StudentDashboard() {
   const { user, profile, logout } = useAuth();
-  const [tab, setTab]         = useState("book");
-  const [preCheckIn, setPreCheckIn]   = useState("");
+  const [tab, setTab] = useState("book");
+  const [preCheckIn, setPreCheckIn] = useState("");
   const [preCheckOut, setPreCheckOut] = useState("");
-
+  const navigate = useNavigate();
   // Called from HistoryTab when student clicks "Book Another Room"
   const handleBookAnother = (checkIn, checkOut) => {
     setPreCheckIn(checkIn);
@@ -147,16 +147,60 @@ export default function StudentDashboard() {
           <div className="pr-brand-sub">Student Portal</div>
         </div>
         <div className="pr-topbar-right">
-          <div style={{ textAlign: "right" }}>
-            <div className="pr-user-name">{profile?.name || user?.email}</div>
-            <div className="pr-user-role">Student · {profile?.hostel || ""}</div>
-          </div>
-          <button className="pr-logout" onClick={logout}>Sign Out</button>
+          <button
+            className="pr-logout"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </button>
+
+          <button
+            className="pr-logout"
+            onClick={logout}
+          >
+            Sign Out
+          </button>
         </div>
       </div>
 
       <div className="pr-body">
         <div className="pr-page-header pr-a1">
+          <div
+            style={{
+              marginBottom: 16,
+              padding: "10px 14px",
+              borderRadius: 6,
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(201,168,76,0.15)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            {/* Left: User Info */}
+            <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
+              <span style={{ fontSize: 14, fontWeight: 500 }}>
+                {profile?.name || user?.email}
+              </span>
+              <span style={{ fontSize: 12, color: "var(--muted)" }}>
+                {profile?.hostel || "No hostel"}
+              </span>
+            </div>
+
+            {/* Right: Status */}
+            <span
+              style={{
+                fontSize: 11,
+                color: "#4ade80",
+                background: "rgba(74,222,128,0.08)",
+                border: "1px solid rgba(74,222,128,0.25)",
+                padding: "3px 8px",
+                borderRadius: 999
+              }}
+            >
+              ● Active
+            </span>
+          </div>
           <div className="pr-eyebrow">Student Portal</div>
           <h1 className="pr-page-title">Guest Room Booking</h1>
           <p className="pr-page-sub">Check availability for your dates, then request a room</p>
@@ -164,8 +208,8 @@ export default function StudentDashboard() {
 
         <div className="pr-tabs pr-a2">
           {[
-            { key: "book",    label: "Book a Room" },
-            { key: "status",  label: "Active Bookings" },
+            { key: "book", label: "Book a Room" },
+            { key: "status", label: "Active Bookings" },
             { key: "history", label: "History" },
           ].map(t => (
             <button key={t.key}
@@ -177,8 +221,8 @@ export default function StudentDashboard() {
         </div>
 
         <div className="pr-a3">
-          {tab === "book"    && <BookTab user={user} profile={profile} preCheckIn={preCheckIn} preCheckOut={preCheckOut} />}
-          {tab === "status"  && <StatusTab user={user} onBookAnother={handleBookAnother} />}
+          {tab === "book" && <BookTab user={user} profile={profile} preCheckIn={preCheckIn} preCheckOut={preCheckOut} />}
+          {tab === "status" && <StatusTab user={user} onBookAnother={handleBookAnother} />}
           {tab === "history" && <HistoryTab user={user} onBookAnother={handleBookAnother} />}
         </div>
       </div>
@@ -253,8 +297,10 @@ function MailModal({ mailModal, onClose }) {
             background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)",
             borderRadius: 8, padding: "14px 18px", marginBottom: 20,
           }}>
-            <div style={{ fontSize: 12, color: "var(--gold)", letterSpacing: 1,
-              textTransform: "uppercase", marginBottom: 10 }}>How to send</div>
+            <div style={{
+              fontSize: 12, color: "var(--gold)", letterSpacing: 1,
+              textTransform: "uppercase", marginBottom: 10
+            }}>How to send</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {/* Step 1 with clickable link */}
               <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
@@ -351,9 +397,11 @@ function MailModal({ mailModal, onClose }) {
               }}>
                 {mailModal.body}
               </pre>
-              <div style={{ marginTop: 10, padding: "8px 12px", borderRadius: 6,
+              <div style={{
+                marginTop: 10, padding: "8px 12px", borderRadius: 6,
                 background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.12)",
-                fontSize: 12, color: "var(--muted)" }}>
+                fontSize: 12, color: "var(--muted)"
+              }}>
                 💡 The body includes a direct link to the portal —{" "}
                 <a href={PORTAL_URL} target="_blank" rel="noreferrer"
                   style={{ color: "var(--gold)", textDecoration: "underline" }}>
@@ -397,7 +445,7 @@ function MailModal({ mailModal, onClose }) {
 ══════════════════════════════════════ */
 function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
   /* ── Date selection ── */
-  const [checkIn, setCheckIn]   = useState(preCheckIn);
+  const [checkIn, setCheckIn] = useState(preCheckIn);
   const [checkOut, setCheckOut] = useState(preCheckOut);
   const [searched, setSearched] = useState(false);
 
@@ -411,26 +459,26 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
   }, [preCheckIn, preCheckOut]);
 
   /* ── Results ── */
-  const [hostels, setHostels]   = useState([]);
-  const [loading, setLoading]   = useState(false);
+  const [hostels, setHostels] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [openAccordion, setOpenAccordion] = useState(null);
 
   /* ── Booking modal ── */
-  const [modal, setModal]         = useState(null); // { room, hostel }
+  const [modal, setModal] = useState(null); // { room, hostel }
   const [submitting, setSubmitting] = useState(false);
-  const [mailModal, setMailModal]   = useState(null); // { mailtoUrl, wardenEmail, caretakerEmail }
+  const [mailModal, setMailModal] = useState(null); // { mailtoUrl, wardenEmail, caretakerEmail }
 
   /* Guest form fields */
-  const [guestName, setGuestName]   = useState("");
-  const [guestRel, setGuestRel]     = useState("");
-  const [purpose, setPurpose]       = useState("");
-  const [yourName, setYourName]     = useState("");
-  const [yourPhone, setYourPhone]   = useState("");
+  const [guestName, setGuestName] = useState("");
+  const [guestRel, setGuestRel] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const [yourName, setYourName] = useState("");
+  const [yourPhone, setYourPhone] = useState("");
 
   /* Document uploads */
-  const [docAadhar, setDocAadhar]     = useState(null);
-  const [docCollege, setDocCollege]   = useState(null);
-  const [docGuest, setDocGuest]       = useState(null);
+  const [docAadhar, setDocAadhar] = useState(null);
+  const [docCollege, setDocCollege] = useState(null);
+  const [docGuest, setDocGuest] = useState(null);
   const [uploadProgress, setUploadProgress] = useState("");
 
   /* ── Date validation ── */
@@ -449,7 +497,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
     setOpenAccordion(null);
 
     try {
-      const reqIn  = new Date(checkIn);
+      const reqIn = new Date(checkIn);
       const reqOut = new Date(checkOut);
 
       /* 1. Fetch all active bookings that could overlap */
@@ -464,7 +512,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
       /* 2. Build set of roomIds that are blocked for our date range */
       const blockedRooms = new Set();
       activeBookings.forEach(b => {
-        const bIn  = b.checkIn?.toDate?.()  ?? new Date(b.checkIn);
+        const bIn = b.checkIn?.toDate?.() ?? new Date(b.checkIn);
         const bOut = b.checkOut?.toDate?.() ?? new Date(b.checkOut);
         if (overlaps(bIn, bOut, reqIn, reqOut)) {
           blockedRooms.add(b.roomId);
@@ -539,7 +587,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
     try {
       // Pre-generate booking ID so we can use it in storage paths
       const bookingRef = doc(collection(db, "bookings"));
-      const bookingId  = bookingRef.id;
+      const bookingId = bookingRef.id;
 
       // Upload all 3 docs to Cloudinary
       setUploadProgress("Uploading Aadhar Card…");
@@ -554,26 +602,26 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
       setUploadProgress("Saving booking…");
 
       await setDoc(bookingRef, {
-        hostelId:      hostel.id,
-        hostelName:    hostel.name,
-        roomId:        room.id,
-        roomCapacity:  room.capacity,
-        roomAc:        room.ac,
-        studentId:     user.uid,
-        studentName:   yourName.trim(),
-        phone:         yourPhone.trim(),
-        guestName:     guestName.trim(),
+        hostelId: hostel.id,
+        hostelName: hostel.name,
+        roomId: room.id,
+        roomCapacity: room.capacity,
+        roomAc: room.ac,
+        studentId: user.uid,
+        studentName: yourName.trim(),
+        phone: yourPhone.trim(),
+        guestName: guestName.trim(),
         guestRelation: guestRel.trim(),
-        checkIn:       new Date(checkIn),
-        checkOut:      new Date(checkOut),
-        purpose:       purpose.trim(),
-        bookedAt:      new Date(),
-        status:        "pending",
-        wardenNote:    "",
+        checkIn: new Date(checkIn),
+        checkOut: new Date(checkOut),
+        purpose: purpose.trim(),
+        bookedAt: new Date(),
+        status: "pending",
+        wardenNote: "",
         documents: {
-          aadhar:    aadharUrl,
+          aadhar: aadharUrl,
           collegeId: collegeUrl,
-          guestId:   guestUrl,
+          guestId: guestUrl,
         },
       });
 
@@ -593,27 +641,27 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
 
       try {
         const [wardenSnap, caretakerSnap] = await Promise.all([
-          getDocs(query(collection(db, "users_warden"),    where("hostelId", "==", hostel.id))),
+          getDocs(query(collection(db, "users_warden"), where("hostelId", "==", hostel.id))),
           getDocs(query(collection(db, "users_caretaker"), where("hostelId", "==", hostel.id))),
         ]);
 
-        const wardenEmail    = wardenSnap.docs[0]?.data()?.email    || "";
+        const wardenEmail = wardenSnap.docs[0]?.data()?.email || "";
         const caretakerEmail = caretakerSnap.docs[0]?.data()?.email || "";
 
         const emailContent = buildEmailContent({
           wardenEmail,
           caretakerEmail,
           booking: {
-            studentName:   yourName.trim(),
-            phone:         yourPhone.trim(),
-            guestName:     guestName.trim(),
+            studentName: yourName.trim(),
+            phone: yourPhone.trim(),
+            guestName: guestName.trim(),
             guestRelation: guestRel.trim(),
-            purpose:       purpose.trim(),
-            hostelName:    hostel.name,
-            roomAc:        room.ac,
-            roomCapacity:  room.capacity,
-            checkIn:       new Date(checkIn),
-            checkOut:      new Date(checkOut),
+            purpose: purpose.trim(),
+            hostelName: hostel.name,
+            roomAc: room.ac,
+            roomCapacity: room.capacity,
+            checkIn: new Date(checkIn),
+            checkOut: new Date(checkOut),
           },
         });
 
@@ -640,7 +688,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
           Choose check-in and check-out dates to see available rooms across all hostels.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
+        <div className="pr-date-grid">
           <div className="pr-field">
             <label className="pr-label">Check-in Date</label>
             <input className="pr-input" type="date" min={today}
@@ -834,9 +882,9 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
                     📎 Required Documents <span style={{ color: "#f87171", fontWeight: 400 }}>— all mandatory</span>
                   </div>
                   {[
-                    { label: "Aadhar Card",     key: "aadhar",  file: docAadhar,  setter: setDocAadhar },
-                    { label: "College ID Card",  key: "college", file: docCollege, setter: setDocCollege },
-                    { label: "Guest's ID Proof", key: "guest",   file: docGuest,   setter: setDocGuest },
+                    { label: "Aadhar Card", key: "aadhar", file: docAadhar, setter: setDocAadhar },
+                    { label: "College ID Card", key: "college", file: docCollege, setter: setDocCollege },
+                    { label: "Guest's ID Proof", key: "guest", file: docGuest, setter: setDocGuest },
                   ].map(({ label, key, file, setter }) => (
                     <div key={key} className="pr-field" style={{ marginBottom: 12 }}>
                       <label className="pr-label">{label}</label>
@@ -907,7 +955,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
 }
 function StatusTab({ user, onBookAnother }) {
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading]   = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -946,9 +994,9 @@ function StatusTab({ user, onBookAnother }) {
       <BookingCard key={b.id} booking={b}
         onBookAnother={isCancelled
           ? () => onBookAnother(
-              b.checkIn?.toDate?.().toISOString().split("T")[0] || "",
-              b.checkOut?.toDate?.().toISOString().split("T")[0] || ""
-            )
+            b.checkIn?.toDate?.().toISOString().split("T")[0] || "",
+            b.checkOut?.toDate?.().toISOString().split("T")[0] || ""
+          )
           : null}
       />
     );
@@ -960,7 +1008,7 @@ function StatusTab({ user, onBookAnother }) {
 ══════════════════════════════════════ */
 function HistoryTab({ user, onBookAnother }) {
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading]   = useState(true);
+  const [loading, setLoading] = useState(true);
   const [reapplyModal, setReapplyModal] = useState(null); // booking to reapply
 
   useEffect(() => {
@@ -997,9 +1045,9 @@ function HistoryTab({ user, onBookAnother }) {
             onReapply={b.status === "rejected" ? () => setReapplyModal(b) : null}
             onBookAnother={needsRebook
               ? () => onBookAnother(
-                  b.checkIn?.toDate?.().toISOString().split("T")[0] || "",
-                  b.checkOut?.toDate?.().toISOString().split("T")[0] || ""
-                )
+                b.checkIn?.toDate?.().toISOString().split("T")[0] || "",
+                b.checkOut?.toDate?.().toISOString().split("T")[0] || ""
+              )
               : null}
           />
         );
@@ -1017,13 +1065,13 @@ function HistoryTab({ user, onBookAnother }) {
 ══════════════════════════════════════ */
 function ReapplyModal({ booking, user, onClose }) {
   const today = new Date().toISOString().split("T")[0];
-  const [checkIn, setCheckIn]   = useState("");
+  const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
-  const [guestName, setGuestName]   = useState(booking.guestName || "");
-  const [guestRel, setGuestRel]     = useState(booking.guestRelation || "");
-  const [purpose, setPurpose]       = useState(booking.purpose || "");
-  const [yourName, setYourName]     = useState(booking.studentName || "");
-  const [yourPhone, setYourPhone]   = useState(booking.phone || "");
+  const [guestName, setGuestName] = useState(booking.guestName || "");
+  const [guestRel, setGuestRel] = useState(booking.guestRelation || "");
+  const [purpose, setPurpose] = useState(booking.purpose || "");
+  const [yourName, setYourName] = useState(booking.studentName || "");
+  const [yourPhone, setYourPhone] = useState(booking.phone || "");
   const [submitting, setSubmitting] = useState(false);
 
   const dateError = checkIn && checkOut && checkOut <= checkIn
@@ -1040,22 +1088,22 @@ function ReapplyModal({ booking, user, onClose }) {
     setSubmitting(true);
     try {
       await addDoc(collection(db, "bookings"), {
-        hostelId:      booking.hostelId,
-        hostelName:    booking.hostelName,
-        roomId:        booking.roomId,
-        roomCapacity:  booking.roomCapacity,
-        roomAc:        booking.roomAc,
-        studentId:     user.uid,
-        studentName:   yourName.trim(),
-        phone:         yourPhone.trim(),
-        guestName:     guestName.trim(),
+        hostelId: booking.hostelId,
+        hostelName: booking.hostelName,
+        roomId: booking.roomId,
+        roomCapacity: booking.roomCapacity,
+        roomAc: booking.roomAc,
+        studentId: user.uid,
+        studentName: yourName.trim(),
+        phone: yourPhone.trim(),
+        guestName: guestName.trim(),
         guestRelation: guestRel.trim(),
-        checkIn:       new Date(checkIn),
-        checkOut:      new Date(checkOut),
-        purpose:       purpose.trim(),
-        bookedAt:      new Date(),
-        status:        "pending",
-        wardenNote:    "",
+        checkIn: new Date(checkIn),
+        checkOut: new Date(checkOut),
+        purpose: purpose.trim(),
+        bookedAt: new Date(),
+        status: "pending",
+        wardenNote: "",
       });
       message.success("Re-application submitted — awaiting warden approval");
       onClose();
@@ -1158,11 +1206,11 @@ function BookingCard({ booking, onReapply, onBookAnother }) {
 
   const effectiveStatus = isMaintCancelled ? "_maintenance"
     : isAdminCancelled ? "_admin_cancel"
-    : booking.status;
+      : booking.status;
 
   const STATUS_OVERRIDE = {
-    _maintenance:   { cls: "pt-amber", label: "Cancelled — Maintenance", bcard: "rejected" },
-    _admin_cancel:  { cls: "pt-red",   label: "Cancelled by Admin",      bcard: "rejected" },
+    _maintenance: { cls: "pt-amber", label: "Cancelled — Maintenance", bcard: "rejected" },
+    _admin_cancel: { cls: "pt-red", label: "Cancelled by Admin", bcard: "rejected" },
   };
 
   const cfg = STATUS_OVERRIDE[effectiveStatus]
@@ -1280,9 +1328,9 @@ export function DocumentViewer({ docs }) {
   );
 
   const items = [
-    { key: "aadhar",    label: "Aadhar Card",     url: docs.aadhar },
-    { key: "collegeId", label: "College ID Card",  url: docs.collegeId },
-    { key: "guestId",   label: "Guest's ID Proof", url: docs.guestId },
+    { key: "aadhar", label: "Aadhar Card", url: docs.aadhar },
+    { key: "collegeId", label: "College ID Card", url: docs.collegeId },
+    { key: "guestId", label: "Guest's ID Proof", url: docs.guestId },
   ];
 
   return (
@@ -1329,8 +1377,10 @@ export function DocumentViewer({ docs }) {
             </div>
             <div className="pr-modal-body" style={{ padding: 0, minHeight: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <img src={preview.url} alt={preview.label}
-                style={{ width: "100%", maxHeight: "70vh", objectFit: "contain",
-                  borderRadius: "0 0 8px 8px", display: "block" }}
+                style={{
+                  width: "100%", maxHeight: "70vh", objectFit: "contain",
+                  borderRadius: "0 0 8px 8px", display: "block"
+                }}
                 onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "block"; }}
               />
               <div style={{ display: "none", color: "var(--muted)", fontSize: 13, padding: 24 }}>

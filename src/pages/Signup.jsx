@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth, ROLE_HOME } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firebaseConfig";
@@ -62,6 +63,92 @@ const injectSignupCSS = () => {
       margin-top: 5px; display: flex; align-items: center; gap: 5px;
     }
 
+    /* ── Verification modal ── */
+    .verify-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(5, 11, 20, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      animation: fadeIn 0.25s ease;
+    }
+    .verify-modal {
+      background: var(--surface, #0d1b2a);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 12px;
+      padding: 40px 36px;
+      max-width: 440px; width: 100%;
+      text-align: center;
+      animation: slideUp 0.3s ease;
+      position: relative;
+    }
+    .verify-icon {
+      font-size: 48px; margin-bottom: 20px;
+      display: block;
+      animation: bounce 1s ease 0.3s both;
+    }
+    .verify-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 600;
+      color: var(--cream); margin: 0 0 10px;
+    }
+    .verify-subtitle {
+      font-size: 13px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .verify-email-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 13px; font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 28px;
+      word-break: break-all;
+    }
+    .verify-steps {
+      text-align: left;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+    }
+    .verify-step-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 12.5px; color: var(--muted);
+      line-height: 1.6; margin-bottom: 8px;
+    }
+    .verify-step-item:last-child { margin-bottom: 0; }
+    .verify-step-num {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold); font-size: 10px; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .verify-resend-row {
+      font-size: 12px; color: var(--muted); margin-bottom: 20px;
+    }
+    .verify-resend-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--gold); font-size: 12px; font-weight: 500;
+      padding: 0; text-decoration: underline; text-underline-offset: 2px;
+    }
+    .verify-resend-btn:disabled {
+      color: var(--muted); text-decoration: none; cursor: default;
+    }
+
+    @keyframes fadeIn  { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+    @keyframes bounce  {
+      0%,100% { transform: translateY(0) }
+      40%     { transform: translateY(-10px) }
+      60%     { transform: translateY(-4px) }
+    }
+
     @media (max-width: 900px) {
       .signup-wrap { flex-direction: column; }
       .signup-left { flex: none; padding: 24px 24px 20px; border-right: none; border-bottom: 1px solid var(--border); }
@@ -77,11 +164,100 @@ const injectSignupCSS = () => {
       .signup-left  { padding: 18px 16px 14px; }
       .signup-title { font-size: 28px; }
       .signup-right { padding: 20px 14px 40px; }
+      .verify-modal { padding: 28px 20px; }
     }
   `;
   document.head.appendChild(s);
 };
 
+// ── Verification Modal Component ──────────────────────────────────────────────
+function VerificationModal({ email, onGoToLogin }) {
+  const [resendCooldown, setResendCooldown] = useState(0);
+  const [resending, setResending] = useState(false);
+
+  useEffect(() => {
+    if (resendCooldown <= 0) return;
+    const t = setTimeout(() => setResendCooldown(c => c - 1), 1000);
+    return () => clearTimeout(t);
+  }, [resendCooldown]);
+
+  const handleResend = async () => {
+    if (resendCooldown > 0 || resending) return;
+    setResending(true);
+    try {
+      // Re-authenticate anonymously to get current user — but we already
+      // signed out. The safest approach: inform the user to try signing in,
+      // which triggers Firebase to prompt re-verification automatically.
+      // Alternatively, re-send via a Cloud Function. For now we use
+      // the current user if somehow still present (e.g. race condition).
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        await sendEmailVerification(currentUser);
+        message.success("Verification email resent!");
+      } else {
+        message.info("Sign in to request a new verification email.");
+      }
+      setResendCooldown(60);
+    } catch (err) {
+      message.error(err.message || "Failed to resend email");
+    }
+    setResending(false);
+  };
+
+  return (
+    <div className="verify-overlay">
+      <div className="verify-modal">
+        <span className="verify-icon">📬</span>
+
+        <h2 className="verify-title">Verify your email</h2>
+        <p className="verify-subtitle">
+          Your account has been created. Before you can sign in,<br />
+          please verify your email address.
+        </p>
+
+        <div className="verify-email-badge">{email}</div>
+
+        <div className="verify-steps">
+          {[
+            "Open the verification email we just sent you.",
+            'Click the "Verify email" link inside.',
+            "Come back and sign in — you're all set.",
+          ].map((text, i) => (
+            <div className="verify-step-item" key={i}>
+              <div className="verify-step-num">{i + 1}</div>
+              <span>{text}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="verify-resend-row">
+          Didn't receive it?{" "}
+          <button
+            className="verify-resend-btn"
+            onClick={handleResend}
+            disabled={resendCooldown > 0 || resending}
+          >
+            {resending
+              ? "Sending…"
+              : resendCooldown > 0
+                ? `Resend in ${resendCooldown}s`
+                : "Resend email"}
+          </button>
+        </div>
+
+        <button className="pb pb-gold pb-full pb-lg" onClick={onGoToLogin}>
+          Go to Sign In →
+        </button>
+
+        <p style={{ fontSize: 11, color: "var(--muted)", marginTop: 16, lineHeight: 1.6 }}>
+          Check your spam folder if you don't see it within a minute.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ── Main Signup Component ─────────────────────────────────────────────────────
 export default function Signup() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -89,32 +265,41 @@ export default function Signup() {
   const { user, role, loading } = useAuth();
 
   useEffect(() => { injectPortalTheme(); injectSignupCSS(); }, []);
+
+  // NOTE: Only redirect to dashboard if email is verified.
+  // Add `user.emailVerified` check in AuthContext too, so unverified
+  // users who somehow linger can never access the dashboard.
   useEffect(() => {
-    if (!loading && user && role) navigate(ROLE_HOME[role], { replace: true });
+    if (!loading && user && role && user.emailVerified) {
+      navigate(ROLE_HOME[role], { replace: true });
+    }
   }, [user, role, loading]);
 
-  const [step, setStep]             = useState(0);
-  const [mode, setMode]             = useState(isStaffMode ? "staff" : "student");
+  const [step, setStep] = useState(0);
+  const [mode, setMode] = useState(isStaffMode ? "staff" : "student");
   const [inviteCode, setInviteCode] = useState("");
-  const [codeData, setCodeData]     = useState(null);
-  const [verifying, setVerifying]   = useState(false);
+  const [codeData, setCodeData] = useState(null);
+  const [verifying, setVerifying] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [showPass, setShowPass]     = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  // Verification modal state
+  // Verification modal
+  const [showVerifyModal, setShowVerifyModal] = useState(false);
+  const [verifiedEmail, setVerifiedEmail] = useState("");
+
   // Profile fields
-  const [name, setName]       = useState("");
-  const [phone, setPhone]     = useState("");
-  const [rollNo, setRollNo]   = useState("");
-  const [hostel, setHostel]   = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [rollNo, setRollNo] = useState("");
+  const [hostel, setHostel] = useState("");
   const [department, setDept] = useState("");
 
   // Credential fields
-  const [email, setEmail]       = useState("");
+  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
-  const [confirm, setConfirm]   = useState("");
+  const [confirm, setConfirm] = useState("");
 
   const handleEmailChange = (val) => {
     setEmail(val);
@@ -143,43 +328,40 @@ export default function Signup() {
 
   /* ── Validate step 1 ── */
   const validateProfile = () => {
-    if (!name.trim())                         { message.error("Enter your full name"); return false; }
-    if (!/^[0-9]{10}$/.test(phone))           { message.error("Enter a valid 10-digit phone number"); return false; }
-    if (mode === "student" && !rollNo.trim())  { message.error("Enter your roll number"); return false; }
-    if (mode === "student" && !hostel.trim())  { message.error("Enter your hostel name"); return false; }
+    if (!name.trim()) { message.error("Enter your full name"); return false; }
+    if (!/^[0-9]{10}$/.test(phone)) { message.error("Enter a valid 10-digit phone number"); return false; }
+    if (mode === "student" && !rollNo.trim()) { message.error("Enter your roll number"); return false; }
+    if (mode === "student" && !hostel.trim()) { message.error("Enter your hostel name"); return false; }
     return true;
   };
 
   /* ── Final signup ── */
   const handleSignup = async (e) => {
     e.preventDefault();
-    if (!email)               { message.error("Enter email"); return; }
-    if (!isIITKEmail(email))  { message.error(`Only @${IITK_DOMAIN} email addresses are allowed`); return; }
-    if (password.length < 6)  { message.error("Password must be at least 6 characters"); return; }
-    if (password !== confirm)  { message.error("Passwords don't match"); return; }
+    if (!email) { message.error("Enter email"); return; }
+    if (!isIITKEmail(email)) { message.error(`Only @${IITK_DOMAIN} email addresses are allowed`); return; }
+    if (password.length < 6) { message.error("Password must be at least 6 characters"); return; }
+    if (password !== confirm) { message.error("Passwords don't match"); return; }
 
     setSubmitting(true);
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
-      const uid  = cred.user.uid;
+      const uid = cred.user.uid;
+
+      // ✅ Only students need verification
+      if (mode === "student") {
+        await sendEmailVerification(cred.user);
+      }
 
       if (mode === "student") {
-        // Students — @iitk.ac.in domain is sufficient verification.
-        // Save profile and let AuthContext redirect to dashboard.
         await setDoc(doc(db, "users_student", uid), {
           email, role: "student", createdAt: new Date(),
           name: name.trim(), phone: phone.trim(),
           rollNo: rollNo.trim(), hostel: hostel.trim(),
           department: department.trim(),
         });
-        message.success("Account created! Welcome to the portal.");
-
       } else {
-        // Staff — sign out IMMEDIATELY so AuthContext never detects the role
-        // and redirects to dashboard. uid is already captured, so Firestore
-        // writes succeed even after signOut.
-        await auth.signOut();
-
+        // Mark invite code used and save staff profile
         const roleMap = { warden: "users_warden", caretaker: "users_caretaker", admin: "users_admin" };
         await updateDoc(doc(db, "invite_codes", inviteCode.trim()), {
           used: true, usedBy: uid, usedAt: new Date(),
@@ -190,8 +372,17 @@ export default function Signup() {
           hostelId: codeData.hostelId || null,
           hostelName: codeData.hostelName || null,
         });
-        message.success("Account created! You can now sign in.");
-        navigate("/login");
+      }
+
+      // Sign out immediately — user must verify email before accessing anything
+      if (mode === "student") {
+        // Student → must verify
+        await auth.signOut();
+        setVerifiedEmail(email);
+        setShowVerifyModal(true);
+      } else {
+        // Staff → directly go to dashboard
+        navigate(ROLE_HOME[codeData.role], { replace: true });
       }
 
     } catch (err) {
@@ -204,6 +395,11 @@ export default function Signup() {
     setSubmitting(false);
   };
 
+  const handleGoToLogin = () => {
+    setShowVerifyModal(false);
+    navigate("/login");
+  };
+
   const stepLabels = [
     mode === "student" ? "Role" : "Invite Code",
     "Your Info",
@@ -214,6 +410,11 @@ export default function Signup() {
     <div className="pr">
       <div className="pr-bg" />
       <div className="pr-glow" style={{ width: 500, height: 500, top: "5%", right: "10%", opacity: 0.6 }} />
+
+      {/* ── Email Verification Modal ── */}
+      {showVerifyModal && (
+        <VerificationModal email={verifiedEmail} onGoToLogin={handleGoToLogin} />
+      )}
 
       <div className="signup-wrap">
 

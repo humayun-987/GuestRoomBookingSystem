@@ -5,23 +5,23 @@ import { useAuth } from "./AuthContext";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
 import { DocumentViewer } from "./StudentDashboard";
-
+import { useNavigate } from "react-router-dom";
 const STATUS = {
-  approved:    { cls: "pt-green",  label: "Expected Arrival",        bcard: "approved" },
-  conditional: { cls: "pt-green",  label: "Approved with Condition",  bcard: "approved" },
-  checked_in:  { cls: "pt-purple", label: "Checked In",               bcard: "checked_in" },
-  checked_out: { cls: "pt-muted",  label: "Checked Out",              bcard: "checked_out" },
+  approved: { cls: "pt-green", label: "Expected Arrival", bcard: "approved" },
+  conditional: { cls: "pt-green", label: "Approved with Condition", bcard: "approved" },
+  checked_in: { cls: "pt-purple", label: "Checked In", bcard: "checked_in" },
+  checked_out: { cls: "pt-muted", label: "Checked Out", bcard: "checked_out" },
 };
 
 export default function CaretakerDashboard() {
   const { user, profile, logout } = useAuth();
-  const [tab, setTab]           = useState("arrivals");
+  const [tab, setTab] = useState("arrivals");
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [search, setSearch]     = useState("");
-  const [passkey, setPasskey]   = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [passkey, setPasskey] = useState(null);
   const [showPasskey, setShowPasskey] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => { injectPortalTheme(); }, []);
 
   /* ── Fetch caretaker's passkey from invite_codes ── */
@@ -66,8 +66,8 @@ export default function CaretakerDashboard() {
     );
   };
 
-  const arrivals  = filter(bookings.filter(b => b.status === "approved" || b.status === "conditional"));
-  const staying   = filter(bookings.filter(b => b.status === "checked_in"));
+  const arrivals = filter(bookings.filter(b => b.status === "approved" || b.status === "conditional"));
+  const staying = filter(bookings.filter(b => b.status === "checked_in"));
   const completed = filter(bookings.filter(b => b.status === "checked_out"));
 
   const checkIn = async (booking) => {
@@ -102,16 +102,58 @@ export default function CaretakerDashboard() {
           <div className="pr-brand-sub">Caretaker Portal</div>
         </div>
         <div className="pr-topbar-right">
-          <div style={{ textAlign: "right" }}>
-            <div className="pr-user-name">{profile?.name}</div>
-            <div className="pr-user-role">Caretaker · {profile?.hostelName}</div>
-          </div>
-          <button className="pr-logout" onClick={logout}>Sign Out</button>
+          <button
+            className="pr-logout"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </button>
+
+          <button
+            className="pr-logout"
+            onClick={logout}
+          >
+            Sign Out
+          </button>
         </div>
       </div>
 
       <div className="pr-body">
         <div className="pr-page-header pr-a1">
+          <div
+            style={{
+              marginBottom: 16,
+              padding: "10px 14px",
+              borderRadius: 6,
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(201,168,76,0.15)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            <div style={{ lineHeight: 1.2 }}>
+              <span style={{ fontSize: 14, fontWeight: 500 }}>
+                {profile?.name}
+              </span>
+              <span style={{ fontSize: 12, color: "var(--muted)", display: "block" }}>
+                {profile?.hostelName}
+              </span>
+            </div>
+
+            <span
+              style={{
+                fontSize: 11,
+                color: "#4ade80",
+                background: "rgba(74,222,128,0.08)",
+                border: "1px solid rgba(74,222,128,0.25)",
+                padding: "3px 8px",
+                borderRadius: 999
+              }}
+            >
+              ● Active
+            </span>
+          </div>
           <div className="pr-eyebrow">Caretaker Portal</div>
           <h1 className="pr-page-title">Guest Management</h1>
           <p className="pr-page-sub">{profile?.hostelName} — manage arrivals, check-ins and check-outs</p>
@@ -159,9 +201,9 @@ export default function CaretakerDashboard() {
 
         <div className="pr-stats pr-a2">
           {[
-            { num: arrivals.length,  label: "Expected Arrivals", color: "#4ade80" },
-            { num: staying.length,   label: "Currently Staying", color: "#a78bfa" },
-            { num: completed.length, label: "Completed Stays",   color: "var(--muted)" },
+            { num: arrivals.length, label: "Expected Arrivals", color: "#4ade80" },
+            { num: staying.length, label: "Currently Staying", color: "#a78bfa" },
+            { num: completed.length, label: "Completed Stays", color: "var(--muted)" },
           ].map(({ num, label, color }) => (
             <div key={label} className="pr-stat">
               <div className="pr-stat-num" style={{ color }}>{num}</div>
@@ -184,9 +226,9 @@ export default function CaretakerDashboard() {
 
             <div className="pr-tabs pr-a2">
               {[
-                { key: "arrivals",  label: "Expected Arrivals", count: arrivals.length },
-                { key: "staying",   label: "Currently Staying", count: staying.length },
-                { key: "completed", label: "Completed",         count: null },
+                { key: "arrivals", label: "Expected Arrivals", count: arrivals.length },
+                { key: "staying", label: "Currently Staying", count: staying.length },
+                { key: "completed", label: "Completed", count: null },
               ].map(t => (
                 <button key={t.key}
                   className={`pr-tab ${tab === t.key ? "active" : ""}`}
@@ -225,7 +267,7 @@ export default function CaretakerDashboard() {
 }
 
 function GuestCard({ booking, action, onAction }) {
-  const [busy, setBusy]           = useState(false);
+  const [busy, setBusy] = useState(false);
   const [popConfirm, setPopConfirm] = useState(false);
   const cfg = STATUS[booking.status] || { cls: "pt-muted", label: booking.status, bcard: "checked_out" };
   const fmt = ts => ts?.toDate?.().toLocaleDateString("en-IN") || "—";
@@ -272,8 +314,10 @@ function GuestCard({ booking, action, onAction }) {
 
         {/* Documents */}
         <div style={{ marginTop: 12, marginBottom: 8 }}>
-          <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 8,
-            textTransform: "uppercase", letterSpacing: 1 }}>Submitted Documents</div>
+          <div style={{
+            fontSize: 12, color: "var(--muted)", marginBottom: 8,
+            textTransform: "uppercase", letterSpacing: 1
+          }}>Submitted Documents</div>
           <DocumentViewer docs={booking.documents} />
         </div>
         {action === "checkin" && (

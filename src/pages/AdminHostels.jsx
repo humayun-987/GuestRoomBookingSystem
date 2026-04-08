@@ -8,7 +8,7 @@ import { useAuth } from "./AuthContext.jsx";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
 import { DocumentViewer } from "./StudentDashboard";
-
+import { useNavigate } from "react-router-dom";
 /* ─────────────────────────────────────────────────────────────
    SUPER ADMIN PASSKEY — hardcoded, never stored in database.
    Only share this with the designated super administrator.
@@ -18,16 +18,16 @@ const SUPER_ADMIN_KEY = "IITK-GRMS-SA-2025";
 
 export default function AdminHostels() {
   const { logout } = useAuth();
-  const [hostels, setHostels]             = useState([]);
-  const [tab, setTab]                     = useState("rooms");
+  const [hostels, setHostels] = useState([]);
+  const [tab, setTab] = useState("rooms");
   const [newHostelName, setNewHostelName] = useState("");
-  const [loading, setLoading]             = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   // Session-based unlock: Set of hostelIds unlocked this session
   const [unlockedHostels, setUnlockedHostels] = useState(new Set());
   const unlockHostel = (id) => setUnlockedHostels(prev => new Set([...prev, id]));
-  const lockHostel   = (id) => setUnlockedHostels(prev => { const s = new Set(prev); s.delete(id); return s; });
-  const isUnlocked   = (id) => unlockedHostels.has(id);
+  const lockHostel = (id) => setUnlockedHostels(prev => { const s = new Set(prev); s.delete(id); return s; });
+  const isUnlocked = (id) => unlockedHostels.has(id);
 
   // Super admin — verified once per session via hardcoded passkey, never persisted
   const [isSuperAdmin, setIsSuperAdmin] = useState(false);
@@ -64,7 +64,7 @@ export default function AdminHostels() {
           <div className="pr-brand">IITK <span>Guest Rooms</span></div>
           <div className="pr-brand-sub">Admin Portal</div>
         </div>
-        <div className="pr-topbar-right">
+        {/* <div className="pr-topbar-right">
           <div style={{ textAlign: "right" }}>
             <div className="pr-user-name">
               Administrator
@@ -82,11 +82,81 @@ export default function AdminHostels() {
             <div className="pr-user-role">Full Access</div>
           </div>
           <button className="pr-logout" onClick={() => { setIsSuperAdmin(false); logout(); }}>Sign Out</button>
+        </div> */}
+        <div className="pr-topbar-right">
+          <button
+            className="pr-logout"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </button>
+
+          <button
+            className="pr-logout"
+            onClick={() => {
+              setIsSuperAdmin(false);
+              logout();
+            }}
+          >
+            Sign Out
+          </button>
         </div>
       </div>
 
       <div className="pr-body">
         <div className="pr-page-header pr-a1">
+          <div
+            style={{
+              marginBottom: 16,
+              padding: "10px 14px",
+              borderRadius: 6,
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(201,168,76,0.15)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            <div style={{ lineHeight: 1.2 }}>
+              <span style={{ fontSize: 14, fontWeight: 500 }}>
+                Administrator
+                {isSuperAdmin && (
+                  <span
+                    style={{
+                      marginLeft: 8,
+                      fontSize: 10,
+                      color: "var(--gold)"
+                    }}
+                  >
+                    • SUPER ADMIN
+                  </span>
+                )}
+              </span>
+
+              <span
+                style={{
+                  fontSize: 12,
+                  color: "var(--muted)",
+                  display: "block"
+                }}
+              >
+                Full Access Control
+              </span>
+            </div>
+
+            <span
+              style={{
+                fontSize: 11,
+                color: "#4ade80",
+                background: "rgba(74,222,128,0.08)",
+                border: "1px solid rgba(74,222,128,0.25)",
+                padding: "3px 8px",
+                borderRadius: 999
+              }}
+            >
+              ● Active
+            </span>
+          </div>
           <div className="pr-eyebrow">Admin Portal</div>
           <h1 className="pr-page-title">System Management</h1>
           <p className="pr-page-sub">Manage hostels, monitor bookings, and generate staff access codes</p>
@@ -94,9 +164,9 @@ export default function AdminHostels() {
 
         <div className="pr-tabs pr-a2">
           {[
-            { key: "rooms",    label: "Room Management" },
+            { key: "rooms", label: "Room Management" },
             { key: "bookings", label: "All Bookings" },
-            { key: "invites",  label: "Invite Codes" },
+            { key: "invites", label: "Invite Codes" },
           ].map(t => (
             <button key={t.key}
               className={`pr-tab ${tab === t.key ? "active" : ""}`}
@@ -139,8 +209,8 @@ export default function AdminHostels() {
 function SuperAdminGate({ onVerified }) {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-  const [busy, setBusy]   = useState(false);
-  const [show, setShow]   = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [show, setShow] = useState(false);
 
   const verify = () => {
     if (!input.trim()) { setError("Enter the super admin passkey"); return; }
@@ -270,18 +340,18 @@ function RoomManagement({ hostels, newHostelName, setNewHostelName, addHostel, l
 }
 
 function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
-  const [rooms, setRooms]     = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [open, setOpen]       = useState(false);
-  const [delPop, setDelPop]       = useState(false);
-  const [delStep, setDelStep]     = useState("passkey"); // "passkey" | "confirm"
-  const [delKey, setDelKey]       = useState("");
+  const [open, setOpen] = useState(false);
+  const [delPop, setDelPop] = useState(false);
+  const [delStep, setDelStep] = useState("passkey"); // "passkey" | "confirm"
+  const [delKey, setDelKey] = useState("");
   const [delKeyError, setDelKeyError] = useState("");
-  const [delKeyBusy, setDelKeyBusy]   = useState(false);
+  const [delKeyBusy, setDelKeyBusy] = useState(false);
 
   const [passkeyInput, setPasskeyInput] = useState("");
   const [passkeyError, setPasskeyError] = useState("");
-  const [verifying, setVerifying]       = useState(false);
+  const [verifying, setVerifying] = useState(false);
 
   const verifyPasskey = async () => {
     if (!passkeyInput.trim()) { setPasskeyError("Please enter the passkey"); return; }
@@ -306,13 +376,13 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
     setVerifying(false);
   };
 
-  const [maintModal, setMaintModal]             = useState(null);
-  const [maintNote, setMaintNote]               = useState("");
-  const [maintDays, setMaintDays]               = useState(1);
+  const [maintModal, setMaintModal] = useState(null);
+  const [maintNote, setMaintNote] = useState("");
+  const [maintDays, setMaintDays] = useState(1);
   const [affectedBookings, setAffectedBookings] = useState([]);
   const [checkingBookings, setCheckingBookings] = useState(false);
-  const [maintBusy, setMaintBusy]               = useState(false);
-  const [turnOffPop, setTurnOffPop]             = useState(null);
+  const [maintBusy, setMaintBusy] = useState(false);
+  const [turnOffPop, setTurnOffPop] = useState(null);
 
   const fetchRooms = async () => {
     const snap = await getDocs(collection(db, "hostels", hostel.id, "rooms"));
@@ -353,7 +423,7 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
       const snap = await getDocs(q);
       const all = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       setAffectedBookings(all.filter(b => {
-        const bIn  = b.checkIn?.toDate?.()  ?? new Date(b.checkIn);
+        const bIn = b.checkIn?.toDate?.() ?? new Date(b.checkIn);
         const bOut = b.checkOut?.toDate?.() ?? new Date(b.checkOut);
         return bIn < maintTo && bOut > maintFrom;
       }));
@@ -397,8 +467,10 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
       await batch.commit();
       setRooms(prev => prev.map(r =>
         r.id === maintModal.id
-          ? { ...r, maintenance: true, maintenanceNote: maintNote.trim(),
-              maintenanceFrom: maintFrom, maintenanceTo: maintTo, maintenanceDays: Number(maintDays) }
+          ? {
+            ...r, maintenance: true, maintenanceNote: maintNote.trim(),
+            maintenanceFrom: maintFrom, maintenanceTo: maintTo, maintenanceDays: Number(maintDays)
+          }
           : r
       ));
       message.success(
@@ -419,8 +491,10 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
       });
       setRooms(prev => prev.map(r =>
         r.id === turnOffPop.id
-          ? { ...r, maintenance: false, maintenanceNote: "",
-              maintenanceFrom: null, maintenanceTo: null, maintenanceDays: null }
+          ? {
+            ...r, maintenance: false, maintenanceNote: "",
+            maintenanceFrom: null, maintenanceTo: null, maintenanceDays: null
+          }
           : r
       ));
       message.success("Maintenance cleared — room is active again");
@@ -555,7 +629,7 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
                 </div>
                 {rooms.length === 0 && <p style={{ color: "var(--muted)", fontSize: 13 }}>No rooms yet.</p>}
                 {rooms.map((room, i) => {
-                  const maintTo  = room.maintenanceTo?.toDate?.();
+                  const maintTo = room.maintenanceTo?.toDate?.();
                   const daysLeft = maintTo ? Math.max(0, Math.ceil((maintTo - new Date()) / 86400000)) : null;
                   return (
                     <div key={room.id} className="pr-card" style={{ marginBottom: 10, padding: "14px 20px" }}>
@@ -727,7 +801,7 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
                     style={{ width: 100 }} />
                   <span style={{ fontSize: 13, color: "var(--muted)" }}>
                     {maintDays >= 1 && (() => {
-                      const from = new Date(); from.setHours(0,0,0,0);
+                      const from = new Date(); from.setHours(0, 0, 0, 0);
                       const to = new Date(from); to.setDate(to.getDate() + Number(maintDays));
                       return `${from.toLocaleDateString("en-IN", { day: "numeric", month: "short" })} → ${to.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}`;
                     })()}
@@ -803,27 +877,27 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
 
 /* ── Bookings Panel ── */
 function BookingsPanel({ hostels }) {
-  const [bookings, setBookings]         = useState([]);
-  const [loading, setLoading]           = useState(true);
-  const [filterHostel, setFilter]       = useState("all");
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filterHostel, setFilter] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
-  const [detail, setDetail]             = useState(null);
+  const [detail, setDetail] = useState(null);
 
-  const [cancelModal, setCancelModal]   = useState(null);
-  const [cancelStep, setCancelStep]     = useState("passkey");
+  const [cancelModal, setCancelModal] = useState(null);
+  const [cancelStep, setCancelStep] = useState("passkey");
   const [passkeyInput, setPasskeyInput] = useState("");
   const [passkeyError, setPasskeyError] = useState("");
-  const [cancelNote, setCancelNote]     = useState("");
-  const [cancelBusy, setCancelBusy]     = useState(false);
+  const [cancelNote, setCancelNote] = useState("");
+  const [cancelBusy, setCancelBusy] = useState(false);
 
   const STATUS_STYLE = {
-    pending:     { cls: "pt-amber",  label: "Pending" },
-    approved:    { cls: "pt-green",  label: "Approved" },
-    conditional: { cls: "pt-green",  label: "Approved with Condition" },
-    checked_in:  { cls: "pt-purple", label: "Checked In" },
-    checked_out: { cls: "pt-muted",  label: "Checked Out" },
-    rejected:    { cls: "pt-red",    label: "Rejected" },
-    cancelled:   { cls: "pt-muted",  label: "Cancelled" },
+    pending: { cls: "pt-amber", label: "Pending" },
+    approved: { cls: "pt-green", label: "Approved" },
+    conditional: { cls: "pt-green", label: "Approved with Condition" },
+    checked_in: { cls: "pt-purple", label: "Checked In" },
+    checked_out: { cls: "pt-muted", label: "Checked Out" },
+    rejected: { cls: "pt-red", label: "Rejected" },
+    cancelled: { cls: "pt-muted", label: "Cancelled" },
   };
 
   const fetchBookings = async () => {
@@ -885,7 +959,7 @@ function BookingsPanel({ hostels }) {
   let filtered = filterHostel === "all" ? bookings : bookings.filter(b => b.hostelId === filterHostel);
   if (filterStatus !== "all") filtered = filtered.filter(b => b.status === filterStatus);
 
-  const fmt     = ts => ts?.toDate?.().toLocaleDateString("en-IN") || "—";
+  const fmt = ts => ts?.toDate?.().toLocaleDateString("en-IN") || "—";
   const fmtFull = ts => ts?.toDate?.().toLocaleString("en-IN") || "—";
 
   const counts = { pending: 0, approved: 0, checked_in: 0, total: bookings.length };
@@ -899,10 +973,10 @@ function BookingsPanel({ hostels }) {
     <>
       <div className="pr-stats" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(130px,1fr))" }}>
         {[
-          { num: counts.pending,    label: "Pending",    color: "#f59e0b" },
-          { num: counts.approved,   label: "Approved",   color: "#4ade80" },
+          { num: counts.pending, label: "Pending", color: "#f59e0b" },
+          { num: counts.approved, label: "Approved", color: "#4ade80" },
           { num: counts.checked_in, label: "Checked In", color: "#a78bfa" },
-          { num: counts.total,      label: "Total",      color: "var(--gold)" },
+          { num: counts.total, label: "Total", color: "var(--gold)" },
         ].map(({ num, label, color }) => (
           <div key={label} className="pr-stat">
             <div className="pr-stat-num" style={{ color }}>{num}</div>
@@ -978,18 +1052,18 @@ function BookingsPanel({ hostels }) {
             </div>
             <div className="pr-modal-body">
               {[
-                ["Guest Name",  detail.guestName],
-                ["Relation",    detail.guestRelation],
-                ["Phone",       detail.phone],
-                ["Hostel",      detail.hostelName],
-                ["Room",        `${detail.roomAc ? "AC" : "Non-AC"} · Capacity ${detail.roomCapacity}`],
-                ["Student",     detail.studentName],
-                ["Purpose",     detail.purpose],
-                ["Check-in",    fmt(detail.checkIn)],
-                ["Check-out",   fmt(detail.checkOut)],
-                ["Booked At",   fmtFull(detail.bookedAt)],
-                ["Status",      STATUS_STYLE[detail.status]?.label || detail.status],
-                ["Note",        detail.wardenNote || "—"],
+                ["Guest Name", detail.guestName],
+                ["Relation", detail.guestRelation],
+                ["Phone", detail.phone],
+                ["Hostel", detail.hostelName],
+                ["Room", `${detail.roomAc ? "AC" : "Non-AC"} · Capacity ${detail.roomCapacity}`],
+                ["Student", detail.studentName],
+                ["Purpose", detail.purpose],
+                ["Check-in", fmt(detail.checkIn)],
+                ["Check-out", fmt(detail.checkOut)],
+                ["Booked At", fmtFull(detail.bookedAt)],
+                ["Status", STATUS_STYLE[detail.status]?.label || detail.status],
+                ["Note", detail.wardenNote || "—"],
               ].map(([label, value]) => (
                 <div key={label} style={{
                   display: "flex", gap: 12,
@@ -1091,15 +1165,15 @@ function BookingsPanel({ hostels }) {
 
 /* ── Invite Codes Panel ── */
 function InviteCodesPanel({ hostels }) {
-  const [codes, setCodes]           = useState([]);
-  const [loading, setLoading]       = useState(true);
+  const [codes, setCodes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
-  const [selectedRole, setRole]     = useState("warden");
+  const [selectedRole, setRole] = useState("warden");
   const [selectedHostel, setHostel] = useState("");
-  const [delPop, setDelPop]         = useState(null);
+  const [delPop, setDelPop] = useState(null);
 
   const ROLES = [
-    { key: "warden",    label: "Warden" },
+    { key: "warden", label: "Warden" },
     { key: "caretaker", label: "Caretaker" },
   ];
 
@@ -1122,13 +1196,13 @@ function InviteCodesPanel({ hostels }) {
     if (selectedRole !== "admin" && !selectedHostel) { message.error("Select a hostel"); return; }
     setGenerating(true);
     try {
-      const rand   = Math.random().toString(36).substring(2, 8).toUpperCase();
+      const rand = Math.random().toString(36).substring(2, 8).toUpperCase();
       const codeId = `${selectedRole.toUpperCase()}-${rand}`;
       const hostel = hostels.find(h => h.id === selectedHostel);
       await setDoc(doc(db, "invite_codes", codeId), {
         role: selectedRole,
-        hostelId:   selectedRole !== "admin" ? selectedHostel : null,
-        hostelName: selectedRole !== "admin" ? hostel?.name   : null,
+        hostelId: selectedRole !== "admin" ? selectedHostel : null,
+        hostelName: selectedRole !== "admin" ? hostel?.name : null,
         used: false, createdAt: new Date(),
       });
       message.success(`Generated: ${codeId}`);

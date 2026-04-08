@@ -40,8 +40,8 @@ const injectStyles = () => {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 60px;
-      background: rgba(13,27,42,0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(13,27,42,0.9);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(201,168,76,0.15);
       transition: padding 0.3s;
     }
@@ -54,7 +54,7 @@ const injectStyles = () => {
     .lp-logo span { color: var(--text); font-weight: 400; }
     @media (max-width: 600px) {
       .lp-logo { font-size: 20px; letter-spacing: 0.2px; }
-      .lp-logo span { display: none}
+      .lp-logo span { display: none }
     }
     .lp-nav-btns { display: flex; gap: 12px; align-items: center; }
     .lp-btn-ghost {
@@ -90,21 +90,29 @@ const injectStyles = () => {
       padding: 120px 60px 80px;
       position: relative; overflow: hidden;
     }
-    .lp-hero-bg {
+    /* Photo background */
+    .lp-hero-photo {
       position: absolute; inset: 0;
-      background: 
-        radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse at 10% 80%, rgba(201,168,76,0.05) 0%, transparent 50%);
+      background: url('/bg-landing.png') center / cover no-repeat;
     }
-    .lp-hero-grid {
+    /* Dark overlay — heavier on left for text, lighter on right for card */
+    .lp-hero-overlay {
       position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse at 60% 50%, black 20%, transparent 70%);
+      background: linear-gradient(
+        110deg,
+        rgba(13,27,42,0.95) 0%,
+        rgba(13,27,42,0.85) 35%,
+        rgba(13,27,42,0.65) 60%,
+        rgba(13,27,42,0.45) 100%
+      );
     }
-    .lp-hero-content { position: relative; max-width: 680px; }
+    .lp-hero-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 65%, rgba(201,168,76,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 40%, rgba(201,168,76,0.05) 0%, transparent 45%);
+    }
+    .lp-hero-content { position: relative; max-width: 680px; z-index: 2; }
     .lp-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       color: var(--gold); font-size: 12px;
@@ -161,62 +169,191 @@ const injectStyles = () => {
       background: rgba(232,224,208,0.05);
     }
 
-    /* FLOATING CARD */
+    /* ── LIVE ROOM STATUS CARD ──────────────────── */
     .lp-hero-card {
-      position: absolute; right: 60px; top: 50%;
-      transform: translateY(-50%);
-      background: rgba(27,46,66,0.75);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 12px; padding: 24px 0 0;
-      width: 340px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
-      display: flex; flex-direction: column;
-      max-height: 420px;
+      position: absolute;
+      right: 60px;
+      top: 120px;        /* fixed top */
+      transform: none;   /* remove translate */
+
+      width: 360px;
+      z-index: 10;
+
+      background: rgba(10,20,32,0.88);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 16px;
+      backdrop-filter: blur(24px);
+      overflow: hidden;
+
+      box-shadow: 
+        0 40px 100px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(201,168,76,0.15);
     }
-    .lp-card-head {
-      padding: 0 24px 16px;
-      border-bottom: 1px solid rgba(201,168,76,0.12);
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
     }
-    .lp-card-title {
+      .anim-card {
+        animation: floatCard 6s ease-in-out infinite fadeIn 1s 0.6s ease both;
+      }
+
+    /* Card header */
+    .sc-header {
+      padding: 18px 20px 14px;
+      background: linear-gradient(180deg, rgba(201,168,76,0.08) 0%, transparent 100%);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .sc-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px; color: var(--cream);
-      margin-bottom: 4px; font-weight: 600;
+      font-size: 20px; font-weight: 700; color: var(--cream); letter-spacing: 0.2px;
     }
-    .lp-card-updated {
-      font-size: 11px; color: var(--muted); letter-spacing: 0.3px;
+    .sc-subtitle {
+      font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: 0.3px;
     }
-    .lp-card-scroll {
-      overflow-y: auto; flex: 1;
-      padding: 0 24px 16px;
+    .sc-live-badge {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 20px; padding: 4px 10px; flex-shrink: 0;
     }
-    .lp-card-scroll::-webkit-scrollbar { width: 4px; }
-    .lp-card-scroll::-webkit-scrollbar-track { background: transparent; }
-    .lp-card-scroll::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.2); border-radius: 2px; }
-    .lp-hostel-group { margin-top: 14px; }
-    .lp-hostel-label {
+    .sc-live-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
+      animation: livePulse 2s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+    .sc-live-text {
+      font-size: 10px; font-weight: 500; color: #4ade80;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+
+    /* Tabs */
+    .sc-tabs {
+      display: flex; border-bottom: 1px solid rgba(201,168,76,0.1); padding: 0 20px;
+    }
+    .sc-tab {
+      padding: 10px 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.3px;
+      color: var(--muted); border-bottom: 2px solid transparent; cursor: pointer;
+      transition: all 0.2s; margin-bottom: -1px; font-family: 'DM Sans', sans-serif;
+      background: none; border-top: none; border-left: none; border-right: none;
+    }
+    .sc-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .sc-tab:hover:not(.active) { color: var(--text); }
+
+    /* Summary counts */
+    .sc-summary {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+      background: rgba(201,168,76,0.08);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .sc-sum-item {
+      background: rgba(10,20,32,0.7); padding: 12px 10px; text-align: center;
+    }
+    .sc-sum-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 700; line-height: 1;
+    }
+    .sc-sum-lbl {
+      font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase;
+      color: var(--muted); margin-top: 3px;
+    }
+    .sc-num-avail { color: #4ade80; }
+    .sc-num-booked { color: #f87171; }
+    .sc-num-pend { color: var(--gold); }
+
+    /* Scroll area */
+    .sc-scroll {
+      max-height: 220px; overflow-y: auto; padding: 0 0 8px;
+    }
+    .sc-scroll::-webkit-scrollbar { width: 3px; }
+    .sc-scroll::-webkit-scrollbar-track { background: transparent; }
+    .sc-scroll::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.2); border-radius: 2px; }
+
+    .sc-hostel-hdr {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px 4px;
+      position: sticky; top: 0;
+      background: rgba(10,20,32,0.97); z-index: 1;
+    }
+    .sc-hostel-dot {
+      width: 8px; height: 8px; border-radius: 2px; background: rgba(201,168,76,0.4);
+    }
+    .sc-hostel-name {
       font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 8px; opacity: 0.7;
+      color: var(--gold); font-weight: 500; opacity: 0.8;
     }
-    .lp-room-row {
+    .sc-hostel-count {
+      font-size: 10px; color: var(--muted); margin-left: auto;
+    }
+
+    .sc-room-row {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 0; border-bottom: 1px solid rgba(201,168,76,0.06);
-      gap: 8px;
+      padding: 8px 20px; gap: 8px;
+      border-bottom: 1px solid rgba(201,168,76,0.05);
+      transition: background 0.15s; cursor: default;
     }
-    .lp-room-row:last-child { border-bottom: none; }
-    .lp-room-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-    .lp-room-name { font-size: 13px; color: var(--text); font-weight: 500; }
-    .lp-room-meta { font-size: 11px; color: var(--muted); }
-    .lp-room-badge {
-      font-size: 10px; font-weight: 500;
-      padding: 3px 9px; border-radius: 20px;
+    .sc-room-row:hover { background: rgba(201,168,76,0.04); }
+    .sc-room-row:last-child { border-bottom: none; }
+    .sc-room-left { display: flex; align-items: center; gap: 10px; }
+    .sc-room-icon {
+      width: 28px; height: 28px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
+    }
+    .sc-icon-ac   { background: rgba(55,138,221,0.1); border: 1px solid rgba(55,138,221,0.2); }
+    .sc-icon-nonac{ background: rgba(138,154,176,0.1); border: 1px solid rgba(138,154,176,0.15); }
+    .sc-room-name { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1; }
+    .sc-room-meta { font-size: 10px; color: var(--muted); margin-top: 2px; letter-spacing: 0.2px; }
+
+    .sc-badge {
+      font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 20px;
       letter-spacing: 0.5px; white-space: nowrap; flex-shrink: 0;
     }
-    .badge-green  { background: rgba(74,222,128,0.12);  color: #4ade80; }
-    .badge-red    { background: rgba(248,113,113,0.12); color: #f87171; }
-    .badge-gold   { background: rgba(201,168,76,0.12);  color: var(--gold); }
-    .badge-amber  { background: rgba(245,158,11,0.12);  color: #f59e0b; }
-    .badge-muted  { background: rgba(110,132,153,0.15); color: var(--muted); }
+    .sc-b-avail { background: rgba(74,222,128,0.1);  color: #4ade80;    border: 1px solid rgba(74,222,128,0.2); }
+    .sc-b-booked{ background: rgba(248,113,113,0.1); color: #f87171;    border: 1px solid rgba(248,113,113,0.2); }
+    .sc-b-pend  { background: rgba(201,168,76,0.1);  color: var(--gold);border: 1px solid rgba(201,168,76,0.2); }
+    .sc-b-maint { background: rgba(245,158,11,0.1);  color: #f59e0b;    border: 1px solid rgba(245,158,11,0.2); }
+
+    .sc-footer {
+      padding: 10px 20px; border-top: 1px solid rgba(201,168,76,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sc-footer-text { font-size: 11px; color: var(--muted); letter-spacing: 0.2px; }
+    .sc-book-btn {
+      background: var(--gold); color: var(--navy); border: none;
+      padding: 6px 16px; border-radius: 4px; font-size: 12px; font-weight: 500;
+      cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+    }
+    .sc-book-btn:hover { background: var(--gold2); transform: scale(1.03); }
+
+    /* ── TEXTURED SECTION BACKGROUNDS ──────────── */
+    /* Fine dot grid */
+    .lp-bg-dots {
+      background-color: var(--navy);
+      background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    /* Fine gold line grid */
+    .lp-bg-grid {
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    /* Diagonal checker */
+    .lp-bg-checker {
+      background-color: var(--navy2);
+      background-image:
+        linear-gradient(45deg, rgba(201,168,76,0.03) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(201,168,76,0.03) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(201,168,76,0.03) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(201,168,76,0.03) 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+    }
 
     /* STATS */
     .lp-stats {
@@ -263,7 +400,7 @@ const injectStyles = () => {
     }
     .lp-feature {
       padding: 40px 36px;
-      background: rgba(27,46,66,0.3);
+      background: rgba(27,46,66,0.4);
       transition: background 0.3s;
       position: relative; overflow: hidden;
     }
@@ -273,11 +410,9 @@ const injectStyles = () => {
       background: linear-gradient(90deg, var(--gold), transparent);
       opacity: 0; transition: opacity 0.3s;
     }
-    .lp-feature:hover { background: rgba(27,46,66,0.6); }
+    .lp-feature:hover { background: rgba(27,46,66,0.65); }
     .lp-feature:hover::before { opacity: 1; }
-    .lp-feature-icon {
-      font-size: 28px; margin-bottom: 20px; display: block;
-    }
+    .lp-feature-icon { font-size: 28px; margin-bottom: 20px; display: block; }
     .lp-feature-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px; font-weight: 600;
@@ -311,14 +446,8 @@ const injectStyles = () => {
       background: var(--navy);
       position: relative; z-index: 1;
     }
-    .lp-step-title {
-      font-size: 15px; font-weight: 500;
-      color: var(--cream); margin-bottom: 8px;
-    }
-    .lp-step-desc {
-      font-size: 13px; color: var(--muted);
-      line-height: 1.6; font-weight: 300;
-    }
+    .lp-step-title { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
+    .lp-step-desc  { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
     /* ROLES */
     .lp-roles-grid {
@@ -328,27 +457,22 @@ const injectStyles = () => {
     .lp-role-card {
       padding: 36px; border-radius: 8px;
       border: 1px solid rgba(201,168,76,0.12);
-      background: rgba(27,46,66,0.3);
+      background: rgba(27,46,66,0.35);
       transition: all 0.3s; cursor: default;
     }
     .lp-role-card:hover {
       border-color: rgba(201,168,76,0.35);
-      background: rgba(27,46,66,0.5);
+      background: rgba(27,46,66,0.55);
       transform: translateY(-3px);
     }
-    .lp-role-icon { font-size: 32px; margin-bottom: 16px; }
+    .lp-role-icon  { font-size: 32px; margin-bottom: 16px; }
     .lp-role-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 24px; font-weight: 600;
       color: var(--cream); margin-bottom: 10px;
     }
-    .lp-role-desc {
-      font-size: 14px; color: var(--muted);
-      line-height: 1.7; font-weight: 300;
-    }
-    .lp-role-perms {
-      margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px;
-    }
+    .lp-role-desc  { font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .lp-role-perms { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
     .lp-perm {
       font-size: 11px; letter-spacing: 0.5px;
       padding: 4px 10px; border-radius: 20px;
@@ -358,11 +482,7 @@ const injectStyles = () => {
 
     /* BOOKING LIFECYCLE */
     .lp-lifecycle { background: rgba(13,27,42,0.6); }
-    .lp-lifecycle-wrap {
-      margin-top: 60px; position: relative;
-    }
-
-    /* Main track */
+    .lp-lifecycle-wrap { margin-top: 60px; position: relative; }
     .lp-track {
       display: flex; align-items: flex-start;
       gap: 0; position: relative; margin-bottom: 48px;
@@ -379,8 +499,7 @@ const injectStyles = () => {
     }
     .lp-node:hover { transform: translateY(-3px); }
     .lp-node.active .lp-node-circle {
-      background: var(--gold);
-      border-color: var(--gold);
+      background: var(--gold); border-color: var(--gold);
       box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 0 24px rgba(201,168,76,0.3);
     }
     .lp-node.active .lp-node-circle span { color: var(--navy); }
@@ -396,11 +515,8 @@ const injectStyles = () => {
     .lp-node-label {
       font-size: 12px; font-weight: 500; color: var(--muted);
       text-align: center; letter-spacing: 0.3px;
-      transition: color 0.3s; max-width: 80px;
-      line-height: 1.4;
+      transition: color 0.3s; max-width: 80px; line-height: 1.4;
     }
-
-    /* Branch for warden decision */
     .lp-branch {
       display: flex; justify-content: center; gap: 16px;
       margin-bottom: 32px; position: relative;
@@ -411,52 +527,26 @@ const injectStyles = () => {
     }
     .lp-branch-card {
       flex: 1; max-width: 200px; border-radius: 8px; padding: 16px 18px;
-      border: 1px solid transparent; cursor: pointer;
-      transition: all 0.25s; position: relative;
+      border: 1px solid transparent; cursor: pointer; transition: all 0.25s;
     }
-    .lp-branch-card.approve {
-      background: rgba(74,222,128,0.05);
-      border-color: rgba(74,222,128,0.15);
-    }
-    .lp-branch-card.approve:hover, .lp-branch-card.approve.sel {
-      background: rgba(74,222,128,0.1);
-      border-color: rgba(74,222,128,0.4);
-      transform: translateY(-2px);
-    }
-    .lp-branch-card.conditional {
-      background: rgba(201,168,76,0.05);
-      border-color: rgba(201,168,76,0.15);
-    }
-    .lp-branch-card.conditional:hover, .lp-branch-card.conditional.sel {
-      background: rgba(201,168,76,0.1);
-      border-color: rgba(201,168,76,0.4);
-      transform: translateY(-2px);
-    }
-    .lp-branch-card.reject {
-      background: rgba(248,113,113,0.05);
-      border-color: rgba(248,113,113,0.15);
-    }
-    .lp-branch-card.reject:hover, .lp-branch-card.reject.sel {
-      background: rgba(248,113,113,0.1);
-      border-color: rgba(248,113,113,0.4);
-      transform: translateY(-2px);
-    }
-    .lp-branch-icon { font-size: 18px; margin-bottom: 6px; }
-    .lp-branch-title {
-      font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--cream);
-    }
-    .lp-branch-desc {
-      font-size: 12px; color: var(--muted); line-height: 1.5; font-weight: 300;
-    }
-
-    /* Detail panel */
+    .lp-branch-card.approve          { background: rgba(74,222,128,0.05);  border-color: rgba(74,222,128,0.15); }
+    .lp-branch-card.approve:hover,
+    .lp-branch-card.approve.sel      { background: rgba(74,222,128,0.1);   border-color: rgba(74,222,128,0.4); transform: translateY(-2px); }
+    .lp-branch-card.conditional      { background: rgba(201,168,76,0.05);  border-color: rgba(201,168,76,0.15); }
+    .lp-branch-card.conditional:hover,
+    .lp-branch-card.conditional.sel  { background: rgba(201,168,76,0.1);   border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+    .lp-branch-card.reject           { background: rgba(248,113,113,0.05); border-color: rgba(248,113,113,0.15); }
+    .lp-branch-card.reject:hover,
+    .lp-branch-card.reject.sel       { background: rgba(248,113,113,0.1);  border-color: rgba(248,113,113,0.4); transform: translateY(-2px); }
+    .lp-branch-icon  { font-size: 18px; margin-bottom: 6px; }
+    .lp-branch-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--cream); }
+    .lp-branch-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; font-weight: 300; }
     .lp-detail-panel {
       border-radius: 10px; padding: 28px 32px;
       border: 1px solid rgba(201,168,76,0.15);
       background: rgba(27,46,66,0.5);
       backdrop-filter: blur(8px);
-      transition: all 0.3s;
-      min-height: 130px;
+      transition: all 0.3s; min-height: 130px;
     }
     .lp-detail-who {
       font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
@@ -464,22 +554,15 @@ const injectStyles = () => {
     }
     .lp-detail-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 26px; font-weight: 600; color: var(--cream);
-      margin-bottom: 10px;
+      font-size: 26px; font-weight: 600; color: var(--cream); margin-bottom: 10px;
     }
-    .lp-detail-desc {
-      font-size: 14px; color: var(--muted); line-height: 1.75;
-      font-weight: 300; max-width: 640px;
-    }
-    .lp-detail-tags {
-      margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px;
-    }
+    .lp-detail-desc  { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; max-width: 640px; }
+    .lp-detail-tags  { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
     .lp-detail-tag {
       font-size: 11px; padding: 4px 12px; border-radius: 20px;
       background: rgba(201,168,76,0.08); color: var(--gold);
       border: 1px solid rgba(201,168,76,0.15); letter-spacing: 0.3px;
     }
-
     @media (max-width: 900px) {
       .lp-track { flex-wrap: wrap; gap: 20px; }
       .lp-track-line { display: none; }
@@ -505,13 +588,11 @@ const injectStyles = () => {
     .lp-cta h2 em { color: var(--gold); font-style: italic; }
     .lp-cta p {
       color: var(--muted); font-size: 16px;
-      font-weight: 300; margin-bottom: 40px;
-      position: relative;
+      font-weight: 300; margin-bottom: 40px; position: relative;
     }
     .lp-cta-btns {
       display: flex; gap: 14px;
-      justify-content: center; flex-wrap: wrap;
-      position: relative;
+      justify-content: center; flex-wrap: wrap; position: relative;
     }
 
     /* FOOTER */
@@ -525,9 +606,7 @@ const injectStyles = () => {
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px; color: var(--gold); font-weight: 600;
     }
-    .lp-footer-text {
-      font-size: 13px; color: var(--muted);
-    }
+    .lp-footer-text { font-size: 13px; color: var(--muted); }
 
     /* ANIMATIONS */
     @keyframes fadeUp {
@@ -538,15 +617,10 @@ const injectStyles = () => {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(-50%) translateX(0); }
-      50%       { transform: translateY(-52%) translateX(-4px); }
-    }
     .anim-1 { animation: fadeUp 0.7s ease both; }
     .anim-2 { animation: fadeUp 0.7s 0.15s ease both; }
     .anim-3 { animation: fadeUp 0.7s 0.3s ease both; }
     .anim-4 { animation: fadeUp 0.7s 0.45s ease both; }
-    .anim-card { animation: float 5s ease-in-out infinite, fadeIn 1s 0.6s ease both; }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -572,7 +646,6 @@ async function fetchLiveRooms() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // 1. Get all hostels + all their rooms
   const hostelSnap = await getDocs(collection(db, "hostels"));
   const allRooms = [];
 
@@ -592,17 +665,15 @@ async function fetchLiveRooms() {
 
   if (allRooms.length === 0) return [];
 
-  // 2. Get all active bookings
   const activeStatuses = ["pending", "approved", "conditional", "checked_in"];
   const bookingSnap = await getDocs(
     query(collection(db, "bookings"), where("status", "in", activeStatuses))
   );
   const activeBookings = bookingSnap.docs.map(d => ({ id: d.id, ...d.data() }));
 
-  // 3. Determine status per room
   return allRooms.map(room => {
     if (room.maintenance) {
-      return { ...room, statusLabel: "Maintenance", badge: "badge-amber" };
+      return { ...room, statusLabel: "Maint.", badge: "sc-b-maint" };
     }
     const isOccupied = activeBookings.some(b => {
       if (b.roomId !== room.id) return false;
@@ -610,11 +681,139 @@ async function fetchLiveRooms() {
       const bOut = b.checkOut?.toDate?.() || new Date(0);
       return bIn <= today && bOut >= today;
     });
-    if (isOccupied) return { ...room, statusLabel: "Booked", badge: "badge-red" };
+    if (isOccupied) return { ...room, statusLabel: "Booked", badge: "sc-b-booked" };
     const isPending = activeBookings.some(b => b.roomId === room.id && b.status === "pending");
-    if (isPending) return { ...room, statusLabel: "Pending", badge: "badge-gold" };
-    return { ...room, statusLabel: "Available", badge: "badge-green" };
+    if (isPending) return { ...room, statusLabel: "Pending", badge: "sc-b-pend" };
+    return { ...room, statusLabel: "Available", badge: "sc-b-avail" };
   });
+}
+
+/* ─── Live Room Status Card ─────────────────────────────────── */
+function LiveRoomCard({ rooms, loading }) {
+  const [tab, setTab] = useState("all");
+  const now = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true });
+  const navigate = useNavigate();
+  const { user, role } = useAuth();
+  const avail = rooms.filter(r => r.statusLabel === "Available").length;
+  const booked = rooms.filter(r => r.statusLabel === "Booked").length;
+  const pend = rooms.filter(r => r.statusLabel === "Pending").length;
+
+  const filtered = rooms.filter(r => {
+    if (tab === "all") return true;
+    if (tab === "avail") return r.statusLabel === "Available";
+    if (tab === "booked") return r.statusLabel === "Booked" || r.statusLabel === "Pending";
+    return true;
+  });
+
+  // Group by hostel
+  const grouped = filtered.reduce((acc, r) => {
+    if (!acc[r.hostelName]) acc[r.hostelName] = [];
+    acc[r.hostelName].push(r);
+    return acc;
+  }, {});
+
+  return (
+    <div className="lp-hero-card anim-card">
+      {/* Header */}
+      <div className="sc-header">
+        <div>
+          <div className="sc-title">Live Room Status</div>
+          <div className="sc-subtitle">Updated at {now}</div>
+        </div>
+        <div className="sc-live-badge">
+          <div className="sc-live-dot" />
+          <span className="sc-live-text">Live</span>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="sc-tabs">
+        {[["all", "All Rooms"], ["avail", "Available"], ["booked", "Occupied"]].map(([id, label]) => (
+          <button key={id} className={`sc-tab${tab === id ? " active" : ""}`} onClick={() => setTab(id)}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Summary counts */}
+      <div className="sc-summary">
+        <div className="sc-sum-item">
+          <div className="sc-sum-num sc-num-avail">{loading ? "—" : avail}</div>
+          <div className="sc-sum-lbl">Available</div>
+        </div>
+        <div className="sc-sum-item">
+          <div className="sc-sum-num sc-num-booked">{loading ? "—" : booked}</div>
+          <div className="sc-sum-lbl">Occupied</div>
+        </div>
+        <div className="sc-sum-item">
+          <div className="sc-sum-num sc-num-pend">{loading ? "—" : pend}</div>
+          <div className="sc-sum-lbl">Pending</div>
+        </div>
+      </div>
+
+      {/* Room list */}
+      <div className="sc-scroll">
+        {loading ? (
+          <div style={{ color: "var(--muted)", fontSize: 13, padding: "20px", textAlign: "center" }}>
+            Loading rooms…
+          </div>
+        ) : Object.keys(grouped).length === 0 ? (
+          <div style={{ color: "var(--muted)", fontSize: 13, padding: "20px", textAlign: "center" }}>
+            No rooms to show
+          </div>
+        ) : (
+          Object.entries(grouped).map(([hostelName, hostelRooms]) => {
+            const totalInHostel = rooms.filter(r => r.hostelName === hostelName).length;
+            const availInHostel = rooms.filter(r => r.hostelName === hostelName && r.statusLabel === "Available").length;
+            return (
+              <div key={hostelName}>
+                <div className="sc-hostel-hdr">
+                  <div className="sc-hostel-dot" />
+                  <span className="sc-hostel-name">{hostelName}</span>
+                  <span className="sc-hostel-count">{availInHostel}/{totalInHostel} free</span>
+                </div>
+                {hostelRooms.map(r => {
+                  const isAC = r.ac && !String(r.ac).toLowerCase().includes("non");
+                  return (
+                    <div key={r.id} className="sc-room-row">
+                      <div className="sc-room-left">
+                        <div className={`sc-room-icon ${isAC ? "sc-icon-ac" : "sc-icon-nonac"}`}
+                          style={{ fontSize: 11, color: isAC ? "#378add" : "var(--muted)" }}>
+                          {isAC ? "❄" : "○"}
+                        </div>
+                        <div>
+                          <div className="sc-room-name">Room {r.roomNo}</div>
+                          <div className="sc-room-meta">{r.ac ? "AC" : "Non-AC"} · Cap {r.capacity}</div>
+                        </div>
+                      </div>
+                      <span className={`sc-badge ${r.badge}`}>{r.statusLabel}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      {/* Footer */}
+      <div className="sc-footer">
+        <span className="sc-footer-text">Updated just now</span>
+        <button
+          className="sc-book-btn"
+          onClick={() => {
+            if (!user) {
+              navigate("/login");
+            } else {
+              navigate(ROLE_HOME[role]);
+            }
+          }}
+        >
+          Book a Room →
+        </button>
+      </div>
+    </div>
+  );
 }
 
 /* ─── Booking Lifecycle Component ──────────────────────────── */
@@ -678,30 +877,24 @@ const BRANCHES = [
 function BookingLifecycle() {
   const [active, setActive] = useState(0);
   const [branch, setBranch] = useState("approve");
-
   const stage = STAGES[active];
 
   return (
-    <section className="lp-section lp-lifecycle">
+    <section className="lp-section lp-lifecycle lp-bg-checker">
       <div className="lp-section-label">Booking System</div>
       <h2 className="lp-section-title">From request to check-out</h2>
 
       <div className="lp-lifecycle-wrap">
-
-        {/* ── Stage track ── */}
         <div className="lp-track">
           <div className="lp-track-line" />
           {STAGES.map((s, i) => (
-            <div key={s.id}
-              className={`lp-node ${active === i ? "active" : ""}`}
-              onClick={() => setActive(i)}>
+            <div key={s.id} className={`lp-node${active === i ? " active" : ""}`} onClick={() => setActive(i)}>
               <div className="lp-node-circle"><span>{s.icon}</span></div>
               <div className="lp-node-label" style={{ whiteSpace: "pre-line" }}>{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* ── Warden branch (only when warden stage active) ── */}
         {stage.branch && (
           <div className="lp-branch">
             <div className="lp-branch-line" />
@@ -717,32 +910,26 @@ function BookingLifecycle() {
           </div>
         )}
 
-        {/* ── Detail panel ── */}
         <div className="lp-detail-panel">
           <div className="lp-detail-who">{stage.who}</div>
           <div className="lp-detail-title">
             {stage.branch && branch !== "approve"
-              ? branch === "conditional"
-                ? "Approved with Condition"
-                : "Booking Rejected"
+              ? branch === "conditional" ? "Approved with Condition" : "Booking Rejected"
               : stage.title}
           </div>
           <div className="lp-detail-desc">
             {stage.branch
-              ? BRANCHES.find(b => b.id === branch)?.desc + " " + stage.desc.split(".")[stage.desc.split(".").length > 1 ? 1 : 0]
+              ? BRANCHES.find(b => b.id === branch)?.desc + " " + stage.desc.split(".").slice(1).join(".")
               : stage.desc}
           </div>
           <div className="lp-detail-tags">
             {(stage.branch
-              ? [...(BRANCHES.find(b => b.id === branch) ? [`Decision: ${BRANCHES.find(b => b.id === branch).title}`] : []), ...stage.tags]
+              ? [`Decision: ${BRANCHES.find(b => b.id === branch)?.title}`, ...stage.tags]
               : stage.tags
-            ).map(t => (
-              <span key={t} className="lp-detail-tag">{t}</span>
-            ))}
+            ).map(t => <span key={t} className="lp-detail-tag">{t}</span>)}
           </div>
         </div>
 
-        {/* ── Step indicator ── */}
         <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 24 }}>
           {STAGES.map((_, i) => (
             <button key={i} onClick={() => setActive(i)} style={{
@@ -753,23 +940,22 @@ function BookingLifecycle() {
             }} />
           ))}
         </div>
-
       </div>
     </section>
   );
 }
 
-
+/* ─── Main Landing Page ─────────────────────────────────────── */
 export default function LandingPage() {
   const navigate = useNavigate();
   const { user, role, loading } = useAuth();
   const navRef = useRef(null);
   const [liveRooms, setLiveRooms] = useState([]);
   const [roomsLoading, setRoomsLoading] = useState(true);
-
   useEffect(() => { injectStyles(); }, []);
-
-  // Fetch real room data
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     fetchLiveRooms()
       .then(data => setLiveRooms(data))
@@ -777,12 +963,11 @@ export default function LandingPage() {
       .finally(() => setRoomsLoading(false));
   }, []);
 
-  // If already logged in → go to dashboard
-  useEffect(() => {
-    if (!loading && user && role) {
-      navigate(ROLE_HOME[role], { replace: true });
-    }
-  }, [user, role, loading]);
+  // useEffect(() => {
+  //   if (!loading && user && role) {
+  //     navigate(ROLE_HOME[role], { replace: true });
+  //   }
+  // }, [user, role, loading]);
 
   const features = [
     { icon: "🏛️", title: "Multi-Hostel Support", desc: "Manage guest rooms across all 14 halls from a single unified platform." },
@@ -806,25 +991,59 @@ export default function LandingPage() {
     { icon: "🛎️", title: "Caretaker", desc: "Manage physical check-ins and check-outs for arriving guests.", perms: ["Check-in Guests", "Check-out Guests", "View Active Stays"] },
     { icon: "⚙️", title: "Administrator", desc: "Configure hostels, rooms, and generate staff invite codes.", perms: ["Room Config", "Invite Codes", "All Bookings"] },
   ];
-
-  const now = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
-
+  const { logout } = useAuth();
   return (
     <div className="lp-root">
 
       {/* ── NAV ─────────────────────────────────── */}
       <nav ref={navRef} className="lp-nav">
-        <div className="lp-logo">IIT Kanpur <span>· Guests Room Management System</span></div>
-        <div className="lp-nav-btns">
+        <div className="lp-logo">IIT Kanpur <span>· Guest Room Management System</span></div>
+        {/* <div className="lp-nav-btns">
           <button className="lp-btn-ghost" onClick={() => navigate("/login")}>Login</button>
           <button className="lp-btn-solid" onClick={() => navigate("/signup")}>Register</button>
+        </div> */}
+        <div className="lp-nav-btns">
+          {!user ? (
+            <>
+              <button
+                className="lp-btn-ghost"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+
+              <button
+                className="lp-btn-solid"
+                onClick={() => navigate("/signup")}
+              >
+                Register
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="lp-btn-ghost"
+                onClick={() => navigate(ROLE_HOME[role])}
+              >
+                Dashboard
+              </button>
+              <button
+                className="lp-btn-solid"
+                onClick={logout}
+              >
+                Sign Out
+              </button>
+            </>
+          )}
         </div>
       </nav>
 
       {/* ── HERO ────────────────────────────────── */}
       <section className="lp-hero">
-        <div className="lp-hero-bg" />
-        <div className="lp-hero-grid" />
+        {/* Photo + overlays */}
+        <div className="lp-hero-photo" />
+        <div className="lp-hero-overlay" />
+        <div className="lp-hero-glow" />
 
         <div className="lp-hero-content">
           <div className="lp-eyebrow anim-1">IIT Kanpur · Guest Room Portal</div>
@@ -845,52 +1064,12 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* ── Live Room Status Card ── */}
-        <div className="lp-hero-card anim-card">
-          <div className="lp-card-head">
-            <div className="lp-card-title">Live Room Status</div>
-            <div className="lp-card-updated">Updated at {now}</div>
-          </div>
-          <div className="lp-card-scroll">
-            {roomsLoading ? (
-              <div style={{ color: "var(--muted)", fontSize: 13, padding: "20px 0", textAlign: "center" }}>
-                Loading rooms…
-              </div>
-            ) : liveRooms.length === 0 ? (
-              <div style={{ color: "var(--muted)", fontSize: 13, padding: "20px 0", textAlign: "center" }}>
-                No rooms configured yet
-              </div>
-            ) : (
-              /* Group by hostel */
-              Object.entries(
-                liveRooms.reduce((acc, r) => {
-                  if (!acc[r.hostelName]) acc[r.hostelName] = [];
-                  acc[r.hostelName].push(r);
-                  return acc;
-                }, {})
-              ).map(([hostelName, rooms]) => (
-                <div key={hostelName} className="lp-hostel-group">
-                  <div className="lp-hostel-label">{hostelName}</div>
-                  {rooms.map((r, i) => (
-                    <div key={r.id} className="lp-room-row">
-                      <div className="lp-room-info">
-                        <div className="lp-room-name">Room {r.roomNo}</div>
-                        <div className="lp-room-meta">
-                          {r.ac ? "AC" : "Non-AC"} · Cap {r.capacity}
-                        </div>
-                      </div>
-                      <span className={`lp-room-badge ${r.badge}`}>{r.statusLabel}</span>
-                    </div>
-                  ))}
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        {/* ── Enhanced Live Room Status Card ── */}
+        <LiveRoomCard rooms={liveRooms} loading={roomsLoading} />
       </section>
 
-      {/* ── STATS ───────────────────────────────── */}
-      <div className="lp-stats">
+      {/* ── STATS (dot bg) ──────────────────────── */}
+      <div className="lp-stats lp-bg-dots">
         {[
           { num: "14", label: "Halls of Residence" },
           { num: "100+", label: "Guest Rooms" },
@@ -904,8 +1083,8 @@ export default function LandingPage() {
         ))}
       </div>
 
-      {/* ── FEATURES ────────────────────────────── */}
-      <section className="lp-section">
+      {/* ── FEATURES (grid bg) ──────────────────── */}
+      <section className="lp-section lp-bg-grid">
         <div className="lp-section-label">Features</div>
         <h2 className="lp-section-title">Everything you need, nothing you don't</h2>
         <div className="lp-features-grid">
@@ -919,11 +1098,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── BOOKING LIFECYCLE ────────────────── */}
+      {/* ── BOOKING LIFECYCLE (checker bg, applied inside component) ── */}
       <BookingLifecycle />
 
       {/* ── HOW IT WORKS ────────────────────────── */}
-      <section className="lp-section lp-how">
+      <section className="lp-section lp-how lp-bg-dots">
         <div className="lp-section-label">Process</div>
         <h2 className="lp-section-title">How it works</h2>
         <div className="lp-steps">
@@ -937,8 +1116,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── ROLES ───────────────────────────────── */}
-      <section className="lp-section">
+      {/* ── ROLES (grid bg) ─────────────────────── */}
+      <section className="lp-section lp-bg-grid">
         <div className="lp-section-label">Access Levels</div>
         <h2 className="lp-section-title">Built for every role</h2>
         <div className="lp-roles-grid">
@@ -955,8 +1134,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── CTA ─────────────────────────────────── */}
-      <section className="lp-cta">
+      {/* ── CTA (dot bg) ────────────────────────── */}
+      <section className="lp-cta lp-bg-dots">
         <div className="lp-cta-bg" />
         <h2>Ready to book your <em>guest room?</em></h2>
         <p>Join students across IIT Kanpur using the portal every day.</p>
@@ -971,7 +1150,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FOOTER ──────────────────────────────── */}
-      <footer className="lp-footer">
+      <footer className="lp-footer lp-bg-dots">
         <div className="lp-footer-logo">IIT Kanpur · Guest Room Portal</div>
         <div className="lp-footer-text">Student Welfare Office · All Halls of Residence</div>
       </footer>
