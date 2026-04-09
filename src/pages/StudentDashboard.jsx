@@ -31,7 +31,7 @@ const uploadToCloudinary = async (file, publicId) => {
 };
 
 
-const PORTAL_URL = "https://grms.iitk.ac.in"; // replace with your actual domain when live
+const PORTAL_URL = "https://grms.udghosh.org.in"; // replace with your actual domain when live
 
 /* ── Build email content for manual sending ── */
 const buildEmailContent = ({ wardenEmail, caretakerEmail, booking }) => {
