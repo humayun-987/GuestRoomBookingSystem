@@ -7,7 +7,9 @@ import { db } from "../firebaseConfig";
 import { useAuth } from "./AuthContext";
 import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
+import PaymentPage from "./PaymentPage";
 import { useNavigate } from "react-router-dom";
+
 /* ── Cloudinary config ── */
 const CLOUD_NAME = "dzoqdhk17";
 const UPLOAD_PRESET = "iitk_docs";
@@ -31,7 +33,7 @@ const uploadToCloudinary = async (file, publicId) => {
 };
 
 
-const PORTAL_URL = "https://grms.udghosh.org.in"; // replace with your actual domain when live
+const PORTAL_URL = "https://grms.iitk.ac.in";
 
 /* ── Build email content for manual sending ── */
 const buildEmailContent = ({ wardenEmail, caretakerEmail, booking }) => {
@@ -118,13 +120,103 @@ const runCleanup = async () => {
   }
 };
 
+/* ══════════════════════════════════════
+   NOTIFICATION TICKER
+══════════════════════════════════════ */
+function NotificationTicker({ notifications }) {
+  const primary = notifications[0];
+
+  useEffect(() => {
+    if (document.getElementById("ticker-style")) return;
+    const s = document.createElement("style");
+    s.id = "ticker-style";
+    s.textContent = `
+      @keyframes ticker-scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .ticker-track {
+        display: flex;
+        width: max-content;
+        animation: ticker-scroll 60s linear infinite;
+      }
+      .ticker-track:hover { animation-play-state: paused; }
+    `;
+    document.head.appendChild(s);
+  }, []);
+
+  const repeated = [...notifications, ...notifications, ...notifications];
+
+  const colorMap = {
+    green: { text: "#4ade80", bg: "rgba(74,222,128,0.07)", border: "rgba(74,222,128,0.18)", badge: "rgba(74,222,128,0.15)" },
+    amber: { text: "#f59e0b", bg: "rgba(245,158,11,0.07)", border: "rgba(245,158,11,0.18)", badge: "rgba(245,158,11,0.15)" },
+    red: { text: "#f87171", bg: "rgba(248,113,113,0.07)", border: "rgba(248,113,113,0.18)", badge: "rgba(248,113,113,0.15)" },
+  };
+  const c = colorMap[primary.colorKey] || colorMap.green;
+
+  return (
+    <div style={{
+      width: "100%",
+      background: c.bg,
+      borderTop: `1px solid ${c.border}`,
+      borderBottom: `1px solid ${c.border}`,
+      height: 40,
+      display: "flex", alignItems: "center",
+      overflow: "hidden",
+    }}>
+      {/* Label */}
+      <div style={{
+        flexShrink: 0,
+        display: "flex", alignItems: "center", gap: 8,
+        padding: "0 18px",
+        height: "100%",
+        borderRight: `1px solid ${c.border}`,
+        background: c.badge,
+      }}>
+        <span style={{ fontSize: 15 }}>🔔</span>
+        <span style={{
+          fontSize: 10, fontWeight: 700, letterSpacing: 2,
+          textTransform: "uppercase", color: c.text, whiteSpace: "nowrap",
+        }}>
+          Warden Update
+        </span>
+      </div>
+
+      {/* Scrolling messages */}
+      <div style={{ overflow: "hidden", flex: 1 }}>
+        <div className="ticker-track">
+          {repeated.map((n, i) => {
+            const nc = colorMap[n.colorKey] || colorMap.green;
+            return (
+              <span key={i} style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                padding: "0 56px",
+                fontSize: 13, color: nc.text,
+                fontWeight: 400, whiteSpace: "nowrap",
+                letterSpacing: 0.2,
+              }}>
+                {n.text}
+                <span style={{ opacity: 0.2, fontSize: 8 }}>●</span>
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function StudentDashboard() {
   const { user, profile, logout } = useAuth();
   const [tab, setTab] = useState("book");
   const [preCheckIn, setPreCheckIn] = useState("");
   const [preCheckOut, setPreCheckOut] = useState("");
+  const [paymentPage, setPaymentPage] = useState(null);
+  // FIX 5: refreshKey is now passed to StatusTab/HistoryTab so they re-fetch
+  //         when onProofSubmitted fires and increments it.
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [notifications, setNotifications] = useState([]);
   const navigate = useNavigate();
-  // Called from HistoryTab when student clicks "Book Another Room"
   const handleBookAnother = (checkIn, checkOut) => {
     setPreCheckIn(checkIn);
     setPreCheckOut(checkOut);
@@ -136,6 +228,45 @@ export default function StudentDashboard() {
     runCleanup();
   }, []);
 
+  // Fetch latest warden actions for this student
+  useEffect(() => {
+    if (!user?.uid) return;
+    (async () => {
+      try {
+        const snap = await getDocs(
+          query(collection(db, "bookings"), where("studentId", "==", user.uid))
+        );
+        const items = snap.docs
+          .map(d => ({ id: d.id, ...d.data() }))
+          .filter(b => ["approved", "conditional", "rejected"].includes(b.status) && b.reviewedAt)
+          .sort((a, b) => b.reviewedAt?.toDate() - a.reviewedAt?.toDate())
+          .slice(0, 10)
+          .map(b => {
+            const fmt = ts => ts?.toDate?.().toLocaleDateString("en-IN", { day: "numeric", month: "short" }) || "";
+            if (b.status === "approved") return { text: `✅  Booking for ${b.guestName} (${fmt(b.checkIn)} – ${fmt(b.checkOut)}) at ${b.hostelName} has been Approved by the Warden`, colorKey: "green" };
+            if (b.status === "conditional") return { text: `〜  Booking for ${b.guestName} (${fmt(b.checkIn)} – ${fmt(b.checkOut)}) at ${b.hostelName} — Conditionally Approved${b.wardenNote ? `: "${b.wardenNote}"` : ""}`, colorKey: "amber" };
+            if (b.status === "rejected") return { text: `✕  Booking for ${b.guestName} (${fmt(b.checkIn)} – ${fmt(b.checkOut)}) at ${b.hostelName} was Rejected${b.wardenNote ? `: "${b.wardenNote}"` : ""}`, colorKey: "red" };
+            return null;
+          })
+          .filter(Boolean);
+        setNotifications(items);
+      } catch { /* silent */ }
+    })();
+  }, [user]);
+
+  // FIX 3: Removed duplicate <PaymentPage> that was also rendered inside the main JSX.
+  // The early-return here is the single correct place to handle it.
+  if (paymentPage) {
+    return (
+      <PaymentPage
+        booking={paymentPage}
+        userProfile={profile}
+        onClose={() => setPaymentPage(null)}
+        onProofSubmitted={() => { setPaymentPage(null); setRefreshKey(k => k + 1); }}
+      />
+    );
+  }
+
   return (
     <div className="pr">
       <div className="pr-bg" />
@@ -146,6 +277,13 @@ export default function StudentDashboard() {
           <div className="pr-brand">IITK <span>Guest Rooms</span></div>
           <div className="pr-brand-sub">Student Portal</div>
         </div>
+        {/* <div className="pr-topbar-right">
+          <div style={{ textAlign: "right" }}>
+            <div className="pr-user-name">{profile?.name || user?.email}</div>
+            <div className="pr-user-role">Student · {profile?.hostel || ""}</div>
+          </div>
+          <button className="pr-logout" onClick={logout}>Sign Out</button>
+        </div> */}
         <div className="pr-topbar-right">
           <button
             className="pr-logout"
@@ -163,8 +301,15 @@ export default function StudentDashboard() {
         </div>
       </div>
 
+      {/* ── Warden Action Ticker — sits just below the navbar ── */}
+      {notifications.length > 0 && (
+        <div style={{ position: "fixed", top: 64, left: 0, right: 0, zIndex: 90 }}>
+          <NotificationTicker notifications={notifications} />
+        </div>
+      )}
+
       <div className="pr-body">
-        <div className="pr-page-header pr-a1">
+        <div className="pr-page-header pr-a1 pt-10 md:pt-4">
           <div
             style={{
               marginBottom: 16,
@@ -222,10 +367,12 @@ export default function StudentDashboard() {
 
         <div className="pr-a3">
           {tab === "book" && <BookTab user={user} profile={profile} preCheckIn={preCheckIn} preCheckOut={preCheckOut} />}
-          {tab === "status" && <StatusTab user={user} onBookAnother={handleBookAnother} />}
-          {tab === "history" && <HistoryTab user={user} onBookAnother={handleBookAnother} />}
+          {/* FIX 4: Pass onPayNow={setPaymentPage} so StatusTab can open the payment screen */}
+          {/* FIX 5: Pass refreshKey so StatusTab re-fetches after proof is submitted      */}
+          {tab === "status" && <StatusTab key={refreshKey} user={user} onBookAnother={handleBookAnother} onPayNow={setPaymentPage} />}
+          {tab === "history" && <HistoryTab key={refreshKey} user={user} onBookAnother={handleBookAnother} />}
         </div>
-      </div>
+      </div>{/* FIX 2: Added missing closing </div> for <div className="pr-body"> */}
     </div>
   );
 }
@@ -466,7 +613,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
   /* ── Booking modal ── */
   const [modal, setModal] = useState(null); // { room, hostel }
   const [submitting, setSubmitting] = useState(false);
-  const [mailModal, setMailModal] = useState(null); // { mailtoUrl, wardenEmail, caretakerEmail }
+  const [mailModal, setMailModal] = useState(null);
 
   /* Guest form fields */
   const [guestName, setGuestName] = useState("");
@@ -526,11 +673,6 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
         const roomSnap = await getDocs(collection(db, "hostels", h.id, "rooms"));
         const rooms = roomSnap.docs.map(r => {
           const rData = r.data();
-          // Room is date-available if:
-          // 1. Not blocked by an overlapping booking for these dates
-          // 2. Not explicitly put in maintenance by admin (maintenance: true)
-          // NOTE: We intentionally ignore the legacy `available` field —
-          // old bookings incorrectly set available:false permanently on rooms.
           const underMaintenance = rData.maintenance === true;
           return {
             id: r.id,
@@ -585,11 +727,9 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
     setSubmitting(true);
 
     try {
-      // Pre-generate booking ID so we can use it in storage paths
       const bookingRef = doc(collection(db, "bookings"));
       const bookingId = bookingRef.id;
 
-      // Upload all 3 docs to Cloudinary
       setUploadProgress("Uploading Aadhar Card…");
       const aadharUrl = await uploadToCloudinary(docAadhar, `bookings/${bookingId}/aadhar`);
 
@@ -617,6 +757,7 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
         purpose: purpose.trim(),
         bookedAt: new Date(),
         status: "pending",
+        roomRate: room.rate || 0,
         wardenNote: "",
         documents: {
           aadhar: aadharUrl,
@@ -636,7 +777,6 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
         }
       ));
 
-      /* ── Close booking modal, show mail notification modal ── */
       setModal(null);
 
       try {
@@ -779,6 +919,11 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
                         <div className="pr-room-row">
                           ❄️ AC: <strong style={{ color: "var(--text)" }}>{room.ac ? "Yes" : "No"}</strong>
                         </div>
+                        {room.rate > 0 && (
+                          <div className="pr-room-row">
+                            💰 Rate: <strong style={{ color: "var(--gold)" }}>₹{room.rate}/night</strong>
+                          </div>
+                        )}
                         {!room.dateAvailable && !room.underMaintenance && (
                           <div style={{
                             fontSize: 11, color: "var(--muted)", marginTop: 8,
@@ -840,6 +985,14 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
                   {" · "}
                   {Math.ceil((new Date(checkOut) - new Date(checkIn)) / 86400000)} night(s)
                 </div>
+                {modal.room.rate > 0 && (
+                  <div style={{ marginTop: 6, fontSize: 14, color: "var(--cream)", fontWeight: 600 }}>
+                    💰 Total: ₹{modal.room.rate * Math.ceil((new Date(checkOut) - new Date(checkIn)) / 86400000)}
+                    <span style={{ fontSize: 12, color: "var(--muted)", fontWeight: 400, marginLeft: 6 }}>
+                      (₹{modal.room.rate}/night × {Math.ceil((new Date(checkOut) - new Date(checkIn)) / 86400000)} nights)
+                    </span>
+                  </div>
+                )}
               </div>
 
               <form onSubmit={handleSubmit}>
@@ -953,7 +1106,13 @@ function BookTab({ user, profile, preCheckIn = "", preCheckOut = "" }) {
     </>
   );
 }
-function StatusTab({ user, onBookAnother }) {
+
+/* ══════════════════════════════════════
+   STATUS TAB
+══════════════════════════════════════ */
+// FIX 1: Removed garbled `══════════ */` that was floating here as a broken comment,
+//         causing a syntax error. The function declaration is clean now.
+function StatusTab({ user, onBookAnother, onPayNow }) {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -966,7 +1125,6 @@ function StatusTab({ user, onBookAnother }) {
           snap.docs.map(d => ({ id: d.id, ...d.data() }))
             .filter(b => {
               if (["pending", "approved", "conditional", "checked_in"].includes(b.status)) return true;
-              // Show cancelled bookings caused by maintenance or admin — so student sees why
               if (b.status === "cancelled" && (
                 b.wardenNote?.startsWith("Room under maintenance:") ||
                 b.wardenNote?.startsWith("Cancelled by admin:")
@@ -992,6 +1150,10 @@ function StatusTab({ user, onBookAnother }) {
     );
     return (
       <BookingCard key={b.id} booking={b}
+        onPayNow={["approved", "conditional"].includes(b.status) &&
+          b.paymentStatus !== "verified" && b.paymentStatus !== "pending_verification"
+          ? onPayNow : null}
+        paymentStatus={b.paymentStatus}
         onBookAnother={isCancelled
           ? () => onBookAnother(
             b.checkIn?.toDate?.().toISOString().split("T")[0] || "",
@@ -1009,7 +1171,7 @@ function StatusTab({ user, onBookAnother }) {
 function HistoryTab({ user, onBookAnother }) {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [reapplyModal, setReapplyModal] = useState(null); // booking to reapply
+  const [reapplyModal, setReapplyModal] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -1147,7 +1309,7 @@ function ReapplyModal({ booking, user, onClose }) {
 
           <form onSubmit={handleSubmit}>
             {/* New dates */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
+            <div className="pr-date-grid">
               <div className="pr-field">
                 <label className="pr-label">New Check-in Date</label>
                 <input className="pr-input" type="date" min={today}
@@ -1198,7 +1360,11 @@ function ReapplyModal({ booking, user, onClose }) {
     </div>
   );
 }
-function BookingCard({ booking, onReapply, onBookAnother }) {
+
+/* ══════════════════════════════════════
+   BOOKING CARD
+══════════════════════════════════════ */
+function BookingCard({ booking, onReapply, onBookAnother, onPayNow, paymentStatus }) {
   const isMaintCancelled = booking.status === "cancelled" &&
     booking.wardenNote?.startsWith("Room under maintenance:");
   const isAdminCancelled = booking.status === "cancelled" &&
@@ -1293,6 +1459,59 @@ function BookingCard({ booking, onReapply, onBookAnother }) {
         </div>
       )}
 
+      {/* ── Payment Status Badges (for active approved/conditional bookings) ── */}
+      {["approved", "conditional"].includes(booking.status) && (
+        <div style={{ marginTop: 12 }}>
+          {/* Not yet submitted */}
+          {!paymentStatus && onPayNow && (
+            <div style={{
+              background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.25)",
+              borderRadius: 8, padding: "12px 16px",
+              display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
+            }}>
+              <div>
+                <div style={{ fontSize: 13, color: "var(--gold)", fontWeight: 600, marginBottom: 2 }}>
+                  💳 Payment Required
+                </div>
+                <div style={{ fontSize: 12, color: "var(--muted)" }}>
+                  Complete payment via SBI Collect before your guest arrives.
+                </div>
+              </div>
+              <button className="pb pb-gold pb-sm" style={{ flexShrink: 0 }} onClick={() => onPayNow(booking)}>
+                Pay Now →
+              </button>
+            </div>
+          )}
+          {/* Proof submitted, awaiting verification */}
+          {paymentStatus === "pending_verification" && (
+            <div style={{
+              background: "rgba(245,158,11,0.07)", border: "1px solid rgba(245,158,11,0.25)",
+              borderRadius: 8, padding: "10px 14px",
+              display: "flex", alignItems: "center", gap: 10,
+            }}>
+              <span style={{ fontSize: 16 }}>⏳</span>
+              <div>
+                <div style={{ fontSize: 13, color: "#f59e0b", fontWeight: 600 }}>Proof Submitted — Awaiting Verification</div>
+                <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 2 }}>
+                  The caretaker will verify your payment and unlock check-in.
+                </div>
+              </div>
+            </div>
+          )}
+          {/* Verified */}
+          {paymentStatus === "verified" && (
+            <div style={{
+              background: "rgba(74,222,128,0.07)", border: "1px solid rgba(74,222,128,0.25)",
+              borderRadius: 8, padding: "10px 14px",
+              display: "flex", alignItems: "center", gap: 10,
+            }}>
+              <span style={{ fontSize: 16 }}>✅</span>
+              <div style={{ fontSize: 13, color: "#4ade80", fontWeight: 600 }}>Payment Verified — Check-In Ready</div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Book another room — for maintenance cancelled */}
       {onBookAnother && (
         <div style={{ marginTop: 12 }}>
@@ -1305,9 +1524,9 @@ function BookingCard({ booking, onReapply, onBookAnother }) {
       {/* Re-apply — for rejected bookings */}
       {onReapply && (
         <div style={{ marginTop: 12 }}>
-          <button className="pb pb-gold pb-sm" onClick={onReapply}>
+          {/* <button className="pb pb-gold pb-sm" onClick={onReapply}>
             ↩ Re-apply for this Room
-          </button>
+          </button> */}
         </div>
       )}
     </div>

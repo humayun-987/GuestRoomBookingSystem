@@ -9,6 +9,7 @@ import { message } from "antd";
 import { injectPortalTheme } from "./PortalTheme";
 import { DocumentViewer } from "./StudentDashboard";
 import { useNavigate } from "react-router-dom";
+
 /* ─────────────────────────────────────────────────────────────
    SUPER ADMIN PASSKEY — hardcoded, never stored in database.
    Only share this with the designated super administrator.
@@ -22,13 +23,13 @@ export default function AdminHostels() {
   const [tab, setTab] = useState("rooms");
   const [newHostelName, setNewHostelName] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+
   // Session-based unlock: Set of hostelIds unlocked this session
   const [unlockedHostels, setUnlockedHostels] = useState(new Set());
   const unlockHostel = (id) => setUnlockedHostels(prev => new Set([...prev, id]));
   const lockHostel = (id) => setUnlockedHostels(prev => { const s = new Set(prev); s.delete(id); return s; });
   const isUnlocked = (id) => unlockedHostels.has(id);
-
+  const navigate = useNavigate();
   // Super admin — verified once per session via hardcoded passkey, never persisted
   const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
@@ -505,7 +506,7 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
   const addRoom = async () => {
     try {
       const ref = await addDoc(collection(db, "hostels", hostel.id, "rooms"),
-        { capacity: 2, ac: false, maintenance: false, createdAt: new Date() });
+        { capacity: 2, ac: false, maintenance: false, rate: 0, createdAt: new Date() });
       setRooms(prev => [...prev, { id: ref.id, capacity: 2, ac: false, maintenance: false }]);
       message.success("Room added");
     } catch { message.error("Failed to add room"); }
@@ -659,6 +660,13 @@ function HostelCard({ hostel, refresh, unlocked, onUnlock, onLock }) {
                           <span style={{ color: room.maintenance === true ? "#f59e0b" : "var(--muted)" }}>
                             {room.maintenance === true ? "Active" : "Off"}
                           </span>
+                        </div>
+                        <div className="pr-control">
+                          <span style={{ whiteSpace: "nowrap" }}>Rate (₹/night):</span>
+                          <input type="number" className="pr-number" min={0}
+                            value={room.rate || 0}
+                            onChange={e => updateRoom(room.id, { rate: parseInt(e.target.value) || 0 })}
+                            style={{ width: 72 }} />
                         </div>
                       </div>
                       {room.maintenance === true && (
@@ -1063,6 +1071,7 @@ function BookingsPanel({ hostels }) {
                 ["Check-out", fmt(detail.checkOut)],
                 ["Booked At", fmtFull(detail.bookedAt)],
                 ["Status", STATUS_STYLE[detail.status]?.label || detail.status],
+                ["Rate", detail.roomRate ? `₹${detail.roomRate}/night` : "Not set"],
                 ["Note", detail.wardenNote || "—"],
               ].map(([label, value]) => (
                 <div key={label} style={{
